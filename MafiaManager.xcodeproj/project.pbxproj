@@ -7,15 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F974F8D37A5B79031110456 /* Pods_MafiaManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3736DE08530B5A6DD9C82E73 /* Pods_MafiaManager.framework */; };
 		BFFDFE4F223844C00033F15B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFDFE4E223844C00033F15B /* AppDelegate.swift */; };
 		BFFDFE51223844C00033F15B /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFDFE50223844C00033F15B /* FirstViewController.swift */; };
 		BFFDFE53223844C00033F15B /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFDFE52223844C00033F15B /* SecondViewController.swift */; };
 		BFFDFE56223844C00033F15B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFDFE54223844C00033F15B /* Main.storyboard */; };
 		BFFDFE58223845160033F15B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFFDFE57223845160033F15B /* Assets.xcassets */; };
 		BFFDFE5B223845170033F15B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFDFE59223845170033F15B /* LaunchScreen.storyboard */; };
+		BFFDFE63223845500033F15B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFFDFE622238454F0033F15B /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		26426B7903E9150EF76358D9 /* Pods-MafiaManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MafiaManager.debug.xcconfig"; path = "Target Support Files/Pods-MafiaManager/Pods-MafiaManager.debug.xcconfig"; sourceTree = "<group>"; };
+		3736DE08530B5A6DD9C82E73 /* Pods_MafiaManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MafiaManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFFDFE4B223844C00033F15B /* MafiaManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MafiaManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFFDFE4E223844C00033F15B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFFDFE50223844C00033F15B /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +28,8 @@
 		BFFDFE57223845160033F15B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFFDFE5A223845170033F15B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BFFDFE5C223845170033F15B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFFDFE622238454F0033F15B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F2AF33E2E3064D2FD43B2DBF /* Pods-MafiaManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MafiaManager.release.xcconfig"; path = "Target Support Files/Pods-MafiaManager/Pods-MafiaManager.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +37,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F974F8D37A5B79031110456 /* Pods_MafiaManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5ED2355BD191163C968C7006 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				26426B7903E9150EF76358D9 /* Pods-MafiaManager.debug.xcconfig */,
+				F2AF33E2E3064D2FD43B2DBF /* Pods-MafiaManager.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7E802CDD2D987692A4E7EAE8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3736DE08530B5A6DD9C82E73 /* Pods_MafiaManager.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BFFDFE42223844C00033F15B = {
 			isa = PBXGroup;
 			children = (
 				BFFDFE4D223844C00033F15B /* MafiaManager */,
 				BFFDFE4C223844C00033F15B /* Products */,
+				5ED2355BD191163C968C7006 /* Pods */,
+				7E802CDD2D987692A4E7EAE8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +89,7 @@
 				BFFDFE54223844C00033F15B /* Main.storyboard */,
 				BFFDFE57223845160033F15B /* Assets.xcassets */,
 				BFFDFE59223845170033F15B /* LaunchScreen.storyboard */,
+				BFFDFE622238454F0033F15B /* GoogleService-Info.plist */,
 				BFFDFE5C223845170033F15B /* Info.plist */,
 			);
 			path = MafiaManager;
@@ -74,9 +102,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BFFDFE5F223845170033F15B /* Build configuration list for PBXNativeTarget "MafiaManager" */;
 			buildPhases = (
+				F5EA7D6FAC8EFC2BE2382176 /* [CP] Check Pods Manifest.lock */,
 				BFFDFE47223844C00033F15B /* Sources */,
 				BFFDFE48223844C00033F15B /* Frameworks */,
 				BFFDFE49223844C00033F15B /* Resources */,
+				DE04B84D83036D5BBD0D4D06 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,12 +156,62 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFFDFE5B223845170033F15B /* LaunchScreen.storyboard in Resources */,
+				BFFDFE63223845500033F15B /* GoogleService-Info.plist in Resources */,
 				BFFDFE58223845160033F15B /* Assets.xcassets in Resources */,
 				BFFDFE56223844C00033F15B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DE04B84D83036D5BBD0D4D06 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MafiaManager/Pods-MafiaManager-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MafiaManager/Pods-MafiaManager-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5EA7D6FAC8EFC2BE2382176 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MafiaManager-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BFFDFE47223844C00033F15B /* Sources */ = {
@@ -284,6 +364,7 @@
 		};
 		BFFDFE60223845170033F15B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26426B7903E9150EF76358D9 /* Pods-MafiaManager.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -301,6 +382,7 @@
 		};
 		BFFDFE61223845170033F15B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2AF33E2E3064D2FD43B2DBF /* Pods-MafiaManager.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
