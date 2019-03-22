@@ -17,6 +17,7 @@
 		BFFDFE63223845500033F15B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFFDFE622238454F0033F15B /* GoogleService-Info.plist */; };
 		F6F54C732244644700F6DFDF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F54C722244644700F6DFDF /* LoginViewController.swift */; };
 		F6F54C7522446B7D00F6DFDF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F54C7422446B7D00F6DFDF /* SignUpViewController.swift */; };
+		F6F54C77224482FC00F6DFDF /* LoadingWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F54C76224482FC00F6DFDF /* LoadingWelcomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		F2AF33E2E3064D2FD43B2DBF /* Pods-MafiaManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MafiaManager.release.xcconfig"; path = "Target Support Files/Pods-MafiaManager/Pods-MafiaManager.release.xcconfig"; sourceTree = "<group>"; };
 		F6F54C722244644700F6DFDF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F6F54C7422446B7D00F6DFDF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		F6F54C76224482FC00F6DFDF /* LoadingWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingWelcomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				BFFDFE5C223845170033F15B /* Info.plist */,
 				F6F54C722244644700F6DFDF /* LoginViewController.swift */,
 				F6F54C7422446B7D00F6DFDF /* SignUpViewController.swift */,
+				F6F54C76224482FC00F6DFDF /* LoadingWelcomeViewController.swift */,
 			);
 			path = MafiaManager;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				BFFDFE53223844C00033F15B /* SecondViewController.swift in Sources */,
 				BFFDFE4F223844C00033F15B /* AppDelegate.swift in Sources */,
 				BFFDFE51223844C00033F15B /* FirstViewController.swift in Sources */,
+				F6F54C77224482FC00F6DFDF /* LoadingWelcomeViewController.swift in Sources */,
 				F6F54C7522446B7D00F6DFDF /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
