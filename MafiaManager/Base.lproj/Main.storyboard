@@ -122,14 +122,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="wzY-vH-gcU">
-                                <rect key="frame" x="69" y="64" width="237" height="290.5"/>
+                                <rect key="frame" x="69" y="64" width="237" height="250.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MhC-8a-zMQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="237" height="130"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="237" height="90"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="130" id="PsO-R7-ila"/>
+                                            <constraint firstAttribute="height" constant="90" id="PsO-R7-ila"/>
                                         </constraints>
                                         <attributedString key="attributedText">
                                             <fragment content="Mafia Manager">
@@ -143,10 +143,10 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NeO-U9-GPO">
-                                        <rect key="frame" x="0.0" y="141" width="237" height="118"/>
+                                        <rect key="frame" x="0.0" y="101" width="237" height="118"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Registration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbu-1S-1yj">
-                                        <rect key="frame" x="0.0" y="270" width="237" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="230" width="237" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
