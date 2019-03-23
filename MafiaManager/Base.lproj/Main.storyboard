@@ -113,6 +113,9 @@
                                             <constraint firstAttribute="width" constant="135" id="AvB-Pk-i3M"/>
                                         </constraints>
                                         <state key="normal" title="Log In"/>
+                                        <connections>
+                                            <action selector="onLogInButtonPressed:" destination="3zU-Rx-iRc" eventType="touchUpInside" id="1PX-Vb-oG8"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Se9-XX-xgx">
                                         <rect key="frame" x="135" y="0.0" width="135" height="45"/>
@@ -132,6 +135,9 @@
                         <viewLayoutGuide key="safeArea" id="Gv5-Me-nzC"/>
                     </view>
                     <connections>
+                        <outlet property="emailTextfield" destination="o2m-cl-zun" id="1AH-Gx-WbJ"/>
+                        <outlet property="mafiaImage" destination="sBp-eM-kkR" id="fZN-Ve-qzX"/>
+                        <outlet property="passwordTextfield" destination="cF2-BE-xyq" id="YVO-v9-a1K"/>
                         <segue destination="N7e-LJ-TsQ" kind="show" identifier="loadingWelcomeSegueIdentifier" id="B7N-l0-b2n"/>
                     </connections>
                 </viewController>
@@ -246,7 +252,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bib-XU-6Eo">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bib-XU-6Eo">
                                         <rect key="frame" x="0.0" y="114" width="208" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -260,6 +266,7 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="-2" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Register"/>
                                 <connections>
+                                    <action selector="onRegisterButtonPressed:" destination="f0Y-tC-J2b" eventType="touchUpInside" id="3sh-bp-uCc"/>
                                     <segue destination="3zU-Rx-iRc" kind="show" id="pNk-Z4-efd"/>
                                 </connections>
                             </button>
@@ -267,6 +274,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Xyn-2Y-7Dh"/>
                     </view>
+                    <connections>
+                        <outlet property="confirmPasswordTextfield" destination="bib-XU-6Eo" id="czS-h8-zJL"/>
+                        <outlet property="emailTextfield" destination="M5M-pv-Uqz" id="JOl-6d-q4C"/>
+                        <outlet property="mafiaImage" destination="NeO-U9-GPO" id="chp-sj-a4w"/>
+                        <outlet property="nameTextfield" destination="U4g-N1-atP" id="HkJ-L7-aNo"/>
+                        <outlet property="passwordTextfield" destination="MP0-wg-Vt6" id="XBz-eS-1ku"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mxU-rQ-EV8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

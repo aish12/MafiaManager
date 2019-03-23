@@ -10,6 +10,16 @@ import UIKit
 
 class SignUpViewController: UIViewController {
 
+    @IBOutlet weak var mafiaImage: UIImageView!
+    
+    @IBOutlet weak var nameTextfield: UITextField!
+    @IBOutlet weak var emailTextfield: UITextField!
+    @IBOutlet weak var passwordTextfield: UITextField!
+    @IBOutlet weak var confirmPasswordTextfield: UITextField!
+    
+    @IBAction func onRegisterButtonPressed(_ sender: Any) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -36,6 +36,7 @@
 		F6F54C722244644700F6DFDF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F6F54C7422446B7D00F6DFDF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		F6F54C76224482FC00F6DFDF /* LoadingWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingWelcomeViewController.swift; sourceTree = "<group>"; };
+		F6F54C782246D95000F6DFDF /* MafiaManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MafiaManager.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +89,7 @@
 		BFFDFE4D223844C00033F15B /* MafiaManager */ = {
 			isa = PBXGroup;
 			children = (
+				F6F54C782246D95000F6DFDF /* MafiaManager.entitlements */,
 				BFFDFE4E223844C00033F15B /* AppDelegate.swift */,
 				BFFDFE50223844C00033F15B /* FirstViewController.swift */,
 				BFFDFE52223844C00033F15B /* SecondViewController.swift */,
@@ -137,6 +139,11 @@
 				TargetAttributes = {
 					BFFDFE4A223844C00033F15B = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -182,14 +189,20 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MafiaManager/Pods-MafiaManager-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,7 +391,9 @@
 			baseConfigurationReference = 26426B7903E9150EF76358D9 /* Pods-MafiaManager.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MafiaManager/MafiaManager.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H8C5RDWWCB;
 				INFOPLIST_FILE = MafiaManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -396,7 +411,9 @@
 			baseConfigurationReference = F2AF33E2E3064D2FD43B2DBF /* Pods-MafiaManager.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MafiaManager/MafiaManager.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H8C5RDWWCB;
 				INFOPLIST_FILE = MafiaManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

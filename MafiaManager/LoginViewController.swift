@@ -7,24 +7,48 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController {
     
     let signUpSegueIdentifier = "signUpSegueIdentifier"
     let loadingWelcomeSegueIdentifier = "loadingWelcomeSegueIdentifier"
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+    @IBOutlet weak var mafiaImage: UIImageView!
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == signUpSegueIdentifier {
-            if let destination = segue.destination as? SignUpViewController {
+    @IBOutlet weak var emailTextfield: UITextField!
+    @IBOutlet weak var passwordTextfield: UITextField!
+    
+    @IBAction func onLogInButtonPressed(_ sender: Any) {
+        
+        guard
+            let email = emailTextfield.text,
+            let password = passwordTextfield.text,
+            email.count > 0,
+            password.count > 0
+            else {
+                return
+            }
+        
+        Auth.auth().signIn(withEmail: email, password: password) { user, error in
+            if let error = error, user == nil {
+                let alert = UIAlertController(
+                    title: "Sign In Failed",
+                    message: error.localizedDescription,
+                    preferredStyle: .alert)
                 
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                
+                self.present(alert, animated: true, completion: nil)
             }
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        // Mafia icon should appear
+        mafiaImage.image = UIImage(named: "MafiaIcon")
     }
     
     /*
