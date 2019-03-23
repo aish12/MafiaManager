@@ -9,6 +9,9 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    
+    let signUpSegueIdentifier = "signUpSegueIdentifier"
+    let loadingWelcomeSegueIdentifier = "loadingWelcomeSegueIdentifier"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,7 +19,14 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == signUpSegueIdentifier {
+            if let destination = segue.destination as? SignUpViewController {
+                
+            }
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
