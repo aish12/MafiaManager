@@ -11,6 +11,8 @@ import Firebase
 
 class SignUpViewController: UIViewController {
 
+    let signInSegueIdentifier = "signInSegueIdentifier"
+    
     @IBOutlet weak var mafiaImage: UIImageView!
     
     @IBOutlet weak var nameTextfield: UITextField!
@@ -26,16 +28,40 @@ class SignUpViewController: UIViewController {
             let password = passwordTextfield.text,
             let confirmPassword = confirmPasswordTextfield.text,
             name.count > 0,
+            email.count > 0,
             password.count > 0,
-            password == confirmPasswordTextfield.text
+            confirmPassword.count > 0
             else {
+                let alert = UIAlertController(
+                    title: "Empty Fields",
+                    message: "Please fill in the required fields",
+                    preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true, completion: nil)
                 return
         }
-        // Sign in logic
+        
+        guard password == confirmPassword
+            else {
+                let alert = UIAlertController(
+                    title: "Passwords do not match",
+                    message: "Please confirm your password",
+                    preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true, completion: nil)
+                return
+        }
+        
+        // Sign up logic
         Auth.auth().createUser(withEmail: emailTextfield.text!, password: passwordTextfield.text!) { user, error in
-            if error == nil {
-                Auth.auth().signIn(withEmail: self.emailTextfield.text!,
-                                   password: self.passwordTextfield.text!)
+            if error == nil && user != nil {
+                // Confirm success
+                let alert = UIAlertController(
+                    title: "Registration Success",
+                    message: "You can now sign in",
+                    preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true, completion: nil)
             } else if error != nil && user == nil {
                 let alert = UIAlertController(
                     title: "Sign Up Failed",
@@ -57,10 +83,10 @@ class SignUpViewController: UIViewController {
         Auth.auth().addStateDidChangeListener() { auth, user in
             if user != nil {
                 // Switch to the welcome screen and clear fields
-                self.performSegue(withIdentifier: "loadingWelcomeSegueIdentifier",
-                                  sender: nil)
+                self.nameTextfield.text = nil
                 self.emailTextfield.text = nil
                 self.passwordTextfield.text = nil
+                self.confirmPasswordTextfield.text = nil
             }
         }
     }

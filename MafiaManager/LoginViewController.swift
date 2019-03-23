@@ -12,7 +12,7 @@ import Firebase
 class LoginViewController: UIViewController {
     
     let signUpSegueIdentifier = "signUpSegueIdentifier"
-    let loadingWelcomeSegueIdentifier = "loadingWelcomeSegueIdentifier"
+    //let loadingWelcomeSegueIdentifier = "loadingWelcomeSegueIdentifier"
 
     @IBOutlet weak var mafiaImage: UIImageView!
     
@@ -42,9 +42,7 @@ class LoginViewController: UIViewController {
                     title: "Sign In Failed",
                     message: error.localizedDescription,
                     preferredStyle: .alert)
-                
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
-                
                 self.present(alert, animated: true, completion: nil)
             }
         }
@@ -60,8 +58,8 @@ class LoginViewController: UIViewController {
         Auth.auth().addStateDidChangeListener() { auth, user in
             if user != nil {
                 // Switch to the welcome screen and clear fields
-                self.performSegue(withIdentifier: "loadingWelcomeSegueIdentifier",
-                                  sender: nil)
+                //self.performSegue(withIdentifier: "loadingWelcomeSegueIdentifier",
+                              //    sender: nil)
                 self.emailTextfield.text = nil
                 self.passwordTextfield.text = nil
             }
