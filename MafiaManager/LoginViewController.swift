@@ -27,6 +27,12 @@ class LoginViewController: UIViewController {
             email.count > 0,
             password.count > 0
             else {
+                let alert = UIAlertController(
+                    title: "Empty Fields",
+                    message: "Please fill in the required fields",
+                    preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true, completion: nil)
                 return
             }
         
@@ -49,6 +55,17 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
         // Mafia icon should appear
         mafiaImage.image = UIImage(named: "MafiaIcon")
+        
+        // After signing in
+        Auth.auth().addStateDidChangeListener() { auth, user in
+            if user != nil {
+                // Switch to the welcome screen and clear fields
+                self.performSegue(withIdentifier: "loadingWelcomeSegueIdentifier",
+                                  sender: nil)
+                self.emailTextfield.text = nil
+                self.passwordTextfield.text = nil
+            }
+        }
     }
     
     /*
