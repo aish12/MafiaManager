@@ -57,9 +57,6 @@ class LoginViewController: UIViewController {
         // After signing in
         Auth.auth().addStateDidChangeListener() { auth, user in
             if user != nil {
-                // Switch to the welcome screen and clear fields
-                //self.performSegue(withIdentifier: "loadingWelcomeSegueIdentifier",
-                              //    sender: nil)
                 self.emailTextfield.text = nil
                 self.passwordTextfield.text = nil
             }

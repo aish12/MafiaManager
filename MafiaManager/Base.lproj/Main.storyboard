@@ -13,7 +13,7 @@
         <!--First-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FirstViewControllerIdentifier" id="9pv-A4-QxB" customClass="FirstViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -115,6 +115,7 @@
                                         <state key="normal" title="Log In"/>
                                         <connections>
                                             <action selector="onLogInButtonPressed:" destination="3zU-Rx-iRc" eventType="touchUpInside" id="1PX-Vb-oG8"/>
+                                            <segue destination="N7e-LJ-TsQ" kind="show" identifier="loadingWelcomeSegueIdentifier" id="MHf-pW-y3d"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Se9-XX-xgx">
@@ -138,7 +139,6 @@
                         <outlet property="emailTextfield" destination="o2m-cl-zun" id="1AH-Gx-WbJ"/>
                         <outlet property="mafiaImage" destination="sBp-eM-kkR" id="fZN-Ve-qzX"/>
                         <outlet property="passwordTextfield" destination="cF2-BE-xyq" id="YVO-v9-a1K"/>
-                        <segue destination="N7e-LJ-TsQ" kind="show" identifier="loadingWelcomeSegueIdentifier" id="B7N-l0-b2n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kiY-So-cMf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -154,37 +154,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="2K0-Gm-05d">
-                                <rect key="frame" x="41" y="115" width="292" height="391.5"/>
+                                <rect key="frame" x="84" y="227" width="207" height="260.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" text="Welcome" textAlignment="center" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hdC-1M-G7G">
-                                        <rect key="frame" x="0.0" y="0.0" width="292" height="67"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="56"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bK0-Gf-ZXk">
-                                        <rect key="frame" x="0.0" y="104" width="292" height="222"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="twd-sV-PfK">
+                                        <rect key="frame" x="0.0" y="0.0" width="207" height="195"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ak-jV-B01">
-                                        <rect key="frame" x="0.0" y="363" width="292" height="28.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ak-jV-B01">
+                                        <rect key="frame" x="0.0" y="232" width="207" height="28.5"/>
                                         <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5I-FC-TaK">
+                                <rect key="frame" x="94" y="149" width="187" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Xmc-2G-FIr"/>
                     </view>
                     <connections>
-                        <segue destination="49e-Tb-3d3" kind="show" id="KAe-E2-c8F"/>
+                        <outlet property="mafiaUserImage" destination="twd-sV-PfK" id="2pZ-K1-B51"/>
+                        <outlet property="usersNameLabel" destination="3Ak-jV-B01" id="9WN-IY-9x7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SkZ-7P-eAb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1130" y="328"/>
+            <point key="canvasLocation" x="-983" y="90"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="44C-mm-vpX">

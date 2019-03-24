@@ -9,14 +9,30 @@
 import UIKit
 
 class LoadingWelcomeViewController: UIViewController {
-
+    
+    let FirstViewControllerIdentifier = "FirstViewControllerIdentifier"
+    
+    @IBOutlet weak var mafiaUserImage: UIImageView!
+    @IBOutlet weak var usersNameLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        mafiaUserImage.image = UIImage(named: "WelcomeLoadingPicture")
+        usersNameLabel.text = "User"
+       
+        // Transitions after a few seconds to the first VC (deck management)
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { timer in
+            print("Timer fired!")
+            /*
+            let transitionViewController = FirstViewController()
+            self.present(transitionViewController, animated: true, completion: nil)
+            */
+            let homeView = self.storyboard?.instantiateViewController(withIdentifier: "FirstViewControllerIdentifier") as! FirstViewController
+            self.present(homeView, animated: true, completion: nil)
+        }
     }
     
-
     /*
     // MARK: - Navigation
 
