@@ -10,7 +10,7 @@ import UIKit
 
 class LoadingWelcomeViewController: UIViewController {
     
-    let FirstViewControllerIdentifier = "FirstViewControllerIdentifier"
+    let DecksViewController = "DecksViewControllerIdentifier"
     
     @IBOutlet weak var mafiaUserImage: UIImageView!
     @IBOutlet weak var usersNameLabel: UILabel!
@@ -28,7 +28,7 @@ class LoadingWelcomeViewController: UIViewController {
             let transitionViewController = FirstViewController()
             self.present(transitionViewController, animated: true, completion: nil)
             */
-            let homeView = self.storyboard?.instantiateViewController(withIdentifier: "FirstViewControllerIdentifier") as! FirstViewController
+            let homeView = self.storyboard?.instantiateViewController(withIdentifier: "DecksViewControllerIdentifier") as! DecksViewController
             self.present(homeView, animated: true, completion: nil)
         }
     }

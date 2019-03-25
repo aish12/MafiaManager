@@ -41,7 +41,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Decks" image="decksImg.png" id="acW-dT-cKf" customClass="Decks"/>
+                    <tabBarItem key="tabBarItem" title="Decks" image="Decks" id="acW-dT-cKf" customClass="Decks"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -370,7 +370,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="decksImg.png" width="35" height="41"/>
+        <image name="Decks" width="35" height="41"/>
         <image name="second" width="30" height="30"/>
     </resources>
 </document>
