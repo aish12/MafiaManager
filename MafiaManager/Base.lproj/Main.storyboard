@@ -18,34 +18,112 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="First View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KQZ-1w-vlD">
-                                <rect key="frame" x="112.5" y="312" width="150.5" height="43"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by FirstViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5M-7J-77L">
-                                <rect key="frame" x="90.5" y="363" width="194.5" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="952-up-tpY">
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="9pv-A4-QxB" id="fVP-E8-r5B"/>
+                                </connections>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="h9b-9I-vwb">
+                                <rect key="frame" x="0.0" y="120" width="375" height="498"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pIj-Bd-ibK">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AddDeckCell" id="bQq-h6-rsp">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                        <size key="customSize" width="80" height="80"/>
+                                        <connections>
+                                            <segue destination="I7q-K1-HUJ" kind="show" id="4ec-8n-GgY"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DeckCell" id="RxD-qY-mIQ">
+                                        <rect key="frame" x="98.5" y="0.0" width="80" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                        <size key="customSize" width="80" height="80"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="KQZ-1w-vlD" secondAttribute="centerX" id="6BV-lF-sBN"/>
-                            <constraint firstItem="A5M-7J-77L" firstAttribute="top" secondItem="KQZ-1w-vlD" secondAttribute="bottom" constant="8" symbolic="YES" id="cfb-er-3JN"/>
-                            <constraint firstItem="A5M-7J-77L" firstAttribute="centerX" secondItem="KQZ-1w-vlD" secondAttribute="centerX" id="e1l-AV-tCB"/>
-                            <constraint firstAttribute="centerY" secondItem="KQZ-1w-vlD" secondAttribute="centerY" id="exm-UA-ej4"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="h9b-9I-vwb" secondAttribute="trailing" id="JKg-hF-6kq"/>
+                            <constraint firstItem="h9b-9I-vwb" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="YbU-mQ-tNd"/>
+                            <constraint firstItem="952-up-tpY" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="YzS-SF-f5p"/>
+                            <constraint firstItem="952-up-tpY" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="fQW-cn-Ntp"/>
+                            <constraint firstItem="952-up-tpY" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="fvj-7N-8Ec"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="h9b-9I-vwb" secondAttribute="bottom" id="lgR-8Q-fyv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <navigationItem key="navigationItem" id="GYq-zx-c4Q"/>
+                    <navigationItem key="navigationItem" title="Decks" id="472-9O-k2T">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="cf3-js-Hp4"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="K9C-eb-2QG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="lFg-HK-m3x">
+                    <connections>
+                        <outlet property="delegate" destination="9pv-A4-QxB" id="D6Y-DW-vZT"/>
+                        <outlet property="searchBar" destination="952-up-tpY" id="IGz-M3-wTY"/>
+                        <outlet property="searchContentsController" destination="9pv-A4-QxB" id="ikP-nN-oV4"/>
+                        <outlet property="searchResultsDataSource" destination="9pv-A4-QxB" id="hvr-yf-4tD"/>
+                        <outlet property="searchResultsDelegate" destination="9pv-A4-QxB" id="zIx-gK-NaN"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1688.8" y="-320.68965517241384"/>
+        </scene>
+        <!--New Deck-->
+        <scene sceneID="8K9-E4-sMi">
+            <objects>
+                <viewController title="New Deck" id="I7q-K1-HUJ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zhu-MP-xYU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" text="Enter a description of your new deck!" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eKP-Pl-fsP">
+                                <rect key="frame" x="16" y="80" width="343" height="172"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="96E-Pr-4hF">
+                                <rect key="frame" x="67" y="275" width="240" height="240"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jYD-TM-XQ7" firstAttribute="trailing" secondItem="eKP-Pl-fsP" secondAttribute="trailing" constant="16" id="6De-D5-cEm"/>
+                            <constraint firstItem="eKP-Pl-fsP" firstAttribute="top" secondItem="jYD-TM-XQ7" secondAttribute="top" constant="16" id="9bn-bU-f8k"/>
+                            <constraint firstItem="96E-Pr-4hF" firstAttribute="top" secondItem="eKP-Pl-fsP" secondAttribute="bottom" constant="23" id="WzX-Wc-ZBI"/>
+                            <constraint firstItem="eKP-Pl-fsP" firstAttribute="leading" secondItem="jYD-TM-XQ7" secondAttribute="leading" constant="16" id="eAp-Ag-eFL"/>
+                            <constraint firstItem="96E-Pr-4hF" firstAttribute="centerX" secondItem="Zhu-MP-xYU" secondAttribute="centerX" id="zVh-jc-tth"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jYD-TM-XQ7"/>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wgp-Dc-rUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2528.8000000000002" y="-765.06746626686663"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="d3c-4P-oUV">
