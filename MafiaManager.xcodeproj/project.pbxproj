@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		8F974F8D37A5B79031110456 /* Pods_MafiaManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3736DE08530B5A6DD9C82E73 /* Pods_MafiaManager.framework */; };
+		BF01BDCE22487FA200C883D8 /* DecksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01BDCD22487FA200C883D8 /* DecksViewController.swift */; };
+		BF01BDD022487FB800C883D8 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01BDCF22487FB800C883D8 /* PlayViewController.swift */; };
+		BF01BDD222487FCA00C883D8 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01BDD122487FCA00C883D8 /* HistoryViewController.swift */; };
 		BFFDFE4F223844C00033F15B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFDFE4E223844C00033F15B /* AppDelegate.swift */; };
-		BFFDFE51223844C00033F15B /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFDFE50223844C00033F15B /* FirstViewController.swift */; };
-		BFFDFE53223844C00033F15B /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFDFE52223844C00033F15B /* SecondViewController.swift */; };
 		BFFDFE56223844C00033F15B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFDFE54223844C00033F15B /* Main.storyboard */; };
 		BFFDFE58223845160033F15B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFFDFE57223845160033F15B /* Assets.xcassets */; };
 		BFFDFE5B223845170033F15B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFDFE59223845170033F15B /* LaunchScreen.storyboard */; };
@@ -23,10 +24,11 @@
 /* Begin PBXFileReference section */
 		26426B7903E9150EF76358D9 /* Pods-MafiaManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MafiaManager.debug.xcconfig"; path = "Target Support Files/Pods-MafiaManager/Pods-MafiaManager.debug.xcconfig"; sourceTree = "<group>"; };
 		3736DE08530B5A6DD9C82E73 /* Pods_MafiaManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MafiaManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF01BDCD22487FA200C883D8 /* DecksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecksViewController.swift; sourceTree = "<group>"; };
+		BF01BDCF22487FB800C883D8 /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
+		BF01BDD122487FCA00C883D8 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		BFFDFE4B223844C00033F15B /* MafiaManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MafiaManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFFDFE4E223844C00033F15B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BFFDFE50223844C00033F15B /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		BFFDFE52223844C00033F15B /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		BFFDFE55223844C00033F15B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BFFDFE57223845160033F15B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFFDFE5A223845170033F15B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -91,8 +93,9 @@
 			children = (
 				F6F54C782246D95000F6DFDF /* MafiaManager.entitlements */,
 				BFFDFE4E223844C00033F15B /* AppDelegate.swift */,
-				BFFDFE50223844C00033F15B /* FirstViewController.swift */,
-				BFFDFE52223844C00033F15B /* SecondViewController.swift */,
+				BF01BDCD22487FA200C883D8 /* DecksViewController.swift */,
+				BF01BDCF22487FB800C883D8 /* PlayViewController.swift */,
+				BF01BDD122487FCA00C883D8 /* HistoryViewController.swift */,
 				BFFDFE54223844C00033F15B /* Main.storyboard */,
 				BFFDFE57223845160033F15B /* Assets.xcassets */,
 				BFFDFE59223845170033F15B /* LaunchScreen.storyboard */,
@@ -239,10 +242,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF01BDD022487FB800C883D8 /* PlayViewController.swift in Sources */,
 				F6F54C732244644700F6DFDF /* LoginViewController.swift in Sources */,
-				BFFDFE53223844C00033F15B /* SecondViewController.swift in Sources */,
+				BF01BDCE22487FA200C883D8 /* DecksViewController.swift in Sources */,
 				BFFDFE4F223844C00033F15B /* AppDelegate.swift in Sources */,
-				BFFDFE51223844C00033F15B /* FirstViewController.swift in Sources */,
+				BF01BDD222487FCA00C883D8 /* HistoryViewController.swift in Sources */,
 				F6F54C77224482FC00F6DFDF /* LoadingWelcomeViewController.swift in Sources */,
 				F6F54C7522446B7D00F6DFDF /* SignUpViewController.swift in Sources */,
 			);

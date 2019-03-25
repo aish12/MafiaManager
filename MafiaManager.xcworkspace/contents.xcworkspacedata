@@ -2,6 +2,15 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../../../../Users/ahs857/Desktop/images/decksImg.png">
+   </FileRef>
+   <FileRef
+      location = "group:../../../../Users/ahs857/Desktop/images/historyImg.png">
+   </FileRef>
+   <FileRef
+      location = "group:../../../../Users/ahs857/Desktop/images/playImg.png">
+   </FileRef>
+   <FileRef
       location = "group:MafiaManager.xcodeproj">
    </FileRef>
    <FileRef
