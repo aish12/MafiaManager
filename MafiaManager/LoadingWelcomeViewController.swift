@@ -28,7 +28,7 @@ class LoadingWelcomeViewController: UIViewController {
             let transitionViewController = FirstViewController()
             self.present(transitionViewController, animated: true, completion: nil)
             */
-            let homeView = self.storyboard?.instantiateViewController(withIdentifier: "DecksViewControllerIdentifier") as! DecksViewController
+            let homeView = self.storyboard?.instantiateViewController(withIdentifier: "tabBarSegueIdentifier") as! TabBarViewController
             self.present(homeView, animated: true, completion: nil)
         }
     }
