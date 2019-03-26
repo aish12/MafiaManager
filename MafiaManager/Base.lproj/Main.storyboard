@@ -1277,22 +1277,28 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="This is where the card detail would go." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4t-Lj-pOz">
-                                <rect key="frame" x="8" y="272" width="359" height="338"/>
+                                <rect key="frame" x="8" y="272" width="359" height="268"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vKT-5t-zH4">
+                                <rect key="frame" x="145" y="556" width="85" height="30"/>
+                                <state key="normal" title="Leave Game"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="vKT-5t-zH4" firstAttribute="top" secondItem="d4t-Lj-pOz" secondAttribute="bottom" constant="16" id="1WV-Qg-KI3"/>
                             <constraint firstItem="d4t-Lj-pOz" firstAttribute="top" secondItem="Wnc-J9-6nU" secondAttribute="bottom" constant="32" id="2Af-0H-TJd"/>
                             <constraint firstItem="6eq-UJ-j6u" firstAttribute="trailing" secondItem="d4t-Lj-pOz" secondAttribute="trailing" constant="8" id="9IM-Il-6IT"/>
                             <constraint firstItem="Wnc-J9-6nU" firstAttribute="leading" secondItem="6eq-UJ-j6u" secondAttribute="leading" constant="16" id="Afe-bB-Iln"/>
                             <constraint firstItem="1GU-1b-R8n" firstAttribute="top" secondItem="6eq-UJ-j6u" secondAttribute="top" constant="16" id="OhG-uu-if3"/>
+                            <constraint firstItem="6eq-UJ-j6u" firstAttribute="bottom" secondItem="vKT-5t-zH4" secondAttribute="bottom" constant="32" id="cZa-Z1-Mbb"/>
                             <constraint firstItem="Wnc-J9-6nU" firstAttribute="top" secondItem="6eq-UJ-j6u" secondAttribute="top" constant="16" id="dg3-0z-7nu"/>
                             <constraint firstItem="6eq-UJ-j6u" firstAttribute="trailing" secondItem="1GU-1b-R8n" secondAttribute="trailing" constant="16" id="e29-RG-m5g"/>
                             <constraint firstItem="d4t-Lj-pOz" firstAttribute="leading" secondItem="6eq-UJ-j6u" secondAttribute="leading" constant="8" id="fnE-Ip-neB"/>
-                            <constraint firstItem="6eq-UJ-j6u" firstAttribute="bottom" secondItem="d4t-Lj-pOz" secondAttribute="bottom" constant="8" id="p3A-kx-dEj"/>
+                            <constraint firstItem="vKT-5t-zH4" firstAttribute="centerX" secondItem="4uo-Zm-ifb" secondAttribute="centerX" id="fqB-nQ-uwt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6eq-UJ-j6u"/>
                     </view>
@@ -1314,7 +1320,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="3196" y="1115"/>
+            <point key="canvasLocation" x="3196" y="1114.992503748126"/>
         </scene>
     </scenes>
     <resources>
