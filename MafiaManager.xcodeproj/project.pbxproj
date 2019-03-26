@@ -13,6 +13,8 @@
 		BF01BDCE22487FA200C883D8 /* DecksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01BDCD22487FA200C883D8 /* DecksViewController.swift */; };
 		BF01BDD022487FB800C883D8 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01BDCF22487FB800C883D8 /* PlayViewController.swift */; };
 		BF01BDD222487FCA00C883D8 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01BDD122487FCA00C883D8 /* HistoryViewController.swift */; };
+		BF32AF2F224AA90E00D32277 /* CreateCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32AF2E224AA90E00D32277 /* CreateCardViewController.swift */; };
+		BF32AF31224AAA1700D32277 /* DeckDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32AF30224AAA1700D32277 /* DeckDetailViewController.swift */; };
 		BFFDFE4F223844C00033F15B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFDFE4E223844C00033F15B /* AppDelegate.swift */; };
 		BFFDFE56223844C00033F15B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFDFE54223844C00033F15B /* Main.storyboard */; };
 		BFFDFE58223845160033F15B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFFDFE57223845160033F15B /* Assets.xcassets */; };
@@ -32,6 +34,8 @@
 		BF01BDCD22487FA200C883D8 /* DecksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecksViewController.swift; sourceTree = "<group>"; };
 		BF01BDCF22487FB800C883D8 /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		BF01BDD122487FCA00C883D8 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		BF32AF2E224AA90E00D32277 /* CreateCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardViewController.swift; sourceTree = "<group>"; };
+		BF32AF30224AAA1700D32277 /* DeckDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckDetailViewController.swift; sourceTree = "<group>"; };
 		BFFDFE4B223844C00033F15B /* MafiaManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MafiaManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFFDFE4E223844C00033F15B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFFDFE55223844C00033F15B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -113,6 +117,8 @@
 				F618EE8022488DE500E32DA5 /* TabBarViewController.swift */,
 				7B4E70FE224990C0001395F2 /* ViewDeckCell.swift */,
 				7B4E7100224990D7001395F2 /* AddDeckCell.swift */,
+				BF32AF2E224AA90E00D32277 /* CreateCardViewController.swift */,
+				BF32AF30224AAA1700D32277 /* DeckDetailViewController.swift */,
 			);
 			path = MafiaManager;
 			sourceTree = "<group>";
@@ -261,6 +267,8 @@
 				F6F54C77224482FC00F6DFDF /* LoadingWelcomeViewController.swift in Sources */,
 				7B4E70FF224990C0001395F2 /* ViewDeckCell.swift in Sources */,
 				F6F54C7522446B7D00F6DFDF /* SignUpViewController.swift in Sources */,
+				BF32AF31224AAA1700D32277 /* DeckDetailViewController.swift in Sources */,
+				BF32AF2F224AA90E00D32277 /* CreateCardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

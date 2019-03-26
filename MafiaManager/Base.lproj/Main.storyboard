@@ -106,7 +106,7 @@
         <!--Deck Detail-->
         <scene sceneID="LoF-Np-GWI">
             <objects>
-                <viewController title="Deck Detail" id="Inz-va-P7e" userLabel="Deck Detail" sceneMemberID="viewController">
+                <viewController title="Deck Detail" id="Inz-va-P7e" userLabel="Deck Detail" customClass="DeckDetailViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z4p-p2-amE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -137,7 +137,20 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dG4-lK-ggJ">
+                                                    <rect key="frame" x="25" y="25" width="30" height="30"/>
+                                                    <state key="normal" title="+"/>
+                                                    <connections>
+                                                        <action selector="displayActionSheet:" destination="Inz-va-P7e" eventType="touchUpInside" id="2xW-gr-gEb"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="dG4-lK-ggJ" firstAttribute="centerX" secondItem="cDo-01-0lv" secondAttribute="centerX" id="nz2-jH-5lw"/>
+                                            <constraint firstItem="dG4-lK-ggJ" firstAttribute="centerY" secondItem="cDo-01-0lv" secondAttribute="centerY" id="zFx-Wv-Glk"/>
+                                        </constraints>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -180,6 +193,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mGI-BI-3Yn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2592.8000000000002" y="-1003.4482758620691"/>
+        </scene>
+        <!--Create New Card-->
+        <scene sceneID="fVN-ji-8Mi">
+            <objects>
+                <viewController title="Create New Card" id="1vA-aa-0H7" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6nw-Cy-OcO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cW1-g6-W0M">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Create a New Card" id="3vx-nF-H3a"/>
+                                </items>
+                            </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="WelcomeLoadingPicture" translatesAutoresizingMaskIntoConstraints="NO" id="IRd-Bb-th6">
+                                <rect key="frame" x="0.0" y="64" width="160" height="160"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X8k-Mb-03t">
+                                <rect key="frame" x="30" y="350" width="6" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Enter Card Name" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4ja-rl-Ym0">
+                                <rect key="frame" x="192" y="64" width="160" height="160"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Enter Card Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="K3K-W6-LCG">
+                                <rect key="frame" x="16" y="252" width="343" height="388"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="dX9-7X-q8r"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pj1-8X-FcC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3581.5999999999999" y="-1005.2473763118442"/>
         </scene>
         <!--New Deck-->
         <scene sceneID="8K9-E4-sMi">
@@ -240,13 +302,78 @@
                     <navigationItem key="navigationItem" title="New Deck" id="QO8-Pj-hz3">
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="JwQ-Ua-D0x"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qVf-h8-kdD"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="mlG-Vf-QRs"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="mlG-Vf-QRs">
+                            <connections>
+                                <segue destination="Inz-va-P7e" kind="show" id="Ycx-YD-Byb"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wgp-Dc-rUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2592.8000000000002" y="-321.58920539730138"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="5bA-RE-XYM">
+            <objects>
+                <viewController id="72p-FH-jEb" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="F8G-JV-AQE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tGa-BO-r40">
+                                <rect key="frame" x="0.0" y="34" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Copy Existing Card" id="GIS-5D-Vyh"/>
+                                </items>
+                            </navigationBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XlJ-PJ-gfH">
+                                <rect key="frame" x="16" y="78" width="343" height="555"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Y15-yW-uCM">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="1iX-3u-xRk">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="iSG-3w-kb3">
+                                        <rect key="frame" x="73.5" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GdQ-bi-2Rg">
+                                <rect key="frame" x="167" y="603" width="41" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Finish"/>
+                                <connections>
+                                    <segue destination="pjR-8M-JHb" kind="show" id="Ht2-gL-g2C"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="a2q-Jx-ZZI"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="avX-OT-ULt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3581.5999999999999" y="-335.08245877061472"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="d3c-4P-oUV">
@@ -886,6 +1013,21 @@
             </objects>
             <point key="canvasLocation" x="3196" y="358.4707646176912"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="7lg-bd-9YK">
+            <objects>
+                <viewController id="pjR-8M-JHb" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="P3T-Lf-nAe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="u1U-yx-IVL"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uqt-k2-OJn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4465" y="-667"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Decks" width="35" height="41"/>
@@ -894,6 +1036,7 @@
         <image name="WelcomeLoadingPicture" width="1114" height="1010"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Zcs-n1-7wB"/>
+        <segue reference="yD9-vY-Gqm"/>
+        <segue reference="HJz-D1-l66"/>
     </inferredMetricsTieBreakers>
 </document>
