@@ -103,55 +103,6 @@
             </objects>
             <point key="canvasLocation" x="1688.8" y="-320.68965517241384"/>
         </scene>
-        <!--Create New Card-->
-        <scene sceneID="fVN-ji-8Mi">
-            <objects>
-                <viewController title="Create New Card" id="1vA-aa-0H7" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="6nw-Cy-OcO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cW1-g6-W0M">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Create a New Card" id="3vx-nF-H3a"/>
-                                </items>
-                            </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="WelcomeLoadingPicture" translatesAutoresizingMaskIntoConstraints="NO" id="IRd-Bb-th6">
-                                <rect key="frame" x="0.0" y="64" width="160" height="160"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X8k-Mb-03t">
-                                <rect key="frame" x="30" y="350" width="6" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Enter Card Name" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4ja-rl-Ym0">
-                                <rect key="frame" x="192" y="64" width="160" height="160"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Enter Card Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="K3K-W6-LCG">
-                                <rect key="frame" x="16" y="252" width="343" height="388"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="dX9-7X-q8r"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pj1-8X-FcC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3581.5999999999999" y="-1005.2473763118442"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="5bA-RE-XYM">
             <objects>
@@ -948,6 +899,14 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ms-53-xu3">
+                                <rect key="frame" x="150" y="407" width="74" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Make Card"/>
+                                <connections>
+                                    <segue destination="zXe-B4-3vK" kind="show" id="5Fk-4c-Ymw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -1051,6 +1010,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="deckDetailTextView" destination="V3f-UO-vhL" id="YTQ-9Q-tLu"/>
+                        <outlet property="deckNameTextView" destination="gjS-P8-tXs" id="dGe-1O-vy5"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="uig-Ii-8xU"/>
                     </connections>
                 </viewController>
@@ -1065,6 +1026,82 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="2593" y="-321"/>
+        </scene>
+        <!--Create Card-->
+        <scene sceneID="fdf-GY-wgb">
+            <objects>
+                <viewController storyboardIdentifier="CreateCardViewController" title="Create Card" id="zXe-B4-3vK" customClass="CreateCardViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zSY-oR-ghA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WelcomeLoadingPicture" translatesAutoresizingMaskIntoConstraints="NO" id="sS6-fQ-9eU">
+                                <rect key="frame" x="16" y="80" width="160" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="KaF-TL-4gq"/>
+                                    <constraint firstAttribute="height" constant="160" id="Ska-LR-StG"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gS0-95-dR9">
+                                <rect key="frame" x="199" y="80" width="160" height="160"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="PWi-3s-uAf"/>
+                                    <constraint firstAttribute="width" constant="160" id="T1w-gl-3zf"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Enter Card Name">
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="24" name=".SFNSText"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="This is where the card detail would go." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Be0-tp-Gto">
+                                <rect key="frame" x="8" y="272" width="359" height="338"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="sS6-fQ-9eU" firstAttribute="leading" secondItem="iV2-Ni-osp" secondAttribute="leading" constant="16" id="CNI-zg-I0C"/>
+                            <constraint firstItem="gS0-95-dR9" firstAttribute="top" secondItem="iV2-Ni-osp" secondAttribute="top" constant="16" id="QmA-qP-EB2"/>
+                            <constraint firstItem="iV2-Ni-osp" firstAttribute="trailing" secondItem="Be0-tp-Gto" secondAttribute="trailing" constant="8" id="RPk-MB-vls"/>
+                            <constraint firstItem="sS6-fQ-9eU" firstAttribute="top" secondItem="iV2-Ni-osp" secondAttribute="top" constant="16" id="dUh-R6-Flw"/>
+                            <constraint firstItem="Be0-tp-Gto" firstAttribute="leading" secondItem="iV2-Ni-osp" secondAttribute="leading" constant="8" id="f5T-Rh-TAo"/>
+                            <constraint firstItem="iV2-Ni-osp" firstAttribute="bottom" secondItem="Be0-tp-Gto" secondAttribute="bottom" constant="8" id="lhA-tR-bqT"/>
+                            <constraint firstItem="iV2-Ni-osp" firstAttribute="trailing" secondItem="gS0-95-dR9" secondAttribute="trailing" constant="16" id="t2n-L3-YTI"/>
+                            <constraint firstItem="Be0-tp-Gto" firstAttribute="top" secondItem="sS6-fQ-9eU" secondAttribute="bottom" constant="32" id="uJB-z2-AJx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="iV2-Ni-osp"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Create a New Card" id="cKw-YE-mFv">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="4cQ-pX-EXP">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="zXe-B4-3vK" id="rgm-ZZ-urV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="xRD-Yf-1YW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X82-gh-7Wf" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="bri-2Z-AzJ">
+                    <connections>
+                        <outlet property="delegate" destination="zXe-B4-3vK" id="kHF-Ie-xkW"/>
+                        <outlet property="searchContentsController" destination="zXe-B4-3vK" id="uAy-bO-vLs"/>
+                        <outlet property="searchResultsDataSource" destination="zXe-B4-3vK" id="r9c-Se-0lS"/>
+                        <outlet property="searchResultsDelegate" destination="zXe-B4-3vK" id="DHO-O9-8XA"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="3319" y="-1005"/>
         </scene>
     </scenes>
     <resources>

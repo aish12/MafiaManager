@@ -10,9 +10,10 @@ import UIKit
 
 class NewDeckViewController: UIViewController {
 
+    @IBOutlet weak var deckNameTextView: UITextView!
+    @IBOutlet weak var deckDetailTextView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     

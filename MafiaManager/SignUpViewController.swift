@@ -62,6 +62,12 @@ class SignUpViewController: UIViewController {
                     preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
                 self.present(alert, animated: true, completion: nil)
+                
+                // In the database, tie the name to the user
+                var ref: DatabaseReference!
+                ref = Database.database().reference()
+                ref.child("users").child(user!.user.uid).setValue(["name":name])
+                
             } else if error != nil && user == nil {
                 let alert = UIAlertController(
                     title: "Sign Up Failed",
