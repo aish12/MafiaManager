@@ -1298,7 +1298,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Player Name" id="Yjy-jK-8hm">
                         <barButtonItem key="leftBarButtonItem" id="ztq-N9-fqG"/>
-                        <barButtonItem key="rightBarButtonItem" title="Settings" image="Decks" id="0Xp-Xl-KhE"/>
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="0Xp-Xl-KhE"/>
                     </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="Q4W-cZ-kzZ"/>
