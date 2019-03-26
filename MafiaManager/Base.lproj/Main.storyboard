@@ -664,6 +664,9 @@
                                 <rect key="frame" x="8" y="554" width="359" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Start Game"/>
+                                <connections>
+                                    <segue destination="5QB-2p-CQS" kind="show" id="qNv-sJ-Gxh"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 players joined" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zim-3l-frA">
                                 <rect key="frame" x="8" y="507.5" width="359" height="14.5"/>
@@ -690,7 +693,11 @@
                         <viewLayoutGuide key="safeArea" id="ZV3-Yo-mLL"/>
                     </view>
                     <navigationItem key="navigationItem" title="Wait For Players" id="jA4-2i-bWx">
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="iJr-4d-wEH"/>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="iJr-4d-wEH">
+                            <connections>
+                                <segue destination="5QB-2p-CQS" kind="show" id="zyS-kh-uZt"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="EUo-eL-TlP"/>
@@ -1322,6 +1329,59 @@
             </objects>
             <point key="canvasLocation" x="3196" y="1114.992503748126"/>
         </scene>
+        <!--Narrator Dashboard-->
+        <scene sceneID="eCm-Tk-gPd">
+            <objects>
+                <viewController storyboardIdentifier="NarratorDashboardViewController" title="Narrator Dashboard" id="5QB-2p-CQS" customClass="NarratorDashboardViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jtA-QC-J6i">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0AH-5h-gMD">
+                                <rect key="frame" x="8" y="80" width="359" height="426"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DLb-Wz-1M9">
+                                <rect key="frame" x="8" y="554" width="359" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="End Game"/>
+                                <connections>
+                                    <action selector="endGameButtonPressed:" destination="5QB-2p-CQS" eventType="touchUpInside" id="L4V-2W-qfP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="o9m-5N-cwp" firstAttribute="trailing" secondItem="0AH-5h-gMD" secondAttribute="trailing" constant="8" id="7Oe-Pv-HpF"/>
+                            <constraint firstItem="o9m-5N-cwp" firstAttribute="trailing" secondItem="DLb-Wz-1M9" secondAttribute="trailing" constant="8" id="C6L-L6-DSV"/>
+                            <constraint firstItem="0AH-5h-gMD" firstAttribute="leading" secondItem="o9m-5N-cwp" secondAttribute="leading" constant="8" id="CZv-pr-MY0"/>
+                            <constraint firstItem="DLb-Wz-1M9" firstAttribute="leading" secondItem="o9m-5N-cwp" secondAttribute="leading" constant="8" id="EzJ-YU-0kl"/>
+                            <constraint firstItem="o9m-5N-cwp" firstAttribute="bottom" secondItem="DLb-Wz-1M9" secondAttribute="bottom" constant="32" id="SEB-W9-Nm9"/>
+                            <constraint firstItem="0AH-5h-gMD" firstAttribute="top" secondItem="o9m-5N-cwp" secondAttribute="top" constant="16" id="w9c-Tx-IRq"/>
+                            <constraint firstItem="DLb-Wz-1M9" firstAttribute="top" secondItem="0AH-5h-gMD" secondAttribute="bottom" constant="48" id="woG-jk-bJi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="o9m-5N-cwp"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Narrator Tools" id="YGb-lo-dIH">
+                        <barButtonItem key="leftBarButtonItem" title="Timer" width="30" id="XDY-Rh-whf"/>
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="KCr-26-GMK"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="win-Ub-pMO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yGC-6T-lgK" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="WUW-Cy-kiJ">
+                    <connections>
+                        <outlet property="delegate" destination="5QB-2p-CQS" id="prY-7a-179"/>
+                        <outlet property="searchContentsController" destination="5QB-2p-CQS" id="qvf-gK-zdt"/>
+                        <outlet property="searchResultsDataSource" destination="5QB-2p-CQS" id="Ipf-Iv-3yf"/>
+                        <outlet property="searchResultsDelegate" destination="5QB-2p-CQS" id="FoD-7J-Gev"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="4605.6000000000004" y="357.57121439280365"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Decks" width="35" height="41"/>
@@ -1330,6 +1390,7 @@
         <image name="WelcomeLoadingPicture" width="1000" height="1000"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="zyS-kh-uZt"/>
         <segue reference="yD9-vY-Gqm"/>
     </inferredMetricsTieBreakers>
 </document>
