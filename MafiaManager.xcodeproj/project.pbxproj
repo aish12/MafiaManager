@@ -79,13 +79,6 @@
 		7B14651B224ADCE700241B00 /* Deck Management */ = {
 			isa = PBXGroup;
 			children = (
-				7B146515224ACFEF00241B00 /* NewDeckViewController.swift */,
-				7B146517224AD68500241B00 /* CreateCardViewController.swift */,
-				7B146519224ADAA200241B00 /* CopyCardViewController.swift */,
-				BF32AF30224AAA1700D32277 /* DeckDetailViewController.swift */,
-				7B4E70FE224990C0001395F2 /* ViewDeckCell.swift */,
-				7B4E7100224990D7001395F2 /* AddDeckCell.swift */,
-				BF01BDCD22487FA200C883D8 /* DecksViewController.swift */,
 			);
 			path = "Deck Management";
 			sourceTree = "<group>";
@@ -93,7 +86,6 @@
 		7B14651C224ADCF500241B00 /* Game Management */ = {
 			isa = PBXGroup;
 			children = (
-				BF01BDCF22487FB800C883D8 /* PlayViewController.swift */,
 			);
 			path = "Game Management";
 			sourceTree = "<group>";
@@ -101,7 +93,6 @@
 		7B14651D224ADD0700241B00 /* History */ = {
 			isa = PBXGroup;
 			children = (
-				BF01BDD122487FCA00C883D8 /* HistoryViewController.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -109,9 +100,6 @@
 		7B14651E224ADD4600241B00 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				F6F54C76224482FC00F6DFDF /* LoadingWelcomeViewController.swift */,
-				F6F54C7422446B7D00F6DFDF /* SignUpViewController.swift */,
-				F6F54C722244644700F6DFDF /* LoginViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -145,6 +133,18 @@
 		BFFDFE4D223844C00033F15B /* MafiaManager */ = {
 			isa = PBXGroup;
 			children = (
+				7B146515224ACFEF00241B00 /* NewDeckViewController.swift */,
+				7B146517224AD68500241B00 /* CreateCardViewController.swift */,
+				7B146519224ADAA200241B00 /* CopyCardViewController.swift */,
+				BF32AF30224AAA1700D32277 /* DeckDetailViewController.swift */,
+				7B4E70FE224990C0001395F2 /* ViewDeckCell.swift */,
+				7B4E7100224990D7001395F2 /* AddDeckCell.swift */,
+				BF01BDCD22487FA200C883D8 /* DecksViewController.swift */,
+				F6F54C76224482FC00F6DFDF /* LoadingWelcomeViewController.swift */,
+				F6F54C7422446B7D00F6DFDF /* SignUpViewController.swift */,
+				F6F54C722244644700F6DFDF /* LoginViewController.swift */,
+				BF01BDCF22487FB800C883D8 /* PlayViewController.swift */,
+				BF01BDD122487FCA00C883D8 /* HistoryViewController.swift */,
 				7B14651E224ADD4600241B00 /* Login */,
 				7B14651D224ADD0700241B00 /* History */,
 				7B14651C224ADCF500241B00 /* Game Management */,

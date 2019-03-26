@@ -421,6 +421,9 @@
                                 <state key="normal" title="Join Game As Player">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="cRM-OF-s3b" kind="show" id="AaJ-1X-NVy"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CcT-Gf-mW0">
                                 <rect key="frame" x="91.5" y="340" width="192" height="48"/>
@@ -549,7 +552,7 @@
         <!--Game Deck Selection-->
         <scene sceneID="oWp-bL-8Rn">
             <objects>
-                <viewController storyboardIdentifier="GameDecksViewController" title="Game Deck Selection" id="jaa-no-Yze" customClass="DecksViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameDecksViewController" title="Game Deck Selection" id="jaa-no-Yze" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LlK-mY-3QC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -639,7 +642,7 @@
         <!--Wait For Players-->
         <scene sceneID="cS4-Yi-mwK">
             <objects>
-                <viewController storyboardIdentifier="WaitForPlayers" title="Wait For Players" id="J8G-QU-3yv" customClass="DecksViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WaitForPlayers" title="Wait For Players" id="J8G-QU-3yv" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qjL-ni-idd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -708,7 +711,7 @@
         <!--Number Per Role-->
         <scene sceneID="kqk-e6-nU8">
             <objects>
-                <viewController storyboardIdentifier="GameNumberPerRole" title="Number Per Role" id="x23-G5-JGJ" customClass="DecksViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameNumberPerRole" title="Number Per Role" id="x23-G5-JGJ" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eAx-ta-CkT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -771,7 +774,7 @@
         <!--Deck Detail-->
         <scene sceneID="0Dv-5F-5Cc">
             <objects>
-                <viewController storyboardIdentifier="DeckDetailViewController" title="Deck Detail" id="Njn-7g-FL3" customClass="DecksViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DeckDetailViewController" title="Deck Detail" id="Njn-7g-FL3" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kvv-iO-Vkc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1178,6 +1181,140 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="3318" y="-322"/>
+        </scene>
+        <!--Join As Player-->
+        <scene sceneID="Hvn-zT-gRa">
+            <objects>
+                <viewController storyboardIdentifier="JoinAsPlayer" title="Join As Player" id="cRM-OF-s3b" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3rI-zd-WPT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching for nearby narrators..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeo-HK-X9Y">
+                                <rect key="frame" x="95.5" y="72" width="184" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="1sQ-w4-yye"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Bl-dI-sKY">
+                                <rect key="frame" x="8" y="96" width="359" height="442"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZDE-eI-uNs">
+                                <rect key="frame" x="8" y="554" width="359" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Join Game"/>
+                                <connections>
+                                    <segue destination="XGn-98-kfH" kind="show" id="Xi8-Ub-RBE"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="yeo-HK-X9Y" firstAttribute="top" secondItem="R2F-M4-HiS" secondAttribute="top" constant="8" id="5XL-RU-uRl"/>
+                            <constraint firstItem="R2F-M4-HiS" firstAttribute="trailing" secondItem="ZDE-eI-uNs" secondAttribute="trailing" constant="8" id="9AP-Uh-EiU"/>
+                            <constraint firstItem="R2F-M4-HiS" firstAttribute="bottom" secondItem="ZDE-eI-uNs" secondAttribute="bottom" constant="32" id="LM1-EU-4zh"/>
+                            <constraint firstItem="ZDE-eI-uNs" firstAttribute="leading" secondItem="R2F-M4-HiS" secondAttribute="leading" constant="8" id="MEZ-2X-wnE"/>
+                            <constraint firstItem="7Bl-dI-sKY" firstAttribute="top" secondItem="yeo-HK-X9Y" secondAttribute="bottom" constant="8" id="Qak-Ru-28o"/>
+                            <constraint firstItem="7Bl-dI-sKY" firstAttribute="leading" secondItem="R2F-M4-HiS" secondAttribute="leading" constant="8" id="VYe-h7-Skr"/>
+                            <constraint firstItem="ZDE-eI-uNs" firstAttribute="top" secondItem="7Bl-dI-sKY" secondAttribute="bottom" constant="16" id="meg-y2-smW"/>
+                            <constraint firstItem="yeo-HK-X9Y" firstAttribute="centerX" secondItem="3rI-zd-WPT" secondAttribute="centerX" id="odz-1d-QdC"/>
+                            <constraint firstItem="R2F-M4-HiS" firstAttribute="trailing" secondItem="7Bl-dI-sKY" secondAttribute="trailing" constant="8" id="pdm-ns-qFJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="R2F-M4-HiS"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Join Game" id="D84-2Y-joe"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="IXa-wJ-kYB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sBQ-Ce-2Rt" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="hxE-As-Mag">
+                    <connections>
+                        <outlet property="delegate" destination="cRM-OF-s3b" id="gzK-bi-bTy"/>
+                        <outlet property="searchContentsController" destination="cRM-OF-s3b" id="KHk-SX-P7x"/>
+                        <outlet property="searchResultsDataSource" destination="cRM-OF-s3b" id="0mo-go-442"/>
+                        <outlet property="searchResultsDelegate" destination="cRM-OF-s3b" id="CEu-Qe-kOR"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="2460" y="1114.992503748126"/>
+        </scene>
+        <!--Player Role Controller-->
+        <scene sceneID="EGC-KN-tbZ">
+            <objects>
+                <viewController storyboardIdentifier="PlayerRoleController" title="Player Role Controller" id="XGn-98-kfH" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4uo-Zm-ifb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WelcomeLoadingPicture" translatesAutoresizingMaskIntoConstraints="NO" id="Wnc-J9-6nU">
+                                <rect key="frame" x="16" y="80" width="160" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="1KJ-Za-vbg"/>
+                                    <constraint firstAttribute="height" constant="160" id="eN4-S6-KfZ"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1GU-1b-R8n">
+                                <rect key="frame" x="199" y="80" width="160" height="160"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="lMM-go-bFG"/>
+                                    <constraint firstAttribute="width" constant="160" id="m6m-UI-yQd"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Card Name">
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="24" name=".SFNSText"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="This is where the card detail would go." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4t-Lj-pOz">
+                                <rect key="frame" x="8" y="272" width="359" height="338"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="d4t-Lj-pOz" firstAttribute="top" secondItem="Wnc-J9-6nU" secondAttribute="bottom" constant="32" id="2Af-0H-TJd"/>
+                            <constraint firstItem="6eq-UJ-j6u" firstAttribute="trailing" secondItem="d4t-Lj-pOz" secondAttribute="trailing" constant="8" id="9IM-Il-6IT"/>
+                            <constraint firstItem="Wnc-J9-6nU" firstAttribute="leading" secondItem="6eq-UJ-j6u" secondAttribute="leading" constant="16" id="Afe-bB-Iln"/>
+                            <constraint firstItem="1GU-1b-R8n" firstAttribute="top" secondItem="6eq-UJ-j6u" secondAttribute="top" constant="16" id="OhG-uu-if3"/>
+                            <constraint firstItem="Wnc-J9-6nU" firstAttribute="top" secondItem="6eq-UJ-j6u" secondAttribute="top" constant="16" id="dg3-0z-7nu"/>
+                            <constraint firstItem="6eq-UJ-j6u" firstAttribute="trailing" secondItem="1GU-1b-R8n" secondAttribute="trailing" constant="16" id="e29-RG-m5g"/>
+                            <constraint firstItem="d4t-Lj-pOz" firstAttribute="leading" secondItem="6eq-UJ-j6u" secondAttribute="leading" constant="8" id="fnE-Ip-neB"/>
+                            <constraint firstItem="6eq-UJ-j6u" firstAttribute="bottom" secondItem="d4t-Lj-pOz" secondAttribute="bottom" constant="8" id="p3A-kx-dEj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6eq-UJ-j6u"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Player Name" id="Yjy-jK-8hm">
+                        <barButtonItem key="leftBarButtonItem" id="ztq-N9-fqG"/>
+                        <barButtonItem key="rightBarButtonItem" title="Settings" image="Decks" id="0Xp-Xl-KhE"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="Q4W-cZ-kzZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="epP-GQ-ili" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="MoE-jt-THd">
+                    <connections>
+                        <outlet property="delegate" destination="XGn-98-kfH" id="esT-ue-bOW"/>
+                        <outlet property="searchContentsController" destination="XGn-98-kfH" id="Y3L-w5-zmV"/>
+                        <outlet property="searchResultsDataSource" destination="XGn-98-kfH" id="EQu-lS-dMJ"/>
+                        <outlet property="searchResultsDelegate" destination="XGn-98-kfH" id="Y1b-3J-0x3"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="3196" y="1115"/>
         </scene>
     </scenes>
     <resources>

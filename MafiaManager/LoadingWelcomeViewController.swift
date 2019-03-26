@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoadingWelcomeViewController: UIViewController {
     
@@ -19,7 +20,18 @@ class LoadingWelcomeViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         mafiaUserImage.image = UIImage(named: "WelcomeLoadingPicture")
-        usersNameLabel.text = "User"
+        
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        let userID = Auth.auth().currentUser!.uid
+        
+        ref.child("users").child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as! NSDictionary
+            self.usersNameLabel.text = value["name"] as? String
+        }) { (error) in
+            print(error.localizedDescription)
+        }
        
         // Transitions after a few seconds to the first VC (deck management)
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { timer in
