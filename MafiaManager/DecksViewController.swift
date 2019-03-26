@@ -14,19 +14,19 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
     let addDeckCellIdentifier = "AddDeckCell"
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        <#code#>
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 {
             let addCell = collectionView.dequeueReusableCell(withReuseIdentifier: addDeckCellIdentifier, for: indexPath as IndexPath)
-            addCell.textLabel?.text = "Add"
-            addCell.contentView.text
+//            addCell.textLabel?.text = "Add"
+//            addCell.contentView.text
             return addCell
             
         } else {
             let deckCell = collectionView.dequeueReusableCell(withReuseIdentifier: deckCellIdentifier, for: indexPath as IndexPath)
-            deckCell.textLabel?.text = "Deck \(indexPath.row)"
+//            deckCell.textLabel?.text = "Deck \(indexPath.row)"
             return deckCell
         }
     }
