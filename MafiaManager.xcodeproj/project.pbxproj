@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7B146516224ACFEF00241B00 /* NewDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B146515224ACFEF00241B00 /* NewDeckViewController.swift */; };
 		7B146518224AD68500241B00 /* CreateCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B146517224AD68500241B00 /* CreateCardViewController.swift */; };
+		7B14651A224ADAA200241B00 /* CopyCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B146519224ADAA200241B00 /* CopyCardViewController.swift */; };
 		7B4E70FF224990C0001395F2 /* ViewDeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4E70FE224990C0001395F2 /* ViewDeckCell.swift */; };
 		7B4E7101224990D7001395F2 /* AddDeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4E7100224990D7001395F2 /* AddDeckCell.swift */; };
 		8F974F8D37A5B79031110456 /* Pods_MafiaManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3736DE08530B5A6DD9C82E73 /* Pods_MafiaManager.framework */; };
@@ -32,6 +33,7 @@
 		3736DE08530B5A6DD9C82E73 /* Pods_MafiaManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MafiaManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B146515224ACFEF00241B00 /* NewDeckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeckViewController.swift; sourceTree = "<group>"; };
 		7B146517224AD68500241B00 /* CreateCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardViewController.swift; sourceTree = "<group>"; };
+		7B146519224ADAA200241B00 /* CopyCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyCardViewController.swift; sourceTree = "<group>"; };
 		7B4E70FE224990C0001395F2 /* ViewDeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDeckCell.swift; sourceTree = "<group>"; };
 		7B4E7100224990D7001395F2 /* AddDeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeckCell.swift; sourceTree = "<group>"; };
 		BF01BDCD22487FA200C883D8 /* DecksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecksViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				BF32AF30224AAA1700D32277 /* DeckDetailViewController.swift */,
 				7B146515224ACFEF00241B00 /* NewDeckViewController.swift */,
 				7B146517224AD68500241B00 /* CreateCardViewController.swift */,
+				7B146519224ADAA200241B00 /* CopyCardViewController.swift */,
 			);
 			path = MafiaManager;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				BF01BDCE22487FA200C883D8 /* DecksViewController.swift in Sources */,
 				BFFDFE4F223844C00033F15B /* AppDelegate.swift in Sources */,
 				BF01BDD222487FCA00C883D8 /* HistoryViewController.swift in Sources */,
+				7B14651A224ADAA200241B00 /* CopyCardViewController.swift in Sources */,
 				F6F54C77224482FC00F6DFDF /* LoadingWelcomeViewController.swift in Sources */,
 				7B4E70FF224990C0001395F2 /* ViewDeckCell.swift in Sources */,
 				F6F54C7522446B7D00F6DFDF /* SignUpViewController.swift in Sources */,
