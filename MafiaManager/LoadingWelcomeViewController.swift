@@ -33,6 +33,8 @@ class LoadingWelcomeViewController: UIViewController {
         }
     }
     
+    @IBAction func doneButtonPressed(_ sender: Any) {
+    }
     /*
     // MARK: - Navigation
 

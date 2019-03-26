@@ -60,7 +60,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="New Deck"/>
                                 <connections>
-                                    <segue destination="I7q-K1-HUJ" kind="show" id="Jd1-Qc-05v"/>
+                                    <segue destination="DyT-sd-Kss" kind="show" id="H7C-0b-5J3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgv-Ie-pTN">
@@ -68,7 +68,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="View Deck"/>
                                 <connections>
-                                    <segue destination="Inz-va-P7e" kind="show" id="HJz-D1-l66"/>
+                                    <segue destination="Njn-7g-FL3" kind="show" id="Bxg-M7-VLO"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -102,97 +102,6 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1688.8" y="-320.68965517241384"/>
-        </scene>
-        <!--Deck Detail-->
-        <scene sceneID="LoF-Np-GWI">
-            <objects>
-                <viewController title="Deck Detail" id="Inz-va-P7e" userLabel="Deck Detail" customClass="DeckDetailViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Z4p-p2-amE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Idz-KM-ZxV">
-                                <rect key="frame" x="16" y="80" width="343" height="92"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="92" id="7G5-x0-dEE"/>
-                                </constraints>
-                                <string key="text">This is the description for the deck. Right now we do not have the sample decks fully fleshed out but when we do this is where the description and rules for a deck would be written out.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="peM-D6-hJv">
-                                <rect key="frame" x="0.0" y="244" width="375" height="330"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fGH-x0-MVQ">
-                                    <size key="itemSize" width="80" height="80"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="16" minY="16" maxX="16" maxY="16"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cDo-01-0lv">
-                                        <rect key="frame" x="16" y="16" width="80" height="80"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dG4-lK-ggJ">
-                                                    <rect key="frame" x="25" y="25" width="30" height="30"/>
-                                                    <state key="normal" title="+"/>
-                                                    <connections>
-                                                        <action selector="displayActionSheet:" destination="Inz-va-P7e" eventType="touchUpInside" id="2xW-gr-gEb"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstItem="dG4-lK-ggJ" firstAttribute="centerX" secondItem="cDo-01-0lv" secondAttribute="centerX" id="nz2-jH-5lw"/>
-                                            <constraint firstItem="dG4-lK-ggJ" firstAttribute="centerY" secondItem="cDo-01-0lv" secondAttribute="centerY" id="zFx-Wv-Glk"/>
-                                        </constraints>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="E8q-rm-cGj">
-                                <rect key="frame" x="0.0" y="188" width="375" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="aXb-Mq-SdT"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="E8q-rm-cGj" firstAttribute="centerX" secondItem="Z4p-p2-amE" secondAttribute="centerX" id="43H-ab-5UC"/>
-                            <constraint firstItem="peM-D6-hJv" firstAttribute="trailing" secondItem="ulQ-Zc-KCx" secondAttribute="trailing" id="a7y-lo-iR5"/>
-                            <constraint firstItem="peM-D6-hJv" firstAttribute="leading" secondItem="ulQ-Zc-KCx" secondAttribute="leading" id="aNf-Vo-gaR"/>
-                            <constraint firstItem="E8q-rm-cGj" firstAttribute="leading" secondItem="ulQ-Zc-KCx" secondAttribute="leading" id="aNu-1h-A14"/>
-                            <constraint firstItem="Idz-KM-ZxV" firstAttribute="centerX" secondItem="Z4p-p2-amE" secondAttribute="centerX" id="eSB-Gn-HuX"/>
-                            <constraint firstItem="Idz-KM-ZxV" firstAttribute="top" secondItem="ulQ-Zc-KCx" secondAttribute="top" constant="16" id="em5-YA-5FB"/>
-                            <constraint firstItem="ulQ-Zc-KCx" firstAttribute="trailing" secondItem="peM-D6-hJv" secondAttribute="trailing" id="kgN-j9-aXe"/>
-                            <constraint firstItem="peM-D6-hJv" firstAttribute="leading" secondItem="ulQ-Zc-KCx" secondAttribute="leading" id="oiO-QO-wWY"/>
-                            <constraint firstItem="Idz-KM-ZxV" firstAttribute="leading" secondItem="ulQ-Zc-KCx" secondAttribute="leading" constant="16" id="pPa-ey-2uy"/>
-                            <constraint firstItem="E8q-rm-cGj" firstAttribute="trailing" secondItem="ulQ-Zc-KCx" secondAttribute="trailing" id="qnI-92-J7L"/>
-                            <constraint firstItem="peM-D6-hJv" firstAttribute="top" secondItem="E8q-rm-cGj" secondAttribute="bottom" id="rxn-zo-nAC"/>
-                            <constraint firstItem="ulQ-Zc-KCx" firstAttribute="trailing" secondItem="Idz-KM-ZxV" secondAttribute="trailing" constant="16" id="uWF-o2-bac"/>
-                            <constraint firstItem="ulQ-Zc-KCx" firstAttribute="bottom" secondItem="peM-D6-hJv" secondAttribute="bottom" id="wSt-wU-duS"/>
-                            <constraint firstItem="ulQ-Zc-KCx" firstAttribute="bottom" secondItem="peM-D6-hJv" secondAttribute="bottom" id="xPS-K5-R46"/>
-                            <constraint firstItem="E8q-rm-cGj" firstAttribute="top" secondItem="Idz-KM-ZxV" secondAttribute="bottom" constant="16" id="yiT-wu-fCf"/>
-                            <constraint firstItem="peM-D6-hJv" firstAttribute="top" secondItem="E8q-rm-cGj" secondAttribute="bottom" id="ytn-8c-MUC"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="ulQ-Zc-KCx"/>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Deck Detail" id="RAI-lZ-v7X">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="hmk-To-eNB"/>
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="EXB-Kb-4wu"/>
-                    </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mGI-BI-3Yn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2592.8000000000002" y="-1003.4482758620691"/>
         </scene>
         <!--Create New Card-->
         <scene sceneID="fVN-ji-8Mi">
@@ -242,77 +151,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pj1-8X-FcC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3581.5999999999999" y="-1005.2473763118442"/>
-        </scene>
-        <!--New Deck-->
-        <scene sceneID="8K9-E4-sMi">
-            <objects>
-                <viewController title="New Deck" id="I7q-K1-HUJ" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Zhu-MP-xYU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WelcomeLoadingPicture" translatesAutoresizingMaskIntoConstraints="NO" id="jLQ-pZ-vdN">
-                                <rect key="frame" x="16" y="96" width="160" height="160"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="160" id="Uwl-Xd-YYQ"/>
-                                    <constraint firstAttribute="height" constant="160" id="z7I-09-Tj3"/>
-                                </constraints>
-                            </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="This is where the deck detail would go.." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dsR-8r-Csr">
-                                <rect key="frame" x="16" y="288" width="343" height="270"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8fB-Pd-Ca9">
-                                <rect key="frame" x="199" y="96" width="160" height="160"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="160" id="5r1-7g-KHS"/>
-                                    <constraint firstAttribute="width" constant="160" id="Jva-du-0cE"/>
-                                </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="Enter Deck Name">
-                                        <attributes>
-                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                            <font key="NSFont" size="24" name=".SFNSText"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="jLQ-pZ-vdN" firstAttribute="top" secondItem="jYD-TM-XQ7" secondAttribute="top" constant="32" id="0Vu-K5-rXi"/>
-                            <constraint firstItem="8fB-Pd-Ca9" firstAttribute="top" secondItem="jYD-TM-XQ7" secondAttribute="top" constant="32" id="1H6-ek-sOz"/>
-                            <constraint firstItem="dsR-8r-Csr" firstAttribute="centerX" secondItem="Zhu-MP-xYU" secondAttribute="centerX" id="2xi-yz-12E"/>
-                            <constraint firstItem="jYD-TM-XQ7" firstAttribute="bottom" secondItem="dsR-8r-Csr" secondAttribute="bottom" constant="16" id="3VW-Na-Mee"/>
-                            <constraint firstItem="8fB-Pd-Ca9" firstAttribute="centerY" secondItem="jLQ-pZ-vdN" secondAttribute="centerY" id="5Zx-rb-Tg1"/>
-                            <constraint firstItem="jYD-TM-XQ7" firstAttribute="trailing" secondItem="8fB-Pd-Ca9" secondAttribute="trailing" constant="16" id="GvS-iS-6om"/>
-                            <constraint firstItem="dsR-8r-Csr" firstAttribute="leading" secondItem="jYD-TM-XQ7" secondAttribute="leading" constant="16" id="TEb-3X-OiX"/>
-                            <constraint firstItem="dsR-8r-Csr" firstAttribute="top" secondItem="jLQ-pZ-vdN" secondAttribute="bottom" constant="32" id="dc4-Wd-mXe"/>
-                            <constraint firstItem="jLQ-pZ-vdN" firstAttribute="leading" secondItem="jYD-TM-XQ7" secondAttribute="leading" constant="16" id="tVS-O8-Urs"/>
-                            <constraint firstItem="jYD-TM-XQ7" firstAttribute="trailing" secondItem="dsR-8r-Csr" secondAttribute="trailing" constant="16" id="xmI-ms-gQ2"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="jYD-TM-XQ7"/>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="New Deck" id="QO8-Pj-hz3">
-                        <barButtonItem key="backBarButtonItem" title="Cancel" id="JwQ-Ua-D0x"/>
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qVf-h8-kdD"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="mlG-Vf-QRs">
-                            <connections>
-                                <segue destination="Inz-va-P7e" kind="show" id="Ycx-YD-Byb"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wgp-Dc-rUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2592.8000000000002" y="-321.58920539730138"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="5bA-RE-XYM">
@@ -550,6 +388,14 @@
                                     <action selector="onRegisterButtonPressed:" destination="f0Y-tC-J2b" eventType="touchUpInside" id="3sh-bp-uCc"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fYk-We-bib">
+                                <rect key="frame" x="0.0" y="52" width="99" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="onCancelbuttonPressed:" destination="f0Y-tC-J2b" eventType="touchUpInside" id="dWX-AL-DAH"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Registration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbu-1S-1yj">
                                 <rect key="frame" x="107.5" y="180" width="160" height="32"/>
                                 <constraints>
@@ -579,8 +425,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M5M-pv-Uqz">
-                                <rect key="frame" x="83.5" y="520" width="208" height="32"/>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M5M-pv-Uqz">
+                                <rect key="frame" x="83" y="440" width="208" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="208" id="BwS-hp-odm"/>
                                     <constraint firstAttribute="height" constant="32" id="jwO-Ki-M2M"/>
@@ -589,21 +435,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MP0-wg-Vt6">
-                                <rect key="frame" x="83.5" y="440" width="208" height="32"/>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MP0-wg-Vt6">
+                                <rect key="frame" x="83" y="480" width="208" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="WoY-CQ-DFe"/>
                                     <constraint firstAttribute="width" constant="208" id="jxF-KE-OXr"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bib-XU-6Eo">
-                                <rect key="frame" x="83.5" y="480" width="208" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="9Hb-Ff-YqB"/>
-                                    <constraint firstAttribute="width" constant="208" id="Tvs-ZZ-N4K"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -626,14 +462,16 @@
                                 </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fYk-We-bib">
-                                <rect key="frame" x="0.0" y="52" width="99" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <action selector="onCancelbuttonPressed:" destination="f0Y-tC-J2b" eventType="touchUpInside" id="dWX-AL-DAH"/>
-                                </connections>
-                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bib-XU-6Eo">
+                                <rect key="frame" x="83" y="520" width="208" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="9Hb-Ff-YqB"/>
+                                    <constraint firstAttribute="width" constant="208" id="Tvs-ZZ-N4K"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -906,7 +744,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2468" y="358.4707646176912"/>
+            <point key="canvasLocation" x="2460" y="358"/>
         </scene>
         <!--Wait For Players-->
         <scene sceneID="cS4-Yi-mwK">
@@ -1055,15 +893,187 @@
             </objects>
             <point key="canvasLocation" x="4465" y="-667"/>
         </scene>
+        <!--Deck Detail-->
+        <scene sceneID="0Dv-5F-5Cc">
+            <objects>
+                <viewController storyboardIdentifier="DeckDetailViewController" title="Deck Detail" id="Njn-7g-FL3" customClass="DecksViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kvv-iO-Vkc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UwS-MO-qan">
+                                <rect key="frame" x="16" y="80" width="343" height="92"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="92" id="2oA-n9-oG9"/>
+                                </constraints>
+                                <string key="text">This is the description for the deck. Right now we do not have the sample decks fully fleshed out but when we do this is where the description and rules for a deck would be written out.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="pjh-gU-76r">
+                                <rect key="frame" x="0.0" y="188" width="375" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="anC-0n-0wL"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DXH-sw-7aU">
+                                <rect key="frame" x="0.0" y="244" width="375" height="330"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qo6-cO-cqJ">
+                                    <size key="itemSize" width="80" height="80"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="16" minY="16" maxX="16" maxY="16"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="9bW-mW-tEZ">
+                                        <rect key="frame" x="16" y="16" width="80" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="at6-dM-fzk">
+                                                    <rect key="frame" x="25" y="25" width="30" height="30"/>
+                                                    <state key="normal" title="+"/>
+                                                </button>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="at6-dM-fzk" firstAttribute="centerY" secondItem="9bW-mW-tEZ" secondAttribute="centerY" id="7TH-vd-49V"/>
+                                            <constraint firstItem="at6-dM-fzk" firstAttribute="centerX" secondItem="9bW-mW-tEZ" secondAttribute="centerX" id="GSs-JW-T9s"/>
+                                        </constraints>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="DXH-sw-7aU" firstAttribute="top" secondItem="pjh-gU-76r" secondAttribute="bottom" id="12K-UN-Pg8"/>
+                            <constraint firstItem="pjh-gU-76r" firstAttribute="trailing" secondItem="B64-uA-zb4" secondAttribute="trailing" id="76c-vr-QkE"/>
+                            <constraint firstItem="B64-uA-zb4" firstAttribute="bottom" secondItem="DXH-sw-7aU" secondAttribute="bottom" constant="44" id="DPf-it-IYj"/>
+                            <constraint firstItem="pjh-gU-76r" firstAttribute="centerX" secondItem="Kvv-iO-Vkc" secondAttribute="centerX" id="J3R-VD-PM7"/>
+                            <constraint firstItem="pjh-gU-76r" firstAttribute="top" secondItem="UwS-MO-qan" secondAttribute="bottom" constant="16" id="J4O-nf-7x0"/>
+                            <constraint firstItem="DXH-sw-7aU" firstAttribute="leading" secondItem="B64-uA-zb4" secondAttribute="leading" id="N0k-gc-qDG"/>
+                            <constraint firstItem="pjh-gU-76r" firstAttribute="leading" secondItem="B64-uA-zb4" secondAttribute="leading" id="RB2-jo-xTJ"/>
+                            <constraint firstItem="UwS-MO-qan" firstAttribute="centerX" secondItem="Kvv-iO-Vkc" secondAttribute="centerX" id="Tpk-dz-XQs"/>
+                            <constraint firstItem="DXH-sw-7aU" firstAttribute="trailing" secondItem="B64-uA-zb4" secondAttribute="trailing" id="TuG-ML-QEN"/>
+                            <constraint firstItem="UwS-MO-qan" firstAttribute="leading" secondItem="B64-uA-zb4" secondAttribute="leading" constant="16" id="Wfs-Uc-y2O"/>
+                            <constraint firstItem="UwS-MO-qan" firstAttribute="top" secondItem="B64-uA-zb4" secondAttribute="top" constant="16" id="XnP-uF-7lQ"/>
+                            <constraint firstItem="DXH-sw-7aU" firstAttribute="centerX" secondItem="Kvv-iO-Vkc" secondAttribute="centerX" id="aOI-8G-DX9"/>
+                            <constraint firstItem="B64-uA-zb4" firstAttribute="trailing" secondItem="UwS-MO-qan" secondAttribute="trailing" constant="16" id="kDl-a6-u6i"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="B64-uA-zb4"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Deck Detail" id="AnU-PB-IDs">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="PD3-8Q-F75"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="tPA-y1-Pxu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1x4-1N-Dkc" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="t6S-Cc-C1i">
+                    <connections>
+                        <outlet property="delegate" destination="Njn-7g-FL3" id="g6p-XX-cev"/>
+                        <outlet property="searchContentsController" destination="Njn-7g-FL3" id="6JJ-eA-Xsg"/>
+                        <outlet property="searchResultsDataSource" destination="Njn-7g-FL3" id="TjZ-hl-hsF"/>
+                        <outlet property="searchResultsDelegate" destination="Njn-7g-FL3" id="7d6-8t-rV9"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="2593" y="-1005"/>
+        </scene>
+        <!--New Deck-->
+        <scene sceneID="qa8-DB-15p">
+            <objects>
+                <viewController storyboardIdentifier="NewDeckViewController" title="New Deck" id="DyT-sd-Kss" customClass="NewDeckViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="n3d-A6-yox">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WelcomeLoadingPicture" translatesAutoresizingMaskIntoConstraints="NO" id="nHs-55-GgI">
+                                <rect key="frame" x="16" y="96" width="160" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="Kcn-4X-6pT"/>
+                                    <constraint firstAttribute="width" constant="160" id="Rk2-2e-p2B"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="160" id="cjK-3W-uT5"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="lzn-Kz-DBc"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gjS-P8-tXs">
+                                <rect key="frame" x="199" y="96" width="160" height="160"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="apY-WY-tOk"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="ehb-Rw-tfy"/>
+                                    <constraint firstAttribute="width" constant="160" id="iUf-QL-XdR"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="160" id="j95-iQ-3Fx"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Enter Deck Name">
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="24" name=".SFNSText"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="This is where the deck detail would go.." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="V3f-UO-vhL">
+                                <rect key="frame" x="16" y="288" width="343" height="314"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="nHs-55-GgI" firstAttribute="leading" secondItem="57x-sr-cRt" secondAttribute="leading" constant="16" id="IRV-8F-zz2"/>
+                            <constraint firstItem="57x-sr-cRt" firstAttribute="trailing" secondItem="V3f-UO-vhL" secondAttribute="trailing" constant="16" id="NOE-VT-fa5"/>
+                            <constraint firstItem="57x-sr-cRt" firstAttribute="trailing" secondItem="gjS-P8-tXs" secondAttribute="trailing" constant="16" id="Sal-f2-cZ4"/>
+                            <constraint firstItem="V3f-UO-vhL" firstAttribute="top" secondItem="nHs-55-GgI" secondAttribute="bottom" constant="32" id="Tdg-DS-X09"/>
+                            <constraint firstItem="57x-sr-cRt" firstAttribute="bottom" secondItem="V3f-UO-vhL" secondAttribute="bottom" constant="16" id="VZC-Qs-bKr"/>
+                            <constraint firstItem="V3f-UO-vhL" firstAttribute="leading" secondItem="57x-sr-cRt" secondAttribute="leading" constant="16" id="dD9-ai-IF5"/>
+                            <constraint firstItem="nHs-55-GgI" firstAttribute="top" secondItem="57x-sr-cRt" secondAttribute="top" constant="32" id="gL1-DJ-A8q"/>
+                            <constraint firstItem="gjS-P8-tXs" firstAttribute="top" secondItem="57x-sr-cRt" secondAttribute="top" constant="32" id="rWv-7m-atd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="57x-sr-cRt"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Deck" id="Dvj-Vg-DSZ">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="Aqo-fg-Z44">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="DyT-sd-Kss" id="1Er-GJ-aSZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="uig-Ii-8xU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3gc-bz-yWz" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="S2A-44-CjL">
+                    <connections>
+                        <outlet property="delegate" destination="DyT-sd-Kss" id="OPr-c2-esX"/>
+                        <outlet property="searchContentsController" destination="DyT-sd-Kss" id="U7m-Js-BpG"/>
+                        <outlet property="searchResultsDataSource" destination="DyT-sd-Kss" id="Tea-ra-4gy"/>
+                        <outlet property="searchResultsDelegate" destination="DyT-sd-Kss" id="dhi-bE-OnW"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="2593" y="-321"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Decks" width="35" height="41"/>
         <image name="MafiaIcon" width="250" height="250"/>
         <image name="Play" width="35" height="37"/>
-        <image name="WelcomeLoadingPicture" width="1114" height="1010"/>
+        <image name="WelcomeLoadingPicture" width="1000" height="1000"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="yD9-vY-Gqm"/>
-        <segue reference="HJz-D1-l66"/>
     </inferredMetricsTieBreakers>
 </document>
