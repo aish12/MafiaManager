@@ -5,7 +5,7 @@
 //  Created by Robert Stigler on 3/27/19.
 //  Copyright © 2019 Aishwarya Shashidhar. All rights reserved.
 //
-
+//  Responsible for handling the play tab's view controller
 import UIKit
 
 class PlayViewController: UIViewController {

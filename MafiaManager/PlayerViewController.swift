@@ -5,7 +5,7 @@
 //  Created by Aishwarya Shashidhar on 3/24/19.
 //  Copyright © 2019 Aishwarya Shashidhar. All rights reserved.
 //
-
+//  Responsible for handling the game player view controller
 import UIKit
 
 class PlayerViewController: UIViewController {
@@ -16,6 +16,8 @@ class PlayerViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    // If the player chooses the leave button, display a confirmation
+    // If the player chooses yes, segue to the root controller, aka the play tab
     @IBAction func leaveButtonPressed(_ sender: Any) {
         let alert = UIAlertController(title: "Are you sure?", message: "Leaving a game cannot be undone",         preferredStyle: .alert)
         

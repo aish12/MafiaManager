@@ -5,7 +5,7 @@
 //  Created by Aishwarya Shashidhar on 3/26/19.
 //  Copyright © 2019 Aishwarya Shashidhar. All rights reserved.
 //
-
+//  Responsible for managing the Deck Detail View Controller
 import UIKit
 
 class DeckDetailViewController: UIViewController {
@@ -16,6 +16,9 @@ class DeckDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    // When the Add Card button is pressed, show an action sheet with the options to
+    // create a new card, copy an existing card, or cancel
+    // Upon selecting new or existing card, segue to the new card or existing card selection views
     @IBAction func addCardButtonPressed(_ sender: Any) {
         let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
         
@@ -33,7 +36,6 @@ class DeckDetailViewController: UIViewController {
         optionMenu.addAction(copyAction)
         optionMenu.addAction(cancelAction)
         
-        // 5
         self.present(optionMenu, animated: true, completion: nil)
     }
 }

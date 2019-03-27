@@ -5,6 +5,7 @@
 //  Created by Robert Stigler on 3/26/19.
 //  Copyright © 2019 Aishwarya Shashidhar. All rights reserved.
 //
+//  Responsible for managing the card creation view controller
 
 import UIKit
 
@@ -16,7 +17,8 @@ class CreateCardViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    // When the done button is pressed, return to the previous VC,
+    // the Deck Detail VC
     @IBAction func doneButtonPressed(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }

@@ -5,6 +5,7 @@
 //  Created by Robert Stigler on 3/27/19.
 //  Copyright © 2019 Aishwarya Shashidhar. All rights reserved.
 //
+//  Responsible for handling the settings view controller
 
 import UIKit
 
@@ -26,10 +27,12 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         // Do any additional setup after loading the view.
     }
     
+    // For both minute and second, they only have one component, always return 1
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
+    // Determine which picker is being used, then return the count of its data source
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView.isEqual(minutePicker){
             return minutePickerValues.count
@@ -41,6 +44,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
     }
     
+    // Determine which picker is being used, then return the value at the given index/row
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView.isEqual(minutePicker){
             return "\(minutePickerValues[row])"

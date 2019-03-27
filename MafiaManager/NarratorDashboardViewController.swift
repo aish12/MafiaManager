@@ -5,6 +5,7 @@
 //  Created by Robert Stigler on 3/26/19.
 //  Copyright © 2019 Aishwarya Shashidhar. All rights reserved.
 //
+//  Responsible for handling the narrator's dashboard view controller
 
 import UIKit
 
@@ -26,6 +27,9 @@ class NarratorDashboardViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // If the narrator decides to end the game, display a confirmation
+    // If they choose yes, segue to the record winners screen, if no, stay on dashboard
     @IBAction func endGameButtonPressed(_ sender: Any) {
         let alert = UIAlertController(title: "Are you sure?", message: "Ending a game cannot be undone", preferredStyle: .alert)
         
@@ -35,7 +39,6 @@ class NarratorDashboardViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         
         self.present(alert, animated: true)
-//        navigationController?.popToRootViewController(animated: true)
     }
     
 }

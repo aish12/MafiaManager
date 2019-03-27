@@ -5,6 +5,7 @@
 //  Created by Robert Stigler on 3/26/19.
 //  Copyright © 2019 Aishwarya Shashidhar. All rights reserved.
 //
+//  Responsible for handling the record winner's view controller
 
 import UIKit
 
@@ -16,10 +17,12 @@ class RecordWinnersViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    // If they do not want to record winners, return back to play tab screen
     @IBAction func skipButtonPressed(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
     }
     
+    // If they have recorded winners, return back to play tab screen
     @IBAction func recordResultsButtonPressed(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
     }

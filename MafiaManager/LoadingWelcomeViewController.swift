@@ -5,6 +5,7 @@
 //  Created by Tesia Wu on 3/21/19.
 //  Copyright © 2019 Aishwarya Shashidhar. All rights reserved.
 //
+//  Responsible for handling the "Welcome User" View Controller
 
 import UIKit
 import Firebase

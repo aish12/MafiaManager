@@ -5,6 +5,7 @@
 //  Created by Aishwarya Shashidhar on 3/24/19.
 //  Copyright © 2019 Aishwarya Shashidhar. All rights reserved.
 //
+//  Manages the Decks View Controller
 
 import UIKit
 
@@ -14,25 +15,24 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
     let deckCellIdentifier = "DeckCell"
     let addDeckCellIdentifier = "AddDeckCell"
     
+    // Dummy to be completed, required for collection view
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }
     
+    // Dummy to be completed, required for collection view
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 {
             let addCell = collectionView.dequeueReusableCell(withReuseIdentifier: addDeckCellIdentifier, for: indexPath as IndexPath)
-//            addCell.textLabel?.text = "Add"
-//            addCell.contentView.text
             return addCell
             
         } else {
             let deckCell = collectionView.dequeueReusableCell(withReuseIdentifier: deckCellIdentifier, for: indexPath as IndexPath)
-//            deckCell.textLabel?.text = "Deck \(indexPath.row)"
             return deckCell
         }
     }
     
-
+    // On load, round the corners of any buttons to standard size (10)
     override func viewDidLoad() {
         super.viewDidLoad()
         newDeckButton.layer.cornerRadius = 10

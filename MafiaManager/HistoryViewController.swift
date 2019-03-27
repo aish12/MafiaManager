@@ -5,7 +5,7 @@
 //  Created by Aishwarya Shashidhar on 3/24/19.
 //  Copyright © 2019 Aishwarya Shashidhar. All rights reserved.
 //
-
+//  Dummy for now, responsible for handling the history tab view controller (stretch goal)
 import UIKit
 
 class HistoryViewController: UIViewController {
