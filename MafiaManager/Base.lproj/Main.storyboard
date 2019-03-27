@@ -25,8 +25,8 @@
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="fVP-E8-r5B"/>
                                 </connections>
                             </searchBar>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="h9b-9I-vwb">
-                                <rect key="frame" x="0.0" y="120" width="375" height="498"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="h9b-9I-vwb">
+                                <rect key="frame" x="0.0" y="120" width="375" height="418"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pIj-Bd-ibK">
                                     <size key="itemSize" width="50" height="50"/>
@@ -55,38 +55,44 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1m-QW-0DF">
-                                <rect key="frame" x="94" y="546" width="186" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="New Deck"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wou-9X-9sp">
+                                <rect key="frame" x="91.5" y="554" width="192" height="48"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="3YK-fS-FbC"/>
+                                    <constraint firstAttribute="width" constant="192" id="iME-K3-e4e"/>
+                                </constraints>
+                                <state key="normal" title="New Deck">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
-                                    <segue destination="DyT-sd-Kss" kind="show" id="H7C-0b-5J3"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgv-Ie-pTN">
-                                <rect key="frame" x="151" y="487" width="73" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="View Deck"/>
-                                <connections>
-                                    <segue destination="Njn-7g-FL3" kind="show" id="Bxg-M7-VLO"/>
+                                    <segue destination="DyT-sd-Kss" kind="show" id="GP7-IG-av5"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="h9b-9I-vwb" secondAttribute="trailing" id="JKg-hF-6kq"/>
-                            <constraint firstItem="h9b-9I-vwb" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="YbU-mQ-tNd"/>
-                            <constraint firstItem="952-up-tpY" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="YzS-SF-f5p"/>
-                            <constraint firstItem="952-up-tpY" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="fQW-cn-Ntp"/>
-                            <constraint firstItem="952-up-tpY" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="fvj-7N-8Ec"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="h9b-9I-vwb" secondAttribute="bottom" id="lgR-8Q-fyv"/>
+                            <constraint firstItem="h9b-9I-vwb" firstAttribute="top" secondItem="952-up-tpY" secondAttribute="bottom" id="2Ni-uz-CKq"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="Wou-9X-9sp" secondAttribute="bottom" constant="16" id="BbZ-WJ-iRG"/>
+                            <constraint firstItem="Wou-9X-9sp" firstAttribute="top" secondItem="h9b-9I-vwb" secondAttribute="bottom" constant="16" id="FN7-fk-DhI"/>
+                            <constraint firstItem="952-up-tpY" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="Lrq-DE-x7K"/>
+                            <constraint firstItem="h9b-9I-vwb" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="T3n-ak-XxP"/>
+                            <constraint firstItem="h9b-9I-vwb" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="UYG-vk-cU1"/>
+                            <constraint firstItem="952-up-tpY" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="nhS-B0-8ER"/>
+                            <constraint firstItem="Wou-9X-9sp" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="qvl-M3-8pn"/>
+                            <constraint firstItem="952-up-tpY" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="zwg-hq-THJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <navigationItem key="navigationItem" title="Decks" id="472-9O-k2T">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="cf3-js-Hp4"/>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="cf3-js-Hp4">
+                            <connections>
+                                <segue destination="Njn-7g-FL3" kind="show" id="Ers-5Q-GPz"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="newDeckButton" destination="Wou-9X-9sp" id="ZmK-dX-2Pl"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="K9C-eb-2QG"/>
                     </connections>
                 </viewController>
@@ -451,6 +457,10 @@
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <navigationItem key="navigationItem" id="pgM-R7-2Oe"/>
+                    <connections>
+                        <outlet property="narratorButton" destination="CcT-Gf-mW0" id="NgJ-bb-Md6"/>
+                        <outlet property="playerButton" destination="1t7-Yf-QLB" id="52K-bi-f3u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>

@@ -10,6 +10,7 @@ import UIKit
 
 class DecksViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
+    @IBOutlet weak var newDeckButton: UIButton!
     let deckCellIdentifier = "DeckCell"
     let addDeckCellIdentifier = "AddDeckCell"
     
@@ -34,7 +35,7 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        newDeckButton.layer.cornerRadius = 10
         // Do any additional setup after loading the view.
     }
     

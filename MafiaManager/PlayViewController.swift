@@ -10,9 +10,13 @@ import UIKit
 
 class PlayViewController: UIViewController {
 
+    @IBOutlet weak var narratorButton: UIButton!
+    @IBOutlet weak var playerButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        narratorButton.layer.cornerRadius = 10
+        playerButton.layer.cornerRadius = 10
         // Do any additional setup after loading the view.
     }
     
