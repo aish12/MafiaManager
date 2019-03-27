@@ -24,7 +24,7 @@ class DeckDetailViewController: UIViewController {
         }
         
         let copyAction = UIAlertAction(title: "Copy Existing Card", style: .default) { (action) in
-            
+            self.performSegue(withIdentifier: "fromDetailToCopyCardSegue", sender: nil)
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)

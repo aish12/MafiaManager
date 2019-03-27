@@ -832,20 +832,12 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nol-fR-0qb">
-                                <rect key="frame" x="151" y="456" width="73" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Copy Card"/>
-                                <connections>
-                                    <segue destination="qzR-gP-eI2" kind="show" id="efT-up-aby"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="873-4v-YsT">
                                 <rect key="frame" x="152" y="510" width="70" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="View Card"/>
                                 <connections>
-                                    <segue destination="6IQ-Ne-ppQ" kind="show" id="UNg-Q2-Epf"/>
+                                    <segue destination="6IQ-Ne-ppQ" kind="show" id="RSY-Xf-fdG"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M0W-d2-j4b">
@@ -885,6 +877,7 @@
                     <connections>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="tPA-y1-Pxu"/>
                         <segue destination="zXe-B4-3vK" kind="show" identifier="fromDetailToNewCardSegue" id="Wjw-RG-Gkh"/>
+                        <segue destination="qzR-gP-eI2" kind="show" identifier="fromDetailToCopyCardSegue" id="0d5-wB-Ye2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1x4-1N-Dkc" sceneMemberID="firstResponder"/>
