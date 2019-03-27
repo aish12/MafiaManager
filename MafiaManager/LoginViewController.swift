@@ -12,7 +12,6 @@ import Firebase
 class LoginViewController: UIViewController {
     
     let signUpSegueIdentifier = "signUpSegueIdentifier"
-    //let loadingWelcomeSegueIdentifier = "loadingWelcomeSegueIdentifier"
 
     @IBOutlet weak var mafiaImage: UIImageView!
     
@@ -56,6 +55,7 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
         // Mafia icon should appear
         mafiaImage.image = UIImage(named: "MafiaIcon")
+        passwordTextfield.isSecureTextEntry = true
         
         // After signing in
         Auth.auth().addStateDidChangeListener() { auth, user in

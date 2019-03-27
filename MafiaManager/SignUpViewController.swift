@@ -55,18 +55,17 @@ class SignUpViewController: UIViewController {
         // Sign up logic
         Auth.auth().createUser(withEmail: emailTextfield.text!, password: passwordTextfield.text!) { user, error in
             if error == nil && user != nil {
-                // Confirm success
-                let alert = UIAlertController(
-                    title: "Registration Success",
-                    message: "You can now sign in",
-                    preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default))
-                self.present(alert, animated: true, completion: nil)
-                
                 // In the database, tie the name to the user
                 var ref: DatabaseReference!
                 ref = Database.database().reference()
                 ref.child("users").child(user!.user.uid).setValue(["name":name])
+                
+                // Just automatically sign in
+                Auth.auth().signIn(withEmail: self.emailTextfield.text!,
+                                   password: self.passwordTextfield.text!)
+                // Go to welcome page
+                let homeView = self.storyboard?.instantiateViewController(withIdentifier: "loadingWelcomeIdentifier") as! LoadingWelcomeViewController
+                self.present(homeView, animated: true, completion: nil)
                 
             } else if error != nil && user == nil {
                 let alert = UIAlertController(
@@ -88,6 +87,8 @@ class SignUpViewController: UIViewController {
         // Do any additional setup after loading the view.
         // Mafia icon should appear
         mafiaImage.image = UIImage(named: "MafiaIcon")
+        passwordTextfield.isSecureTextEntry = true
+        confirmPasswordTextfield.isSecureTextEntry = true
         
         // After signing up
         Auth.auth().addStateDidChangeListener() { auth, user in

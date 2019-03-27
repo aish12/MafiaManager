@@ -34,7 +34,7 @@ class LoadingWelcomeViewController: UIViewController {
         }
        
         // Transitions after a few seconds to the first VC (deck management)
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { timer in
+        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { timer in
             let homeView = self.storyboard?.instantiateViewController(withIdentifier: "tabBarSegueIdentifier") as! TabBarViewController
             self.present(homeView, animated: true, completion: nil)
         }
