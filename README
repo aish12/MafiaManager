@@ -31,7 +31,13 @@ Aish (25%)
   
 Robby (25%)
   - Game views and Dashboard
+    - Added views for both the narrator and player setup. No functionality (promised for Beta), but layout and skeleton for
+      selecting a deck, customizing number of characters, adding players, and joining a game.
+    - Created narrator dashboard. At this point is an empty table with a button to end the game, a timer, and settings view
+    - Timer view created, no functionality but uses a picker for up to 15min59sec.
   - Settings view	
+    - Simple view with an option to mute the game, designate a default timer length, and log out of the game. Also includes
+      a help segue to the instructions page
 
 Differences:
  - In our proposal we had a slight contradiction, saying that we would work on the statistics page during Alpha, but also that stats/history is a stretch goal
