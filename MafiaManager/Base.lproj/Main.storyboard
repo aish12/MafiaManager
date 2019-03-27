@@ -1445,7 +1445,7 @@
         <!--Settings View Controller-->
         <scene sceneID="oz2-aG-w5K">
             <objects>
-                <viewController storyboardIdentifier="SettingsViewController" title="Settings View Controller" id="dNu-fC-IOV" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsViewController" title="Settings View Controller" id="dNu-fC-IOV" customClass="SettingsViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bBb-Dd-XJO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1536,7 +1536,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="XM3-iG-kvH"/>
                     <connections>
+                        <outlet property="minutePicker" destination="kXz-mL-bIk" id="iz2-4u-oMJ"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="oPE-Sb-dds"/>
+                        <outlet property="secondPicker" destination="0Pm-Bt-q7p" id="spC-8t-WQI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Og1-jm-dlj" sceneMemberID="firstResponder"/>
@@ -1554,7 +1556,7 @@
         <!--Timer View Controller-->
         <scene sceneID="qI7-LI-XpQ">
             <objects>
-                <viewController storyboardIdentifier="TimerViewController" title="Timer View Controller" id="aqy-qI-FXH" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TimerViewController" title="Timer View Controller" id="aqy-qI-FXH" customClass="TimerViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sJI-DU-vz8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1620,7 +1622,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Timer" id="DzY-h7-Fu2"/>
                     <connections>
+                        <outlet property="minutePicker" destination="qgy-1m-ZSw" id="YEy-Hp-wTk"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="krm-bC-wZI"/>
+                        <outlet property="secondPicker" destination="7x3-jH-KwW" id="ZZX-Py-7mV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MRC-mX-WEG" sceneMemberID="firstResponder"/>
