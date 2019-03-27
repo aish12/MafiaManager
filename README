@@ -1,3 +1,7 @@
+Alpha Release:
+  - This release is the skeleton of our project. What we have right now is what our app is going to look and feel like, 
+    but most functionality has not yet been implemented.
+
 Contributions:
 
 Tesia (25%)
@@ -9,19 +13,21 @@ Tesia (25%)
   - Welcome Loading screen 
   
 Daniel (25%)
-  - Game instructions
+  - Help / instructions
+    - A simple TextView with information about the app's purpose, and instructions on the many features found in the app.
   - Constraints and UI clean up
-  - End game view
-  
+    - Made everything *pretty* and consistent with sizing, margins, and contraints.
+  - End game view (Narrator Only)
+    - The end game result screens that appear when the game is over.
+    - The Narrator should be able to select players in the table to indicate who are the 'winners' of the game. 
+      - This is for bookkeeping purposes, and can be viewed in the 'History' tab.
+      - The functionality has not been implemented yet, and appears blank for now.
+      
 Aish (25%)
-  - Deck creation views
-    - When a user creates a new deck, they will be asked to select an image, create a name, and write a description for a deck
-    - They will then be taken to the deck screen where they can create new cards. 
-  - Card creation views
-    - A user has 2 options when they choose to create a card, copy an existing set of cards or create a new one
-    - The copy option will allow a user to multi select cards to copy
-    - The new card option will ask the user to select an image, create a name, and write a des+ription of the card
-    - This shows up as an alert. the code to complete this is in our project, however it is not yet properly linked to the collection view cell
+  - Card and Deck creation views
+    - Did views for browsing Decks, creating Decks, browsing cards, and creating cards.
+    - Browsing uses a CollectionView for that grid look/feel.
+    - Deck and Card creation skeleton implemented in Storyboard.
   
 Robby (25%)
   - Game views and Dashboard
@@ -30,9 +36,12 @@ Robby (25%)
 Differences:
  - In our proposal we had a slight contradiction, saying that we would work on the statistics page during Alpha, but also that stats/history is a stretch goal
    We decided to keep it as a stretch goal hopefully as part of the final release (as clarified in our design doc)
+ - Removed the edit button in Deck Management, and replaced it with a 'Settings' button that should be accessible on all three tabs.
 
  
  
 Clarifications:
  - While there is a log in functionality, there is no log out functionality because in our Proposal we stated that is part of our settings page functionality.
  - In our design doc, we forgot to include a section for game instructions. To account for this we put this as part of the settings 
+ - A lot of the views won't look like much due to lack of data. 
+   - Due to this, we have temporary buttons so you can access the views dependent on collection/table data.
