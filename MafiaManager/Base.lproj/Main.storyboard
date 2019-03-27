@@ -412,7 +412,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1t7-Yf-QLB">
                                 <rect key="frame" x="91.5" y="420" width="192" height="48"/>
-                                <color key="backgroundColor" red="0.22461628780000001" green="0.56542864209999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="192" id="4L6-aq-CoU"/>
                                     <constraint firstAttribute="height" constant="48" id="6DU-JI-D3c"/>
@@ -426,7 +426,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CcT-Gf-mW0">
                                 <rect key="frame" x="91.5" y="340" width="192" height="48"/>
-                                <color key="backgroundColor" red="0.22461628780000001" green="0.56542864209999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="192" id="DUC-pr-bKX"/>
                                     <constraint firstAttribute="height" constant="48" id="Xcg-xa-6iB"/>
@@ -1246,7 +1246,7 @@
         <!--Player Role Controller-->
         <scene sceneID="EGC-KN-tbZ">
             <objects>
-                <viewController storyboardIdentifier="PlayerRoleController" title="Player Role Controller" id="XGn-98-kfH" customClass="PlayViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlayerRoleController" title="Player Role Controller" id="XGn-98-kfH" customClass="PlayerViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4uo-Zm-ifb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
