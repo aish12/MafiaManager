@@ -78,34 +78,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		7B14651B224ADCE700241B00 /* Deck Management */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Deck Management";
-			sourceTree = "<group>";
-		};
-		7B14651C224ADCF500241B00 /* Game Management */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Game Management";
-			sourceTree = "<group>";
-		};
-		7B14651D224ADD0700241B00 /* History */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = History;
-			sourceTree = "<group>";
-		};
-		7B14651E224ADD4600241B00 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
 		7E802CDD2D987692A4E7EAE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,10 +120,6 @@
 				BF01BDCF22487FB800C883D8 /* PlayViewController.swift */,
 				BF01BDD122487FCA00C883D8 /* HistoryViewController.swift */,
 				F64DF7C2224B000000513FD7 /* GoogleService-Info.plist */,
-				7B14651E224ADD4600241B00 /* Login */,
-				7B14651D224ADD0700241B00 /* History */,
-				7B14651C224ADCF500241B00 /* Game Management */,
-				7B14651B224ADCE700241B00 /* Deck Management */,
 				F6F54C782246D95000F6DFDF /* MafiaManager.entitlements */,
 				BFFDFE4E223844C00033F15B /* AppDelegate.swift */,
 				BFFDFE54223844C00033F15B /* Main.storyboard */,
