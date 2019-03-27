@@ -85,9 +85,9 @@
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <navigationItem key="navigationItem" title="Decks" id="472-9O-k2T">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="cf3-js-Hp4">
+                        <barButtonItem key="rightBarButtonItem" image="GearIcon" id="cf3-js-Hp4">
                             <connections>
-                                <segue destination="Njn-7g-FL3" kind="show" id="Ers-5Q-GPz"/>
+                                <segue destination="dNu-fC-IOV" kind="show" id="l60-1W-HGq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -456,7 +456,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="pgM-R7-2Oe"/>
+                    <navigationItem key="navigationItem" id="bAr-0B-98a">
+                        <barButtonItem key="rightBarButtonItem" image="GearIcon" id="Vuw-xe-aNJ">
+                            <connections>
+                                <segue destination="dNu-fC-IOV" kind="show" id="rDd-hE-V4G"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="narratorButton" destination="CcT-Gf-mW0" id="NgJ-bb-Md6"/>
                         <outlet property="playerButton" destination="1t7-Yf-QLB" id="52K-bi-f3u"/>
@@ -485,7 +491,7 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
-        <!--History View Controller-->
+        <!--History-->
         <scene sceneID="9HE-KH-4NL">
             <objects>
                 <viewController storyboardIdentifier="HistoryViewControllerIdentifier" id="cnj-nN-aBx" customClass="HistoryViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
@@ -495,7 +501,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="0Ns-An-ua0"/>
                     </view>
-                    <navigationItem key="navigationItem" id="EfD-50-fg4"/>
+                    <navigationItem key="navigationItem" title="History" id="EfD-50-fg4">
+                        <barButtonItem key="rightBarButtonItem" image="GearIcon" id="7rv-eW-4hH">
+                            <connections>
+                                <segue destination="dNu-fC-IOV" kind="show" id="pdz-yY-KAV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ujA-xs-NFN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -796,7 +808,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UwS-MO-qan">
-                                <rect key="frame" x="16" y="80" width="343" height="92"/>
+                                <rect key="frame" x="16" y="36" width="343" height="92"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="92" id="2oA-n9-oG9"/>
@@ -806,14 +818,14 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="pjh-gU-76r">
-                                <rect key="frame" x="0.0" y="188" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="144" width="375" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="anC-0n-0wL"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DXH-sw-7aU">
-                                <rect key="frame" x="0.0" y="244" width="375" height="330"/>
+                                <rect key="frame" x="0.0" y="200" width="375" height="423"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qo6-cO-cqJ">
                                     <size key="itemSize" width="80" height="80"/>
@@ -989,14 +1001,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WelcomeLoadingPicture" translatesAutoresizingMaskIntoConstraints="NO" id="sS6-fQ-9eU">
-                                <rect key="frame" x="16" y="80" width="160" height="160"/>
+                                <rect key="frame" x="16" y="36" width="160" height="160"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="KaF-TL-4gq"/>
                                     <constraint firstAttribute="height" constant="160" id="Ska-LR-StG"/>
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gS0-95-dR9">
-                                <rect key="frame" x="199" y="80" width="160" height="160"/>
+                                <rect key="frame" x="199" y="36" width="160" height="160"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="PWi-3s-uAf"/>
@@ -1014,7 +1026,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="This is where the card detail would go." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Be0-tp-Gto">
-                                <rect key="frame" x="8" y="272" width="359" height="338"/>
+                                <rect key="frame" x="8" y="228" width="359" height="431"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1129,14 +1141,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WelcomeLoadingPicture" translatesAutoresizingMaskIntoConstraints="NO" id="hPJ-zZ-6xM">
-                                <rect key="frame" x="16" y="80" width="160" height="160"/>
+                                <rect key="frame" x="16" y="36" width="160" height="160"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="QRF-CB-VxX"/>
                                     <constraint firstAttribute="height" constant="160" id="vN7-2v-E5h"/>
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9GP-Z7-12R">
-                                <rect key="frame" x="199" y="80" width="160" height="160"/>
+                                <rect key="frame" x="199" y="36" width="160" height="160"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="8B7-dO-CH8"/>
@@ -1154,7 +1166,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="This is where the card detail would go." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gD6-D9-fiX">
-                                <rect key="frame" x="8" y="272" width="359" height="338"/>
+                                <rect key="frame" x="8" y="228" width="359" height="431"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1658,7 +1670,7 @@
         <image name="WelcomeLoadingPicture" width="1000" height="1000"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Z3o-Ch-q8U"/>
+        <segue reference="pdz-yY-KAV"/>
         <segue reference="zyS-kh-uZt"/>
         <segue reference="yD9-vY-Gqm"/>
     </inferredMetricsTieBreakers>

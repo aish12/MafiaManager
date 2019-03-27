@@ -27,4 +27,4 @@ Differences:
  
 Clarifications:
  - While there is a log in functionality, there is no log out functionality because in our Proposal we stated that is part of our settings page functionality.
- 
+ - In our design doc, we forgot to include a section for game instructions. To account for this we put this as part of the settings 
