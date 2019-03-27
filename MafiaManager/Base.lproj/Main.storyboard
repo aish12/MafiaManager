@@ -780,7 +780,7 @@
         <!--Deck Detail-->
         <scene sceneID="0Dv-5F-5Cc">
             <objects>
-                <viewController storyboardIdentifier="DeckDetailViewController" title="Deck Detail" id="Njn-7g-FL3" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DeckDetailViewController" title="Deck Detail" id="Njn-7g-FL3" customClass="DeckDetailViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kvv-iO-Vkc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -832,14 +832,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ms-53-xu3">
-                                <rect key="frame" x="150" y="407" width="74" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Make Card"/>
-                                <connections>
-                                    <segue destination="zXe-B4-3vK" kind="show" id="5Fk-4c-Ymw"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nol-fR-0qb">
                                 <rect key="frame" x="151" y="456" width="73" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -854,6 +846,14 @@
                                 <state key="normal" title="View Card"/>
                                 <connections>
                                     <segue destination="6IQ-Ne-ppQ" kind="show" id="UNg-Q2-Epf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M0W-d2-j4b">
+                                <rect key="frame" x="155" y="548" width="65" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add Card"/>
+                                <connections>
+                                    <action selector="addCardButtonPressed:" destination="Njn-7g-FL3" eventType="touchUpInside" id="wz5-c8-fjF"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -876,10 +876,15 @@
                         <viewLayoutGuide key="safeArea" id="B64-uA-zb4"/>
                     </view>
                     <navigationItem key="navigationItem" title="Deck Detail" id="AnU-PB-IDs">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="PD3-8Q-F75"/>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="PD3-8Q-F75">
+                            <connections>
+                                <action selector="addCardButtonPressed:" destination="Njn-7g-FL3" id="2n2-DN-A2C"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="tPA-y1-Pxu"/>
+                        <segue destination="zXe-B4-3vK" kind="show" identifier="fromDetailToNewCardSegue" id="Wjw-RG-Gkh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1x4-1N-Dkc" sceneMemberID="firstResponder"/>
@@ -892,7 +897,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2593" y="-1005"/>
+            <point key="canvasLocation" x="2428" y="-1005"/>
         </scene>
         <!--New Deck-->
         <scene sceneID="qa8-DB-15p">
