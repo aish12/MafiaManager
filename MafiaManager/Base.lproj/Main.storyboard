@@ -1246,7 +1246,7 @@
         <!--Player Role Controller-->
         <scene sceneID="EGC-KN-tbZ">
             <objects>
-                <viewController storyboardIdentifier="PlayerRoleController" title="Player Role Controller" id="XGn-98-kfH" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlayerRoleController" title="Player Role Controller" id="XGn-98-kfH" customClass="PlayViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4uo-Zm-ifb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1276,16 +1276,21 @@
                                 </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="This is where the card detail would go." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4t-Lj-pOz">
-                                <rect key="frame" x="8" y="272" width="359" height="268"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vKT-5t-zH4">
+                                <rect key="frame" x="145" y="556" width="85" height="30"/>
+                                <state key="normal" title="Leave Game"/>
+                                <connections>
+                                    <action selector="leaveButtonPressed:" destination="5pv-w4-FKa" eventType="touchUpInside" id="dbj-ue-tMY"/>
+                                    <action selector="leaveButtonPressed:" destination="XGn-98-kfH" eventType="touchUpInside" id="wvi-E2-57d"/>
+                                    <action selector="test:" destination="5pv-w4-FKa" eventType="touchUpInside" id="4yz-fB-LpF"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" text="This is where the card detail would go." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4t-Lj-pOz">
+                                <rect key="frame" x="8" y="280" width="359" height="268"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vKT-5t-zH4">
-                                <rect key="frame" x="145" y="556" width="85" height="30"/>
-                                <state key="normal" title="Leave Game"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -1315,6 +1320,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="epP-GQ-ili" sceneMemberID="firstResponder"/>
+                <exit id="5pv-w4-FKa" userLabel="Exit" sceneMemberID="exit"/>
                 <searchDisplayController id="MoE-jt-THd">
                     <connections>
                         <outlet property="delegate" destination="XGn-98-kfH" id="esT-ue-bOW"/>
@@ -1638,7 +1644,7 @@
         <image name="WelcomeLoadingPicture" width="1000" height="1000"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="b7z-LG-cRN"/>
+        <segue reference="Z3o-Ch-q8U"/>
         <segue reference="zyS-kh-uZt"/>
         <segue reference="yD9-vY-Gqm"/>
     </inferredMetricsTieBreakers>
