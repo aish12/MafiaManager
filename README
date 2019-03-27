@@ -10,20 +10,19 @@ Tesia (25%)
   
 Daniel (25%)
   - Game instructions
-  - Settings view
-  - Dashboard view
-  
+  - Constraints and UI clean up
+  - End game view
 Aish (25%)
   - Card and Deck creation views
   
 Robby (25%)
-  - Game views
-  - End game page 
-  - Statistics view
-
+  - Game views and Dashboard
+  - Settings view	
 
 Differences:
- - 
+ - In our proposal we had a slight contradiction, saying that we would work on the statistics page during Alpha, but also that stats/history is a stretch goal
+   We decided to keep it as a stretch goal hopefully as part of the final release (as clarified in our design doc)
+
  
  
 Clarifications:
