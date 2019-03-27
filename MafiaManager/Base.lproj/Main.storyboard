@@ -18,13 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="952-up-tpY">
-                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="9pv-A4-QxB" id="fVP-E8-r5B"/>
-                                </connections>
-                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="h9b-9I-vwb">
                                 <rect key="frame" x="0.0" y="120" width="375" height="418"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -55,12 +48,26 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wg6-mh-9fL">
+                                <rect key="frame" x="32" y="554" width="120" height="48"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="GU4-Zm-Qlx"/>
+                                    <constraint firstAttribute="height" constant="48" id="bhA-Gh-Ygl"/>
+                                </constraints>
+                                <state key="normal" title="View Deck">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Njn-7g-FL3" kind="show" id="dyi-iG-m0h"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wou-9X-9sp">
-                                <rect key="frame" x="91.5" y="554" width="192" height="48"/>
+                                <rect key="frame" x="223" y="554" width="120" height="48"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="3YK-fS-FbC"/>
-                                    <constraint firstAttribute="width" constant="192" id="iME-K3-e4e"/>
+                                    <constraint firstAttribute="width" constant="120" id="iME-K3-e4e"/>
                                 </constraints>
                                 <state key="normal" title="New Deck">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -69,18 +76,29 @@
                                     <segue destination="DyT-sd-Kss" kind="show" id="GP7-IG-av5"/>
                                 </connections>
                             </button>
+                            <searchBar contentMode="redraw" placeholder="Search for decks" translatesAutoresizingMaskIntoConstraints="NO" id="4fq-7F-526">
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="U4F-07-aFo"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="h9b-9I-vwb" firstAttribute="top" secondItem="952-up-tpY" secondAttribute="bottom" id="2Ni-uz-CKq"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="Wou-9X-9sp" secondAttribute="bottom" constant="16" id="AG7-oo-2Rm"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="Wou-9X-9sp" secondAttribute="bottom" constant="16" id="BbZ-WJ-iRG"/>
+                            <constraint firstItem="4fq-7F-526" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="CUz-6V-iQY"/>
                             <constraint firstItem="Wou-9X-9sp" firstAttribute="top" secondItem="h9b-9I-vwb" secondAttribute="bottom" constant="16" id="FN7-fk-DhI"/>
-                            <constraint firstItem="952-up-tpY" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="Lrq-DE-x7K"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="Wou-9X-9sp" secondAttribute="trailing" constant="32" id="HOi-2i-U9p"/>
+                            <constraint firstItem="h9b-9I-vwb" firstAttribute="top" secondItem="4fq-7F-526" secondAttribute="bottom" id="JGZ-63-0eJ"/>
+                            <constraint firstItem="4fq-7F-526" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="R5g-96-rzG"/>
                             <constraint firstItem="h9b-9I-vwb" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="T3n-ak-XxP"/>
                             <constraint firstItem="h9b-9I-vwb" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="UYG-vk-cU1"/>
-                            <constraint firstItem="952-up-tpY" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="nhS-B0-8ER"/>
-                            <constraint firstItem="Wou-9X-9sp" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="qvl-M3-8pn"/>
-                            <constraint firstItem="952-up-tpY" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="zwg-hq-THJ"/>
+                            <constraint firstItem="wg6-mh-9fL" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="32" id="XrQ-u5-pPt"/>
+                            <constraint firstItem="wg6-mh-9fL" firstAttribute="top" secondItem="h9b-9I-vwb" secondAttribute="bottom" constant="16" id="gDH-oI-Cep"/>
+                            <constraint firstItem="4fq-7F-526" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="nPt-0T-9cO"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="wg6-mh-9fL" secondAttribute="bottom" constant="16" id="rQZ-Za-imD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
@@ -100,7 +118,6 @@
                 <searchDisplayController id="lFg-HK-m3x">
                     <connections>
                         <outlet property="delegate" destination="9pv-A4-QxB" id="D6Y-DW-vZT"/>
-                        <outlet property="searchBar" destination="952-up-tpY" id="IGz-M3-wTY"/>
                         <outlet property="searchContentsController" destination="9pv-A4-QxB" id="ikP-nN-oV4"/>
                         <outlet property="searchResultsDataSource" destination="9pv-A4-QxB" id="hvr-yf-4tD"/>
                         <outlet property="searchResultsDelegate" destination="9pv-A4-QxB" id="zIx-gK-NaN"/>
@@ -238,8 +255,8 @@
                                     <constraint firstAttribute="width" constant="172" id="IfU-Pm-dwd"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ak-jV-B01">
-                                <rect key="frame" x="148.5" y="451.5" width="78" height="28.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ak-jV-B01">
+                                <rect key="frame" x="187.5" y="451.5" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -578,13 +595,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" text="" translatesAutoresizingMaskIntoConstraints="NO" id="uCx-hf-EF5">
-                                <rect key="frame" x="0.0" y="96" width="375" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="jaa-no-Yze" id="7oa-z6-KbV"/>
-                                </connections>
-                            </searchBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press and hold a deck to see more info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJC-Ls-Prc">
                                 <rect key="frame" x="78" y="72" width="219.5" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -592,7 +602,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JXm-b7-mjf">
-                                <rect key="frame" x="0.0" y="152" width="375" height="466"/>
+                                <rect key="frame" x="0.0" y="142.5" width="375" height="475.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="06x-lH-tEh">
                                     <size key="itemSize" width="50" height="50"/>
@@ -621,18 +631,26 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Oem-a8-9F2">
+                                <rect key="frame" x="0.0" y="86.5" width="375" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="bAF-lQ-ccs"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="JXm-b7-mjf" firstAttribute="trailing" secondItem="lb8-Fa-gVD" secondAttribute="trailing" id="7Va-mV-NzN"/>
-                            <constraint firstItem="uCx-hf-EF5" firstAttribute="leading" secondItem="lb8-Fa-gVD" secondAttribute="leading" id="JDi-f8-m7S"/>
-                            <constraint firstItem="uCx-hf-EF5" firstAttribute="trailing" secondItem="lb8-Fa-gVD" secondAttribute="trailing" id="LpL-EE-kfx"/>
+                            <constraint firstItem="Oem-a8-9F2" firstAttribute="centerX" secondItem="LlK-mY-3QC" secondAttribute="centerX" id="Gep-N8-vFw"/>
                             <constraint firstItem="lb8-Fa-gVD" firstAttribute="bottom" secondItem="JXm-b7-mjf" secondAttribute="bottom" id="Q7W-sA-klx"/>
                             <constraint firstItem="JXm-b7-mjf" firstAttribute="leading" secondItem="lb8-Fa-gVD" secondAttribute="leading" id="TcM-rP-56G"/>
-                            <constraint firstItem="uCx-hf-EF5" firstAttribute="top" secondItem="ZJC-Ls-Prc" secondAttribute="top" constant="24" id="Yw8-dA-3vn"/>
                             <constraint firstItem="ZJC-Ls-Prc" firstAttribute="centerX" secondItem="LlK-mY-3QC" secondAttribute="centerX" id="b6l-OE-OBz"/>
+                            <constraint firstItem="Oem-a8-9F2" firstAttribute="leading" secondItem="lb8-Fa-gVD" secondAttribute="leading" id="bbI-Wa-S8Z"/>
+                            <constraint firstItem="Oem-a8-9F2" firstAttribute="top" secondItem="ZJC-Ls-Prc" secondAttribute="bottom" id="ikk-Pt-nui"/>
+                            <constraint firstItem="JXm-b7-mjf" firstAttribute="top" secondItem="Oem-a8-9F2" secondAttribute="bottom" id="onw-73-xew"/>
+                            <constraint firstItem="Oem-a8-9F2" firstAttribute="trailing" secondItem="lb8-Fa-gVD" secondAttribute="trailing" id="p7y-in-mfi"/>
                             <constraint firstItem="ZJC-Ls-Prc" firstAttribute="top" secondItem="lb8-Fa-gVD" secondAttribute="top" constant="8" id="rvd-Kv-7l7"/>
-                            <constraint firstItem="JXm-b7-mjf" firstAttribute="top" secondItem="uCx-hf-EF5" secondAttribute="bottom" id="sh0-St-OQO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lb8-Fa-gVD"/>
                     </view>
@@ -651,7 +669,6 @@
                 <searchDisplayController id="6RX-rD-IYx">
                     <connections>
                         <outlet property="delegate" destination="jaa-no-Yze" id="RUn-Gn-r7o"/>
-                        <outlet property="searchBar" destination="uCx-hf-EF5" id="6zR-Dv-TOe"/>
                         <outlet property="searchContentsController" destination="jaa-no-Yze" id="k4a-S2-U5S"/>
                         <outlet property="searchResultsDataSource" destination="jaa-no-Yze" id="ndk-q0-DHO"/>
                         <outlet property="searchResultsDelegate" destination="jaa-no-Yze" id="yiL-Qb-eyL"/>
@@ -808,7 +825,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UwS-MO-qan">
-                                <rect key="frame" x="16" y="36" width="343" height="92"/>
+                                <rect key="frame" x="16" y="80" width="343" height="92"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="92" id="2oA-n9-oG9"/>
@@ -817,15 +834,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="pjh-gU-76r">
-                                <rect key="frame" x="0.0" y="144" width="375" height="56"/>
+                            <searchBar contentMode="redraw" placeholder="Search for cards in this deck!" translatesAutoresizingMaskIntoConstraints="NO" id="pjh-gU-76r">
+                                <rect key="frame" x="0.0" y="188" width="375" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="anC-0n-0wL"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DXH-sw-7aU">
-                                <rect key="frame" x="0.0" y="200" width="375" height="423"/>
+                                <rect key="frame" x="0.0" y="244" width="375" height="330"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qo6-cO-cqJ">
                                     <size key="itemSize" width="80" height="80"/>
@@ -1001,14 +1018,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WelcomeLoadingPicture" translatesAutoresizingMaskIntoConstraints="NO" id="sS6-fQ-9eU">
-                                <rect key="frame" x="16" y="36" width="160" height="160"/>
+                                <rect key="frame" x="16" y="80" width="160" height="160"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="KaF-TL-4gq"/>
                                     <constraint firstAttribute="height" constant="160" id="Ska-LR-StG"/>
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gS0-95-dR9">
-                                <rect key="frame" x="199" y="36" width="160" height="160"/>
+                                <rect key="frame" x="199" y="80" width="160" height="160"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="PWi-3s-uAf"/>
@@ -1026,7 +1043,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="This is where the card detail would go." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Be0-tp-Gto">
-                                <rect key="frame" x="8" y="228" width="359" height="431"/>
+                                <rect key="frame" x="8" y="272" width="359" height="338"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1141,14 +1158,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WelcomeLoadingPicture" translatesAutoresizingMaskIntoConstraints="NO" id="hPJ-zZ-6xM">
-                                <rect key="frame" x="16" y="36" width="160" height="160"/>
+                                <rect key="frame" x="16" y="80" width="160" height="160"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="QRF-CB-VxX"/>
                                     <constraint firstAttribute="height" constant="160" id="vN7-2v-E5h"/>
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9GP-Z7-12R">
-                                <rect key="frame" x="199" y="36" width="160" height="160"/>
+                                <rect key="frame" x="199" y="80" width="160" height="160"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="8B7-dO-CH8"/>
@@ -1166,7 +1183,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="This is where the card detail would go." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gD6-D9-fiX">
-                                <rect key="frame" x="8" y="228" width="359" height="431"/>
+                                <rect key="frame" x="8" y="272" width="359" height="338"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1678,7 +1695,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eSI-pt-JN0">
                                 <rect key="frame" x="16" y="80" width="343" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <mutableString key="text">How To Use:  This app is meant aid both the narrator and players in games similar to "Mafia" or "Werewolves". There are three main activities included: Deck Management, Game Management, and History.  Deck Management: With our app, users can create/modify their own decks. Use the first tab to navigate to these screens, where you can choose to view existing decks or create a new one. Each deck is made up of unique cards that are also user created!  Game Management: Once you have a deck you're ready to play through the second tab! As a narrator, you can select a deck you want to play with, determine the number of each role, and add players to your game. This takes you to the dashboard, where you can manage player statuses, timers for gameplay, and end the game. For players, you simply search for a nearby hosting narrator and join their game! Your screen will then display your role for the game.  History: This tab shows a detailed history of your past games, including who won, players' end game statuses (alive/dead) and roles!</mutableString>
+                                <string key="text">How To Use:  This app is meant aid both the narrator and players in games similar to "Mafia" or "Werewolves". There are three main activities included: Deck Management, Game Management, and History.  Deck Management: With our app, users can create/modify their own decks. Use the first tab to navigate to these screens, where you can choose to view existing decks or create a new one. Each deck is made up of unique cards that are also user created!  Game Management: Once you have a deck you're ready to play through the second tab! As a narrator, you can select a deck you want to play with, determine the number of each role, and add players to your game. This takes you to the dashboard, where you can manage player statuses, timers for gameplay, and end the game. For players, you simply search for a nearby hosting narrator and join their game! Your screen will then display your role for the game.  History: This tab shows a detailed history of your past games, including who won, players' end game statuses (alive/dead) and roles!</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -1708,7 +1725,7 @@
         <image name="helpIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pdz-yY-KAV"/>
+        <segue reference="l60-1W-HGq"/>
         <segue reference="zyS-kh-uZt"/>
         <segue reference="yD9-vY-Gqm"/>
     </inferredMetricsTieBreakers>
