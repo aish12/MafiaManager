@@ -27,7 +27,15 @@ class NarratorDashboardViewController: UIViewController {
     }
     */
     @IBAction func endGameButtonPressed(_ sender: Any) {
-        navigationController?.popToRootViewController(animated: true)
+        let alert = UIAlertController(title: "Are you sure?", message: "Ending a game cannot be undone", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+            self.performSegue(withIdentifier: "fromDashboardToRecordSegue", sender: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true)
+//        navigationController?.popToRootViewController(animated: true)
     }
     
 }

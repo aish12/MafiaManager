@@ -868,11 +868,7 @@
                         <viewLayoutGuide key="safeArea" id="B64-uA-zb4"/>
                     </view>
                     <navigationItem key="navigationItem" title="Deck Detail" id="AnU-PB-IDs">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="PD3-8Q-F75">
-                            <connections>
-                                <action selector="addCardButtonPressed:" destination="Njn-7g-FL3" id="2n2-DN-A2C"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="PD3-8Q-F75"/>
                     </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="tPA-y1-Pxu"/>
@@ -1377,6 +1373,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="win-Ub-pMO"/>
+                        <segue destination="lou-Ij-zi1" kind="show" identifier="fromDashboardToRecordSegue" id="aJs-ll-KHM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yGC-6T-lgK" sceneMemberID="firstResponder"/>
@@ -1391,31 +1388,31 @@
             </objects>
             <point key="canvasLocation" x="4605.6000000000004" y="357.57121439280365"/>
         </scene>
-        <!--View Controller-->
+        <!--Record Winners-->
         <scene sceneID="bvs-QA-yhD">
             <objects>
-                <viewController id="lou-Ij-zi1" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecordWinnersViewController" title="Record Winners" id="lou-Ij-zi1" customClass="RecordWinnersViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WQa-Mn-orK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H6E-be-yaw">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <items>
-                                    <navigationItem title="Record Winners" id="uR6-nx-rqn"/>
-                                </items>
-                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e7x-px-DpJ">
                                 <rect key="frame" x="8" y="79" width="359" height="426"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="enM-Yy-eBJ">
-                                <rect key="frame" x="240" y="565" width="103" height="30"/>
+                                <rect key="frame" x="240" y="516" width="103" height="30"/>
                                 <state key="normal" title="Record Results"/>
+                                <connections>
+                                    <action selector="recordResultsButtonPressed:" destination="lou-Ij-zi1" eventType="touchUpInside" id="HKP-BT-9ab"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ylj-S2-VzA">
-                                <rect key="frame" x="48" y="565" width="30" height="30"/>
+                                <rect key="frame" x="48" y="516" width="30" height="30"/>
                                 <state key="normal" title="Skip"/>
+                                <connections>
+                                    <action selector="skipButtonPressed:" destination="lou-Ij-zi1" eventType="touchUpInside" id="hAB-CP-rd0"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1425,13 +1422,15 @@
                             <constraint firstItem="imo-0F-vaG" firstAttribute="trailing" secondItem="e7x-px-DpJ" secondAttribute="trailing" constant="8" id="NaA-o4-kUq"/>
                             <constraint firstItem="Ylj-S2-VzA" firstAttribute="leading" secondItem="imo-0F-vaG" secondAttribute="leading" constant="48" id="OVL-AW-VXy"/>
                             <constraint firstItem="enM-Yy-eBJ" firstAttribute="top" secondItem="e7x-px-DpJ" secondAttribute="bottom" constant="48" id="U1a-Pw-fnP"/>
-                            <constraint firstItem="e7x-px-DpJ" firstAttribute="top" secondItem="H6E-be-yaw" secondAttribute="bottom" constant="16" id="UMc-se-lvl"/>
                             <constraint firstItem="imo-0F-vaG" firstAttribute="bottom" secondItem="Ylj-S2-VzA" secondAttribute="bottom" constant="72" id="ZWp-x7-Afk"/>
                             <constraint firstItem="e7x-px-DpJ" firstAttribute="leading" secondItem="imo-0F-vaG" secondAttribute="leading" constant="8" id="ugx-5D-TFg"/>
                             <constraint firstItem="Ylj-S2-VzA" firstAttribute="top" secondItem="e7x-px-DpJ" secondAttribute="bottom" constant="48" id="wfS-3s-yH8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="imo-0F-vaG"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Record Winners" id="MNu-0L-RcU">
+                        <barButtonItem key="leftBarButtonItem" id="mcJ-VM-Kle"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Efj-Mb-XK5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

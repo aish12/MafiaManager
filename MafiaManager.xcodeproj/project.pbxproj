@@ -13,6 +13,7 @@
 		7B146520224AE62C00241B00 /* NarratorDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B14651F224AE62C00241B00 /* NarratorDashboardViewController.swift */; };
 		7B4E70FF224990C0001395F2 /* ViewDeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4E70FE224990C0001395F2 /* ViewDeckCell.swift */; };
 		7B4E7101224990D7001395F2 /* AddDeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4E7100224990D7001395F2 /* AddDeckCell.swift */; };
+		7B4F1AD0224B26E60038225D /* RecordWinnersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F1ACF224B26E60038225D /* RecordWinnersViewController.swift */; };
 		8F974F8D37A5B79031110456 /* Pods_MafiaManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3736DE08530B5A6DD9C82E73 /* Pods_MafiaManager.framework */; };
 		BF01BDCE22487FA200C883D8 /* DecksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01BDCD22487FA200C883D8 /* DecksViewController.swift */; };
 		BF01BDD022487FB800C883D8 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01BDCF22487FB800C883D8 /* PlayViewController.swift */; };
@@ -38,6 +39,7 @@
 		7B14651F224AE62C00241B00 /* NarratorDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NarratorDashboardViewController.swift; sourceTree = "<group>"; };
 		7B4E70FE224990C0001395F2 /* ViewDeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDeckCell.swift; sourceTree = "<group>"; };
 		7B4E7100224990D7001395F2 /* AddDeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeckCell.swift; sourceTree = "<group>"; };
+		7B4F1ACF224B26E60038225D /* RecordWinnersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordWinnersViewController.swift; sourceTree = "<group>"; };
 		BF01BDCD22487FA200C883D8 /* DecksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecksViewController.swift; sourceTree = "<group>"; };
 		BF01BDCF22487FB800C883D8 /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		BF01BDD122487FCA00C883D8 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				BFFDFE5C223845170033F15B /* Info.plist */,
 				F618EE8022488DE500E32DA5 /* TabBarViewController.swift */,
 				7B14651F224AE62C00241B00 /* NarratorDashboardViewController.swift */,
+				7B4F1ACF224B26E60038225D /* RecordWinnersViewController.swift */,
 			);
 			path = MafiaManager;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B4F1AD0224B26E60038225D /* RecordWinnersViewController.swift in Sources */,
 				F618EE8122488DE500E32DA5 /* TabBarViewController.swift in Sources */,
 				7B146516224ACFEF00241B00 /* NewDeckViewController.swift in Sources */,
 				BF01BDD022487FB800C883D8 /* PlayViewController.swift in Sources */,
