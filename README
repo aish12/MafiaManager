@@ -1,7 +1,11 @@
 Contributions:
 
 Tesia (25%)
-  - Login/Register page and functionalit
+  - Login/Register page and functionality
+    - You can log in and register and it will authorize it/create that account like in HW6
+  - Can also save user information/profile and retrieve it from the Firebase database
+    - For example, the welcome loading page shows that user's name they signed up with.
+    - In the future, this will be how we store the user's game data as well
   - Welcome Loading screen 
   
 Daniel (25%)
@@ -19,6 +23,9 @@ Robby (25%)
 
 
 Differences:
- - Some of the labels are genericly labeled because we have not established the functionality yet.
- For example, on the welcome loading page, it states "Welcome User", because we have not created each individual's 
- profiles yet.
+ - 
+ 
+ 
+Clarifications:
+ - While there is a log in functionality, there is no log out functionality because in our Proposal we stated that is part of our settings page functionality.
+ 
