@@ -22,8 +22,8 @@
 		BFFDFE56223844C00033F15B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFDFE54223844C00033F15B /* Main.storyboard */; };
 		BFFDFE58223845160033F15B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFFDFE57223845160033F15B /* Assets.xcassets */; };
 		BFFDFE5B223845170033F15B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFDFE59223845170033F15B /* LaunchScreen.storyboard */; };
-		BFFDFE63223845500033F15B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFFDFE622238454F0033F15B /* GoogleService-Info.plist */; };
 		F618EE8122488DE500E32DA5 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618EE8022488DE500E32DA5 /* TabBarViewController.swift */; };
+		F64DF7C3224B000000513FD7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F64DF7C2224B000000513FD7 /* GoogleService-Info.plist */; };
 		F6F54C732244644700F6DFDF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F54C722244644700F6DFDF /* LoginViewController.swift */; };
 		F6F54C7522446B7D00F6DFDF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F54C7422446B7D00F6DFDF /* SignUpViewController.swift */; };
 		F6F54C77224482FC00F6DFDF /* LoadingWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F54C76224482FC00F6DFDF /* LoadingWelcomeViewController.swift */; };
@@ -48,9 +48,9 @@
 		BFFDFE57223845160033F15B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFFDFE5A223845170033F15B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BFFDFE5C223845170033F15B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BFFDFE622238454F0033F15B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F2AF33E2E3064D2FD43B2DBF /* Pods-MafiaManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MafiaManager.release.xcconfig"; path = "Target Support Files/Pods-MafiaManager/Pods-MafiaManager.release.xcconfig"; sourceTree = "<group>"; };
 		F618EE8022488DE500E32DA5 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		F64DF7C2224B000000513FD7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F6F54C722244644700F6DFDF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F6F54C7422446B7D00F6DFDF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		F6F54C76224482FC00F6DFDF /* LoadingWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingWelcomeViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +147,7 @@
 				F6F54C722244644700F6DFDF /* LoginViewController.swift */,
 				BF01BDCF22487FB800C883D8 /* PlayViewController.swift */,
 				BF01BDD122487FCA00C883D8 /* HistoryViewController.swift */,
+				F64DF7C2224B000000513FD7 /* GoogleService-Info.plist */,
 				7B14651E224ADD4600241B00 /* Login */,
 				7B14651D224ADD0700241B00 /* History */,
 				7B14651C224ADCF500241B00 /* Game Management */,
@@ -156,7 +157,6 @@
 				BFFDFE54223844C00033F15B /* Main.storyboard */,
 				BFFDFE57223845160033F15B /* Assets.xcassets */,
 				BFFDFE59223845170033F15B /* LaunchScreen.storyboard */,
-				BFFDFE622238454F0033F15B /* GoogleService-Info.plist */,
 				BFFDFE5C223845170033F15B /* Info.plist */,
 				F618EE8022488DE500E32DA5 /* TabBarViewController.swift */,
 				7B14651F224AE62C00241B00 /* NarratorDashboardViewController.swift */,
@@ -230,7 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFFDFE5B223845170033F15B /* LaunchScreen.storyboard in Resources */,
-				BFFDFE63223845500033F15B /* GoogleService-Info.plist in Resources */,
+				F64DF7C3224B000000513FD7 /* GoogleService-Info.plist in Resources */,
 				BFFDFE58223845160033F15B /* Assets.xcassets in Resources */,
 				BFFDFE56223844C00033F15B /* Main.storyboard in Resources */,
 			);

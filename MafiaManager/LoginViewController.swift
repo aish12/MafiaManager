@@ -44,6 +44,9 @@ class LoginViewController: UIViewController {
                     preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
                 self.present(alert, animated: true, completion: nil)
+            } else {
+                let homeView = self.storyboard?.instantiateViewController(withIdentifier: "loadingWelcomeIdentifier") as! LoadingWelcomeViewController
+                self.present(homeView, animated: true, completion: nil)
             }
         }
     }

@@ -148,7 +148,6 @@
                                         <state key="normal" title="Log In"/>
                                         <connections>
                                             <action selector="onLogInButtonPressed:" destination="3zU-Rx-iRc" eventType="touchUpInside" id="1PX-Vb-oG8"/>
-                                            <segue destination="N7e-LJ-TsQ" kind="show" identifier="loadingWelcomeSegueIdentifier" id="MHf-pW-y3d"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Se9-XX-xgx">
@@ -215,7 +214,7 @@
         <!--Loading Welcome View Controller-->
         <scene sceneID="QjN-PP-Oqg">
             <objects>
-                <viewController id="N7e-LJ-TsQ" customClass="LoadingWelcomeViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loadingWelcomeIdentifier" id="N7e-LJ-TsQ" customClass="LoadingWelcomeViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pjY-tW-674">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1056,15 +1055,6 @@
         <!--Copy Card-->
         <scene sceneID="2FZ-N8-kzA">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kOJ-89-Qra" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="aJW-ht-k2F">
-                    <connections>
-                        <outlet property="delegate" destination="qzR-gP-eI2" id="Nx0-La-TMB"/>
-                        <outlet property="searchContentsController" destination="qzR-gP-eI2" id="p8m-Zc-dSb"/>
-                        <outlet property="searchResultsDataSource" destination="qzR-gP-eI2" id="4k4-u5-TDx"/>
-                        <outlet property="searchResultsDelegate" destination="qzR-gP-eI2" id="vwX-m0-ePB"/>
-                    </connections>
-                </searchDisplayController>
                 <viewController storyboardIdentifier="CopyCardViewController" title="Copy Card" id="qzR-gP-eI2" customClass="CopyCardViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mmA-xC-7rP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -1114,6 +1104,15 @@
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="kvw-vD-gIS"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kOJ-89-Qra" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="aJW-ht-k2F">
+                    <connections>
+                        <outlet property="delegate" destination="qzR-gP-eI2" id="Nx0-La-TMB"/>
+                        <outlet property="searchContentsController" destination="qzR-gP-eI2" id="p8m-Zc-dSb"/>
+                        <outlet property="searchResultsDataSource" destination="qzR-gP-eI2" id="4k4-u5-TDx"/>
+                        <outlet property="searchResultsDelegate" destination="qzR-gP-eI2" id="vwX-m0-ePB"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="3965.5999999999999" y="-1005.2473763118442"/>
         </scene>
@@ -1507,7 +1506,7 @@
         <image name="Decks" width="35" height="41"/>
         <image name="MafiaIcon" width="250" height="250"/>
         <image name="Play" width="35" height="37"/>
-        <image name="WelcomeLoadingPicture" width="1000" height="1000"/>
+        <image name="WelcomeLoadingPicture" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="zyS-kh-uZt"/>
