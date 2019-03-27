@@ -19,7 +19,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextfield: UITextField!
     
     @IBAction func onLogInButtonPressed(_ sender: Any) {
-        
+        // Check valid inputs
         guard
             let email = emailTextfield.text,
             let password = passwordTextfield.text,
@@ -37,6 +37,7 @@ class LoginViewController: UIViewController {
         
         Auth.auth().signIn(withEmail: email, password: password) { user, error in
             if let error = error, user == nil {
+                // There is an error
                 let alert = UIAlertController(
                     title: "Sign In Failed",
                     message: error.localizedDescription,
@@ -44,6 +45,7 @@ class LoginViewController: UIViewController {
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
                 self.present(alert, animated: true, completion: nil)
             } else {
+                // Otherwise, can transition to the welcome view
                 let homeView = self.storyboard?.instantiateViewController(withIdentifier: "loadingWelcomeIdentifier") as! LoadingWelcomeViewController
                 self.present(homeView, animated: true, completion: nil)
             }
