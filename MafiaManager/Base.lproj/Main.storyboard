@@ -1393,6 +1393,52 @@
             </objects>
             <point key="canvasLocation" x="4605.6000000000004" y="357.57121439280365"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="bvs-QA-yhD">
+            <objects>
+                <viewController id="lou-Ij-zi1" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WQa-Mn-orK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H6E-be-yaw">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Record Winners" id="uR6-nx-rqn"/>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e7x-px-DpJ">
+                                <rect key="frame" x="8" y="79" width="359" height="426"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="enM-Yy-eBJ">
+                                <rect key="frame" x="240" y="565" width="103" height="30"/>
+                                <state key="normal" title="Record Results"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ylj-S2-VzA">
+                                <rect key="frame" x="48" y="565" width="30" height="30"/>
+                                <state key="normal" title="Skip"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="imo-0F-vaG" firstAttribute="trailing" secondItem="enM-Yy-eBJ" secondAttribute="trailing" constant="32" id="4fl-Rg-Yl0"/>
+                            <constraint firstItem="imo-0F-vaG" firstAttribute="bottom" secondItem="enM-Yy-eBJ" secondAttribute="bottom" constant="72" id="JVG-jc-gsC"/>
+                            <constraint firstItem="imo-0F-vaG" firstAttribute="trailing" secondItem="e7x-px-DpJ" secondAttribute="trailing" constant="8" id="NaA-o4-kUq"/>
+                            <constraint firstItem="Ylj-S2-VzA" firstAttribute="leading" secondItem="imo-0F-vaG" secondAttribute="leading" constant="48" id="OVL-AW-VXy"/>
+                            <constraint firstItem="enM-Yy-eBJ" firstAttribute="top" secondItem="e7x-px-DpJ" secondAttribute="bottom" constant="48" id="U1a-Pw-fnP"/>
+                            <constraint firstItem="e7x-px-DpJ" firstAttribute="top" secondItem="H6E-be-yaw" secondAttribute="bottom" constant="16" id="UMc-se-lvl"/>
+                            <constraint firstItem="imo-0F-vaG" firstAttribute="bottom" secondItem="Ylj-S2-VzA" secondAttribute="bottom" constant="72" id="ZWp-x7-Afk"/>
+                            <constraint firstItem="e7x-px-DpJ" firstAttribute="leading" secondItem="imo-0F-vaG" secondAttribute="leading" constant="8" id="ugx-5D-TFg"/>
+                            <constraint firstItem="Ylj-S2-VzA" firstAttribute="top" secondItem="e7x-px-DpJ" secondAttribute="bottom" constant="48" id="wfS-3s-yH8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="imo-0F-vaG"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Efj-Mb-XK5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5378" y="357"/>
+        </scene>
         <!--Settings View Controller-->
         <scene sceneID="oz2-aG-w5K">
             <objects>
