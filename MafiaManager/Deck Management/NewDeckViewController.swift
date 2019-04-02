@@ -7,6 +7,8 @@
 //
 //  Manages the view for creating a new deck
 import UIKit
+import CoreData
+import CoreGraphics
 
 class NewDeckViewController: UIViewController, ImagePickerDelegate, UITextViewDelegate {
     @IBOutlet weak var deckNameTextView: UITextView!
@@ -60,10 +62,31 @@ class NewDeckViewController: UIViewController, ImagePickerDelegate, UITextViewDe
     // So the user returns to the Decks view
     @IBAction func doneButtonPressed(_ sender: Any) {
         if let newName = deckNameTextView.text,
-            let newDescription = deckDetailTextView.text {
-            
+            let newDescription = deckDetailTextView.text,
+            let image = deckImagePickerButton.image(for: .normal) {
+            let newImage = image.pngData()
+            storeDeck(name: newName, description: newDescription, image: newImage!)
         }
         navigationController?.popViewController(animated: true)
+    }
+    
+    func storeDeck(name: String, description: String, image: Data) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let deck = NSEntityDescription.insertNewObject(forEntityName: "Deck", into: context)
+        deck.setValue(name, forKey: "deckName")
+        deck.setValue(description, forKey: "deckDescription")
+        deck.setValue(image, forKey: "deckImage")
+        // Commit the changes
+        do {
+            try context.save()
+            print("Successfully saved deck")
+        } catch {
+            // If an error occurs
+            let nserror = error as NSError
+            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+            abort()
+        }
     }
     
     // Creates and manages placeholder text, and character limits for deck name and description textviews

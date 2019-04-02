@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="17G6029" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Card" representedClassName="" syncable="YES">
+        <attribute name="cardDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cardImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="cardName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="parentDeck" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Deck" syncable="YES"/>
+    </entity>
+    <entity name="Deck" representedClassName="" syncable="YES">
+        <attribute name="deckDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deckImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="deckName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Deck" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="Card" positionX="-54" positionY="18" width="128" height="105"/>
+    </elements>
+</model>

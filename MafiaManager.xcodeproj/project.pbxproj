@@ -18,6 +18,7 @@
 		7B8EF722225403F100816B5F /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EF720225403F100816B5F /* Deck.swift */; };
 		7B8EF74A225405F500816B5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EF749225405F500816B5F /* AppDelegate.swift */; };
 		7B8EF74E22540ABC00816B5F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EF74D22540ABC00816B5F /* ImagePicker.swift */; };
+		7B8EF7512254180500816B5F /* MafiaManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EF74F2254180500816B5F /* MafiaManager.xcdatamodeld */; };
 		7BE7DAAA224C0F9F00E267CA /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE7DAA9224C0F9F00E267CA /* TimerViewController.swift */; };
 		7BE7DAAC224C137C00E267CA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE7DAAB224C137C00E267CA /* SettingsViewController.swift */; };
 		7BE7DAAE224C165A00E267CA /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE7DAAD224C165A00E267CA /* PlayViewController.swift */; };
@@ -50,6 +51,7 @@
 		7B8EF720225403F100816B5F /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		7B8EF749225405F500816B5F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../../Documents/temp/temp/AppDelegate.swift; sourceTree = "<group>"; };
 		7B8EF74D22540ABC00816B5F /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		7B8EF7502254180500816B5F /* MafiaManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MafiaManager.xcdatamodel; sourceTree = "<group>"; };
 		7BE7DAA9224C0F9F00E267CA /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		7BE7DAAB224C137C00E267CA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7BE7DAAD224C165A00E267CA /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				BFFDFE5C223845170033F15B /* Info.plist */,
 				F618EE8022488DE500E32DA5 /* TabBarViewController.swift */,
 				BFFDFE54223844C00033F15B /* Main.storyboard */,
+				7B8EF74F2254180500816B5F /* MafiaManager.xcdatamodeld */,
 			);
 			path = MafiaManager;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B8EF7512254180500816B5F /* MafiaManager.xcdatamodeld in Sources */,
 				7B8EF74A225405F500816B5F /* AppDelegate.swift in Sources */,
 				7B8EF722225403F100816B5F /* Deck.swift in Sources */,
 				7B4F1AD0224B26E60038225D /* RecordWinnersViewController.swift in Sources */,
@@ -544,6 +548,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7B8EF74F2254180500816B5F /* MafiaManager.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7B8EF7502254180500816B5F /* MafiaManager.xcdatamodel */,
+			);
+			currentVersion = 7B8EF7502254180500816B5F /* MafiaManager.xcdatamodel */;
+			path = MafiaManager.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BFFDFE43223844C00033F15B /* Project object */;
 }
