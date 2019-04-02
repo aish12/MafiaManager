@@ -8,7 +8,7 @@
 //  Manages the view for creating a new deck
 import UIKit
 
-class NewDeckViewController: UIViewController, ImagePickerDelegate {
+class NewDeckViewController: UIViewController, ImagePickerDelegate, UITextViewDelegate {
     @IBOutlet weak var deckNameTextView: UITextView!
     @IBOutlet weak var deckDetailTextView: UITextView!
     @IBOutlet weak var deckImagePickerButton: UIButton!
@@ -19,6 +19,18 @@ class NewDeckViewController: UIViewController, ImagePickerDelegate {
         super.viewDidLoad()
         
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
+        
+        deckNameTextView.text = "Enter deck name"
+        deckNameTextView.textColor = UIColor.lightGray
+        
+        deckNameTextView.becomeFirstResponder()
+        
+        deckNameTextView.selectedTextRange = deckNameTextView.textRange(from: deckNameTextView.beginningOfDocument, to: deckNameTextView.beginningOfDocument)
+        deckNameTextView.delegate = self
+        
+        deckDetailTextView.text = "Enter deck description"
+        deckDetailTextView.textColor = UIColor.lightGray
+        deckDetailTextView.delegate = self
     }
     
     
@@ -39,14 +51,55 @@ class NewDeckViewController: UIViewController, ImagePickerDelegate {
         }
         navigationController?.popViewController(animated: true)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        // Combine the textView text and the replacement text to
+        // create the updated text string
+        let currentText:String = textView.text
+        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
+        
+        // If updated text view will be empty, add the placeholder
+        // and set the cursor to the beginning of the text view
+        if updatedText.isEmpty {
+            if textView == deckNameTextView {
+                textView.text = "Enter deck name"
+            } else if textView == deckDetailTextView {
+                textView.text = "Enter deck description"
+            } else {
+                textView.text = "This should not appear. Oops."
+            }
+            textView.textColor = UIColor.lightGray
+            
+            textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+        }
+            
+            // Else if the text view's placeholder is showing and the
+            // length of the replacement string is greater than 0, set
+            // the text color to black then set its text to the
+            // replacement string
+        else if textView.textColor == UIColor.lightGray && !text.isEmpty {
+            textView.textColor = UIColor.black
+            textView.text = text
+        }
+            
+            // For every other case, the text should change with the usual
+            // behavior...
+        else {
+            return true
+        }
+        
+        // ...otherwise return false since the updates have already
+        // been made
+        return false
     }
-    */
+    
+    func textViewDidChangeSelection(_ textView: UITextView) {
+        if self.view.window != nil {
+            if textView.textColor == UIColor.lightGray {
+                textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+            }
+        }
+    }
 
 }
