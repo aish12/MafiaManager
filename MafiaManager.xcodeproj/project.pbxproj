@@ -16,6 +16,8 @@
 		7B4F1AD0224B26E60038225D /* RecordWinnersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F1ACF224B26E60038225D /* RecordWinnersViewController.swift */; };
 		7B8EF721225403F100816B5F /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EF71F225403F100816B5F /* Card.swift */; };
 		7B8EF722225403F100816B5F /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EF720225403F100816B5F /* Deck.swift */; };
+		7B8EF74A225405F500816B5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EF749225405F500816B5F /* AppDelegate.swift */; };
+		7B8EF74E22540ABC00816B5F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EF74D22540ABC00816B5F /* ImagePicker.swift */; };
 		7BE7DAAA224C0F9F00E267CA /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE7DAA9224C0F9F00E267CA /* TimerViewController.swift */; };
 		7BE7DAAC224C137C00E267CA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE7DAAB224C137C00E267CA /* SettingsViewController.swift */; };
 		7BE7DAAE224C165A00E267CA /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE7DAAD224C165A00E267CA /* PlayViewController.swift */; };
@@ -24,7 +26,6 @@
 		BF01BDD022487FB800C883D8 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01BDCF22487FB800C883D8 /* PlayerViewController.swift */; };
 		BF01BDD222487FCA00C883D8 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01BDD122487FCA00C883D8 /* HistoryViewController.swift */; };
 		BF32AF31224AAA1700D32277 /* DeckDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32AF30224AAA1700D32277 /* DeckDetailViewController.swift */; };
-		BFFDFE4F223844C00033F15B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFDFE4E223844C00033F15B /* AppDelegate.swift */; };
 		BFFDFE56223844C00033F15B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFDFE54223844C00033F15B /* Main.storyboard */; };
 		BFFDFE58223845160033F15B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFFDFE57223845160033F15B /* Assets.xcassets */; };
 		BFFDFE5B223845170033F15B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFDFE59223845170033F15B /* LaunchScreen.storyboard */; };
@@ -47,6 +48,8 @@
 		7B4F1ACF224B26E60038225D /* RecordWinnersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordWinnersViewController.swift; sourceTree = "<group>"; };
 		7B8EF71F225403F100816B5F /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		7B8EF720225403F100816B5F /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		7B8EF749225405F500816B5F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../../Documents/temp/temp/AppDelegate.swift; sourceTree = "<group>"; };
+		7B8EF74D22540ABC00816B5F /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		7BE7DAA9224C0F9F00E267CA /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		7BE7DAAB224C137C00E267CA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7BE7DAAD224C165A00E267CA /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
@@ -55,7 +58,6 @@
 		BF01BDD122487FCA00C883D8 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		BF32AF30224AAA1700D32277 /* DeckDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckDetailViewController.swift; sourceTree = "<group>"; };
 		BFFDFE4B223844C00033F15B /* MafiaManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MafiaManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BFFDFE4E223844C00033F15B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFFDFE55223844C00033F15B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BFFDFE57223845160033F15B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFFDFE5A223845170033F15B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				BF01BDCD22487FA200C883D8 /* DecksViewController.swift */,
 				7B8EF71F225403F100816B5F /* Card.swift */,
 				7B8EF720225403F100816B5F /* Deck.swift */,
+				7B8EF74D22540ABC00816B5F /* ImagePicker.swift */,
 			);
 			path = "Deck Management";
 			sourceTree = "<group>";
@@ -172,12 +175,12 @@
 				7B8EF727225404D900816B5F /* History */,
 				F64DF7C2224B000000513FD7 /* GoogleService-Info.plist */,
 				F6F54C782246D95000F6DFDF /* MafiaManager.entitlements */,
-				BFFDFE4E223844C00033F15B /* AppDelegate.swift */,
-				BFFDFE54223844C00033F15B /* Main.storyboard */,
+				7B8EF749225405F500816B5F /* AppDelegate.swift */,
 				BFFDFE57223845160033F15B /* Assets.xcassets */,
 				BFFDFE59223845170033F15B /* LaunchScreen.storyboard */,
 				BFFDFE5C223845170033F15B /* Info.plist */,
 				F618EE8022488DE500E32DA5 /* TabBarViewController.swift */,
+				BFFDFE54223844C00033F15B /* Main.storyboard */,
 			);
 			path = MafiaManager;
 			sourceTree = "<group>";
@@ -316,19 +319,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B8EF74A225405F500816B5F /* AppDelegate.swift in Sources */,
 				7B8EF722225403F100816B5F /* Deck.swift in Sources */,
 				7B4F1AD0224B26E60038225D /* RecordWinnersViewController.swift in Sources */,
 				F618EE8122488DE500E32DA5 /* TabBarViewController.swift in Sources */,
 				7B146516224ACFEF00241B00 /* NewDeckViewController.swift in Sources */,
 				BF01BDD022487FB800C883D8 /* PlayerViewController.swift in Sources */,
 				7B4E7101224990D7001395F2 /* AddDeckCell.swift in Sources */,
+				7B8EF74E22540ABC00816B5F /* ImagePicker.swift in Sources */,
 				F6F54C732244644700F6DFDF /* LoginViewController.swift in Sources */,
 				7B146518224AD68500241B00 /* CreateCardViewController.swift in Sources */,
 				7B8EF721225403F100816B5F /* Card.swift in Sources */,
 				7B146520224AE62C00241B00 /* NarratorDashboardViewController.swift in Sources */,
 				7BE7DAAE224C165A00E267CA /* PlayViewController.swift in Sources */,
 				BF01BDCE22487FA200C883D8 /* DecksViewController.swift in Sources */,
-				BFFDFE4F223844C00033F15B /* AppDelegate.swift in Sources */,
 				BF01BDD222487FCA00C883D8 /* HistoryViewController.swift in Sources */,
 				7B14651A224ADAA200241B00 /* CopyCardViewController.swift in Sources */,
 				7BE7DAAA224C0F9F00E267CA /* TimerViewController.swift in Sources */,

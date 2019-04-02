@@ -935,15 +935,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WelcomeLoadingPicture" translatesAutoresizingMaskIntoConstraints="NO" id="nHs-55-GgI">
-                                <rect key="frame" x="16" y="96" width="160" height="160"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="160" id="Kcn-4X-6pT"/>
-                                    <constraint firstAttribute="width" constant="160" id="Rk2-2e-p2B"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="160" id="cjK-3W-uT5"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="lzn-Kz-DBc"/>
-                                </constraints>
-                            </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gjS-P8-tXs">
                                 <rect key="frame" x="199" y="96" width="160" height="160"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -970,17 +961,31 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QKs-0q-cDP">
+                                <rect key="frame" x="16" y="96" width="160" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="Bhi-a4-l6t"/>
+                                    <constraint firstAttribute="height" constant="160" id="u8I-MJ-hFe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <state key="normal" title="Press to select image">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="imagePickerButtonPressed:" destination="DyT-sd-Kss" eventType="touchUpInside" id="9do-85-3Do"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="nHs-55-GgI" firstAttribute="leading" secondItem="57x-sr-cRt" secondAttribute="leading" constant="16" id="IRV-8F-zz2"/>
+                            <constraint firstItem="V3f-UO-vhL" firstAttribute="top" secondItem="QKs-0q-cDP" secondAttribute="bottom" constant="32" id="JyW-Gw-A9a"/>
                             <constraint firstItem="57x-sr-cRt" firstAttribute="trailing" secondItem="V3f-UO-vhL" secondAttribute="trailing" constant="16" id="NOE-VT-fa5"/>
                             <constraint firstItem="57x-sr-cRt" firstAttribute="trailing" secondItem="gjS-P8-tXs" secondAttribute="trailing" constant="16" id="Sal-f2-cZ4"/>
-                            <constraint firstItem="V3f-UO-vhL" firstAttribute="top" secondItem="nHs-55-GgI" secondAttribute="bottom" constant="32" id="Tdg-DS-X09"/>
                             <constraint firstItem="57x-sr-cRt" firstAttribute="bottom" secondItem="V3f-UO-vhL" secondAttribute="bottom" constant="16" id="VZC-Qs-bKr"/>
                             <constraint firstItem="V3f-UO-vhL" firstAttribute="leading" secondItem="57x-sr-cRt" secondAttribute="leading" constant="16" id="dD9-ai-IF5"/>
-                            <constraint firstItem="nHs-55-GgI" firstAttribute="top" secondItem="57x-sr-cRt" secondAttribute="top" constant="32" id="gL1-DJ-A8q"/>
+                            <constraint firstItem="QKs-0q-cDP" firstAttribute="leading" secondItem="57x-sr-cRt" secondAttribute="leading" constant="16" id="qRy-oR-dMt"/>
                             <constraint firstItem="gjS-P8-tXs" firstAttribute="top" secondItem="57x-sr-cRt" secondAttribute="top" constant="32" id="rWv-7m-atd"/>
+                            <constraint firstItem="QKs-0q-cDP" firstAttribute="top" secondItem="57x-sr-cRt" secondAttribute="top" constant="32" id="wTZ-jP-BTO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="57x-sr-cRt"/>
                     </view>
@@ -993,6 +998,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="deckDetailTextView" destination="V3f-UO-vhL" id="YTQ-9Q-tLu"/>
+                        <outlet property="deckImagePickerButton" destination="QKs-0q-cDP" id="5EW-qN-ZoL"/>
                         <outlet property="deckNameTextView" destination="gjS-P8-tXs" id="dGe-1O-vy5"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="uig-Ii-8xU"/>
                     </connections>
@@ -1007,7 +1013,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2593" y="-321"/>
+            <point key="canvasLocation" x="2592.8000000000002" y="-321.58920539730138"/>
         </scene>
         <!--Create Card-->
         <scene sceneID="fdf-GY-wgb">

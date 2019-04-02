@@ -44,6 +44,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>&quot;We require access to your camera so you can upload custom deck/card images&quot;</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>&quot;We require access to your camera so you can upload custom deck/card images&quot;</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
