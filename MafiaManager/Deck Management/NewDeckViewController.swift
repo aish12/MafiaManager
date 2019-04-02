@@ -15,9 +15,12 @@ class NewDeckViewController: UIViewController, ImagePickerDelegate, UITextViewDe
     
     var imagePicker: ImagePicker!
     
+    //  Set placeholder text for name and description entry
+    //  On load have focus on name entry
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //  Creates an image picker for user to select deck image
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         
         deckNameTextView.text = "Enter deck name"
@@ -33,11 +36,12 @@ class NewDeckViewController: UIViewController, ImagePickerDelegate, UITextViewDe
         deckDetailTextView.delegate = self
     }
     
-    
+    //  When user taps imagePicker, let them select from camera roll
     @IBAction func imagePickerButtonPressed(_ sender: UIButton) {
         self.imagePicker.present(from: sender)
     }
     
+    // When user selects an image from camera roll, display it over the imagePicker
     func didSelect(image: UIImage?) {
         self.deckImagePickerButton.setImage(image, for: .normal)
     }
@@ -52,6 +56,7 @@ class NewDeckViewController: UIViewController, ImagePickerDelegate, UITextViewDe
         navigationController?.popViewController(animated: true)
     }
     
+    // Creates and manages placeholder text, and character limits for deck name and description textviews
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
         // Combine the textView text and the replacement text to
@@ -86,7 +91,16 @@ class NewDeckViewController: UIViewController, ImagePickerDelegate, UITextViewDe
             // For every other case, the text should change with the usual
             // behavior...
         else {
-            return true
+            let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+            let numberOfChars = newText.count
+            if textView == deckNameTextView {
+                return numberOfChars <= 30
+            } else if textView == deckDetailTextView {
+                return numberOfChars <= 500
+            } else {
+                print("Should not reach, character limits in textView")
+                return true
+            }
         }
         
         // ...otherwise return false since the updates have already
@@ -94,6 +108,7 @@ class NewDeckViewController: UIViewController, ImagePickerDelegate, UITextViewDe
         return false
     }
     
+    // Manages placeholder text for deck name and description text views
     func textViewDidChangeSelection(_ textView: UITextView) {
         if self.view.window != nil {
             if textView.textColor == UIColor.lightGray {
