@@ -90,6 +90,53 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		7B8EF7242254045500816B5F /* Deck Management */ = {
+			isa = PBXGroup;
+			children = (
+				7B146515224ACFEF00241B00 /* NewDeckViewController.swift */,
+				7B146517224AD68500241B00 /* CreateCardViewController.swift */,
+				7B146519224ADAA200241B00 /* CopyCardViewController.swift */,
+				BF32AF30224AAA1700D32277 /* DeckDetailViewController.swift */,
+				7B4E70FE224990C0001395F2 /* ViewDeckCell.swift */,
+				7B4E7100224990D7001395F2 /* AddDeckCell.swift */,
+				BF01BDCD22487FA200C883D8 /* DecksViewController.swift */,
+				7B8EF71F225403F100816B5F /* Card.swift */,
+				7B8EF720225403F100816B5F /* Deck.swift */,
+			);
+			path = "Deck Management";
+			sourceTree = "<group>";
+		};
+		7B8EF725225404BF00816B5F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				F6F54C76224482FC00F6DFDF /* LoadingWelcomeViewController.swift */,
+				F6F54C7422446B7D00F6DFDF /* SignUpViewController.swift */,
+				F6F54C722244644700F6DFDF /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		7B8EF726225404D200816B5F /* Gameplay */ = {
+			isa = PBXGroup;
+			children = (
+				BF01BDCF22487FB800C883D8 /* PlayerViewController.swift */,
+				7B14651F224AE62C00241B00 /* NarratorDashboardViewController.swift */,
+				7B4F1ACF224B26E60038225D /* RecordWinnersViewController.swift */,
+				7BE7DAA9224C0F9F00E267CA /* TimerViewController.swift */,
+				7BE7DAAB224C137C00E267CA /* SettingsViewController.swift */,
+				7BE7DAAD224C165A00E267CA /* PlayViewController.swift */,
+			);
+			path = Gameplay;
+			sourceTree = "<group>";
+		};
+		7B8EF727225404D900816B5F /* History */ = {
+			isa = PBXGroup;
+			children = (
+				BF01BDD122487FCA00C883D8 /* HistoryViewController.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
 		7E802CDD2D987692A4E7EAE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,18 +166,10 @@
 		BFFDFE4D223844C00033F15B /* MafiaManager */ = {
 			isa = PBXGroup;
 			children = (
-				7B146515224ACFEF00241B00 /* NewDeckViewController.swift */,
-				7B146517224AD68500241B00 /* CreateCardViewController.swift */,
-				7B146519224ADAA200241B00 /* CopyCardViewController.swift */,
-				BF32AF30224AAA1700D32277 /* DeckDetailViewController.swift */,
-				7B4E70FE224990C0001395F2 /* ViewDeckCell.swift */,
-				7B4E7100224990D7001395F2 /* AddDeckCell.swift */,
-				BF01BDCD22487FA200C883D8 /* DecksViewController.swift */,
-				F6F54C76224482FC00F6DFDF /* LoadingWelcomeViewController.swift */,
-				F6F54C7422446B7D00F6DFDF /* SignUpViewController.swift */,
-				F6F54C722244644700F6DFDF /* LoginViewController.swift */,
-				BF01BDCF22487FB800C883D8 /* PlayerViewController.swift */,
-				BF01BDD122487FCA00C883D8 /* HistoryViewController.swift */,
+				7B8EF725225404BF00816B5F /* Login */,
+				7B8EF7242254045500816B5F /* Deck Management */,
+				7B8EF726225404D200816B5F /* Gameplay */,
+				7B8EF727225404D900816B5F /* History */,
 				F64DF7C2224B000000513FD7 /* GoogleService-Info.plist */,
 				F6F54C782246D95000F6DFDF /* MafiaManager.entitlements */,
 				BFFDFE4E223844C00033F15B /* AppDelegate.swift */,
@@ -139,13 +178,6 @@
 				BFFDFE59223845170033F15B /* LaunchScreen.storyboard */,
 				BFFDFE5C223845170033F15B /* Info.plist */,
 				F618EE8022488DE500E32DA5 /* TabBarViewController.swift */,
-				7B14651F224AE62C00241B00 /* NarratorDashboardViewController.swift */,
-				7B4F1ACF224B26E60038225D /* RecordWinnersViewController.swift */,
-				7BE7DAA9224C0F9F00E267CA /* TimerViewController.swift */,
-				7BE7DAAB224C137C00E267CA /* SettingsViewController.swift */,
-				7BE7DAAD224C165A00E267CA /* PlayViewController.swift */,
-				7B8EF71F225403F100816B5F /* Card.swift */,
-				7B8EF720225403F100816B5F /* Deck.swift */,
 			);
 			path = MafiaManager;
 			sourceTree = "<group>";
