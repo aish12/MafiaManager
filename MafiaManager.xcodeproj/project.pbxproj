@@ -14,6 +14,8 @@
 		7B4E70FF224990C0001395F2 /* ViewDeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4E70FE224990C0001395F2 /* ViewDeckCell.swift */; };
 		7B4E7101224990D7001395F2 /* AddDeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4E7100224990D7001395F2 /* AddDeckCell.swift */; };
 		7B4F1AD0224B26E60038225D /* RecordWinnersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F1ACF224B26E60038225D /* RecordWinnersViewController.swift */; };
+		7B8EF721225403F100816B5F /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EF71F225403F100816B5F /* Card.swift */; };
+		7B8EF722225403F100816B5F /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EF720225403F100816B5F /* Deck.swift */; };
 		7BE7DAAA224C0F9F00E267CA /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE7DAA9224C0F9F00E267CA /* TimerViewController.swift */; };
 		7BE7DAAC224C137C00E267CA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE7DAAB224C137C00E267CA /* SettingsViewController.swift */; };
 		7BE7DAAE224C165A00E267CA /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE7DAAD224C165A00E267CA /* PlayViewController.swift */; };
@@ -43,6 +45,8 @@
 		7B4E70FE224990C0001395F2 /* ViewDeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDeckCell.swift; sourceTree = "<group>"; };
 		7B4E7100224990D7001395F2 /* AddDeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeckCell.swift; sourceTree = "<group>"; };
 		7B4F1ACF224B26E60038225D /* RecordWinnersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordWinnersViewController.swift; sourceTree = "<group>"; };
+		7B8EF71F225403F100816B5F /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		7B8EF720225403F100816B5F /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		7BE7DAA9224C0F9F00E267CA /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		7BE7DAAB224C137C00E267CA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7BE7DAAD224C165A00E267CA /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +144,8 @@
 				7BE7DAA9224C0F9F00E267CA /* TimerViewController.swift */,
 				7BE7DAAB224C137C00E267CA /* SettingsViewController.swift */,
 				7BE7DAAD224C165A00E267CA /* PlayViewController.swift */,
+				7B8EF71F225403F100816B5F /* Card.swift */,
+				7B8EF720225403F100816B5F /* Deck.swift */,
 			);
 			path = MafiaManager;
 			sourceTree = "<group>";
@@ -278,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B8EF722225403F100816B5F /* Deck.swift in Sources */,
 				7B4F1AD0224B26E60038225D /* RecordWinnersViewController.swift in Sources */,
 				F618EE8122488DE500E32DA5 /* TabBarViewController.swift in Sources */,
 				7B146516224ACFEF00241B00 /* NewDeckViewController.swift in Sources */,
@@ -285,6 +292,7 @@
 				7B4E7101224990D7001395F2 /* AddDeckCell.swift in Sources */,
 				F6F54C732244644700F6DFDF /* LoginViewController.swift in Sources */,
 				7B146518224AD68500241B00 /* CreateCardViewController.swift in Sources */,
+				7B8EF721225403F100816B5F /* Card.swift in Sources */,
 				7B146520224AE62C00241B00 /* NarratorDashboardViewController.swift in Sources */,
 				7BE7DAAE224C165A00E267CA /* PlayViewController.swift in Sources */,
 				BF01BDCE22487FA200C883D8 /* DecksViewController.swift in Sources */,
