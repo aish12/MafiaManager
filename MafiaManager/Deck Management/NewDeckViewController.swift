@@ -10,11 +10,14 @@ import UIKit
 import CoreData
 import CoreGraphics
 
+protocol ReloadDecksDelegate: class {
+    func reloadDecks()
+}
 class NewDeckViewController: UIViewController, ImagePickerDelegate, UITextViewDelegate {
     @IBOutlet weak var deckNameTextView: UITextView!
     @IBOutlet weak var deckDetailTextView: UITextView!
     @IBOutlet weak var deckImagePickerButton: UIButton!
-    
+    weak var decksViewControllerDelegate: ReloadDecksDelegate?
     var imagePicker: ImagePicker!
     
     //  Set placeholder text for name and description entry
@@ -67,6 +70,8 @@ class NewDeckViewController: UIViewController, ImagePickerDelegate, UITextViewDe
             let newImage = image.pngData()
             storeDeck(name: newName, description: newDescription, image: newImage!)
         }
+        decksViewControllerDelegate?.reloadDecks()
+        
         navigationController?.popViewController(animated: true)
     }
     
