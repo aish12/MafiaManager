@@ -12,9 +12,13 @@ import CoreData
 class DeckDetailViewController: UIViewController {
 
     var deckObject: NSManagedObject = NSManagedObject()
+    @IBOutlet weak var navbar: UINavigationItem!
+    @IBOutlet weak var deckDetailTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navbar.title = deckObject.value(forKey: "deckName") as? String
+        deckDetailTextView.text = deckObject.value(forKey: "deckDescription") as? String
         // Do any additional setup after loading the view.
     }
     

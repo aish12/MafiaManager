@@ -896,6 +896,8 @@
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="PD3-8Q-F75"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="deckDetailTextView" destination="UwS-MO-qan" id="ffp-Cm-ERJ"/>
+                        <outlet property="navbar" destination="AnU-PB-IDs" id="3Js-IO-506"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="tPA-y1-Pxu"/>
                         <segue destination="zXe-B4-3vK" kind="show" identifier="fromDetailToNewCardSegue" id="Wjw-RG-Gkh"/>
                         <segue destination="qzR-gP-eI2" kind="show" identifier="fromDetailToCopyCardSegue" id="0d5-wB-Ye2"/>
