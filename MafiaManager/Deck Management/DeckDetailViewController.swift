@@ -7,12 +7,14 @@
 //
 //  Responsible for managing the Deck Detail View Controller
 import UIKit
+import CoreData
 
 class DeckDetailViewController: UIViewController {
 
+    var deckObject: NSManagedObject = NSManagedObject()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
     }
     

@@ -49,24 +49,11 @@
                                         <size key="customSize" width="117" height="117"/>
                                         <connections>
                                             <outlet property="deckCellImageView" destination="b0P-nR-829" id="QAe-f3-HuT"/>
+                                            <segue destination="Njn-7g-FL3" kind="show" identifier="fromDecksToDeckDetail" id="9TM-AD-Lvh"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wg6-mh-9fL">
-                                <rect key="frame" x="32" y="749" width="120" height="48"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="GU4-Zm-Qlx"/>
-                                    <constraint firstAttribute="height" constant="48" id="bhA-Gh-Ygl"/>
-                                </constraints>
-                                <state key="normal" title="View Deck">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Njn-7g-FL3" kind="show" id="dyi-iG-m0h"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wou-9X-9sp">
                                 <rect key="frame" x="262" y="749" width="120" height="48"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -100,10 +87,7 @@
                             <constraint firstItem="4fq-7F-526" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="R5g-96-rzG"/>
                             <constraint firstItem="h9b-9I-vwb" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="T3n-ak-XxP"/>
                             <constraint firstItem="h9b-9I-vwb" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="UYG-vk-cU1"/>
-                            <constraint firstItem="wg6-mh-9fL" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="32" id="XrQ-u5-pPt"/>
-                            <constraint firstItem="wg6-mh-9fL" firstAttribute="top" secondItem="h9b-9I-vwb" secondAttribute="bottom" constant="16" id="gDH-oI-Cep"/>
                             <constraint firstItem="4fq-7F-526" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="nPt-0T-9cO"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="wg6-mh-9fL" secondAttribute="bottom" constant="16" id="rQZ-Za-imD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>

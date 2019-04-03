@@ -33,6 +33,10 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        decksCollectionView.deselectItem(at: indexPath, animated: true)
+    }
+    
     // On load, round the corners of any buttons to standard size (10)
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +76,12 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
         if segue.identifier == "fromDecksToNewDeckSegue",
             let destinationVC = segue.destination as? NewDeckViewController {
             destinationVC.decksViewControllerDelegate = self
-        }
+        } else if segue.identifier == "fromDecksToDeckDetail",
+            let destinationVC = segue.destination as? DeckDetailViewController,
+            let iPaths = self.decksCollectionView.indexPathsForSelectedItems,
+            let firstPath: NSIndexPath = iPaths[0] as NSIndexPath{
+                destinationVC.deckObject = decks[firstPath.row]
+            }
     }
  
 
