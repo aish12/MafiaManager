@@ -62,13 +62,19 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ymc-FA-yZX">
                                                     <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGo-C4-S1C">
+                                                    <rect key="frame" x="87" y="0.0" width="30" height="30"/>
+                                                    <state key="normal" title="X"/>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="ymc-FA-yZX" firstAttribute="top" secondItem="Cne-6C-0cc" secondAttribute="top" id="3kY-pJ-0qQ"/>
                                             <constraint firstAttribute="trailing" secondItem="ymc-FA-yZX" secondAttribute="trailing" id="7Kz-HL-LFw"/>
+                                            <constraint firstItem="YGo-C4-S1C" firstAttribute="top" secondItem="Cne-6C-0cc" secondAttribute="top" id="7zs-IW-Ttj"/>
                                             <constraint firstItem="ymc-FA-yZX" firstAttribute="leading" secondItem="Cne-6C-0cc" secondAttribute="leading" id="LWI-4T-o6T"/>
                                             <constraint firstAttribute="bottom" secondItem="ymc-FA-yZX" secondAttribute="bottom" id="V5T-GC-7MX"/>
+                                            <constraint firstAttribute="trailing" secondItem="YGo-C4-S1C" secondAttribute="trailing" id="WeH-Dx-kbi"/>
                                         </constraints>
                                         <size key="customSize" width="117" height="117"/>
                                         <connections>

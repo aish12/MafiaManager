@@ -13,7 +13,6 @@ import CoreData
 class DecksViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, ReloadDecksDelegate {
 
     @IBOutlet weak var decksCollectionView: UICollectionView!
-    @IBOutlet weak var newDeckButton: UIButton!
     let deckCellIdentifier = "DeckCell"
     let addDeckCellIdentifier = "NewDeckCell"
     var decks: [NSManagedObject] = []
@@ -30,11 +29,15 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
         if (deckCounter == 0){
             let newCell = collectionView.dequeueReusableCell(withReuseIdentifier: addDeckCellIdentifier, for: indexPath as IndexPath) as! NewDeckCellCollectionViewCell
             newCell.addCellImageView.image = UIImage(named: "plusIcon")
+            newCell.addCellImageView.layer.cornerRadius = 10
+            newCell.addCellImageView.layer.masksToBounds = true
             cell = newCell
         } else {
             let deckCell = collectionView.dequeueReusableCell(withReuseIdentifier: deckCellIdentifier, for: indexPath as IndexPath) as! DeckCellCollectionViewCell
             let deck = decks[deckCounter - 1]
             deckCell.deckCellImageView.image = UIImage(data: deck.value(forKey: "deckImage") as! Data)
+            deckCell.deckCellImageView.layer.cornerRadius = 10
+            deckCell.deckCellImageView.layer.masksToBounds = true
             cell = deckCell
         }
         deckCounter = (deckCounter + 1) % (decks.count + 1)
@@ -48,12 +51,11 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
     // On load, round the corners of any buttons to standard size (10)
     override func viewDidLoad() {
         super.viewDidLoad()
-        newDeckButton.layer.cornerRadius = 10
-        
         decksCollectionView.dataSource = self
         decksCollectionView.delegate = self
-        print("ViewDidLoad")
         reloadDecks()
+    
+        
     }
     
     func reloadDecks() {
