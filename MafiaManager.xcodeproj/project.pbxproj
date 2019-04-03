@@ -15,6 +15,7 @@
 		7B4E7101224990D7001395F2 /* AddDeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4E7100224990D7001395F2 /* AddDeckCell.swift */; };
 		7B4F1AD0224B26E60038225D /* RecordWinnersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F1ACF224B26E60038225D /* RecordWinnersViewController.swift */; };
 		7B8B9A622255644D002260E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B9A612255644D002260E9 /* AppDelegate.swift */; };
+		7B8B9A6622557153002260E9 /* NewDeckCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B9A6522557153002260E9 /* NewDeckCellCollectionViewCell.swift */; };
 		7B8EF721225403F100816B5F /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EF71F225403F100816B5F /* Card.swift */; };
 		7B8EF722225403F100816B5F /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EF720225403F100816B5F /* Deck.swift */; };
 		7B8EF74E22540ABC00816B5F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EF74D22540ABC00816B5F /* ImagePicker.swift */; };
@@ -49,6 +50,7 @@
 		7B4E7100224990D7001395F2 /* AddDeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeckCell.swift; sourceTree = "<group>"; };
 		7B4F1ACF224B26E60038225D /* RecordWinnersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordWinnersViewController.swift; sourceTree = "<group>"; };
 		7B8B9A612255644D002260E9 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7B8B9A6522557153002260E9 /* NewDeckCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeckCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		7B8EF71F225403F100816B5F /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		7B8EF720225403F100816B5F /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		7B8EF74D22540ABC00816B5F /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				7B8EF720225403F100816B5F /* Deck.swift */,
 				7B8EF74D22540ABC00816B5F /* ImagePicker.swift */,
 				7B8EF7522254260600816B5F /* DeckCellCollectionViewCell.swift */,
+				7B8B9A6522557153002260E9 /* NewDeckCellCollectionViewCell.swift */,
 			);
 			path = "Deck Management";
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				7B146518224AD68500241B00 /* CreateCardViewController.swift in Sources */,
 				7B8EF721225403F100816B5F /* Card.swift in Sources */,
 				7B146520224AE62C00241B00 /* NarratorDashboardViewController.swift in Sources */,
+				7B8B9A6622557153002260E9 /* NewDeckCellCollectionViewCell.swift in Sources */,
 				7BE7DAAE224C165A00E267CA /* PlayViewController.swift in Sources */,
 				BF01BDCE22487FA200C883D8 /* DecksViewController.swift in Sources */,
 				BF01BDD222487FCA00C883D8 /* HistoryViewController.swift in Sources */,

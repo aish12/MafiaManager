@@ -15,21 +15,29 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
     @IBOutlet weak var decksCollectionView: UICollectionView!
     @IBOutlet weak var newDeckButton: UIButton!
     let deckCellIdentifier = "DeckCell"
-    let addDeckCellIdentifier = "AddDeckCell"
+    let addDeckCellIdentifier = "NewDeckCell"
     var decks: [NSManagedObject] = []
     var deckCounter = 0
     // Dummy to be completed, required for collection view
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return decks.count
+        return decks.count + 1
     }
     
-    // Dummy to be completed, required for collection view
+    // Returns the cell for each item in the decks collection view
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         print("Running for cell \(deckCounter)")
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: deckCellIdentifier, for: indexPath as IndexPath) as! DeckCellCollectionViewCell
-        let deck = decks[deckCounter]
-        deckCounter = (deckCounter + 1) % decks.count
-        cell.deckCellImageView.image = UIImage(data: deck.value(forKey: "deckImage") as! Data)
+        var cell: UICollectionViewCell
+        if (deckCounter == 0){
+            let newCell = collectionView.dequeueReusableCell(withReuseIdentifier: addDeckCellIdentifier, for: indexPath as IndexPath) as! NewDeckCellCollectionViewCell
+            newCell.addCellImageView.image = UIImage(named: "plusIcon")
+            cell = newCell
+        } else {
+            let deckCell = collectionView.dequeueReusableCell(withReuseIdentifier: deckCellIdentifier, for: indexPath as IndexPath) as! DeckCellCollectionViewCell
+            let deck = decks[deckCounter - 1]
+            deckCell.deckCellImageView.image = UIImage(data: deck.value(forKey: "deckImage") as! Data)
+            cell = deckCell
+        }
+        deckCounter = (deckCounter + 1) % (decks.count + 1)
         return cell
     }
     
@@ -75,13 +83,17 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "fromDecksToNewDeckSegue",
             let destinationVC = segue.destination as? NewDeckViewController {
+            print("in first")
             destinationVC.decksViewControllerDelegate = self
         } else if segue.identifier == "fromDecksToDeckDetail",
             let destinationVC = segue.destination as? DeckDetailViewController,
-            let iPaths = self.decksCollectionView.indexPathsForSelectedItems,
-            let firstPath: NSIndexPath = iPaths[0] as NSIndexPath{
-                destinationVC.deckObject = decks[firstPath.row]
-            }
+            let iPaths = self.decksCollectionView.indexPathsForSelectedItems {
+                print("in second")
+                let firstPath: NSIndexPath = iPaths[0] as NSIndexPath
+                if (firstPath.row > 0){
+                    destinationVC.deckObject = decks[firstPath.row - 1]
+                }
+        }
     }
  
 
