@@ -14,9 +14,9 @@
 		7B4E70FF224990C0001395F2 /* ViewDeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4E70FE224990C0001395F2 /* ViewDeckCell.swift */; };
 		7B4E7101224990D7001395F2 /* AddDeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4E7100224990D7001395F2 /* AddDeckCell.swift */; };
 		7B4F1AD0224B26E60038225D /* RecordWinnersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F1ACF224B26E60038225D /* RecordWinnersViewController.swift */; };
+		7B8B9A622255644D002260E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B9A612255644D002260E9 /* AppDelegate.swift */; };
 		7B8EF721225403F100816B5F /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EF71F225403F100816B5F /* Card.swift */; };
 		7B8EF722225403F100816B5F /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EF720225403F100816B5F /* Deck.swift */; };
-		7B8EF74A225405F500816B5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EF749225405F500816B5F /* AppDelegate.swift */; };
 		7B8EF74E22540ABC00816B5F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EF74D22540ABC00816B5F /* ImagePicker.swift */; };
 		7B8EF7512254180500816B5F /* MafiaManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EF74F2254180500816B5F /* MafiaManager.xcdatamodeld */; };
 		7B8EF7532254260600816B5F /* DeckCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EF7522254260600816B5F /* DeckCellCollectionViewCell.swift */; };
@@ -48,9 +48,9 @@
 		7B4E70FE224990C0001395F2 /* ViewDeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDeckCell.swift; sourceTree = "<group>"; };
 		7B4E7100224990D7001395F2 /* AddDeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeckCell.swift; sourceTree = "<group>"; };
 		7B4F1ACF224B26E60038225D /* RecordWinnersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordWinnersViewController.swift; sourceTree = "<group>"; };
+		7B8B9A612255644D002260E9 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B8EF71F225403F100816B5F /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		7B8EF720225403F100816B5F /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
-		7B8EF749225405F500816B5F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../../Documents/temp/temp/AppDelegate.swift; sourceTree = "<group>"; };
 		7B8EF74D22540ABC00816B5F /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		7B8EF7502254180500816B5F /* MafiaManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MafiaManager.xcdatamodel; sourceTree = "<group>"; };
 		7B8EF7522254260600816B5F /* DeckCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckCellCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -174,13 +174,13 @@
 		BFFDFE4D223844C00033F15B /* MafiaManager */ = {
 			isa = PBXGroup;
 			children = (
+				7B8B9A612255644D002260E9 /* AppDelegate.swift */,
 				7B8EF725225404BF00816B5F /* Login */,
 				7B8EF7242254045500816B5F /* Deck Management */,
 				7B8EF726225404D200816B5F /* Gameplay */,
 				7B8EF727225404D900816B5F /* History */,
 				F64DF7C2224B000000513FD7 /* GoogleService-Info.plist */,
 				F6F54C782246D95000F6DFDF /* MafiaManager.entitlements */,
-				7B8EF749225405F500816B5F /* AppDelegate.swift */,
 				BFFDFE57223845160033F15B /* Assets.xcassets */,
 				BFFDFE59223845170033F15B /* LaunchScreen.storyboard */,
 				BFFDFE5C223845170033F15B /* Info.plist */,
@@ -325,8 +325,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B8B9A622255644D002260E9 /* AppDelegate.swift in Sources */,
 				7B8EF7512254180500816B5F /* MafiaManager.xcdatamodeld in Sources */,
-				7B8EF74A225405F500816B5F /* AppDelegate.swift in Sources */,
 				7B8EF722225403F100816B5F /* Deck.swift in Sources */,
 				7B4F1AD0224B26E60038225D /* RecordWinnersViewController.swift in Sources */,
 				F618EE8122488DE500E32DA5 /* TabBarViewController.swift in Sources */,
