@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="h9b-9I-vwb">
-                                <rect key="frame" x="0.0" y="144" width="414" height="589"/>
+                                <rect key="frame" x="0.0" y="144" width="414" height="669"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pIj-Bd-ibK">
                                     <size key="itemSize" width="117" height="117"/>
@@ -78,17 +78,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wou-9X-9sp">
-                                <rect key="frame" x="262" y="749" width="120" height="48"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="3YK-fS-FbC"/>
-                                    <constraint firstAttribute="width" constant="120" id="iME-K3-e4e"/>
-                                </constraints>
-                                <state key="normal" title="New Deck">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
                             <searchBar contentMode="redraw" placeholder="Search for decks" translatesAutoresizingMaskIntoConstraints="NO" id="4fq-7F-526">
                                 <rect key="frame" x="0.0" y="88" width="414" height="56"/>
                                 <constraints>
@@ -99,15 +88,12 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="Wou-9X-9sp" secondAttribute="bottom" constant="16" id="AG7-oo-2Rm"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="Wou-9X-9sp" secondAttribute="bottom" constant="16" id="BbZ-WJ-iRG"/>
                             <constraint firstItem="4fq-7F-526" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="CUz-6V-iQY"/>
-                            <constraint firstItem="Wou-9X-9sp" firstAttribute="top" secondItem="h9b-9I-vwb" secondAttribute="bottom" constant="16" id="FN7-fk-DhI"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="Wou-9X-9sp" secondAttribute="trailing" constant="32" id="HOi-2i-U9p"/>
                             <constraint firstItem="h9b-9I-vwb" firstAttribute="top" secondItem="4fq-7F-526" secondAttribute="bottom" id="JGZ-63-0eJ"/>
                             <constraint firstItem="4fq-7F-526" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="R5g-96-rzG"/>
                             <constraint firstItem="h9b-9I-vwb" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="T3n-ak-XxP"/>
                             <constraint firstItem="h9b-9I-vwb" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="UYG-vk-cU1"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="h9b-9I-vwb" secondAttribute="bottom" id="g88-bl-RjQ"/>
                             <constraint firstItem="4fq-7F-526" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="nPt-0T-9cO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
@@ -121,7 +107,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="decksCollectionView" destination="h9b-9I-vwb" id="l7H-qp-Hdj"/>
-                        <outlet property="newDeckButton" destination="Wou-9X-9sp" id="ZmK-dX-2Pl"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="K9C-eb-2QG"/>
                     </connections>
                 </viewController>
