@@ -17,6 +17,7 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
     let addDeckCellIdentifier = "NewDeckCell"
     var decks: [NSManagedObject] = []
     var deckCounter = 0
+    
     // Dummy to be completed, required for collection view
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return decks.count + 1
@@ -113,11 +114,29 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
         
         if let indexPath = indexPath,
             indexPath.row != 0 {
+            toEditState()
+            /*
+            for var i = 1; i < decks.count + 1; i++ {
+                var cell = self.decksCollectionView.cellForIte
+            }
             var cell = self.decksCollectionView.cellForItem(at: indexPath)
-            print(indexPath.row)
+            print(indexPath.row)*/
         } else {
             print("Could not find indexPath")
         }
     }
     
+    func toEditState(){
+        for section in 0..<self.decksCollectionView.numberOfSections {
+            for item in 0..<self.decksCollectionView.numberOfItems(inSection: section){
+                if section == 0 && item == 0 {
+                    continue
+                }
+                let currCell = self.decksCollectionView.cellForItem(at: IndexPath(item: item, section: section)) as! DeckCellCollectionViewCell
+                currCell.enterEditMode()
+            }
+        }
+    }
+    
 }
+
