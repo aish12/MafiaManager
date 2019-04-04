@@ -51,6 +51,10 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
     // On load, round the corners of any buttons to standard size (10)
     override func viewDidLoad() {
         super.viewDidLoad()
+        let longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(longPressGR:)))
+        longPressGR.minimumPressDuration = 0.5
+        longPressGR.delaysTouchesBegan = true
+        self.decksCollectionView.addGestureRecognizer(longPressGR)
         decksCollectionView.dataSource = self
         decksCollectionView.delegate = self
         reloadDecks()
@@ -98,5 +102,22 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
         }
     }
  
-
+    // Long press for each collection view cell
+    @objc func handleLongPress(longPressGR : UILongPressGestureRecognizer) {
+        if longPressGR.state != .began {
+            return
+        }
+        
+        let point = longPressGR.location(in: self.decksCollectionView)
+        let indexPath = self.decksCollectionView.indexPathForItem(at: point)
+        
+        if let indexPath = indexPath,
+            indexPath.row != 0 {
+            var cell = self.decksCollectionView.cellForItem(at: indexPath)
+            print(indexPath.row)
+        } else {
+            print("Could not find indexPath")
+        }
+    }
+    
 }
