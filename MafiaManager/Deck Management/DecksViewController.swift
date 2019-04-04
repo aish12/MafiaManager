@@ -119,7 +119,9 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
                     }
                 }
                 try context.save()
-                self.reloadDecks()
+                self.decks = self.retrieveDecks()
+                self.decksCollectionView.deleteItems(at: [IndexPath(item: cellIndex + 1, section: 0)])
+                
             } catch {
                 let nserror = error as NSError
                 NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
