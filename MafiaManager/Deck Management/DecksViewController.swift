@@ -43,6 +43,13 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
             deckCell.deckCellImageView.layer.masksToBounds = true
             deckCell.delegate = self
             deckCell.cellIndex = deckCounter - 1
+//            if inEditMode {
+//                print("in edit mode for cell \(deckCell.cellIndex)")
+//                deckCell.enterEditMode()
+//            } else {
+//                print("out of edit mode for cell \(deckCell.cellIndex)")
+//                deckCell.leaveEditMode()
+//            }
             cell = deckCell
         }
         deckCounter = (deckCounter + 1) % (decks.count + 1)
@@ -92,42 +99,37 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
     
     func deleteDeck(cellIndex: Int) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let request =
-            NSFetchRequest<NSFetchRequestResult>(entityName:"Deck")
-        var targetCell: NSManagedObject = decks[cellIndex]
-        var fetchResults:[NSManagedObject]
+        let alert = UIAlertController(title: "Are you sure?", message: "Deleting a deck cannot be undone", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: {_ in
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let request =
+                NSFetchRequest<NSFetchRequestResult>(entityName:"Deck")
+            let targetCell: NSManagedObject = self.decks[cellIndex]
+            var fetchResults:[NSManagedObject]
         
-        do {
-            try fetchResults = context.fetch(request) as! [NSManagedObject]
-            if fetchResults.count > 0 {
-                for result:AnyObject in fetchResults {
-                    if result as! NSObject == targetCell {
-                        context.delete(result as! NSManagedObject)
+            do {
+                try fetchResults = context.fetch(request) as! [NSManagedObject]
+                if fetchResults.count > 0 {
+                    for result:AnyObject in fetchResults {
+                        if result as! NSObject == targetCell {
+                            context.delete(result as! NSManagedObject)
+                        }
                     }
                 }
+                try context.save()
+                self.reloadDecks()
+            } catch {
+                let nserror = error as NSError
+                NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+                abort()
             }
-            try context.save()
-            reloadDecks()
-        } catch {
-            let nserror = error as NSError
-            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
-            abort()
-        }
-        
+        })
+        alert.addAction(cancelAction)
+        alert.addAction(deleteAction)
+        present(alert, animated: true, completion: nil)
     }
-    
-//    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
-//        if let ident = identifier {
-//            if ident == "fromDecksToNewDeckSegue" {
-//                if inEditMode == true {
-//                    return false
-//                }
-//            }
-//        }
-//        return true
-//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "fromDecksToNewDeckSegue",
@@ -155,7 +157,8 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
         let indexPath = self.decksCollectionView.indexPathForItem(at: point)
         
         if let indexPath = indexPath,
-            indexPath.row != 0 {
+            indexPath.row != 0,
+            inEditMode != true {
             inEditMode = true
             startEditState()
             self.settingsNavBarItem = navigationItem.rightBarButtonItem
@@ -166,6 +169,7 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
     
     @objc func endEditState() {
+        inEditMode = false
         for section in 0..<self.decksCollectionView.numberOfSections {
             for item in 0..<self.decksCollectionView.numberOfItems(inSection: section){
                 if section == 0 && item == 0 {
@@ -179,10 +183,10 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
             }
         }
         navigationItem.rightBarButtonItem = self.settingsNavBarItem
-        inEditMode = false
     }
     
     func startEditState(){
+        inEditMode = true
         for section in 0..<self.decksCollectionView.numberOfSections {
             for item in 0..<self.decksCollectionView.numberOfItems(inSection: section){
                 if section == 0 && item == 0 {
