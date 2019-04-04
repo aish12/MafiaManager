@@ -10,13 +10,13 @@
 import UIKit
 import CoreData
 
-class DecksViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, ReloadDecksDelegate, DeleteDeckDelegate {
+class DecksViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, AddDeckDelegate, DeleteDeckDelegate {
 
     @IBOutlet weak var decksCollectionView: UICollectionView!
     let deckCellIdentifier = "DeckCell"
     let addDeckCellIdentifier = "NewDeckCell"
     var decks: [NSManagedObject] = []
-    var deckCounter = 0
+//    var deckCounter = 0
     var settingsNavBarItem:UIBarButtonItem!
     var inEditMode = false
     
@@ -27,32 +27,26 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     // Returns the cell for each item in the decks collection view
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("Running for cell \(deckCounter) and in edit mdoe: \(inEditMode)")
         var cell: UICollectionViewCell
-        if (deckCounter == 0){
+        if (indexPath.section == 0 && indexPath.item == 0){
             let newCell = collectionView.dequeueReusableCell(withReuseIdentifier: addDeckCellIdentifier, for: indexPath as IndexPath) as! NewDeckCellCollectionViewCell
             newCell.addCellImageView.image = UIImage(named: "plusIcon")
             newCell.addCellImageView.layer.cornerRadius = 10
             newCell.addCellImageView.layer.masksToBounds = true
             cell = newCell
-        } else {
+        } else if (indexPath.section == 0){
             let deckCell = collectionView.dequeueReusableCell(withReuseIdentifier: deckCellIdentifier, for: indexPath as IndexPath) as! DeckCellCollectionViewCell
-            let deck = decks[deckCounter - 1]
+            let deck = decks[indexPath.item - 1]
             deckCell.deckCellImageView.image = UIImage(data: deck.value(forKey: "deckImage") as! Data)
             deckCell.deckCellImageView.layer.cornerRadius = 10
             deckCell.deckCellImageView.layer.masksToBounds = true
             deckCell.delegate = self
-            deckCell.cellIndex = deckCounter - 1
-//            if inEditMode {
-//                print("in edit mode for cell \(deckCell.cellIndex)")
-//                deckCell.enterEditMode()
-//            } else {
-//                print("out of edit mode for cell \(deckCell.cellIndex)")
-//                deckCell.leaveEditMode()
-//            }
+            deckCell.cellIndex = indexPath.item - 1
             cell = deckCell
+        } else {
+            print("Section beyond 0 reached for decks, should not happen")
+            abort()
         }
-        deckCounter = (deckCounter + 1) % (decks.count + 1)
         return cell
     }
     
@@ -69,12 +63,12 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
         self.decksCollectionView.addGestureRecognizer(longPressGR)
         decksCollectionView.dataSource = self
         decksCollectionView.delegate = self
-        reloadDecks()
-    
+        loadDecks()
+        print("deck count: \(decks.count)")
         
     }
     
-    func reloadDecks() {
+    func loadDecks() {
         decks = retrieveDecks()
         decksCollectionView.reloadData()
         print("Number of decks = \(decks.count)")
@@ -96,6 +90,13 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
             abort()
         }
         return(fetchedResults)!
+    }
+    
+    func addDeck(deckToAdd: NSManagedObject) {
+        self.decks.append(deckToAdd)
+        print(decks.count)
+        let newIPath: IndexPath = IndexPath(item: decks.count, section: 0)
+        self.decksCollectionView.insertItems(at: [newIPath])
     }
     
     func deleteDeck(cellIndex: Int) {
@@ -181,6 +182,8 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
                 } else {
                     let currCell = self.decksCollectionView.cellForItem(at: IndexPath(item: item, section: section)) as! DeckCellCollectionViewCell
                     currCell.leaveEditMode()
+                    print("ending edit state for item \(item) in section \(section)")
+
                 }
             }
         }
@@ -196,6 +199,7 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
                     currCell.isUserInteractionEnabled = false
                     currCell.backgroundColor = UIColor.lightGray
                 } else {
+                    print("in startEditState for item \(item) in section \(section)")
                     let currCell = self.decksCollectionView.cellForItem(at: IndexPath(item: item, section: section)) as! DeckCellCollectionViewCell
                     currCell.enterEditMode()
                 }

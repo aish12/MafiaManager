@@ -26,6 +26,8 @@ class DeckCellCollectionViewCell: UICollectionViewCell {
         deleteButton.setImage(deleteButtonImg, for: .normal)
         deleteButton.tintColor = UIColor.red
         deleteButton.addTarget(self, action: #selector(deleteDeck), for: .touchUpInside)
+        deleteButton.tag = 100
+        print("Adding delete and wiggle to superview")
         contentView.addSubview(deleteButton)
         startWiggle()
         print("Editing cell")
@@ -36,6 +38,9 @@ class DeckCellCollectionViewCell: UICollectionViewCell {
     }
     
     func leaveEditMode() {
+//        if let delButton = self.deleteButton.viewWithTag(100){
+//            delButton.removeFromSuperview()
+//        }
         deleteButton.removeFromSuperview()
         stopWiggle()
     }

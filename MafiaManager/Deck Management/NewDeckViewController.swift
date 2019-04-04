@@ -10,14 +10,14 @@ import UIKit
 import CoreData
 import CoreGraphics
 
-protocol ReloadDecksDelegate: class {
-    func reloadDecks()
+protocol AddDeckDelegate: class {
+    func addDeck(deckToAdd: NSManagedObject)
 }
 class NewDeckViewController: UIViewController, ImagePickerDelegate, UITextViewDelegate {
     @IBOutlet weak var deckNameTextView: UITextView!
     @IBOutlet weak var deckDetailTextView: UITextView!
     @IBOutlet weak var deckImagePickerButton: UIButton!
-    weak var decksViewControllerDelegate: ReloadDecksDelegate?
+    weak var decksViewControllerDelegate: AddDeckDelegate?
     var imagePicker: ImagePicker!
     
     //  Set placeholder text for name and description entry
@@ -68,21 +68,20 @@ class NewDeckViewController: UIViewController, ImagePickerDelegate, UITextViewDe
             let newDescription = deckDetailTextView.text,
             let image = deckImagePickerButton.image(for: .normal) {
             let newImage = image.pngData()
-            storeDeck(name: newName, description: newDescription, image: newImage!)
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let deck = NSEntityDescription.insertNewObject(forEntityName: "Deck", into: context)
+            deck.setValue(newName, forKey: "deckName")
+            deck.setValue(newDescription, forKey: "deckDescription")
+            deck.setValue(newImage, forKey: "deckImage")
+            storeDeck(deck: deck, context: context)
+            decksViewControllerDelegate?.addDeck(deckToAdd: deck)
+
         }
-        decksViewControllerDelegate?.reloadDecks()
-        
         navigationController?.popViewController(animated: true)
     }
     
-    func storeDeck(name: String, description: String, image: Data) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let deck = NSEntityDescription.insertNewObject(forEntityName: "Deck", into: context)
-        deck.setValue(name, forKey: "deckName")
-        deck.setValue(description, forKey: "deckDescription")
-        deck.setValue(image, forKey: "deckImage")
-        // Commit the changes
+    func storeDeck(deck: NSManagedObject, context: NSManagedObjectContext) {
         do {
             try context.save()
             print("Successfully saved deck")
