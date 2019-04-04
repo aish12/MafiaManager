@@ -25,6 +25,11 @@ class DeckCellCollectionViewCell: UICollectionViewCell {
         startWiggle()
     }
     
+    func leaveEditMode() {
+        deleteButton.removeFromSuperview()
+        stopWiggle()
+    }
+    
     private func degreesToRadians(_ x: CGFloat) -> CGFloat {
         return .pi * x / 180.0
     }

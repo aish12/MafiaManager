@@ -17,6 +17,7 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
     let addDeckCellIdentifier = "NewDeckCell"
     var decks: [NSManagedObject] = []
     var deckCounter = 0
+    var settingsNavBarItem:UIBarButtonItem!
     
     // Dummy to be completed, required for collection view
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -90,6 +91,7 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "fromDecksToNewDeckSegue",
             let destinationVC = segue.destination as? NewDeckViewController {
+            endEditState()
             print("in first")
             destinationVC.decksViewControllerDelegate = self
         } else if segue.identifier == "fromDecksToDeckDetail",
@@ -114,19 +116,28 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
         
         if let indexPath = indexPath,
             indexPath.row != 0 {
-            toEditState()
-            /*
-            for var i = 1; i < decks.count + 1; i++ {
-                var cell = self.decksCollectionView.cellForIte
-            }
-            var cell = self.decksCollectionView.cellForItem(at: indexPath)
-            print(indexPath.row)*/
+            startEditState()
+            self.settingsNavBarItem = navigationItem.rightBarButtonItem
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(endEditState))
         } else {
             print("Could not find indexPath")
         }
     }
     
-    func toEditState(){
+    @objc func endEditState() {
+        for section in 0..<self.decksCollectionView.numberOfSections {
+            for item in 0..<self.decksCollectionView.numberOfItems(inSection: section){
+                if section == 0 && item == 0 {
+                    continue
+                }
+                let currCell = self.decksCollectionView.cellForItem(at: IndexPath(item: item, section: section)) as! DeckCellCollectionViewCell
+                currCell.leaveEditMode()
+            }
+        }
+        navigationItem.rightBarButtonItem = self.settingsNavBarItem
+    }
+    
+    func startEditState(){
         for section in 0..<self.decksCollectionView.numberOfSections {
             for item in 0..<self.decksCollectionView.numberOfItems(inSection: section){
                 if section == 0 && item == 0 {
