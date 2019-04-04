@@ -28,6 +28,7 @@ class DeckCellCollectionViewCell: UICollectionViewCell {
         deleteButton.addTarget(self, action: #selector(deleteDeck), for: .touchUpInside)
         contentView.addSubview(deleteButton)
         startWiggle()
+        print("Editing cell")
     }
     
     @objc func deleteDeck() {
