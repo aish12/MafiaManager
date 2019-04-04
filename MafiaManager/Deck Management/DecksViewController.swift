@@ -42,6 +42,9 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
             deckCell.deckCellImageView.layer.masksToBounds = true
             deckCell.delegate = self
             deckCell.cellIndex = indexPath.item - 1
+            if (!inEditMode){
+                deckCell.leaveEditMode()
+            }
             cell = deckCell
         } else {
             print("Section beyond 0 reached for decks, should not happen")
@@ -64,14 +67,14 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
         decksCollectionView.dataSource = self
         decksCollectionView.delegate = self
         loadDecks()
-        print("deck count: \(decks.count)")
+//        print("deck count: \(decks.count)")
         
     }
     
     func loadDecks() {
         decks = retrieveDecks()
         decksCollectionView.reloadData()
-        print("Number of decks = \(decks.count)")
+//        print("Number of decks = \(decks.count)")
     }
     
     func retrieveDecks() -> [NSManagedObject] {
@@ -94,11 +97,13 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     func addDeck(deckToAdd: NSManagedObject) {
         self.decks.append(deckToAdd)
-        print(decks.count)
+//        print(decks.count)
         let newIPath: IndexPath = IndexPath(item: decks.count, section: 0)
+        print("new ipath item: \(newIPath.item) and section \(newIPath.section)")
         self.decksCollectionView.insertItems(at: [newIPath])
     }
     
+    // Cell index is index in decks array, not index of item in IndexPath
     func deleteDeck(cellIndex: Int) {
         let alert = UIAlertController(title: "Are you sure?", message: "Deleting a deck cannot be undone", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -120,7 +125,8 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
                     }
                 }
                 try context.save()
-                self.decks = self.retrieveDecks()
+//                self.decks = self.retrieveDecks()
+                self.decks.remove(at: cellIndex)
                 self.decksCollectionView.deleteItems(at: [IndexPath(item: cellIndex + 1, section: 0)])
                 
             } catch {
@@ -137,12 +143,12 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "fromDecksToNewDeckSegue",
             let destinationVC = segue.destination as? NewDeckViewController {
-            print("in first")
+//            print("in first")
             destinationVC.decksViewControllerDelegate = self
         } else if segue.identifier == "fromDecksToDeckDetail",
             let destinationVC = segue.destination as? DeckDetailViewController,
             let iPaths = self.decksCollectionView.indexPathsForSelectedItems {
-                print("in second")
+//                print("in second")
                 let firstPath: NSIndexPath = iPaths[0] as NSIndexPath
                 if (firstPath.row > 0){
                     destinationVC.deckObject = decks[firstPath.row - 1]
@@ -182,7 +188,7 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
                 } else {
                     let currCell = self.decksCollectionView.cellForItem(at: IndexPath(item: item, section: section)) as! DeckCellCollectionViewCell
                     currCell.leaveEditMode()
-                    print("ending edit state for item \(item) in section \(section)")
+//                    print("ending edit state for item \(item) in section \(section)")
 
                 }
             }
@@ -199,7 +205,7 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
                     currCell.isUserInteractionEnabled = false
                     currCell.backgroundColor = UIColor.lightGray
                 } else {
-                    print("in startEditState for item \(item) in section \(section)")
+//                    print("in startEditState for item \(item) in section \(section)")
                     let currCell = self.decksCollectionView.cellForItem(at: IndexPath(item: item, section: section)) as! DeckCellCollectionViewCell
                     currCell.enterEditMode()
                 }

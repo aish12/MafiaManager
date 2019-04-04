@@ -27,10 +27,9 @@ class DeckCellCollectionViewCell: UICollectionViewCell {
         deleteButton.tintColor = UIColor.red
         deleteButton.addTarget(self, action: #selector(deleteDeck), for: .touchUpInside)
         deleteButton.tag = 100
-        print("Adding delete and wiggle to superview")
+        print("Adding x subview")
         contentView.addSubview(deleteButton)
         startWiggle()
-        print("Editing cell")
     }
     
     @objc func deleteDeck() {
@@ -41,7 +40,9 @@ class DeckCellCollectionViewCell: UICollectionViewCell {
 //        if let delButton = self.deleteButton.viewWithTag(100){
 //            delButton.removeFromSuperview()
 //        }
-        deleteButton.removeFromSuperview()
+        if deleteButton?.superview != nil{
+            deleteButton.removeFromSuperview()
+        }
         stopWiggle()
     }
     
@@ -54,6 +55,7 @@ class DeckCellCollectionViewCell: UICollectionViewCell {
         displacement: CGFloat = 1.0,
         degreesRotation: CGFloat = 2.0
         ) {
+        print("wiggle called")
         let negativeDisplacement = -1.0 * displacement
         let position = CAKeyframeAnimation.init(keyPath: "position")
         position.beginTime = 0.8
