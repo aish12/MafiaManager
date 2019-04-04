@@ -16,36 +16,49 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
     let deckCellIdentifier = "DeckCell"
     let addDeckCellIdentifier = "NewDeckCell"
     var decks: [NSManagedObject] = []
-//    var deckCounter = 0
     var settingsNavBarItem:UIBarButtonItem!
     var inEditMode = false
     
-    // Dummy to be completed, required for collection view
+    // Returns the number of items in the decks collection. Returns the number of decks + 1 to
+    // account for the "new deck" button
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return decks.count + 1
     }
     
-    // Returns the cell for each item in the decks collection view
+    // Returns the cell for each item in the decks collection view, including the "new deck" button
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell: UICollectionViewCell
+        
+        // If the indexPath is in the first position, return the "new deck" button item
         if (indexPath.section == 0 && indexPath.item == 0){
             let newCell = collectionView.dequeueReusableCell(withReuseIdentifier: addDeckCellIdentifier, for: indexPath as IndexPath) as! NewDeckCellCollectionViewCell
             newCell.addCellImageView.image = UIImage(named: "plusIcon")
             newCell.addCellImageView.layer.cornerRadius = 10
             newCell.addCellImageView.layer.masksToBounds = true
             cell = newCell
+        
+            // If the indexPath is not in the first position, return the decks in order
         } else if (indexPath.section == 0){
             let deckCell = collectionView.dequeueReusableCell(withReuseIdentifier: deckCellIdentifier, for: indexPath as IndexPath) as! DeckCellCollectionViewCell
+            
+            // The index of the deck in decks is item - 1 to account for the "new deck" button being item 0
             let deck = decks[indexPath.item - 1]
             deckCell.deckCellImageView.image = UIImage(data: deck.value(forKey: "deckImage") as! Data)
             deckCell.deckCellImageView.layer.cornerRadius = 10
             deckCell.deckCellImageView.layer.masksToBounds = true
             deckCell.delegate = self
             deckCell.cellIndex = indexPath.item - 1
+            // If the view is not in edit mode, ensure the reusable cell is not in edit mode
+            // Without this, if the cell held another item in edit mode which was deleted, then another item was added to this cell
+            // It would retain the styling of an editable cell
             if (!inEditMode){
                 deckCell.leaveEditMode()
+            } else {
+                deckCell.enterEditMode()
             }
             cell = deckCell
+        
+        // Everything is held in section 0, this should not be reached
         } else {
             print("Section beyond 0 reached for decks, should not happen")
             abort()
@@ -53,11 +66,13 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
         return cell
     }
     
+    // If an item is selected, deselect it since we do not implement "selected" traits
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         decksCollectionView.deselectItem(at: indexPath, animated: true)
     }
     
-    // On load, round the corners of any buttons to standard size (10)
+    // On load, round the corners of any buttons to standard size (10), assign an action to long press
+    // on a cell where handleLongPress is called, and load the deck's data from core data
     override func viewDidLoad() {
         super.viewDidLoad()
         let longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(longPressGR:)))
@@ -67,16 +82,15 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
         decksCollectionView.dataSource = self
         decksCollectionView.delegate = self
         loadDecks()
-//        print("deck count: \(decks.count)")
-        
     }
     
+    // Retrieves the decks data from core data and reloads the Collection View's data with this
     func loadDecks() {
         decks = retrieveDecks()
         decksCollectionView.reloadData()
-//        print("Number of decks = \(decks.count)")
     }
     
+    // Retrieves decks from core data
     func retrieveDecks() -> [NSManagedObject] {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -95,19 +109,21 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
         return(fetchedResults)!
     }
     
+    // Adds a newly created deck to the collection view
     func addDeck(deckToAdd: NSManagedObject) {
         self.decks.append(deckToAdd)
-//        print(decks.count)
         let newIPath: IndexPath = IndexPath(item: decks.count, section: 0)
         print("new ipath item: \(newIPath.item) and section \(newIPath.section)")
         self.decksCollectionView.insertItems(at: [newIPath])
     }
     
-    // Cell index is index in decks array, not index of item in IndexPath
+    // Deletes a deck at cellIndex from both core data and the collection view.
+    // cellIndex is the index of the deck in decks, not the item index
     func deleteDeck(cellIndex: Int) {
         let alert = UIAlertController(title: "Are you sure?", message: "Deleting a deck cannot be undone", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: {_ in
+            // Deleting the deck from core data
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
             let request =
@@ -125,7 +141,7 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
                     }
                 }
                 try context.save()
-//                self.decks = self.retrieveDecks()
+                // Removes the deck from decks (collection view data source), and the collectionView itself
                 self.decks.remove(at: cellIndex)
                 self.decksCollectionView.deleteItems(at: [IndexPath(item: cellIndex + 1, section: 0)])
                 
@@ -140,15 +156,16 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
         present(alert, animated: true, completion: nil)
     }
     
+    // Prepares segues for creating a new deck and viewing a deck's details
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "fromDecksToNewDeckSegue",
             let destinationVC = segue.destination as? NewDeckViewController {
-//            print("in first")
             destinationVC.decksViewControllerDelegate = self
         } else if segue.identifier == "fromDecksToDeckDetail",
+            // Determines the iPath of the selected item to send the selected item
+            // to the detail VC
             let destinationVC = segue.destination as? DeckDetailViewController,
             let iPaths = self.decksCollectionView.indexPathsForSelectedItems {
-//                print("in second")
                 let firstPath: NSIndexPath = iPaths[0] as NSIndexPath
                 if (firstPath.row > 0){
                     destinationVC.deckObject = decks[firstPath.row - 1]
@@ -161,10 +178,8 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
         if longPressGR.state != .began {
             return
         }
-        
         let point = longPressGR.location(in: self.decksCollectionView)
         let indexPath = self.decksCollectionView.indexPathForItem(at: point)
-        
         if let indexPath = indexPath,
             indexPath.row != 0,
             inEditMode != true {
@@ -177,35 +192,30 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
         }
     }
     
+    // Returns cells to normal state where a tap takes you to detail and you can add new decks
     @objc func endEditState() {
         inEditMode = false
         for section in 0..<self.decksCollectionView.numberOfSections {
             for item in 0..<self.decksCollectionView.numberOfItems(inSection: section){
                 if section == 0 && item == 0 {
-                    let currCell = self.decksCollectionView.cellForItem(at: IndexPath(item: item, section: section)) as! NewDeckCellCollectionViewCell
-                    currCell.isUserInteractionEnabled = true
-                    currCell.backgroundColor = UIColor.clear
+                    continue
                 } else {
                     let currCell = self.decksCollectionView.cellForItem(at: IndexPath(item: item, section: section)) as! DeckCellCollectionViewCell
                     currCell.leaveEditMode()
-//                    print("ending edit state for item \(item) in section \(section)")
-
                 }
             }
         }
         navigationItem.rightBarButtonItem = self.settingsNavBarItem
     }
     
+    // Brings cells to edit mode, where they wobble and have an X icon that when pressed deletes the deck
     func startEditState(){
         inEditMode = true
         for section in 0..<self.decksCollectionView.numberOfSections {
             for item in 0..<self.decksCollectionView.numberOfItems(inSection: section){
                 if section == 0 && item == 0 {
-                    let currCell = self.decksCollectionView.cellForItem(at: IndexPath(item: item, section: section)) as! NewDeckCellCollectionViewCell
-                    currCell.isUserInteractionEnabled = false
-                    currCell.backgroundColor = UIColor.lightGray
+                    continue
                 } else {
-//                    print("in startEditState for item \(item) in section \(section)")
                     let currCell = self.decksCollectionView.cellForItem(at: IndexPath(item: item, section: section)) as! DeckCellCollectionViewCell
                     currCell.enterEditMode()
                 }

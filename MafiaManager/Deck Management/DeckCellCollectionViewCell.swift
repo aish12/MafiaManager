@@ -5,6 +5,7 @@
 //  Created by Robert Stigler on 4/2/19.
 //  Copyright © 2019 Aishwarya Shashidhar. All rights reserved.
 //
+//  Handles the decksCollectionView cells
 
 import UIKit
 
@@ -19,37 +20,42 @@ class DeckCellCollectionViewCell: UICollectionViewCell {
     var deleteButtonImg: UIImage!
     var cellIndex: Int!
     
+    // If not already in edit mode, add the x icon and a wiggle to the cell to show it is editable
     func enterEditMode() {
-        deleteButton = UIButton(frame: CGRect(x: 0, y: 0, width: frame.size.width/4, height: frame.size.width/4))
-        
-        deleteButtonImg = UIImage(named: "deleteIcon")!.withRenderingMode(.alwaysTemplate)
-        deleteButton.setImage(deleteButtonImg, for: .normal)
-        deleteButton.tintColor = UIColor.red
-        deleteButton.addTarget(self, action: #selector(deleteDeck), for: .touchUpInside)
-        deleteButton.tag = 100
-        print("Adding x subview")
-        contentView.addSubview(deleteButton)
-        startWiggle()
+        if deleteButton?.superview == nil {
+            deleteButton = UIButton(frame: CGRect(x: 0, y: 0, width: frame.size.width/4, height: frame.size.width/4))
+            
+            deleteButtonImg = UIImage(named: "deleteIcon")!.withRenderingMode(.alwaysTemplate)
+            deleteButton.setImage(deleteButtonImg, for: .normal)
+            deleteButton.tintColor = UIColor.red
+            deleteButton.addTarget(self, action: #selector(deleteDeck), for: .touchUpInside)
+            deleteButton.tag = 100
+            print("Adding x subview")
+            contentView.addSubview(deleteButton)
+            startWiggle()
+        }
     }
     
-    @objc func deleteDeck() {
-        delegate?.deleteDeck(cellIndex: cellIndex)
-    }
-    
+    // If in edit mode, remove the x icon from the superview and stop the wiggle animation
     func leaveEditMode() {
-//        if let delButton = self.deleteButton.viewWithTag(100){
-//            delButton.removeFromSuperview()
-//        }
         if deleteButton?.superview != nil{
             deleteButton.removeFromSuperview()
         }
         stopWiggle()
     }
     
+    // Called when the x icon is pressed in edit mode, begins process to delete deck in DecksViewController
+    @objc func deleteDeck() {
+        delegate?.deleteDeck(cellIndex: cellIndex)
+    }
+    
+    // Helper functino to animate wiggle
     private func degreesToRadians(_ x: CGFloat) -> CGFloat {
         return .pi * x / 180.0
     }
     
+    // Adds position and transform animations to the cell to give it an editable style
+    // Similar to the iOS homescreen. Credit to ajgryc @ https://stackoverflow.com/questions/6604356/ios-icon-jiggle-algorithm/53771810#53771810
     func startWiggle(
         duration: Double = 0.25,
         displacement: CGFloat = 1.0,
@@ -92,6 +98,7 @@ class DeckCellCollectionViewCell: UICollectionViewCell {
         self.layer.add(transform, forKey: nil)
     }
     
+    // Removes wiggle animations from cells and returns them to original position
     func stopWiggle(){
         self.layer.removeAllAnimations()
         self.transform = CGAffineTransform.identity
