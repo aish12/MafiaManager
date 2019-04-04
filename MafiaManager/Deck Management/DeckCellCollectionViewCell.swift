@@ -8,11 +8,16 @@
 
 import UIKit
 
+protocol DeleteDeckDelegate: class {
+    func deleteDeck(cellIndex: Int)
+}
 class DeckCellCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var deckCellImageView: UIImageView!
+    weak var delegate: DeleteDeckDelegate?
     var deleteButton: UIButton!
     var deleteButtonImg: UIImage!
+    var cellIndex: Int!
     
     func enterEditMode() {
         deleteButton = UIButton(frame: CGRect(x: 0, y: 0, width: frame.size.width/4, height: frame.size.width/4))
@@ -20,9 +25,13 @@ class DeckCellCollectionViewCell: UICollectionViewCell {
         deleteButtonImg = UIImage(named: "deleteIcon")!.withRenderingMode(.alwaysTemplate)
         deleteButton.setImage(deleteButtonImg, for: .normal)
         deleteButton.tintColor = UIColor.red
-        
+        deleteButton.addTarget(self, action: #selector(deleteDeck), for: .touchUpInside)
         contentView.addSubview(deleteButton)
         startWiggle()
+    }
+    
+    @objc func deleteDeck() {
+        delegate?.deleteDeck(cellIndex: cellIndex)
     }
     
     func leaveEditMode() {

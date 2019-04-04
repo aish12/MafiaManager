@@ -10,7 +10,7 @@
 import UIKit
 import CoreData
 
-class DecksViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, ReloadDecksDelegate {
+class DecksViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, ReloadDecksDelegate, DeleteDeckDelegate {
 
     @IBOutlet weak var decksCollectionView: UICollectionView!
     let deckCellIdentifier = "DeckCell"
@@ -40,6 +40,8 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
             deckCell.deckCellImageView.image = UIImage(data: deck.value(forKey: "deckImage") as! Data)
             deckCell.deckCellImageView.layer.cornerRadius = 10
             deckCell.deckCellImageView.layer.masksToBounds = true
+            deckCell.delegate = self
+            deckCell.cellIndex = deckCounter - 1
             cell = deckCell
         }
         deckCounter = (deckCounter + 1) % (decks.count + 1)
@@ -87,6 +89,35 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
         }
         return(fetchedResults)!
     }
+    
+    func deleteDeck(cellIndex: Int) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request =
+            NSFetchRequest<NSFetchRequestResult>(entityName:"Deck")
+        var targetCell: NSManagedObject = decks[cellIndex]
+        var fetchResults:[NSManagedObject]
+        
+        do {
+            try fetchResults = context.fetch(request) as! [NSManagedObject]
+            if fetchResults.count > 0 {
+                for result:AnyObject in fetchResults {
+                    if result as! NSObject == targetCell {
+                        context.delete(result as! NSManagedObject)
+                    }
+                }
+            }
+            try context.save()
+            reloadDecks()	
+        } catch {
+            let nserror = error as NSError
+            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+            abort()
+        }
+        
+        //decksCollectionView.deleteItems(at: [IndexPath(item: cellIndex + 1, section: 0)])
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "fromDecksToNewDeckSegue",
