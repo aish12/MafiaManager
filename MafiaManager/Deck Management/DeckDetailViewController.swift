@@ -69,6 +69,9 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
     
     // If an item is selected, deselect it since we do not implement "selected" traits
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if (indexPath.section == 0 && indexPath.item == 0){
+            addCardButtonPressed(self)
+        }
         cardsCollectionView.deselectItem(at: indexPath, animated: true)
     }
     
@@ -135,6 +138,8 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
         
         self.present(optionMenu, animated: true, completion: nil)
     }
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "fromDeckDetailToEditDeck",

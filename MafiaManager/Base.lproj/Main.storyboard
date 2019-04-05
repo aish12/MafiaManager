@@ -930,7 +930,6 @@
                                         </view>
                                         <connections>
                                             <outlet property="addCellImageView" destination="Cbs-73-uuL" id="lds-Ux-tgd"/>
-                                            <segue destination="zXe-B4-3vK" kind="show" identifier="fromDetailToNewCardSegue" id="H5m-iP-DK4"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CardCell" id="Dht-VQ-6aC" customClass="CardCellCollectionViewCell" customModule="MafiaManager" customModuleProvider="target">
@@ -998,6 +997,7 @@
                         <outlet property="navbar" destination="AnU-PB-IDs" id="3Js-IO-506"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="tPA-y1-Pxu"/>
                         <segue destination="qzR-gP-eI2" kind="show" identifier="fromDetailToCopyCardSegue" id="0d5-wB-Ye2"/>
+                        <segue destination="zXe-B4-3vK" kind="show" identifier="fromDetailToNewCardSegue" id="8mI-a1-45z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1x4-1N-Dkc" sceneMemberID="firstResponder"/>
@@ -1820,10 +1820,10 @@
     </scenes>
     <resources>
         <image name="Decks" width="35" height="41"/>
-        <image name="GearIcon" width="1.239598274230957" height="1.239598274230957"/>
+        <image name="GearIcon" width="24" height="24"/>
         <image name="MafiaIcon" width="250" height="250"/>
         <image name="Play" width="35" height="37"/>
-        <image name="WelcomeLoadingPicture" width="500" height="500"/>
+        <image name="WelcomeLoadingPicture" width="1000" height="1000"/>
         <image name="helpIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
