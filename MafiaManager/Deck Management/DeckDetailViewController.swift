@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, updateDeckDetailDelegate {
+class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, updateDeckDetailDelegate, AddCardDelegate {
     
     @IBOutlet weak var cardsCollectionView: UICollectionView!
     
@@ -107,6 +107,12 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
         return(fetchedResults)!
     }
     
+    func addCard(cardToAdd: NSManagedObject) {
+        self.cards.append(cardToAdd)
+        let newIPath: IndexPath = IndexPath(item: cards.count, section: 0)
+        self.cardsCollectionView.insertItems(at: [newIPath])
+    }
+    
     // When the Add Card button is pressed, show an action sheet with the options to
     // create a new card, copy an existing card, or cancel
     // Upon selecting new or existing card, segue to the new card or existing card selection views
@@ -139,6 +145,23 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
             destinationVC.editDescription = self.deckDetailTextView.text
             // TODO: Set photo for the deck detail and for the edit view
             destinationVC.editDeckObject = self.deckObject
+        } else if segue.identifier == "fromDetailToNewCardSegue",
+            let destinationVC = segue.destination as? CreateCardViewController {
+                    
+                destinationVC.cardsViewControllerDelegate = self
+                    
+                
+        
+        } else if segue.identifier == "fromCardsToCardDetail",
+            // Determines the iPath of the selected item to send the selected item
+            // to the detail VC
+            let destinationVC = segue.destination as? CardViewController,
+            let iPaths = self.cardsCollectionView.indexPathsForSelectedItems {
+            let firstPath: NSIndexPath = iPaths[0] as NSIndexPath
+            if (firstPath.row > 0){
+                // TODO: actual set the information of the card object
+                destinationVC.cardObject = cards[firstPath.row - 1]
+            }
         }
     }
     

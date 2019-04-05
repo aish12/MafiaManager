@@ -37,6 +37,7 @@
 		F6A22D4722571E2B000F694B /* EditDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A22D4622571E2B000F694B /* EditDeckViewController.swift */; };
 		F6B2E13C2257D2AA00EFB394 /* CardCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B2E13B2257D2AA00EFB394 /* CardCellCollectionViewCell.swift */; };
 		F6B2E13E2257D2B900EFB394 /* NewCardCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B2E13D2257D2B900EFB394 /* NewCardCellCollectionViewCell.swift */; };
+		F6B2E1402257D82000EFB394 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B2E13F2257D82000EFB394 /* CardViewController.swift */; };
 		F6F54C732244644700F6DFDF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F54C722244644700F6DFDF /* LoginViewController.swift */; };
 		F6F54C7522446B7D00F6DFDF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F54C7422446B7D00F6DFDF /* SignUpViewController.swift */; };
 		F6F54C77224482FC00F6DFDF /* LoadingWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F54C76224482FC00F6DFDF /* LoadingWelcomeViewController.swift */; };
@@ -77,6 +78,7 @@
 		F6A22D4622571E2B000F694B /* EditDeckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDeckViewController.swift; sourceTree = "<group>"; };
 		F6B2E13B2257D2AA00EFB394 /* CardCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		F6B2E13D2257D2B900EFB394 /* NewCardCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCardCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		F6B2E13F2257D82000EFB394 /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		F6F54C722244644700F6DFDF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F6F54C7422446B7D00F6DFDF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		F6F54C76224482FC00F6DFDF /* LoadingWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingWelcomeViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				F6A22D4622571E2B000F694B /* EditDeckViewController.swift */,
 				F6B2E13B2257D2AA00EFB394 /* CardCellCollectionViewCell.swift */,
 				F6B2E13D2257D2B900EFB394 /* NewCardCellCollectionViewCell.swift */,
+				F6B2E13F2257D82000EFB394 /* CardViewController.swift */,
 			);
 			path = "Deck Management";
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				F6A22D4722571E2B000F694B /* EditDeckViewController.swift in Sources */,
 				F6F54C732244644700F6DFDF /* LoginViewController.swift in Sources */,
 				7B146518224AD68500241B00 /* CreateCardViewController.swift in Sources */,
+				F6B2E1402257D82000EFB394 /* CardViewController.swift in Sources */,
 				7B8EF721225403F100816B5F /* Card.swift in Sources */,
 				7B146520224AE62C00241B00 /* NarratorDashboardViewController.swift in Sources */,
 				7B8B9A6622557153002260E9 /* NewDeckCellCollectionViewCell.swift in Sources */,

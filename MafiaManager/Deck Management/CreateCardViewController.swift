@@ -11,11 +11,16 @@ import UIKit
 import CoreData
 import CoreGraphics
 
+protocol AddCardDelegate: class {
+    func addCard(cardToAdd: NSManagedObject)
+}
+
 class CreateCardViewController: UIViewController, ImagePickerDelegate, UITextViewDelegate {
 
     @IBOutlet weak var cardNameTextView: UITextView!
     @IBOutlet weak var cardDescriptionTextView: UITextView!
     @IBOutlet weak var cardImageButton: UIButton!
+    weak var cardsViewControllerDelegate: AddCardDelegate?
     var imagePicker: ImagePicker!
     
     override func viewDidLoad() {
@@ -62,8 +67,7 @@ class CreateCardViewController: UIViewController, ImagePickerDelegate, UITextVie
             card.setValue(newDescription, forKey: "cardDescription")
             card.setValue(newImage, forKey: "cardImage")
             storeCard(card: card, context: context)
-            // TODO: create similar to card
-            //decksViewControllerDelegate?.addDeck(deckToAdd: deck)
+            cardsViewControllerDelegate?.addCard(cardToAdd: card)
         }
         
         navigationController?.popViewController(animated: true)

@@ -930,6 +930,7 @@
                                         </view>
                                         <connections>
                                             <outlet property="addCellImageView" destination="Cbs-73-uuL" id="lds-Ux-tgd"/>
+                                            <segue destination="zXe-B4-3vK" kind="show" identifier="fromDetailToNewCardSegue" id="H5m-iP-DK4"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CardCell" id="Dht-VQ-6aC" customClass="CardCellCollectionViewCell" customModule="MafiaManager" customModuleProvider="target">
@@ -947,6 +948,7 @@
                                         </view>
                                         <connections>
                                             <outlet property="cardCellImageView" destination="DiL-ea-0LE" id="DHF-SC-4Xm"/>
+                                            <segue destination="6IQ-Ne-ppQ" kind="show" identifier="fromCardsToCardDetail" id="TBK-Vv-72J"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -955,9 +957,6 @@
                                 <rect key="frame" x="152" y="510" width="70" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="View Card"/>
-                                <connections>
-                                    <segue destination="6IQ-Ne-ppQ" kind="show" id="RSY-Xf-fdG"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M0W-d2-j4b">
                                 <rect key="frame" x="155" y="548" width="65" height="30"/>
@@ -998,7 +997,6 @@
                         <outlet property="deckDetailTextView" destination="UwS-MO-qan" id="ffp-Cm-ERJ"/>
                         <outlet property="navbar" destination="AnU-PB-IDs" id="3Js-IO-506"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="tPA-y1-Pxu"/>
-                        <segue destination="zXe-B4-3vK" kind="show" identifier="fromDetailToNewCardSegue" id="Wjw-RG-Gkh"/>
                         <segue destination="qzR-gP-eI2" kind="show" identifier="fromDetailToCopyCardSegue" id="0d5-wB-Ye2"/>
                     </connections>
                 </viewController>
@@ -1253,7 +1251,7 @@
         <!--Card View Controller-->
         <scene sceneID="6m8-Mm-55a">
             <objects>
-                <viewController storyboardIdentifier="CardViewController" title="Card View Controller" id="6IQ-Ne-ppQ" customClass="CardViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CardViewController" title="Card View Controller" id="6IQ-Ne-ppQ" customClass="CardViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Aa7-dX-eYe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1307,6 +1305,9 @@
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="vI0-IE-djI"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="cardDescription" destination="gD6-D9-fiX" id="4fY-zz-4UB"/>
+                        <outlet property="cardImage" destination="hPJ-zZ-6xM" id="iKA-yu-sKo"/>
+                        <outlet property="cardName" destination="9GP-Z7-12R" id="LNq-Cs-2Jb"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="UJO-oR-U70"/>
                     </connections>
                 </viewController>
