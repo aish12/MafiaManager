@@ -48,7 +48,24 @@ class CreateCardViewController: UIViewController, ImagePickerDelegate, UITextVie
     
     // When the done button is pressed, return to the previous VC,
     // the Deck Detail VC
+    // Also save the card into core data
     @IBAction func doneButtonPressed(_ sender: Any) {
+        
+        if let newName = cardNameTextView.text,
+            let newDescription = cardDescriptionTextView.text,
+            let image = cardImageButton.image(for: .normal) {
+            let newImage = image.pngData()
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let card = NSEntityDescription.insertNewObject(forEntityName: "Card", into: context)
+            card.setValue(newName, forKey: "cardName")
+            card.setValue(newDescription, forKey: "cardDescription")
+            card.setValue(newImage, forKey: "cardImage")
+            storeCard(card: card, context: context)
+            // TODO: create similar to card
+            //decksViewControllerDelegate?.addDeck(deckToAdd: deck)
+        }
+        
         navigationController?.popViewController(animated: true)
     }
     
@@ -56,20 +73,83 @@ class CreateCardViewController: UIViewController, ImagePickerDelegate, UITextVie
         self.imagePicker.present(from: sender)
     }
     
-    
     func didSelect(image: UIImage?) {
         self.cardImageButton.setImage(image, for: .normal)
     }
     
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func storeCard(card: NSManagedObject, context: NSManagedObjectContext) {
+        do {
+            try context.save()
+            print("Successfully saved card")
+        } catch {
+            // If an error occurs
+            let nserror = error as NSError
+            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+            abort()
+        }
     }
-    */
+    
+    
+    // Creates and manages placeholder text, and character limits for deck name and description textviews
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        // Combine the textView text and the replacement text to
+        // create the updated text string
+        let currentText:String = textView.text
+        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
+        
+        // If updated text view will be empty, add the placeholder
+        // and set the cursor to the beginning of the text view
+        if updatedText.isEmpty {
+            if textView == cardNameTextView {
+                textView.text = "Enter card name"
+            } else if textView == cardDescriptionTextView {
+                textView.text = "Enter card description"
+            } else {
+                textView.text = "This should not appear. Oops."
+            }
+            textView.textColor = UIColor.lightGray
+            
+            textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+        }
+            
+            // Else if the text view's placeholder is showing and the
+            // length of the replacement string is greater than 0, set
+            // the text color to black then set its text to the
+            // replacement string
+        else if textView.textColor == UIColor.lightGray && !text.isEmpty {
+            textView.textColor = UIColor.black
+            textView.text = text
+        }
+            
+            // For every other case, the text should change with the usual
+            // behavior...
+        else {
+            let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+            let numberOfChars = newText.count
+            if textView == cardNameTextView {
+                return numberOfChars <= 30
+            } else if textView == cardDescriptionTextView {
+                return numberOfChars <= 500
+            } else {
+                print("Should not reach, character limits in textView")
+                return true
+            }
+        }
+        
+        // ...otherwise return false since the updates have already
+        // been made
+        return false
+    }
+    
+    // Manages placeholder text for deck name and description text views
+    func textViewDidChangeSelection(_ textView: UITextView) {
+        if self.view.window != nil {
+            if textView.textColor == UIColor.lightGray {
+                textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+            }
+        }
+    }
 
 }
