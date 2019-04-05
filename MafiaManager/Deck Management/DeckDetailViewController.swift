@@ -9,16 +9,18 @@
 import UIKit
 import CoreData
 
-class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, updateDeckDetailDelegate, AddCardDelegate {
+class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, updateDeckDetailDelegate, AddCardDelegate, DeleteCardDelegate {
     
     @IBOutlet weak var cardsCollectionView: UICollectionView!
     
     let cardCellIdentifier = "CardCell"
     let addCardCellIdentifier = "NewCardCell"
+    var inEditMode: Bool = false
     var cards: [NSManagedObject] = []
     weak var decksCollectionView: UICollectionView?
     var deckIPath: NSIndexPath?
     var deckObject: NSManagedObject = NSManagedObject()
+    var editNavBarItem:UIBarButtonItem!
     @IBOutlet weak var navbar: UINavigationItem!
     @IBOutlet weak var deckDetailTextView: UITextView!
     
@@ -46,18 +48,16 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
             cardCell.cardCellImageView.image = UIImage(data: card.value(forKey: "cardImage") as! Data)
             cardCell.cardCellImageView.layer.cornerRadius = 10
             cardCell.cardCellImageView.layer.masksToBounds = true
-            //cardCell.delegate = self
+            cardCell.delegate = self
             cardCell.cellIndex = indexPath.item - 1
             // If the view is not in edit mode, ensure the reusable cell is not in edit mode
             // Without this, if the cell held another item in edit mode which was deleted, then another item was added to this cell
             // It would retain the styling of an editable cell
-            /*
             if (!inEditMode){
-                deckCell.leaveEditMode()
+                cardCell.leaveEditMode()
             } else {
-                deckCell.enterEditMode()
+                cardCell.enterEditMode()
             }
-            */
             cell = cardCell
             
             // Everything is held in section 0, this should not be reached
@@ -79,6 +79,10 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(longPressGR:)))
+        longPressGR.minimumPressDuration = 0.5
+        longPressGR.delaysTouchesBegan = true
+        self.cardsCollectionView.addGestureRecognizer(longPressGR)
         navbar.title = deckObject.value(forKey: "deckName") as? String
         deckDetailTextView.text = deckObject.value(forKey: "deckDescription") as? String
         cardsCollectionView.dataSource = self
@@ -140,6 +144,42 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
         self.present(optionMenu, animated: true, completion: nil)
     }
     
+    func deleteCard(cellIndex: Int) {
+        let alert = UIAlertController(title: "Are you sure?", message: "Deleting a card cannot be undone", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: {_ in
+            // Deleting the card from core data
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let request =
+                NSFetchRequest<NSFetchRequestResult>(entityName:"Card")
+            let targetCell: NSManagedObject = self.cards[cellIndex]
+            var fetchResults:[NSManagedObject]
+            
+            do {
+                try fetchResults = context.fetch(request) as! [NSManagedObject]
+                if fetchResults.count > 0 {
+                    for result:AnyObject in fetchResults {
+                        if result as! NSObject == targetCell {
+                            context.delete(result as! NSManagedObject)
+                        }
+                    }
+                }
+                try context.save()
+                // Removes the card from decks (collection view data source), and the collectionView itself
+                self.cards.remove(at: cellIndex)
+                self.cardsCollectionView.deleteItems(at: [IndexPath(item: cellIndex + 1, section: 0)])
+                
+            } catch {
+                let nserror = error as NSError
+                NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+                abort()
+            }
+        })
+        alert.addAction(cancelAction)
+        alert.addAction(deleteAction)
+        present(alert, animated: true, completion: nil)
+    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -169,10 +209,60 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
-    // TODO: update with image param
     func updateDeckDetail(name: String, desc: String) {
         navbar.title = name
         deckDetailTextView.text = desc
         decksCollectionView?.reloadItems(at: [deckIPath as! IndexPath])
+    }
+    
+    // Long press for each collection view cell
+    @objc func handleLongPress(longPressGR : UILongPressGestureRecognizer) {
+        if longPressGR.state != .began {
+            return
+        }
+        let point = longPressGR.location(in: self.cardsCollectionView)
+        let indexPath = self.cardsCollectionView.indexPathForItem(at: point)
+        if let indexPath = indexPath,
+            indexPath.row != 0,
+            inEditMode != true {
+            inEditMode = true
+            startEditState()
+            editNavBarItem = navigationItem.rightBarButtonItem
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(endEditState))
+        } else {
+            print("Could not find indexPath")
+        }
+    }
+    
+    // Returns cells to normal state where a tap takes you to detail and you can add new decks
+    @objc func endEditState() {
+        inEditMode = false
+        for section in 0..<self.cardsCollectionView.numberOfSections {
+            for item in 0..<self.cardsCollectionView.numberOfItems(inSection: section){
+                if section == 0 && item == 0 {
+                    continue
+                } else {
+                    let currCell = self.cardsCollectionView.cellForItem(at: IndexPath(item: item, section: section)) as! CardCellCollectionViewCell
+                    currCell.leaveEditMode()
+                }
+            }
+        }
+        navigationItem.rightBarButtonItem = editNavBarItem
+        
+    }
+    
+    // Brings cells to edit mode, where they wobble and have an X icon that when pressed deletes the deck
+    func startEditState() {
+        inEditMode = true
+        for section in 0..<self.cardsCollectionView.numberOfSections {
+            for item in 0..<self.cardsCollectionView.numberOfItems(inSection: section){
+                if section == 0 && item == 0 {
+                    continue
+                } else {
+                    let currCell = self.cardsCollectionView.cellForItem(at: IndexPath(item: item, section: section)) as! CardCellCollectionViewCell
+                    currCell.enterEditMode()
+                }
+            }
+        }
     }
 }
