@@ -1300,7 +1300,11 @@
                         <viewLayoutGuide key="safeArea" id="Xqf-He-qCr"/>
                     </view>
                     <navigationItem key="navigationItem" title="Card Detail" id="Nj2-g6-gPe">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="vI0-IE-djI"/>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="vI0-IE-djI">
+                            <connections>
+                                <action selector="editButtonPressed:" destination="6IQ-Ne-ppQ" id="vkM-xA-L0b"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="cardDescription" destination="gD6-D9-fiX" id="4fY-zz-4UB"/>
