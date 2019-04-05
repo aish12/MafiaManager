@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import CoreData
+
+protocol updateDeckDetailDelegate:class {
+    func updateDeckDetail(name: String, desc: String)
+}
 
 class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewDelegate {
     
@@ -14,9 +19,11 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
     @IBOutlet weak var editDeckDescriptionTextView: UITextView!
     @IBOutlet weak var editDeckImagePickerButton: UIButton!
     
+    weak var updateDetail: updateDeckDetailDelegate?
     var editName: String!
     var editDescription: String!
     var editImage: UIImage!
+    var editDeckObject: NSManagedObject = NSManagedObject()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +49,34 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
         editDeckDescriptionTextView.layer.shadowRadius = 5
         editDeckDescriptionTextView.layer.cornerRadius = 5
         editDeckDescriptionTextView.layer.masksToBounds = false
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(finishedEditing))
+        
     }
     
+    @objc func finishedEditing() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        // Just set the editDeckObject
+        editDeckObject.setValue(editDeckNameTextView.text, forKey: "deckName")
+        editDeckObject.setValue(editDeckDescriptionTextView.text, forKey: "deckDescription")
+        // TODO: for picture
+        
+        // Commit the changes
+        do {
+            try context.save()
+        } catch {
+            // If an error occurs
+            let nserror = error as NSError
+            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+            abort()
+        }
+        
+        // Go back to the Deck detail with new edits in store
+        // TODO: update with image param
+        updateDetail?.updateDeckDetail(name: editDeckNameTextView.text, desc: editDeckDescriptionTextView.text)
+        _ = navigationController?.popViewController(animated: true)
+    }
     
     func didSelect(image: UIImage?) {
         self.editDeckImagePickerButton.setImage(image, for: .normal)
@@ -106,7 +139,7 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
     func textViewDidChangeSelection(_ textView: UITextView) {
         if self.view.window != nil {
             if textView.textColor == UIColor.lightGray {
-                textView.selectedTextRange = textView.textRange(from: textView.endOfDocument, to: textView.endOfDocument)
+                textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
             }
         }
     }
