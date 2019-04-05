@@ -1120,6 +1120,9 @@
                                     <constraint firstAttribute="width" constant="160" id="Qma-nB-P20"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="WelcomeLoadingPicture"/>
+                                <connections>
+                                    <action selector="cardImagePickerButtonPressed:" destination="zXe-B4-3vK" eventType="touchUpInside" id="yy3-uj-GEB"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

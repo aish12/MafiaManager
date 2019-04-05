@@ -11,16 +11,19 @@ import UIKit
 import CoreData
 import CoreGraphics
 
-class CreateCardViewController: UIViewController, UITextViewDelegate {
+class CreateCardViewController: UIViewController, ImagePickerDelegate, UITextViewDelegate {
 
     @IBOutlet weak var cardNameTextView: UITextView!
     @IBOutlet weak var cardDescriptionTextView: UITextView!
     @IBOutlet weak var cardImageButton: UIButton!
+    var imagePicker: ImagePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        cardNameTextView.text = "Enter deck name"
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
+        
+        cardNameTextView.text = "Enter card name"
         cardNameTextView.textColor = UIColor.lightGray
         cardNameTextView.becomeFirstResponder()
         cardNameTextView.selectedTextRange = cardNameTextView.textRange(from: cardNameTextView.beginningOfDocument, to: cardNameTextView.beginningOfDocument)
@@ -32,7 +35,7 @@ class CreateCardViewController: UIViewController, UITextViewDelegate {
         cardNameTextView.layer.cornerRadius = 5
         cardNameTextView.layer.masksToBounds = false
         
-        cardDescriptionTextView.text = "Enter deck description"
+        cardDescriptionTextView.text = "Enter card description"
         cardDescriptionTextView.textColor = UIColor.lightGray
         cardDescriptionTextView.delegate = self
         cardDescriptionTextView.layer.shadowOpacity = 0.4
@@ -48,6 +51,17 @@ class CreateCardViewController: UIViewController, UITextViewDelegate {
     @IBAction func doneButtonPressed(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func cardImagePickerButtonPressed(_ sender: UIButton) {
+        self.imagePicker.present(from: sender)
+    }
+    
+    
+    func didSelect(image: UIImage?) {
+        self.cardImageButton.setImage(image, for: .normal)
+    }
+    
+    
     /*
     // MARK: - Navigation
 
