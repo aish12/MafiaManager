@@ -846,6 +846,11 @@
                                     <constraint firstAttribute="height" constant="160" id="RbM-nT-cje"/>
                                     <constraint firstAttribute="width" constant="160" id="eYq-be-jNj"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="editImagePickerButtonPressed:" destination="5g1-02-2eJ" eventType="touchUpInside" id="1jW-KC-yxK"/>
+                                    <action selector="editImagePickerPressed:" destination="5g1-02-2eJ" eventType="touchUpInside" id="8Dd-Md-p6l"/>
+                                    <action selector="imagePickerPressed:" destination="5g1-02-2eJ" eventType="touchUpInside" id="Ut8-TL-1TN"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

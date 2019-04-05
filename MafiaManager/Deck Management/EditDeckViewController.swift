@@ -24,10 +24,16 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
     var editDescription: String!
     var editImage: UIImage!
     var editDeckObject: NSManagedObject = NSManagedObject()
+    var editImagePicker: ImagePicker!
     
+    //  Set placeholder text for name and description entry
+    //  On load have focus on name entry
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //  Creates an image picker for user to select deck image
+        self.editImagePicker = ImagePicker(presentationController: self, delegate: self)
+        
         editDeckNameTextView.text = self.editName
         //editDeckNameTextView.textColor = UIColor.lightGray
         editDeckNameTextView.becomeFirstResponder()
@@ -50,6 +56,7 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
         editDeckDescriptionTextView.layer.cornerRadius = 5
         editDeckDescriptionTextView.layer.masksToBounds = false
         
+        // Add done button to finish editing
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(finishedEditing))
         
     }
@@ -76,6 +83,12 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
         // TODO: update with image param
         updateDetail?.updateDeckDetail(name: editDeckNameTextView.text, desc: editDeckDescriptionTextView.text)
         _ = navigationController?.popViewController(animated: true)
+    }
+    
+    // TODO: errors for some reason 
+    @IBAction func editImagePickerButtonPressed(_ sender: UIButton) {
+        print("pressed")
+        self.editImagePicker.present(from: sender)
     }
     
     func didSelect(image: UIImage?) {
