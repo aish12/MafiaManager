@@ -34,6 +34,7 @@
 		BFFDFE5B223845170033F15B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFDFE59223845170033F15B /* LaunchScreen.storyboard */; };
 		F618EE8122488DE500E32DA5 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618EE8022488DE500E32DA5 /* TabBarViewController.swift */; };
 		F64DF7C3224B000000513FD7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F64DF7C2224B000000513FD7 /* GoogleService-Info.plist */; };
+		F6A22D4722571E2B000F694B /* EditDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A22D4622571E2B000F694B /* EditDeckViewController.swift */; };
 		F6F54C732244644700F6DFDF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F54C722244644700F6DFDF /* LoginViewController.swift */; };
 		F6F54C7522446B7D00F6DFDF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F54C7422446B7D00F6DFDF /* SignUpViewController.swift */; };
 		F6F54C77224482FC00F6DFDF /* LoadingWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F54C76224482FC00F6DFDF /* LoadingWelcomeViewController.swift */; };
@@ -71,6 +72,7 @@
 		F2AF33E2E3064D2FD43B2DBF /* Pods-MafiaManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MafiaManager.release.xcconfig"; path = "Target Support Files/Pods-MafiaManager/Pods-MafiaManager.release.xcconfig"; sourceTree = "<group>"; };
 		F618EE8022488DE500E32DA5 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		F64DF7C2224B000000513FD7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F6A22D4622571E2B000F694B /* EditDeckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDeckViewController.swift; sourceTree = "<group>"; };
 		F6F54C722244644700F6DFDF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F6F54C7422446B7D00F6DFDF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		F6F54C76224482FC00F6DFDF /* LoadingWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingWelcomeViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				7B8EF74D22540ABC00816B5F /* ImagePicker.swift */,
 				7B8EF7522254260600816B5F /* DeckCellCollectionViewCell.swift */,
 				7B8B9A6522557153002260E9 /* NewDeckCellCollectionViewCell.swift */,
+				F6A22D4622571E2B000F694B /* EditDeckViewController.swift */,
 			);
 			path = "Deck Management";
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				BF01BDD022487FB800C883D8 /* PlayerViewController.swift in Sources */,
 				7B4E7101224990D7001395F2 /* AddDeckCell.swift in Sources */,
 				7B8EF74E22540ABC00816B5F /* ImagePicker.swift in Sources */,
+				F6A22D4722571E2B000F694B /* EditDeckViewController.swift in Sources */,
 				F6F54C732244644700F6DFDF /* LoginViewController.swift in Sources */,
 				7B146518224AD68500241B00 /* CreateCardViewController.swift in Sources */,
 				7B8EF721225403F100816B5F /* Card.swift in Sources */,

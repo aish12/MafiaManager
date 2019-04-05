@@ -812,6 +812,69 @@
             </objects>
             <point key="canvasLocation" x="3196" y="358.4707646176912"/>
         </scene>
+        <!--Edit Deck View Controller-->
+        <scene sceneID="5mo-hq-wNa">
+            <objects>
+                <viewController id="5g1-02-2eJ" customClass="EditDeckViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PMe-sw-knx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6rL-VX-RHL">
+                                <rect key="frame" x="238" y="120" width="160" height="160"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="HbR-nO-nKi"/>
+                                    <constraint firstAttribute="width" constant="160" id="jsS-3j-hQB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="XSQ-xB-59D">
+                                <rect key="frame" x="16" y="312" width="382" height="485"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="382" id="lMu-eS-2Ef"/>
+                                    <constraint firstAttribute="height" constant="485" id="s3W-rX-tVX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUp-L4-IW4">
+                                <rect key="frame" x="16" y="120" width="160" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="RbM-nT-cje"/>
+                                    <constraint firstAttribute="width" constant="160" id="eYq-be-jNj"/>
+                                </constraints>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6rL-VX-RHL" firstAttribute="top" secondItem="MVQ-QK-trJ" secondAttribute="top" constant="32" id="1Ir-lK-gEu"/>
+                            <constraint firstItem="XSQ-xB-59D" firstAttribute="top" secondItem="6rL-VX-RHL" secondAttribute="bottom" constant="32" id="6EC-cc-G7T"/>
+                            <constraint firstItem="MVQ-QK-trJ" firstAttribute="trailing" secondItem="6rL-VX-RHL" secondAttribute="trailing" constant="16" id="93O-rH-dcF"/>
+                            <constraint firstItem="XSQ-xB-59D" firstAttribute="top" secondItem="LUp-L4-IW4" secondAttribute="bottom" constant="32" id="JNE-No-Yxx"/>
+                            <constraint firstItem="MVQ-QK-trJ" firstAttribute="trailing" secondItem="XSQ-xB-59D" secondAttribute="trailing" constant="16" id="OXK-oP-UtM"/>
+                            <constraint firstItem="MVQ-QK-trJ" firstAttribute="bottom" secondItem="XSQ-xB-59D" secondAttribute="bottom" constant="16" id="QFF-mB-aec"/>
+                            <constraint firstItem="LUp-L4-IW4" firstAttribute="top" secondItem="MVQ-QK-trJ" secondAttribute="top" constant="32" id="RLQ-nw-oVo"/>
+                            <constraint firstItem="6rL-VX-RHL" firstAttribute="leading" secondItem="LUp-L4-IW4" secondAttribute="trailing" constant="62" id="S7U-Fh-dka"/>
+                            <constraint firstItem="6rL-VX-RHL" firstAttribute="leading" secondItem="LUp-L4-IW4" secondAttribute="trailing" constant="62" id="XKW-AJ-0Ae"/>
+                            <constraint firstItem="XSQ-xB-59D" firstAttribute="top" secondItem="6rL-VX-RHL" secondAttribute="bottom" constant="32" id="f0o-cm-407"/>
+                            <constraint firstItem="LUp-L4-IW4" firstAttribute="leading" secondItem="MVQ-QK-trJ" secondAttribute="leading" constant="16" id="go9-ee-5jU"/>
+                            <constraint firstItem="XSQ-xB-59D" firstAttribute="leading" secondItem="MVQ-QK-trJ" secondAttribute="leading" constant="16" id="sl3-6m-eRg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="MVQ-QK-trJ"/>
+                    </view>
+                    <connections>
+                        <outlet property="editDeckDescriptionTextView" destination="XSQ-xB-59D" id="PdE-RQ-qY6"/>
+                        <outlet property="editDeckImagePickerButton" destination="LUp-L4-IW4" id="8yC-Ho-9vv"/>
+                        <outlet property="editDeckNameTextView" destination="6rL-VX-RHL" id="RZx-Pn-7sW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PVg-mz-hPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2439" y="-1715"/>
+        </scene>
         <!--Deck Detail-->
         <scene sceneID="0Dv-5F-5Cc">
             <objects>
@@ -899,7 +962,11 @@
                         <viewLayoutGuide key="safeArea" id="B64-uA-zb4"/>
                     </view>
                     <navigationItem key="navigationItem" title="Deck Detail" id="AnU-PB-IDs">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="PD3-8Q-F75"/>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="PD3-8Q-F75">
+                            <connections>
+                                <segue destination="5g1-02-2eJ" kind="show" identifier="fromDeckDetailToEditDeck" id="eVl-cM-Uwn"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="deckDetailTextView" destination="UwS-MO-qan" id="ffp-Cm-ERJ"/>
@@ -1718,10 +1785,10 @@
     </scenes>
     <resources>
         <image name="Decks" width="35" height="41"/>
-        <image name="GearIcon" width="24" height="24"/>
+        <image name="GearIcon" width="1.239598274230957" height="1.239598274230957"/>
         <image name="MafiaIcon" width="250" height="250"/>
         <image name="Play" width="35" height="37"/>
-        <image name="WelcomeLoadingPicture" width="1000" height="1000"/>
+        <image name="WelcomeLoadingPicture" width="500" height="500"/>
         <image name="helpIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>

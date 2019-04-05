@@ -113,7 +113,6 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
     func addDeck(deckToAdd: NSManagedObject) {
         self.decks.append(deckToAdd)
         let newIPath: IndexPath = IndexPath(item: decks.count, section: 0)
-        print("new ipath item: \(newIPath.item) and section \(newIPath.section)")
         self.decksCollectionView.insertItems(at: [newIPath])
     }
     
@@ -209,7 +208,7 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
     
     // Brings cells to edit mode, where they wobble and have an X icon that when pressed deletes the deck
-    func startEditState(){
+    func startEditState() {
         inEditMode = true
         for section in 0..<self.decksCollectionView.numberOfSections {
             for item in 0..<self.decksCollectionView.numberOfItems(inSection: section){

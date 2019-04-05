@@ -44,4 +44,14 @@ class DeckDetailViewController: UIViewController {
         
         self.present(optionMenu, animated: true, completion: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "fromDeckDetailToEditDeck",
+            let destinationVC = segue.destination as? EditDeckViewController {
+            // Set the text views as placeholders
+            destinationVC.editName = self.navbar.title
+            destinationVC.editDescription = self.deckDetailTextView.text
+            // TODO: Set photo for the deck detail and for the edit view
+        }
+    }
 }
