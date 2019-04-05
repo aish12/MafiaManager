@@ -167,6 +167,8 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
             let iPaths = self.decksCollectionView.indexPathsForSelectedItems {
                 let firstPath: NSIndexPath = iPaths[0] as NSIndexPath
                 if (firstPath.row > 0){
+                    destinationVC.decksCollectionView = self.decksCollectionView
+                    destinationVC.deckIPath = firstPath
                     destinationVC.deckObject = decks[firstPath.row - 1]
                 }
         }

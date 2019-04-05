@@ -16,7 +16,8 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
     let cardCellIdentifier = "CardCell"
     let addCardCellIdentifier = "NewCardCell"
     var cards: [NSManagedObject] = []
-    
+    weak var decksCollectionView: UICollectionView?
+    var deckIPath: NSIndexPath?
     var deckObject: NSManagedObject = NSManagedObject()
     @IBOutlet weak var navbar: UINavigationItem!
     @IBOutlet weak var deckDetailTextView: UITextView!
@@ -145,10 +146,6 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
         if segue.identifier == "fromDeckDetailToEditDeck",
             let destinationVC = segue.destination as? EditDeckViewController {
             destinationVC.updateDetail = self
-            // Set the text views as placeholders
-            destinationVC.editName = self.navbar.title
-            destinationVC.editDescription = self.deckDetailTextView.text
-            // TODO: Set photo for the deck detail and for the edit view
             destinationVC.editDeckObject = self.deckObject
         } else if segue.identifier == "fromDetailToNewCardSegue",
             let destinationVC = segue.destination as? CreateCardViewController {
@@ -174,5 +171,6 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
     func updateDeckDetail(name: String, desc: String) {
         navbar.title = name
         deckDetailTextView.text = desc
+        decksCollectionView?.reloadItems(at: [deckIPath as! IndexPath])
     }
 }

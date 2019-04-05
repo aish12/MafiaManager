@@ -20,9 +20,6 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
     @IBOutlet weak var editDeckImagePickerButton: UIButton!
     
     weak var updateDetail: updateDeckDetailDelegate?
-    var editName: String!
-    var editDescription: String!
-    var editImage: UIImage!
     var editDeckObject: NSManagedObject = NSManagedObject()
     var editImagePicker: ImagePicker!
     
@@ -36,7 +33,7 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
         
         editDeckImagePickerButton.setImage(UIImage(data: editDeckObject.value(forKey: "deckImage") as! Data), for: .normal)
         
-        editDeckNameTextView.text = self.editName
+        editDeckNameTextView.text = editDeckObject.value(forKey: "deckName") as? String
         //editDeckNameTextView.textColor = UIColor.lightGray
         editDeckNameTextView.becomeFirstResponder()
         editDeckNameTextView.selectedTextRange = editDeckNameTextView.textRange(from: editDeckNameTextView.endOfDocument, to: editDeckNameTextView.endOfDocument)
@@ -48,7 +45,7 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
         editDeckNameTextView.layer.cornerRadius = 5
         editDeckNameTextView.layer.masksToBounds = false
         
-        editDeckDescriptionTextView.text = self.editDescription
+        editDeckDescriptionTextView.text = editDeckObject.value(forKey: "deckDescription") as? String
         //editDeckDescriptionTextView.textColor = UIColor.lightGray
         editDeckDescriptionTextView.delegate = self
         editDeckDescriptionTextView.layer.shadowOpacity = 0.4
@@ -69,7 +66,8 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
         // Just set the editDeckObject
         editDeckObject.setValue(editDeckNameTextView.text, forKey: "deckName")
         editDeckObject.setValue(editDeckDescriptionTextView.text, forKey: "deckDescription")
-        // TODO: for picture
+        let editedImage = editDeckImagePickerButton.image(for: .normal)
+        editDeckObject.setValue(editedImage?.pngData(), forKey: "deckImage")
         
         // Commit the changes
         do {
@@ -84,7 +82,7 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
         // Go back to the Deck detail with new edits in store
         // TODO: update with image param
         updateDetail?.updateDeckDetail(name: editDeckNameTextView.text, desc: editDeckDescriptionTextView.text)
-        _ = navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func editImagePickerButtonPressed(_ sender: UIButton) {
