@@ -34,6 +34,8 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
         //  Creates an image picker for user to select deck image
         self.editImagePicker = ImagePicker(presentationController: self, delegate: self)
         
+        editDeckImagePickerButton.setImage(UIImage(data: editDeckObject.value(forKey: "deckImage") as! Data), for: .normal)
+        
         editDeckNameTextView.text = self.editName
         //editDeckNameTextView.textColor = UIColor.lightGray
         editDeckNameTextView.becomeFirstResponder()
@@ -85,10 +87,9 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
         _ = navigationController?.popViewController(animated: true)
     }
     
-    // TODO: errors for some reason 
     @IBAction func editImagePickerButtonPressed(_ sender: UIButton) {
-        print("pressed")
         self.editImagePicker.present(from: sender)
+
     }
     
     func didSelect(image: UIImage?) {

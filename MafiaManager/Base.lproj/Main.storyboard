@@ -840,16 +840,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUp-L4-IW4">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUp-L4-IW4">
                                 <rect key="frame" x="16" y="120" width="160" height="160"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="RbM-nT-cje"/>
                                     <constraint firstAttribute="width" constant="160" id="eYq-be-jNj"/>
                                 </constraints>
                                 <connections>
-                                    <action selector="editImagePickerButtonPressed:" destination="5g1-02-2eJ" eventType="touchUpInside" id="1jW-KC-yxK"/>
-                                    <action selector="editImagePickerPressed:" destination="5g1-02-2eJ" eventType="touchUpInside" id="8Dd-Md-p6l"/>
-                                    <action selector="imagePickerPressed:" destination="5g1-02-2eJ" eventType="touchUpInside" id="Ut8-TL-1TN"/>
+                                    <action selector="editImagePickerButtonPressed:" destination="5g1-02-2eJ" eventType="touchUpInside" id="Sl5-mH-i8O"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -872,7 +870,7 @@
                     </view>
                     <connections>
                         <outlet property="editDeckDescriptionTextView" destination="XSQ-xB-59D" id="PdE-RQ-qY6"/>
-                        <outlet property="editDeckImagePickerButton" destination="LUp-L4-IW4" id="8yC-Ho-9vv"/>
+                        <outlet property="editDeckImagePickerButton" destination="LUp-L4-IW4" id="cYc-UV-LgX"/>
                         <outlet property="editDeckNameTextView" destination="6rL-VX-RHL" id="RZx-Pn-7sW"/>
                     </connections>
                 </viewController>
