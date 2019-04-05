@@ -162,6 +162,8 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
             let firstPath: NSIndexPath = iPaths[0] as NSIndexPath
             if (firstPath.row > 0){
                 // TODO: actual set the information of the card object
+                destinationVC.cardsCollectionView = cardsCollectionView
+                destinationVC.cardIPath = firstPath
                 destinationVC.cardObject = cards[firstPath.row - 1]
             }
         }

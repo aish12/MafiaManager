@@ -1254,13 +1254,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WelcomeLoadingPicture" translatesAutoresizingMaskIntoConstraints="NO" id="hPJ-zZ-6xM">
-                                <rect key="frame" x="16" y="104" width="160" height="160"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="160" id="QRF-CB-VxX"/>
-                                    <constraint firstAttribute="height" constant="160" id="vN7-2v-E5h"/>
-                                </constraints>
-                            </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9GP-Z7-12R">
                                 <rect key="frame" x="238" y="104" width="160" height="160"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1285,16 +1278,26 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ch-KW-SDF">
+                                <rect key="frame" x="16" y="104" width="160" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="IaO-Ot-V9V"/>
+                                    <constraint firstAttribute="width" constant="160" id="UMx-IV-Idf"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="cardButtonPressed:" destination="6IQ-Ne-ppQ" eventType="touchUpInside" id="E4d-Xt-yyz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Xqf-He-qCr" firstAttribute="bottom" secondItem="gD6-D9-fiX" secondAttribute="bottom" constant="8" id="1dl-J2-ps2"/>
+                            <constraint firstItem="0ch-KW-SDF" firstAttribute="top" secondItem="Xqf-He-qCr" secondAttribute="top" constant="16" id="2Gr-4q-O64"/>
+                            <constraint firstItem="0ch-KW-SDF" firstAttribute="leading" secondItem="Xqf-He-qCr" secondAttribute="leading" constant="16" id="8KX-Tv-jew"/>
                             <constraint firstItem="gD6-D9-fiX" firstAttribute="leading" secondItem="Xqf-He-qCr" secondAttribute="leading" constant="8" id="8p5-Sm-wWK"/>
-                            <constraint firstItem="hPJ-zZ-6xM" firstAttribute="leading" secondItem="Xqf-He-qCr" secondAttribute="leading" constant="16" id="FzS-Lc-AFn"/>
-                            <constraint firstItem="hPJ-zZ-6xM" firstAttribute="top" secondItem="Xqf-He-qCr" secondAttribute="top" constant="16" id="HiZ-9V-Jri"/>
+                            <constraint firstItem="gD6-D9-fiX" firstAttribute="top" secondItem="0ch-KW-SDF" secondAttribute="bottom" constant="32" id="Dhk-cn-fvx"/>
                             <constraint firstItem="9GP-Z7-12R" firstAttribute="top" secondItem="Xqf-He-qCr" secondAttribute="top" constant="16" id="P7p-hb-SZs"/>
                             <constraint firstItem="Xqf-He-qCr" firstAttribute="trailing" secondItem="9GP-Z7-12R" secondAttribute="trailing" constant="16" id="SY4-te-pJj"/>
-                            <constraint firstItem="gD6-D9-fiX" firstAttribute="top" secondItem="hPJ-zZ-6xM" secondAttribute="bottom" constant="32" id="XVH-zE-H1b"/>
                             <constraint firstItem="Xqf-He-qCr" firstAttribute="trailing" secondItem="gD6-D9-fiX" secondAttribute="trailing" constant="8" id="lMJ-Sb-Rqo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xqf-He-qCr"/>
@@ -1308,7 +1311,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cardDescription" destination="gD6-D9-fiX" id="4fY-zz-4UB"/>
-                        <outlet property="cardImage" destination="hPJ-zZ-6xM" id="iKA-yu-sKo"/>
+                        <outlet property="cardImageButton" destination="0ch-KW-SDF" id="b4h-Hx-Qqi"/>
                         <outlet property="cardName" destination="9GP-Z7-12R" id="LNq-Cs-2Jb"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="UJO-oR-U70"/>
                     </connections>
