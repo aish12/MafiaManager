@@ -1089,13 +1089,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WelcomeLoadingPicture" translatesAutoresizingMaskIntoConstraints="NO" id="sS6-fQ-9eU">
-                                <rect key="frame" x="16" y="104" width="160" height="160"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="160" id="KaF-TL-4gq"/>
-                                    <constraint firstAttribute="height" constant="160" id="Ska-LR-StG"/>
-                                </constraints>
-                            </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gS0-95-dR9">
                                 <rect key="frame" x="238" y="104" width="160" height="160"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1120,17 +1113,26 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvM-vx-pcd">
+                                <rect key="frame" x="16" y="104" width="160" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="9td-sa-1wp"/>
+                                    <constraint firstAttribute="width" constant="160" id="Qma-nB-P20"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="WelcomeLoadingPicture"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="sS6-fQ-9eU" firstAttribute="leading" secondItem="iV2-Ni-osp" secondAttribute="leading" constant="16" id="CNI-zg-I0C"/>
+                            <constraint firstItem="Be0-tp-Gto" firstAttribute="top" secondItem="dvM-vx-pcd" secondAttribute="bottom" constant="32" id="LmC-I3-A6N"/>
                             <constraint firstItem="gS0-95-dR9" firstAttribute="top" secondItem="iV2-Ni-osp" secondAttribute="top" constant="16" id="QmA-qP-EB2"/>
                             <constraint firstItem="iV2-Ni-osp" firstAttribute="trailing" secondItem="Be0-tp-Gto" secondAttribute="trailing" constant="8" id="RPk-MB-vls"/>
-                            <constraint firstItem="sS6-fQ-9eU" firstAttribute="top" secondItem="iV2-Ni-osp" secondAttribute="top" constant="16" id="dUh-R6-Flw"/>
+                            <constraint firstItem="dvM-vx-pcd" firstAttribute="leading" secondItem="iV2-Ni-osp" secondAttribute="leading" constant="16" id="Rlh-mL-8Uf"/>
+                            <constraint firstItem="gS0-95-dR9" firstAttribute="leading" secondItem="dvM-vx-pcd" secondAttribute="trailing" constant="62" id="W7I-gV-9L3"/>
                             <constraint firstItem="Be0-tp-Gto" firstAttribute="leading" secondItem="iV2-Ni-osp" secondAttribute="leading" constant="8" id="f5T-Rh-TAo"/>
+                            <constraint firstItem="dvM-vx-pcd" firstAttribute="top" secondItem="iV2-Ni-osp" secondAttribute="top" constant="16" id="iv8-h3-XZ3"/>
                             <constraint firstItem="iV2-Ni-osp" firstAttribute="bottom" secondItem="Be0-tp-Gto" secondAttribute="bottom" constant="8" id="lhA-tR-bqT"/>
                             <constraint firstItem="iV2-Ni-osp" firstAttribute="trailing" secondItem="gS0-95-dR9" secondAttribute="trailing" constant="16" id="t2n-L3-YTI"/>
-                            <constraint firstItem="Be0-tp-Gto" firstAttribute="top" secondItem="sS6-fQ-9eU" secondAttribute="bottom" constant="32" id="uJB-z2-AJx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iV2-Ni-osp"/>
                     </view>
@@ -1142,6 +1144,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cardDescriptionTextView" destination="Be0-tp-Gto" id="7y9-F6-04d"/>
+                        <outlet property="cardImageButton" destination="dvM-vx-pcd" id="VoH-ZM-soP"/>
+                        <outlet property="cardNameTextView" destination="gS0-95-dR9" id="LBM-Fk-RQM"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="xRD-Yf-1YW"/>
                     </connections>
                 </viewController>
