@@ -79,7 +79,6 @@ class CopyCardViewController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         cardCollectionView.deselectItem(at: indexPath, animated: true)
         let indexOfSelected = selectedCards.firstIndex(of:indexPath)
-        print(indexOfSelected)
         if (indexOfSelected != nil) {
             selectedCards.remove(at: indexOfSelected!)
             let cell = cardCollectionView.cellForItem(at: indexPath)

@@ -126,20 +126,17 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
             // Deleting the deck from core data
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
-            let request =
-                NSFetchRequest<NSFetchRequestResult>(entityName:"Deck")
+            let cardsRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Card")
+            cardsRequest.predicate = NSPredicate(format: "deckForCard == %@", self.decks[cellIndex] as! Deck)
             let targetCell: NSManagedObject = self.decks[cellIndex]
-            var fetchResults:[NSManagedObject]
+            var fetchResults: [NSManagedObject]
         
             do {
-                try fetchResults = context.fetch(request) as! [NSManagedObject]
-                if fetchResults.count > 0 {
-                    for result:AnyObject in fetchResults {
-                        if result as! NSObject == targetCell {
-                            context.delete(result as! NSManagedObject)
-                        }
-                    }
+                try fetchResults = context.fetch(cardsRequest) as! [NSManagedObject]
+                for result:AnyObject in fetchResults {
+                    context.delete(result as! NSManagedObject)
                 }
+                context.delete(targetCell)
                 try context.save()
                 // Removes the deck from decks (collection view data source), and the collectionView itself
                 self.decks.remove(at: cellIndex)
