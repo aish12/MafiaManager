@@ -126,22 +126,18 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
             // Deleting the deck from core data
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
-            let cardsRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Card")
-            cardsRequest.predicate = NSPredicate(format: "deckForCard == %@", self.decks[cellIndex] as! Deck)
-            let targetCell: NSManagedObject = self.decks[cellIndex]
-            var fetchResults: [NSManagedObject]
-        
-            do {
-                try fetchResults = context.fetch(cardsRequest) as! [NSManagedObject]
-                for result:AnyObject in fetchResults {
-                    context.delete(result as! NSManagedObject)
+            let targetDeck: Deck = self.decks[cellIndex] as! Deck
+            let targetCards: NSOrderedSet? = targetDeck.cardForDeck
+            context.delete(targetDeck)
+            if targetCards != nil {
+                for targetCard in targetCards! {
+                    context.delete(targetCard as! Card)
                 }
-                context.delete(targetCell)
+            }
+            self.decks.remove(at: cellIndex)
+            self.decksCollectionView.deleteItems(at: [IndexPath(item: cellIndex + 1, section: 0)])
+            do {
                 try context.save()
-                // Removes the deck from decks (collection view data source), and the collectionView itself
-                self.decks.remove(at: cellIndex)
-                self.decksCollectionView.deleteItems(at: [IndexPath(item: cellIndex + 1, section: 0)])
-                
             } catch {
                 let nserror = error as NSError
                 NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
