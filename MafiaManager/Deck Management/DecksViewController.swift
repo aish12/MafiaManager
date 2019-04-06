@@ -43,6 +43,7 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
             
             // The index of the deck in decks is item - 1 to account for the "new deck" button being item 0
             let deck = decks[indexPath.item - 1]
+            deckCell.deckNameLabel.text = deck.value(forKey: "deckName") as? String
             deckCell.deckCellImageView.image = UIImage(data: deck.value(forKey: "deckImage") as! Data)
             deckCell.deckCellImageView.layer.cornerRadius = 10
             deckCell.deckCellImageView.layer.masksToBounds = true

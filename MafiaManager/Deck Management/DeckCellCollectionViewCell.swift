@@ -14,6 +14,7 @@ protocol DeleteDeckDelegate: class {
 }
 class DeckCellCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var deckNameLabel: UILabel!
     @IBOutlet weak var deckCellImageView: UIImageView!
     weak var delegate: DeleteDeckDelegate?
     var deleteButton: UIButton!
@@ -22,6 +23,7 @@ class DeckCellCollectionViewCell: UICollectionViewCell {
     
     // If not already in edit mode, add the x icon and a wiggle to the cell to show it is editable
     func enterEditMode() {
+        print("entering edit mode for cell \(cellIndex)")
         if deleteButton?.superview == nil {
             deleteButton = UIButton(frame: CGRect(x: 0, y: 0, width: frame.size.width/4, height: frame.size.width/4))
             
@@ -30,10 +32,10 @@ class DeckCellCollectionViewCell: UICollectionViewCell {
             deleteButton.tintColor = UIColor.red
             deleteButton.addTarget(self, action: #selector(deleteDeck), for: .touchUpInside)
             deleteButton.tag = 100
-            print("Adding x subview")
             contentView.addSubview(deleteButton)
-            startWiggle()
         }
+        startWiggle()
+
     }
     
     // If in edit mode, remove the x icon from the superview and stop the wiggle animation
@@ -100,6 +102,7 @@ class DeckCellCollectionViewCell: UICollectionViewCell {
     
     // Removes wiggle animations from cells and returns them to original position
     func stopWiggle(){
+        print("stop wiggle called")
         self.layer.removeAllAnimations()
         self.transform = CGAffineTransform.identity
     }

@@ -13,6 +13,8 @@ protocol DeleteCardDelegate: class {
 }
 class CardCellCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var cardCellImageView: UIImageView!
+    @IBOutlet weak var cardNameLabel: UILabel!
+    
     var cellIndex: Int!
     
     weak var delegate: DeleteCardDelegate?
@@ -31,8 +33,8 @@ class CardCellCollectionViewCell: UICollectionViewCell {
             deleteButton.tag = 100
             print("Adding x subview")
             contentView.addSubview(deleteButton)
-            startWiggle()
         }
+        startWiggle()
     }
     
     // If in edit mode, remove the x icon from the superview and stop the wiggle animation
