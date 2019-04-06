@@ -7,11 +7,36 @@
 //
 //  Manages the copy card view controller
 import UIKit
+import CoreData
 
-class CopyCardViewController: UIViewController {
+class CopyCardViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    @IBOutlet weak var cardCollectionView: UICollectionView!
+    var cards: [NSManagedObject] = []
+    let copyCardReuseIdentifier: String = "copyCard"
+    var selectedCards: [IndexPath] = []
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return cards.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: copyCardReuseIdentifier, for: indexPath as IndexPath) as! CopyCardCollectionViewCell
+        let card = cards[indexPath.item]
+        cell.cardLabel.text = card.value(forKey: "cardName") as? String
+        cell.cardImageView.image = UIImage(data: card.value(forKey: "cardImage") as! Data)
+        cell.cardImageView.layer.cornerRadius = 10
+        cell.cardImageView.layer.masksToBounds = true
+        return cell
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        cards = retrieveCards()
+        cardCollectionView.delegate = self
+        cardCollectionView.dataSource = self
+        cardCollectionView.allowsMultipleSelection = true
 
         // Do any additional setup after loading the view.
     }
@@ -19,6 +44,40 @@ class CopyCardViewController: UIViewController {
     // When the done button is pressed, return to the Deck Detail VC
     @IBAction func doneButtonPressed(_ sender: Any) {
         navigationController?.popViewController(animated: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        cardCollectionView.deselectItem(at: indexPath, animated: true)
+        let indexOfSelected = selectedCards.firstIndex(of:indexPath)
+        print(indexOfSelected)
+        if (indexOfSelected != nil) {
+            selectedCards.remove(at: indexOfSelected!)
+            let cell = cardCollectionView.cellForItem(at: indexPath)
+            cell?.contentView.backgroundColor = UIColor.clear
+        } else {
+            selectedCards.append(indexPath)
+            let cell = cardCollectionView.cellForItem(at: indexPath)
+            cell?.contentView.backgroundColor = UIColor.red
+        }
+    }
+    
+    // Retrieves decks from core data
+    func retrieveCards() -> [NSManagedObject] {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request =
+            NSFetchRequest<NSFetchRequestResult>(entityName:"Card")
+        var fetchedResults:[NSManagedObject]? = nil
+        
+        do {
+            try fetchedResults = context.fetch(request) as? [NSManagedObject]
+        } catch {
+            // If an error occurs
+            let nserror = error as NSError
+            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+            abort()
+        }
+        return(fetchedResults)!
     }
     
     /*
