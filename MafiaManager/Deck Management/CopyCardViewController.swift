@@ -15,7 +15,8 @@ class CopyCardViewController: UIViewController, UICollectionViewDelegate, UIColl
     var cards: [NSManagedObject] = []
     let copyCardReuseIdentifier: String = "copyCard"
     var selectedCards: [IndexPath] = []
-    
+    var deck: NSManagedObject?
+    weak var cardsViewControllerDelegate: AddCardDelegate?
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cards.count
     }
@@ -24,6 +25,7 @@ class CopyCardViewController: UIViewController, UICollectionViewDelegate, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: copyCardReuseIdentifier, for: indexPath as IndexPath) as! CopyCardCollectionViewCell
         let card = cards[indexPath.item]
         cell.cardLabel.text = card.value(forKey: "cardName") as? String
+        cell.cardDescription = card.value(forKey: "cardDescription") as? String
         cell.cardImageView.image = UIImage(data: card.value(forKey: "cardImage") as! Data)
         cell.cardImageView.layer.cornerRadius = 10
         cell.cardImageView.layer.masksToBounds = true
@@ -43,7 +45,35 @@ class CopyCardViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     // When the done button is pressed, return to the Deck Detail VC
     @IBAction func doneButtonPressed(_ sender: Any) {
+        for selectedCardIPath in selectedCards {
+            let selectedCard = cardCollectionView.cellForItem(at: selectedCardIPath) as! CopyCardCollectionViewCell
+            if let newName = selectedCard.cardLabel.text,
+            let newDescription = selectedCard.cardDescription,
+            let newImage = selectedCard.cardImageView.image?.pngData() {
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                let context = appDelegate.persistentContainer.viewContext
+                let newCard = Card(context: context)
+                newCard.setValue(newName, forKey: "cardName")
+                newCard.setValue(newDescription, forKey: "cardDescription")
+                newCard.setValue(newImage, forKey: "cardImage")
+                newCard.deckForCard = deck as! Deck?
+                storeCard(card: newCard, context: context)
+                cardsViewControllerDelegate?.addCard(cardToAdd: newCard)
+            }
+        }
         navigationController?.popViewController(animated: true)
+    }
+    
+    func storeCard(card: NSManagedObject, context: NSManagedObjectContext) {
+        do {
+            try context.save()
+            print("Successfully saved card")
+        } catch {
+            // If an error occurs
+            let nserror = error as NSError
+            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+            abort()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

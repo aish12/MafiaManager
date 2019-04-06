@@ -208,6 +208,10 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
                 destinationVC.cardIPath = firstPath
                 destinationVC.cardObject = cards[firstPath.row - 1]
             }
+        } else if segue.identifier == "fromDetailToCopyCardSegue",
+            let destinationVC = segue.destination as? CopyCardViewController {
+            destinationVC.cardsViewControllerDelegate = self
+            destinationVC.deck = deckObject
         }
     }
     
