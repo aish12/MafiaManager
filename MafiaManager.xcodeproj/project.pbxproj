@@ -16,8 +16,6 @@
 		7B4F1AD0224B26E60038225D /* RecordWinnersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F1ACF224B26E60038225D /* RecordWinnersViewController.swift */; };
 		7B8B9A622255644D002260E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B9A612255644D002260E9 /* AppDelegate.swift */; };
 		7B8B9A6622557153002260E9 /* NewDeckCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B9A6522557153002260E9 /* NewDeckCellCollectionViewCell.swift */; };
-		7B8EF721225403F100816B5F /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EF71F225403F100816B5F /* Card.swift */; };
-		7B8EF722225403F100816B5F /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EF720225403F100816B5F /* Deck.swift */; };
 		7B8EF74E22540ABC00816B5F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EF74D22540ABC00816B5F /* ImagePicker.swift */; };
 		7B8EF7512254180500816B5F /* MafiaManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EF74F2254180500816B5F /* MafiaManager.xcdatamodeld */; };
 		7B8EF7532254260600816B5F /* DeckCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EF7522254260600816B5F /* DeckCellCollectionViewCell.swift */; };
@@ -55,8 +53,6 @@
 		7B4F1ACF224B26E60038225D /* RecordWinnersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordWinnersViewController.swift; sourceTree = "<group>"; };
 		7B8B9A612255644D002260E9 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B8B9A6522557153002260E9 /* NewDeckCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeckCellCollectionViewCell.swift; sourceTree = "<group>"; };
-		7B8EF71F225403F100816B5F /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		7B8EF720225403F100816B5F /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		7B8EF74D22540ABC00816B5F /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		7B8EF7502254180500816B5F /* MafiaManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MafiaManager.xcdatamodel; sourceTree = "<group>"; };
 		7B8EF7522254260600816B5F /* DeckCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckCellCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -116,8 +112,6 @@
 				7B4E70FE224990C0001395F2 /* ViewDeckCell.swift */,
 				7B4E7100224990D7001395F2 /* AddDeckCell.swift */,
 				BF01BDCD22487FA200C883D8 /* DecksViewController.swift */,
-				7B8EF71F225403F100816B5F /* Card.swift */,
-				7B8EF720225403F100816B5F /* Deck.swift */,
 				7B8EF74D22540ABC00816B5F /* ImagePicker.swift */,
 				7B8EF7522254260600816B5F /* DeckCellCollectionViewCell.swift */,
 				7B8B9A6522557153002260E9 /* NewDeckCellCollectionViewCell.swift */,
@@ -342,7 +336,6 @@
 			files = (
 				7B8B9A622255644D002260E9 /* AppDelegate.swift in Sources */,
 				7B8EF7512254180500816B5F /* MafiaManager.xcdatamodeld in Sources */,
-				7B8EF722225403F100816B5F /* Deck.swift in Sources */,
 				7B4F1AD0224B26E60038225D /* RecordWinnersViewController.swift in Sources */,
 				F618EE8122488DE500E32DA5 /* TabBarViewController.swift in Sources */,
 				7B146516224ACFEF00241B00 /* NewDeckViewController.swift in Sources */,
@@ -354,7 +347,6 @@
 				F6F54C732244644700F6DFDF /* LoginViewController.swift in Sources */,
 				7B146518224AD68500241B00 /* CreateCardViewController.swift in Sources */,
 				F6B2E1402257D82000EFB394 /* CardViewController.swift in Sources */,
-				7B8EF721225403F100816B5F /* Card.swift in Sources */,
 				7B146520224AE62C00241B00 /* NarratorDashboardViewController.swift in Sources */,
 				7B8B9A6622557153002260E9 /* NewDeckCellCollectionViewCell.swift in Sources */,
 				7BE7DAAE224C165A00E267CA /* PlayViewController.swift in Sources */,

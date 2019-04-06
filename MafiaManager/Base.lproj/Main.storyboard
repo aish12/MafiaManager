@@ -1213,9 +1213,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XlJ-PJ-gfH">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="HtQ-dt-sKW">
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="3mn-vu-NQV"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XlJ-PJ-gfH">
+                                <rect key="frame" x="0.0" y="144" width="414" height="669"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Y15-yW-uCM">
                                     <size key="itemSize" width="80" height="80"/>
@@ -1232,18 +1238,19 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </view>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="iSG-3w-kb3">
-                                        <rect key="frame" x="147.5" y="16" width="80" height="80"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </view>
-                                    </collectionViewCell>
                                 </cells>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="XlJ-PJ-gfH" firstAttribute="top" secondItem="HtQ-dt-sKW" secondAttribute="bottom" id="0rm-Qx-BSv"/>
+                            <constraint firstItem="HtQ-dt-sKW" firstAttribute="leading" secondItem="gP0-MV-cyy" secondAttribute="leading" id="13s-Ag-Nbg"/>
+                            <constraint firstItem="HtQ-dt-sKW" firstAttribute="trailing" secondItem="gP0-MV-cyy" secondAttribute="trailing" id="LF3-d1-egq"/>
+                            <constraint firstItem="gP0-MV-cyy" firstAttribute="trailing" secondItem="XlJ-PJ-gfH" secondAttribute="trailing" id="Ufr-Rs-rUk"/>
+                            <constraint firstItem="XlJ-PJ-gfH" firstAttribute="leading" secondItem="gP0-MV-cyy" secondAttribute="leading" id="Ymi-jg-bHI"/>
+                            <constraint firstItem="gP0-MV-cyy" firstAttribute="bottom" secondItem="XlJ-PJ-gfH" secondAttribute="bottom" id="dbw-2S-hbA"/>
+                            <constraint firstItem="HtQ-dt-sKW" firstAttribute="top" secondItem="gP0-MV-cyy" secondAttribute="top" id="dxG-bQ-ymR"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="gP0-MV-cyy"/>
                     </view>
                     <navigationItem key="navigationItem" title="Copy Existing Card" id="Brd-go-yG0">
@@ -1267,7 +1274,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="3965.5999999999999" y="-1005.2473763118442"/>
+            <point key="canvasLocation" x="3965.217391304348" y="-1005.8035714285713"/>
         </scene>
         <!--Card View Controller-->
         <scene sceneID="6m8-Mm-55a">

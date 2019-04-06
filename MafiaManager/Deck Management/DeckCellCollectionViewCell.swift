@@ -95,7 +95,7 @@ class DeckCellCollectionViewCell: UICollectionViewCell {
         transform.repeatCount = Float.greatestFiniteMagnitude
         transform.isAdditive = true
         transform.beginTime = CFTimeInterval(Float(arc4random()).truncatingRemainder(dividingBy: Float(25)) / Float(100))
-        
+        print("self is \(self)")
         self.layer.add(position, forKey: nil)
         self.layer.add(transform, forKey: nil)
     }

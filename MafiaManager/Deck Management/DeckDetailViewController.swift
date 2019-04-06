@@ -103,6 +103,7 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
         let context = appDelegate.persistentContainer.viewContext
         let request =
             NSFetchRequest<NSFetchRequestResult>(entityName:"Card")
+        request.predicate = NSPredicate(format: "deckForCard == %@", deckObject as! Deck)
         var fetchedResults:[NSManagedObject]? = nil
         
         do {
@@ -192,7 +193,7 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
             let destinationVC = segue.destination as? CreateCardViewController {
                     
                 destinationVC.cardsViewControllerDelegate = self
-                    
+                destinationVC.deck = deckObject
                 
         
         } else if segue.identifier == "fromCardsToCardDetail",

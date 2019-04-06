@@ -21,6 +21,7 @@ class CreateCardViewController: UIViewController, ImagePickerDelegate, UITextVie
     @IBOutlet weak var cardDescriptionTextView: UITextView!
     @IBOutlet weak var cardImageButton: UIButton!
     weak var cardsViewControllerDelegate: AddCardDelegate?
+    var deck: NSManagedObject?
     var imagePicker: ImagePicker!
     
     override func viewDidLoad() {
@@ -62,11 +63,13 @@ class CreateCardViewController: UIViewController, ImagePickerDelegate, UITextVie
             let newImage = image.pngData()
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
-            let card = NSEntityDescription.insertNewObject(forEntityName: "Card", into: context)
+            let card = Card(context: context)
             card.setValue(newName, forKey: "cardName")
             card.setValue(newDescription, forKey: "cardDescription")
             card.setValue(newImage, forKey: "cardImage")
+            card.deckForCard = deck as! Deck?
             storeCard(card: card, context: context)
+            
             cardsViewControllerDelegate?.addCard(cardToAdd: card)
         }
         
