@@ -902,6 +902,65 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QqO-zz-Jpd">
                                 <rect key="frame" x="8" y="104" width="398" height="590"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="roleCell" id="Pa5-pn-Hw3" customClass="RoleQuantityTableViewCell" customModule="MafiaManager" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="398" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Pa5-pn-Hw3" id="crM-NF-qCn">
+                                            <rect key="frame" x="0.0" y="0.0" width="398" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Tl-Iu-k0S">
+                                                    <rect key="frame" x="36" y="11.5" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOX-J8-ier">
+                                                    <rect key="frame" x="270" y="7" width="30" height="30"/>
+                                                    <state key="normal" title="-"/>
+                                                    <connections>
+                                                        <action selector="decrementQuantityButtonPressed:" destination="Pa5-pn-Hw3" eventType="touchUpInside" id="fn4-Ny-LjR"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lLJ-I6-dw9">
+                                                    <rect key="frame" x="352" y="7" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="IPM-Ng-wdm"/>
+                                                        <constraint firstAttribute="width" constant="30" id="TFd-N6-H0S"/>
+                                                    </constraints>
+                                                    <state key="normal" title="+"/>
+                                                    <connections>
+                                                        <action selector="incrementQuantityButtonPressed:" destination="Pa5-pn-Hw3" eventType="touchUpInside" id="mwu-R2-Iek"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYj-fS-vnR">
+                                                    <rect key="frame" x="308" y="11.5" width="36" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="36" id="dWf-H3-Jvl"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="lLJ-I6-dw9" firstAttribute="leading" secondItem="aYj-fS-vnR" secondAttribute="trailing" constant="8" id="Fjd-zg-Drv"/>
+                                                <constraint firstItem="aYj-fS-vnR" firstAttribute="leading" secondItem="JOX-J8-ier" secondAttribute="trailing" constant="8" id="HxX-mQ-WMX"/>
+                                                <constraint firstAttribute="trailing" secondItem="lLJ-I6-dw9" secondAttribute="trailing" constant="16" id="bnM-XZ-sNn"/>
+                                                <constraint firstItem="aYj-fS-vnR" firstAttribute="centerY" secondItem="crM-NF-qCn" secondAttribute="centerY" id="gBM-7g-IFb"/>
+                                                <constraint firstItem="JOX-J8-ier" firstAttribute="centerY" secondItem="crM-NF-qCn" secondAttribute="centerY" id="pNF-Ys-U38"/>
+                                                <constraint firstItem="4Tl-Iu-k0S" firstAttribute="centerY" secondItem="crM-NF-qCn" secondAttribute="centerY" id="pgW-pn-5Hy"/>
+                                                <constraint firstItem="lLJ-I6-dw9" firstAttribute="centerY" secondItem="crM-NF-qCn" secondAttribute="centerY" id="s3L-Lt-Nlz"/>
+                                                <constraint firstItem="4Tl-Iu-k0S" firstAttribute="leading" secondItem="crM-NF-qCn" secondAttribute="leadingMargin" constant="16" id="y9K-c1-A2q"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="quantityLabel" destination="aYj-fS-vnR" id="5SV-Yy-6V9"/>
+                                            <outlet property="roleLabel" destination="4Tl-Iu-k0S" id="vfc-yI-yXg"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 People Needed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQS-e4-EFy">
                                 <rect key="frame" x="158" y="702" width="98" height="15"/>
@@ -940,6 +999,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="peopleNeededLabel" destination="dQS-e4-EFy" id="6F7-OI-NQ6"/>
+                        <outlet property="roleTable" destination="QqO-zz-Jpd" id="y8w-qy-tyJ"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="xut-2e-mCP"/>
                     </connections>
                 </viewController>

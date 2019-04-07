@@ -7,19 +7,77 @@
 //
 
 import UIKit
+import CoreData
 
-class RoleQuantityViewController: UIViewController {
+class RoleQuantityViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UpdateQuantityDelegate {
 
     @IBOutlet weak var peopleNeededLabel: UILabel!
+    @IBOutlet weak var roleTable: UITableView!
+    
     var deck: Deck?
+    var cards: [Card]?
+    var cardQuantities: [Card: Int] = [:]
+    var numPlayersRequired: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        peopleNeededLabel.text = "\(deck?.cardForDeck?.count ?? 0) People Needed"
+        roleTable.delegate = self
+        roleTable.dataSource = self
+        cards = retrieveCards()
+        for card in cards! {
+            cardQuantities[card] = 0
+        }
+        peopleNeededLabel.text = "0 People Needed"
     }
     
-
+    override func viewDidAppear(_ animated: Bool) {
+        roleTable.reloadData()
+        cards = retrieveCards()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (deck?.cardForDeck?.count)!
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = roleTable.dequeueReusableCell(withIdentifier: "roleCell", for: indexPath as IndexPath) as! RoleQuantityTableViewCell
+        let card = cards![indexPath.item]
+        cell.card = card
+        cell.roleLabel.text = card.cardName
+        cell.updateQuantityDelegate = self
+        return cell
+    }
+    
+    func updateQuantity(card: Card, incremented: Bool) {
+        if incremented {
+            self.cardQuantities[card] = self.cardQuantities[card]! + 1
+            numPlayersRequired += 1
+        } else {
+            self.cardQuantities[card] = self.cardQuantities[card]! - 1
+            numPlayersRequired -= 1
+        }
+        self.peopleNeededLabel.text = "\(numPlayersRequired) People Needed"
+    }
+    
+    // Retrieves decks from core data
+    func retrieveCards() -> [Card] {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request =
+            NSFetchRequest<NSFetchRequestResult>(entityName:"Card")
+        request.predicate = NSPredicate(format: "deckForCard == %@", deck!)
+        var fetchedResults:[NSManagedObject]? = nil
+        
+        do {
+            try fetchedResults = context.fetch(request) as? [NSManagedObject]
+        } catch {
+            // If an error occurs
+            let nserror = error as NSError
+            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+            abort()
+        }
+        return(fetchedResults) as! [Card]
+    }
     /*
     // MARK: - Navigation
 

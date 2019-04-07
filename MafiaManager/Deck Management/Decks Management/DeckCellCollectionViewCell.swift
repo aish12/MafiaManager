@@ -23,7 +23,6 @@ class DeckCellCollectionViewCell: UICollectionViewCell {
     
     // If not already in edit mode, add the x icon and a wiggle to the cell to show it is editable
     func enterEditMode() {
-        print("entering edit mode for cell \(cellIndex)")
         if deleteButton?.superview == nil {
             deleteButton = UIButton(frame: CGRect(x: 0, y: 0, width: frame.size.width/4, height: frame.size.width/4))
             
@@ -63,7 +62,6 @@ class DeckCellCollectionViewCell: UICollectionViewCell {
         displacement: CGFloat = 1.0,
         degreesRotation: CGFloat = 2.0
         ) {
-        print("wiggle called")
         let negativeDisplacement = -1.0 * displacement
         let position = CAKeyframeAnimation.init(keyPath: "position")
         position.beginTime = 0.8
@@ -102,7 +100,6 @@ class DeckCellCollectionViewCell: UICollectionViewCell {
     
     // Removes wiggle animations from cells and returns them to original position
     func stopWiggle(){
-        print("stop wiggle called")
         self.layer.removeAllAnimations()
         self.transform = CGAffineTransform.identity
     }

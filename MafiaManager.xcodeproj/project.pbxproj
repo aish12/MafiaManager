@@ -13,6 +13,7 @@
 		7B146520224AE62C00241B00 /* NarratorDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B14651F224AE62C00241B00 /* NarratorDashboardViewController.swift */; };
 		7B32DF3C225A262600F0072B /* CoreGraphicsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B32DF3B225A262600F0072B /* CoreGraphicsHelper.swift */; };
 		7B32DF3E225A39CC00F0072B /* RoleQuantityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B32DF3D225A39CC00F0072B /* RoleQuantityViewController.swift */; };
+		7B32DF40225A3E7900F0072B /* RoleQuantityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B32DF3F225A3E7900F0072B /* RoleQuantityTableViewCell.swift */; };
 		7B4E70FF224990C0001395F2 /* ViewDeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4E70FE224990C0001395F2 /* ViewDeckCell.swift */; };
 		7B4E7101224990D7001395F2 /* AddDeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4E7100224990D7001395F2 /* AddDeckCell.swift */; };
 		7B4F1AD0224B26E60038225D /* RecordWinnersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F1ACF224B26E60038225D /* RecordWinnersViewController.swift */; };
@@ -56,6 +57,7 @@
 		7B14651F224AE62C00241B00 /* NarratorDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NarratorDashboardViewController.swift; sourceTree = "<group>"; };
 		7B32DF3B225A262600F0072B /* CoreGraphicsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreGraphicsHelper.swift; sourceTree = "<group>"; };
 		7B32DF3D225A39CC00F0072B /* RoleQuantityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleQuantityViewController.swift; sourceTree = "<group>"; };
+		7B32DF3F225A3E7900F0072B /* RoleQuantityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleQuantityTableViewCell.swift; sourceTree = "<group>"; };
 		7B4E70FE224990C0001395F2 /* ViewDeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDeckCell.swift; sourceTree = "<group>"; };
 		7B4E7100224990D7001395F2 /* AddDeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeckCell.swift; sourceTree = "<group>"; };
 		7B4F1ACF224B26E60038225D /* RecordWinnersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordWinnersViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				7B921AA32259742B003A219D /* DeckSelectionCollectionViewCell.swift */,
 				7B921AA522597ACF003A219D /* SelectDetailViewController.swift */,
 				7B32DF3D225A39CC00F0072B /* RoleQuantityViewController.swift */,
+				7B32DF3F225A3E7900F0072B /* RoleQuantityTableViewCell.swift */,
 			);
 			path = Setup;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				F6B2E13E2257D2B900EFB394 /* NewCardCellCollectionViewCell.swift in Sources */,
 				F6A22D4722571E2B000F694B /* EditDeckViewController.swift in Sources */,
 				F6F54C732244644700F6DFDF /* LoginViewController.swift in Sources */,
+				7B32DF40225A3E7900F0072B /* RoleQuantityTableViewCell.swift in Sources */,
 				7B146518224AD68500241B00 /* CreateCardViewController.swift in Sources */,
 				F6B2E1402257D82000EFB394 /* CardViewController.swift in Sources */,
 				7B146520224AE62C00241B00 /* NarratorDashboardViewController.swift in Sources */,
