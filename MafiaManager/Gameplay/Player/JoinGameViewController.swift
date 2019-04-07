@@ -10,6 +10,7 @@ import UIKit
 
 class JoinGameViewController: UIViewController {
 
+    let mpcPlayer = MPCPlayer()
     override func viewDidLoad() {
         super.viewDidLoad()
 
