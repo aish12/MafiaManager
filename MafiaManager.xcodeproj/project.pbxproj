@@ -19,6 +19,8 @@
 		7B8EF74E22540ABC00816B5F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EF74D22540ABC00816B5F /* ImagePicker.swift */; };
 		7B8EF7512254180500816B5F /* MafiaManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EF74F2254180500816B5F /* MafiaManager.xcdatamodeld */; };
 		7B8EF7532254260600816B5F /* DeckCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EF7522254260600816B5F /* DeckCellCollectionViewCell.swift */; };
+		7B921AA22259724B003A219D /* DeckSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B921AA12259724B003A219D /* DeckSelectionViewController.swift */; };
+		7B921AA42259742B003A219D /* DeckSelectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B921AA32259742B003A219D /* DeckSelectionCollectionViewCell.swift */; };
 		7B9A74B222583872000D15AB /* CopyCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A74B122583872000D15AB /* CopyCardCollectionViewCell.swift */; };
 		7BE7DAAA224C0F9F00E267CA /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE7DAA9224C0F9F00E267CA /* TimerViewController.swift */; };
 		7BE7DAAC224C137C00E267CA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE7DAAB224C137C00E267CA /* SettingsViewController.swift */; };
@@ -57,6 +59,8 @@
 		7B8EF74D22540ABC00816B5F /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		7B8EF7502254180500816B5F /* MafiaManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MafiaManager.xcdatamodel; sourceTree = "<group>"; };
 		7B8EF7522254260600816B5F /* DeckCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		7B921AA12259724B003A219D /* DeckSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckSelectionViewController.swift; sourceTree = "<group>"; };
+		7B921AA32259742B003A219D /* DeckSelectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckSelectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		7B9A74B122583872000D15AB /* CopyCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		7BE7DAA9224C0F9F00E267CA /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		7BE7DAAB224C137C00E267CA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -107,21 +111,9 @@
 		7B8EF7242254045500816B5F /* Deck Management */ = {
 			isa = PBXGroup;
 			children = (
-				7B146515224ACFEF00241B00 /* NewDeckViewController.swift */,
-				7B146517224AD68500241B00 /* CreateCardViewController.swift */,
-				7B146519224ADAA200241B00 /* CopyCardViewController.swift */,
-				BF32AF30224AAA1700D32277 /* DeckDetailViewController.swift */,
-				7B4E70FE224990C0001395F2 /* ViewDeckCell.swift */,
-				7B4E7100224990D7001395F2 /* AddDeckCell.swift */,
-				BF01BDCD22487FA200C883D8 /* DecksViewController.swift */,
+				7B921A9F225971B8003A219D /* Decks Management */,
+				7B921AA0225971F4003A219D /* Cards Management */,
 				7B8EF74D22540ABC00816B5F /* ImagePicker.swift */,
-				7B8EF7522254260600816B5F /* DeckCellCollectionViewCell.swift */,
-				7B8B9A6522557153002260E9 /* NewDeckCellCollectionViewCell.swift */,
-				F6A22D4622571E2B000F694B /* EditDeckViewController.swift */,
-				F6B2E13B2257D2AA00EFB394 /* CardCellCollectionViewCell.swift */,
-				F6B2E13D2257D2B900EFB394 /* NewCardCellCollectionViewCell.swift */,
-				F6B2E13F2257D82000EFB394 /* CardViewController.swift */,
-				7B9A74B122583872000D15AB /* CopyCardCollectionViewCell.swift */,
 			);
 			path = "Deck Management";
 			sourceTree = "<group>";
@@ -145,6 +137,8 @@
 				7BE7DAA9224C0F9F00E267CA /* TimerViewController.swift */,
 				7BE7DAAB224C137C00E267CA /* SettingsViewController.swift */,
 				7BE7DAAD224C165A00E267CA /* PlayViewController.swift */,
+				7B921AA12259724B003A219D /* DeckSelectionViewController.swift */,
+				7B921AA32259742B003A219D /* DeckSelectionCollectionViewCell.swift */,
 			);
 			path = Gameplay;
 			sourceTree = "<group>";
@@ -155,6 +149,34 @@
 				BF01BDD122487FCA00C883D8 /* HistoryViewController.swift */,
 			);
 			path = History;
+			sourceTree = "<group>";
+		};
+		7B921A9F225971B8003A219D /* Decks Management */ = {
+			isa = PBXGroup;
+			children = (
+				7B8B9A6522557153002260E9 /* NewDeckCellCollectionViewCell.swift */,
+				F6A22D4622571E2B000F694B /* EditDeckViewController.swift */,
+				7B146515224ACFEF00241B00 /* NewDeckViewController.swift */,
+				BF32AF30224AAA1700D32277 /* DeckDetailViewController.swift */,
+				7B4E70FE224990C0001395F2 /* ViewDeckCell.swift */,
+				7B4E7100224990D7001395F2 /* AddDeckCell.swift */,
+				BF01BDCD22487FA200C883D8 /* DecksViewController.swift */,
+				7B8EF7522254260600816B5F /* DeckCellCollectionViewCell.swift */,
+			);
+			path = "Decks Management";
+			sourceTree = "<group>";
+		};
+		7B921AA0225971F4003A219D /* Cards Management */ = {
+			isa = PBXGroup;
+			children = (
+				7B146517224AD68500241B00 /* CreateCardViewController.swift */,
+				7B146519224ADAA200241B00 /* CopyCardViewController.swift */,
+				F6B2E13B2257D2AA00EFB394 /* CardCellCollectionViewCell.swift */,
+				F6B2E13D2257D2B900EFB394 /* NewCardCellCollectionViewCell.swift */,
+				F6B2E13F2257D82000EFB394 /* CardViewController.swift */,
+				7B9A74B122583872000D15AB /* CopyCardCollectionViewCell.swift */,
+			);
+			path = "Cards Management";
 			sourceTree = "<group>";
 		};
 		7E802CDD2D987692A4E7EAE8 /* Frameworks */ = {
@@ -355,6 +377,7 @@
 				7B8B9A6622557153002260E9 /* NewDeckCellCollectionViewCell.swift in Sources */,
 				7BE7DAAE224C165A00E267CA /* PlayViewController.swift in Sources */,
 				F6B2E13C2257D2AA00EFB394 /* CardCellCollectionViewCell.swift in Sources */,
+				7B921AA42259742B003A219D /* DeckSelectionCollectionViewCell.swift in Sources */,
 				BF01BDCE22487FA200C883D8 /* DecksViewController.swift in Sources */,
 				BF01BDD222487FCA00C883D8 /* HistoryViewController.swift in Sources */,
 				7B14651A224ADAA200241B00 /* CopyCardViewController.swift in Sources */,
@@ -365,6 +388,7 @@
 				F6F54C7522446B7D00F6DFDF /* SignUpViewController.swift in Sources */,
 				BF32AF31224AAA1700D32277 /* DeckDetailViewController.swift in Sources */,
 				7BE7DAAC224C137C00E267CA /* SettingsViewController.swift in Sources */,
+				7B921AA22259724B003A219D /* DeckSelectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
