@@ -62,6 +62,7 @@ PODS:
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.1)
   - leveldb-library (1.20)
+  - MultiPeer (0.0.9)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -73,6 +74,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - MultiPeer
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -88,6 +90,7 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMSessionFetcher
     - leveldb-library
+    - MultiPeer
     - nanopb
 
 SPEC CHECKSUMS:
@@ -103,8 +106,9 @@ SPEC CHECKSUMS:
   GoogleUtilities: 111a012f4c3a29c9e7c954c082fafd6ee3c999c0
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
+  MultiPeer: 9e37a6528afc110aab909e2e1cac0bf60b154057
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
 
-PODFILE CHECKSUM: 3bc17199f786d2c8efcb616a850826280ea02571
+PODFILE CHECKSUM: 205b7c4cbdbc58f2f2a67411071fa38355aa58f8
 
 COCOAPODS: 1.6.1
