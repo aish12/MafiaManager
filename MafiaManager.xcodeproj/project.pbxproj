@@ -32,6 +32,8 @@
 		7BE7DAAE224C165A00E267CA /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE7DAAD224C165A00E267CA /* PlayViewController.swift */; };
 		7BEA9F51225A7302005FBDE7 /* JoinGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA9F50225A7302005FBDE7 /* JoinGameViewController.swift */; };
 		7BEA9F58225A79F2005FBDE7 /* MPCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA9F57225A79F2005FBDE7 /* MPCManager.swift */; };
+		7BEA9F5C225A80E7005FBDE7 /* MPCNarrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA9F5B225A80E7005FBDE7 /* MPCNarrator.swift */; };
+		7BEA9F5E225A81AD005FBDE7 /* MPCPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA9F5D225A81AD005FBDE7 /* MPCPlayer.swift */; };
 		8F974F8D37A5B79031110456 /* Pods_MafiaManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3736DE08530B5A6DD9C82E73 /* Pods_MafiaManager.framework */; };
 		BF01BDCE22487FA200C883D8 /* DecksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01BDCD22487FA200C883D8 /* DecksViewController.swift */; };
 		BF01BDD022487FB800C883D8 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01BDCF22487FB800C883D8 /* PlayerViewController.swift */; };
@@ -79,6 +81,8 @@
 		7BE7DAAD224C165A00E267CA /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		7BEA9F50225A7302005FBDE7 /* JoinGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameViewController.swift; sourceTree = "<group>"; };
 		7BEA9F57225A79F2005FBDE7 /* MPCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCManager.swift; sourceTree = "<group>"; };
+		7BEA9F5B225A80E7005FBDE7 /* MPCNarrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCNarrator.swift; sourceTree = "<group>"; };
+		7BEA9F5D225A81AD005FBDE7 /* MPCPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCPlayer.swift; sourceTree = "<group>"; };
 		BF01BDCD22487FA200C883D8 /* DecksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecksViewController.swift; sourceTree = "<group>"; };
 		BF01BDCF22487FB800C883D8 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		BF01BDD122487FCA00C883D8 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -227,6 +231,8 @@
 			children = (
 				7B32DF3B225A262600F0072B /* CoreGraphicsHelper.swift */,
 				7BEA9F57225A79F2005FBDE7 /* MPCManager.swift */,
+				7BEA9F5B225A80E7005FBDE7 /* MPCNarrator.swift */,
+				7BEA9F5D225A81AD005FBDE7 /* MPCPlayer.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -425,7 +431,9 @@
 				7B8EF74E22540ABC00816B5F /* ImagePicker.swift in Sources */,
 				F6B2E13E2257D2B900EFB394 /* NewCardCellCollectionViewCell.swift in Sources */,
 				7BEA9F58225A79F2005FBDE7 /* MPCManager.swift in Sources */,
+				7BEA9F5C225A80E7005FBDE7 /* MPCNarrator.swift in Sources */,
 				7B32DF42225A5A0100F0072B /* WaitForPlayersViewController.swift in Sources */,
+				7BEA9F5E225A81AD005FBDE7 /* MPCPlayer.swift in Sources */,
 				F6A22D4722571E2B000F694B /* EditDeckViewController.swift in Sources */,
 				F6F54C732244644700F6DFDF /* LoginViewController.swift in Sources */,
 				7B32DF40225A3E7900F0072B /* RoleQuantityTableViewCell.swift in Sources */,

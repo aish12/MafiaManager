@@ -14,7 +14,7 @@ class WaitForPlayersViewController: UIViewController{
     
     @IBOutlet weak var playerCountLabel: UILabel!
     
-    let mpcManager = MPCManager()
+    let mpcNarrator = MPCPlayer()
     var cardQuantities: [Card: Int]?
     var connections: [Int] = []
     var numPlayers: Int = 0
