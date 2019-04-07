@@ -12,6 +12,5 @@ class DeckSelectionCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var deckImageView: UIImageView!
     @IBOutlet weak var deckLabel: UILabel!
-    
-    
+
 }

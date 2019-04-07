@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class DeckSelectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class DeckSelectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIPopoverPresentationControllerDelegate {
     
     var deckObjects: [Deck] = []
     let deckSelectReuseIdentifier: String = "DeckSelectCell"
@@ -18,6 +18,7 @@ class DeckSelectionViewController: UIViewController, UICollectionViewDelegate, U
         super.viewDidLoad()
         decksCollectionView.dataSource = self
         decksCollectionView.delegate = self
+        
         loadDecks()
         // Do any additional setup after loading the view.
     }
@@ -39,6 +40,26 @@ class DeckSelectionViewController: UIViewController, UICollectionViewDelegate, U
         cell.deckImageView.layer.cornerRadius = 10
         cell.deckImageView.layer.masksToBounds = true
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+         performSegue(withIdentifier: "fromDeckSelectToDeckDetail", sender: self)
+        /*
+        let popoverContent: SelectDetailViewController! = self.storyboard?.instantiateViewController(withIdentifier: "SelectDetailViewController") as! SelectDetailViewController
+        popoverContent.modalPresentationStyle = .popover
+        _ = popoverContent.presentationController
+        
+        if let popover = popoverContent.popoverPresentationController {
+            let viewForSource = self.view!
+            popover.sourceView = viewForSource
+            
+            popover.sourceRect = viewForSource.bounds
+            popoverContent.preferredContentSize = CGSize(width: 200, height: 500)
+            popover.delegate = self
+            popoverContent.deck = deckObjects[indexPath.item]
+        }
+        self.present(popoverContent, animated: true, completion: nil)
+ */
     }
     
     // Retrieves the decks data from core data and reloads the Collection View's data with this
@@ -69,11 +90,26 @@ class DeckSelectionViewController: UIViewController, UICollectionViewDelegate, U
     /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // In a storyboard-based application, you will often want to do a little preparation before navigation */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "fromDeckSelectToDeckDetail" {
+            if let destinationVC = segue.destination as? SelectDetailViewController,
+                let indexPaths: [IndexPath] = self.decksCollectionView.indexPathsForSelectedItems {
+                let deck: Deck = deckObjects[indexPaths[0].item]
+                print("!@@#!#!@#!@#!#@#!@#!@")
+                print(deck)
+                //destinationVC.popoverPresentationController?.sourceView = self.view
+                //destinationVC.popoverPresentationController?.sourceRect = self.view.bounds
+
+                destinationVC.deck = deck
+                destinationVC.modalPresentationStyle = .popover
+                destinationVC.popoverPresentationController?.delegate = self
+            }
+        }
     }
-    */
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
 
 }
