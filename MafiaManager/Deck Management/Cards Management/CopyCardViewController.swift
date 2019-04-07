@@ -83,13 +83,12 @@ class CopyCardViewController: UIViewController, UICollectionViewDelegate, UIColl
         if (indexOfSelected != nil) {
             selectedCards.remove(at: indexOfSelected!)
             let cell = cardCollectionView.cellForItem(at: indexPath) as! CopyCardCollectionViewCell
-            cell.cardImageView.layer.borderColor = UIColor.clear.cgColor
-            cell.cardImageView.layer.borderWidth = 0
+            CoreGraphicsHelper.removeSelectedImageBorder(imageView: cell.cardImageView)
+
         } else {
             selectedCards.append(indexPath)
             let cell = cardCollectionView.cellForItem(at: indexPath) as! CopyCardCollectionViewCell
-            cell.cardImageView.layer.borderColor = UIColor(red: 0.0, green: 122.0/255.0, blue: 1.0, alpha: 1.0).cgColor
-            cell.cardImageView.layer.borderWidth = 5
+            CoreGraphicsHelper.createSelectedImageBorder(imageView: cell.cardImageView)
         }
     }
     

@@ -681,12 +681,13 @@
                     <navigationItem key="navigationItem" title="Pick A Deck!" id="1iV-WJ-hC2">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="mH8-IT-yek">
                             <connections>
-                                <segue destination="x23-G5-JGJ" kind="show" id="qaQ-eL-S1P"/>
+                                <segue destination="x23-G5-JGJ" kind="show" id="2S1-se-lW1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="decksCollectionView" destination="JXm-b7-mjf" id="tlM-c5-bw8"/>
+                        <outlet property="nextButton" destination="mH8-IT-yek" id="RuF-1j-njt"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="ddI-fG-bQM"/>
                         <segue destination="zXX-Gg-pNt" kind="popoverPresentation" identifier="fromDeckSelectToDeckDetail" popoverAnchorView="LlK-mY-3QC" id="pay-7Q-lAb">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -2018,8 +2019,8 @@
         <image name="helpIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rDd-hE-V4G"/>
+        <segue reference="l60-1W-HGq"/>
         <segue reference="zyS-kh-uZt"/>
-        <segue reference="yD9-vY-Gqm"/>
+        <segue reference="Zcs-n1-7wB"/>
     </inferredMetricsTieBreakers>
 </document>

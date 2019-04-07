@@ -15,8 +15,11 @@ class DeckSelectionViewController: UIViewController, UICollectionViewDelegate, U
     var deckToShowDetail: Deck?
     let deckSelectReuseIdentifier: String = "DeckSelectCell"
     @IBOutlet weak var decksCollectionView: UICollectionView!
+    @IBOutlet weak var nextButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+                nextButton.isEnabled = false
         decksCollectionView.dataSource = self
         decksCollectionView.delegate = self
         let longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(longPressGR:)))
@@ -45,9 +48,15 @@ class DeckSelectionViewController: UIViewController, UICollectionViewDelegate, U
         cell.deckImageView.layer.masksToBounds = true
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let selectedCell = decksCollectionView.cellForItem(at: indexPath) as! DeckSelectionCollectionViewCell
+        CoreGraphicsHelper.createSelectedImageBorder(imageView: selectedCell.deckImageView)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let selectedCell = decksCollectionView.cellForItem(at: indexPath) as! DeckSelectionCollectionViewCell
+        CoreGraphicsHelper.removeSelectedImageBorder(imageView: selectedCell.deckImageView)
     }
     
     // Retrieves the decks data from core data and reloads the Collection View's data with this
