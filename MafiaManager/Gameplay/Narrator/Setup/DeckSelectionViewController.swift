@@ -12,13 +12,17 @@ import CoreData
 class DeckSelectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIPopoverPresentationControllerDelegate {
     
     var deckObjects: [Deck] = []
+    var deckToShowDetail: Deck?
     let deckSelectReuseIdentifier: String = "DeckSelectCell"
     @IBOutlet weak var decksCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
         decksCollectionView.dataSource = self
         decksCollectionView.delegate = self
-        
+        let longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(longPressGR:)))
+        longPressGR.minimumPressDuration = 0.5
+        longPressGR.delaysTouchesBegan = true
+        self.decksCollectionView.addGestureRecognizer(longPressGR)
         loadDecks()
         // Do any additional setup after loading the view.
     }
@@ -43,23 +47,7 @@ class DeckSelectionViewController: UIViewController, UICollectionViewDelegate, U
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-         performSegue(withIdentifier: "fromDeckSelectToDeckDetail", sender: self)
-        /*
-        let popoverContent: SelectDetailViewController! = self.storyboard?.instantiateViewController(withIdentifier: "SelectDetailViewController") as! SelectDetailViewController
-        popoverContent.modalPresentationStyle = .popover
-        _ = popoverContent.presentationController
         
-        if let popover = popoverContent.popoverPresentationController {
-            let viewForSource = self.view!
-            popover.sourceView = viewForSource
-            
-            popover.sourceRect = viewForSource.bounds
-            popoverContent.preferredContentSize = CGSize(width: 200, height: 500)
-            popover.delegate = self
-            popoverContent.deck = deckObjects[indexPath.item]
-        }
-        self.present(popoverContent, animated: true, completion: nil)
- */
     }
     
     // Retrieves the decks data from core data and reloads the Collection View's data with this
@@ -87,20 +75,30 @@ class DeckSelectionViewController: UIViewController, UICollectionViewDelegate, U
         return(fetchedResults)!
     }
     
+    // Long press for each collection view cell
+    @objc func handleLongPress(longPressGR : UILongPressGestureRecognizer) {
+        if longPressGR.state != .began {
+            return
+        }
+        let point = longPressGR.location(in: self.decksCollectionView)
+        let indexPath = self.decksCollectionView.indexPathForItem(at: point)
+        if let indexPath = indexPath {
+            deckToShowDetail = deckObjects[indexPath.item]
+            performSegue(withIdentifier: "fromDeckSelectToDeckDetail", sender: self)
+        } else {
+            print("Could not find indexPath")
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "fromDeckSelectToDeckDetail" {
-            if let destinationVC = segue.destination as? SelectDetailViewController,
-                let indexPaths: [IndexPath] = self.decksCollectionView.indexPathsForSelectedItems {
-                let deck: Deck = deckObjects[indexPaths[0].item]
-                print(deck)
-                //destinationVC.popoverPresentationController?.sourceView = self.view
+            if let destinationVC = segue.destination as? SelectDetailViewController {
                 destinationVC.popoverPresentationController?.sourceRect = CGRect(x:-self.view.bounds.width, y:-self.view.bounds.height, width: self.view.bounds.width - 20, height: self.view.bounds.height - 30)
-
-                destinationVC.deck = deck
+                destinationVC.deck = deckToShowDetail
                 destinationVC.popoverPresentationController?.permittedArrowDirections = .init(rawValue: 0)
                 destinationVC.modalPresentationStyle = .popover
                 destinationVC.popoverPresentationController?.delegate = self

@@ -651,9 +651,6 @@
                                         <connections>
                                             <outlet property="deckImageView" destination="nv9-HC-nug" id="hbG-jh-BiP"/>
                                             <outlet property="deckLabel" destination="i3R-ak-MjL" id="WRj-a9-ovR"/>
-                                            <segue destination="zXX-Gg-pNt" kind="popoverPresentation" identifier="fromDeckSelectToDeckDetail" popoverAnchorView="LlK-mY-3QC" id="SiF-Xz-u9c">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -691,6 +688,9 @@
                     <connections>
                         <outlet property="decksCollectionView" destination="JXm-b7-mjf" id="tlM-c5-bw8"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="ddI-fG-bQM"/>
+                        <segue destination="zXX-Gg-pNt" kind="popoverPresentation" identifier="fromDeckSelectToDeckDetail" popoverAnchorView="LlK-mY-3QC" id="pay-7Q-lAb">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xgy-hD-g3U" sceneMemberID="firstResponder"/>
@@ -2018,7 +2018,7 @@
         <image name="helpIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="l60-1W-HGq"/>
+        <segue reference="rDd-hE-V4G"/>
         <segue reference="zyS-kh-uZt"/>
         <segue reference="yD9-vY-Gqm"/>
     </inferredMetricsTieBreakers>
