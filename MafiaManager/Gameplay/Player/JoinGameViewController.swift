@@ -1,5 +1,5 @@
 //
-//  WaitForPlayersViewController.swift
+//  JoinGameViewController.swift
 //  MafiaManager
 //
 //  Created by Robert Stigler on 4/7/19.
@@ -7,26 +7,16 @@
 //
 
 import UIKit
-import MultipeerConnectivity
 
-class WaitForPlayersViewController: UIViewController{
-    
-    
-    @IBOutlet weak var playerCountLabel: UILabel!
-    
-    let mpcManager = MPCManager()
-    var cardQuantities: [Card: Int]?
-    var connections: [Int] = []
-    var numPlayers: Int = 0
+class JoinGameViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        resetPlayerCountLabel()
+
+        // Do any additional setup after loading the view.
     }
     
-    func resetPlayerCountLabel(){
-        playerCountLabel.text = "\(connections.count)/\(numPlayers) Players Joined"
 
-    }
     /*
     // MARK: - Navigation
 

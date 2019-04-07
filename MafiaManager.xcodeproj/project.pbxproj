@@ -30,6 +30,8 @@
 		7BE7DAAA224C0F9F00E267CA /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE7DAA9224C0F9F00E267CA /* TimerViewController.swift */; };
 		7BE7DAAC224C137C00E267CA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE7DAAB224C137C00E267CA /* SettingsViewController.swift */; };
 		7BE7DAAE224C165A00E267CA /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE7DAAD224C165A00E267CA /* PlayViewController.swift */; };
+		7BEA9F51225A7302005FBDE7 /* JoinGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA9F50225A7302005FBDE7 /* JoinGameViewController.swift */; };
+		7BEA9F58225A79F2005FBDE7 /* MPCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA9F57225A79F2005FBDE7 /* MPCManager.swift */; };
 		8F974F8D37A5B79031110456 /* Pods_MafiaManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3736DE08530B5A6DD9C82E73 /* Pods_MafiaManager.framework */; };
 		BF01BDCE22487FA200C883D8 /* DecksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01BDCD22487FA200C883D8 /* DecksViewController.swift */; };
 		BF01BDD022487FB800C883D8 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01BDCF22487FB800C883D8 /* PlayerViewController.swift */; };
@@ -75,6 +77,8 @@
 		7BE7DAA9224C0F9F00E267CA /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		7BE7DAAB224C137C00E267CA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7BE7DAAD224C165A00E267CA /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
+		7BEA9F50225A7302005FBDE7 /* JoinGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameViewController.swift; sourceTree = "<group>"; };
+		7BEA9F57225A79F2005FBDE7 /* MPCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCManager.swift; sourceTree = "<group>"; };
 		BF01BDCD22487FA200C883D8 /* DecksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecksViewController.swift; sourceTree = "<group>"; };
 		BF01BDCF22487FB800C883D8 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		BF01BDD122487FCA00C883D8 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -202,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				BF01BDCF22487FB800C883D8 /* PlayerViewController.swift */,
+				7BEA9F50225A7302005FBDE7 /* JoinGameViewController.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -215,6 +220,15 @@
 				7B32DF3A225A1DF300F0072B /* Setup */,
 			);
 			path = Narrator;
+			sourceTree = "<group>";
+		};
+		7BEA9F52225A7528005FBDE7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7B32DF3B225A262600F0072B /* CoreGraphicsHelper.swift */,
+				7BEA9F57225A79F2005FBDE7 /* MPCManager.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		7E802CDD2D987692A4E7EAE8 /* Frameworks */ = {
@@ -259,7 +273,7 @@
 				F618EE8022488DE500E32DA5 /* TabBarViewController.swift */,
 				BFFDFE54223844C00033F15B /* Main.storyboard */,
 				7B8EF74F2254180500816B5F /* MafiaManager.xcdatamodeld */,
-				7B32DF3B225A262600F0072B /* CoreGraphicsHelper.swift */,
+				7BEA9F52225A7528005FBDE7 /* Helpers */,
 			);
 			path = MafiaManager;
 			sourceTree = "<group>";
@@ -410,12 +424,14 @@
 				7B4E7101224990D7001395F2 /* AddDeckCell.swift in Sources */,
 				7B8EF74E22540ABC00816B5F /* ImagePicker.swift in Sources */,
 				F6B2E13E2257D2B900EFB394 /* NewCardCellCollectionViewCell.swift in Sources */,
+				7BEA9F58225A79F2005FBDE7 /* MPCManager.swift in Sources */,
 				7B32DF42225A5A0100F0072B /* WaitForPlayersViewController.swift in Sources */,
 				F6A22D4722571E2B000F694B /* EditDeckViewController.swift in Sources */,
 				F6F54C732244644700F6DFDF /* LoginViewController.swift in Sources */,
 				7B32DF40225A3E7900F0072B /* RoleQuantityTableViewCell.swift in Sources */,
 				7B146518224AD68500241B00 /* CreateCardViewController.swift in Sources */,
 				F6B2E1402257D82000EFB394 /* CardViewController.swift in Sources */,
+				7BEA9F51225A7302005FBDE7 /* JoinGameViewController.swift in Sources */,
 				7B146520224AE62C00241B00 /* NarratorDashboardViewController.swift in Sources */,
 				7B9A74B222583872000D15AB /* CopyCardCollectionViewCell.swift in Sources */,
 				7B8B9A6622557153002260E9 /* NewDeckCellCollectionViewCell.swift in Sources */,
