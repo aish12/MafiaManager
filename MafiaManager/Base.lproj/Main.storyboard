@@ -956,6 +956,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="decrementButton" destination="JOX-J8-ier" id="aXt-ZC-szn"/>
+                                            <outlet property="incrementButton" destination="lLJ-I6-dw9" id="FvB-me-p4Z"/>
                                             <outlet property="quantityLabel" destination="aYj-fS-vnR" id="5SV-Yy-6V9"/>
                                             <outlet property="roleLabel" destination="4Tl-Iu-k0S" id="vfc-yI-yXg"/>
                                         </connections>

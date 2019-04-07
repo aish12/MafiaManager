@@ -15,27 +15,42 @@ class RoleQuantityTableViewCell: UITableViewCell {
 
     @IBOutlet weak var roleLabel: UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
+    @IBOutlet weak var decrementButton: UIButton!
+    @IBOutlet weak var incrementButton: UIButton!
     
+    let maxNumForRole = 20
+    let minNumForRole = 0
+    
+    var quantity: Int = 0
     var card: Card?
     weak var updateQuantityDelegate: UpdateQuantityDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         roleLabel.text = card?.cardName
-        quantityLabel.text = "0"
-        // Initialization code
+        quantityLabel.text = "\(quantity)"
+        updateButtons()
     }
 
     @IBAction func decrementQuantityButtonPressed(_ sender: Any) {
-        quantityLabel.text = "\(Int(quantityLabel.text!)! - 1)"
+        quantity -= 1
+        quantityLabel.text = "\(quantity)"
         updateQuantityDelegate?.updateQuantity(card: card!, incremented: false)
-        
+        updateButtons()
     }
     
     @IBAction func incrementQuantityButtonPressed(_ sender: Any) {
-        quantityLabel.text = "\(Int(quantityLabel.text!)! + 1)"
+        quantity += 1
+        quantityLabel.text = "\(quantity)"
         updateQuantityDelegate?.updateQuantity(card: card!, incremented: true)
+        updateButtons()
     }
+    
+    func updateButtons(){
+        decrementButton.isEnabled = quantity > minNumForRole
+        incrementButton.isEnabled = quantity < maxNumForRole
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
