@@ -96,12 +96,12 @@ class DeckSelectionViewController: UIViewController, UICollectionViewDelegate, U
             if let destinationVC = segue.destination as? SelectDetailViewController,
                 let indexPaths: [IndexPath] = self.decksCollectionView.indexPathsForSelectedItems {
                 let deck: Deck = deckObjects[indexPaths[0].item]
-                print("!@@#!#!@#!@#!#@#!@#!@")
                 print(deck)
                 //destinationVC.popoverPresentationController?.sourceView = self.view
-                //destinationVC.popoverPresentationController?.sourceRect = self.view.bounds
+                destinationVC.popoverPresentationController?.sourceRect = CGRect(x:-self.view.bounds.width, y:-self.view.bounds.height, width: self.view.bounds.width - 20, height: self.view.bounds.height - 30)
 
                 destinationVC.deck = deck
+                destinationVC.popoverPresentationController?.permittedArrowDirections = .init(rawValue: 0)
                 destinationVC.modalPresentationStyle = .popover
                 destinationVC.popoverPresentationController?.delegate = self
             }
