@@ -50,11 +50,25 @@ class DeckSelectionViewController: UIViewController, UICollectionViewDelegate, U
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("did called")
         let selectedCell = decksCollectionView.cellForItem(at: indexPath) as! DeckSelectionCollectionViewCell
         CoreGraphicsHelper.createSelectedImageBorder(imageView: selectedCell.deckImageView)
     }
     
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        print("should called")
+        let selectedCell = decksCollectionView.cellForItem(at: indexPath) as! DeckSelectionCollectionViewCell
+        let selectedArr = decksCollectionView.indexPathsForSelectedItems
+        if (selectedArr?.count)! > 0, indexPath == selectedArr![0] {
+            CoreGraphicsHelper.removeSelectedImageBorder(imageView: selectedCell.deckImageView)
+            decksCollectionView.deselectItem(at: indexPath, animated: true)
+            return false
+        }
+        return true
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        print("deselect called")
         let selectedCell = decksCollectionView.cellForItem(at: indexPath) as! DeckSelectionCollectionViewCell
         CoreGraphicsHelper.removeSelectedImageBorder(imageView: selectedCell.deckImageView)
     }
