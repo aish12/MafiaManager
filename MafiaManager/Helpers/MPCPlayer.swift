@@ -13,13 +13,13 @@ import MultipeerConnectivity
 class MPCPlayer: NSObject {
     // Service type must be a unique string, at most 15 characters long
     // and can contain only ASCII lowercase letters, numbers and hyphens.
-    private let serviceType = "mafiamanager-mp"
+    let serviceType = "mafiamanager-mp"
     
-    private let myPeerId = MCPeerID(displayName: UIDevice.current.name)
-    private let serviceBrowser: MCNearbyServiceBrowser
+    let myPeerId = MCPeerID(displayName: UIDevice.current.name)
+    let serviceBrowser: MCNearbyServiceBrowser
     
     lazy var session : MCSession = {
-        let session = MCSession(peer: self.myPeerId, securityIdentity: nil, encryptionPreference: .required)
+        let session = MCSession(peer: self.myPeerId, securityIdentity: nil, encryptionPreference: .none)
         session.delegate = self
         return session
     }()
