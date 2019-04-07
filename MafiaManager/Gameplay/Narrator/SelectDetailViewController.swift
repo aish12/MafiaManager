@@ -21,7 +21,13 @@ class SelectDetailViewController: UIViewController {
         deckImageView.image = UIImage(data: (deck?.deckImage)!)
         deckDetailView.text = deck?.deckDescription
         navBar.topItem!.title = deck?.deckName
-        // Do any additional setup after loading the view.
+        
+        deckDetailView.layer.shadowOpacity = 0.4
+        deckDetailView.layer.shadowColor = UIColor.lightGray.cgColor
+        deckDetailView.layer.shadowOffset = CGSize(width: 3, height: 3)
+        deckDetailView.layer.shadowRadius = 5
+        deckDetailView.layer.cornerRadius = 5
+        deckDetailView.layer.masksToBounds = false
     }
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
