@@ -76,17 +76,20 @@ class CopyCardViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
+    // Handles the selection
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         cardCollectionView.deselectItem(at: indexPath, animated: true)
         let indexOfSelected = selectedCards.firstIndex(of:indexPath)
         if (indexOfSelected != nil) {
             selectedCards.remove(at: indexOfSelected!)
-            let cell = cardCollectionView.cellForItem(at: indexPath)
-            cell?.contentView.backgroundColor = UIColor.clear
+            let cell = cardCollectionView.cellForItem(at: indexPath) as! CopyCardCollectionViewCell
+            cell.cardImageView.layer.borderColor = UIColor.clear.cgColor
+            cell.cardImageView.layer.borderWidth = 0
         } else {
             selectedCards.append(indexPath)
-            let cell = cardCollectionView.cellForItem(at: indexPath)
-            cell?.contentView.backgroundColor = UIColor.red
+            let cell = cardCollectionView.cellForItem(at: indexPath) as! CopyCardCollectionViewCell
+            cell.cardImageView.layer.borderColor = UIColor(red: 0.0, green: 122.0/255.0, blue: 1.0, alpha: 1.0).cgColor
+            cell.cardImageView.layer.borderWidth = 5
         }
     }
     
