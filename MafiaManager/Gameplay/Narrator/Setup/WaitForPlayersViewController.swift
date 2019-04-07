@@ -21,6 +21,7 @@ class WaitForPlayersViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         resetPlayerCountLabel()
+        mpcNarrator.view = self as? WaitForPlayersViewController
     }
     
     func resetPlayerCountLabel(){

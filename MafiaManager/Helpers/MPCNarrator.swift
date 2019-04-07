@@ -14,7 +14,7 @@ class MPCNarrator: NSObject {
     // Service type must be a unique string, at most 15 characters long
     // and can contain only ASCII lowercase letters, numbers and hyphens.
     let serviceType = "mafiamanager-mp"
-    
+    var view: WaitForPlayersViewController?
     let myPeerId = MCPeerID(displayName: UIDevice.current.name)
     let serviceAdvertiser: MCNearbyServiceAdvertiser
     
@@ -51,6 +51,8 @@ extension MPCNarrator : MCSessionDelegate {
     
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
         NSLog("%@", "peer \(peerID) didChangeState: \(state.rawValue)")
+//        view?.playerCountLabel.text = "peer \(peerID) didChangeState: \(state.rawValue)"
+        
     }
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
