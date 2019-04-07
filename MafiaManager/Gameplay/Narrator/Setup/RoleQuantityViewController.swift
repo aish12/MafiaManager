@@ -28,11 +28,23 @@ class RoleQuantityViewController: UIViewController, UITableViewDelegate, UITable
             cardQuantities[card] = 0
         }
         peopleNeededLabel.text = "0 People Needed"
+        print("view did load")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         roleTable.reloadData()
         cards = retrieveCards()
+        for cardQuantity in cardQuantities {
+            if !(cards?.contains(cardQuantity.key))!{
+                cardQuantities.removeValue(forKey: cardQuantity.key)
+            }
+        }
+        for card in cards! {
+            if cardQuantities[card] == nil {
+                cardQuantities[card] = 0
+            }
+        }
+        setNumPlayersRequired()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -43,9 +55,20 @@ class RoleQuantityViewController: UIViewController, UITableViewDelegate, UITable
         let cell = roleTable.dequeueReusableCell(withIdentifier: "roleCell", for: indexPath as IndexPath) as! RoleQuantityTableViewCell
         let card = cards![indexPath.item]
         cell.card = card
+        cell.quantity = cardQuantities[card]!
+        cell.quantityLabel.text = "\(cardQuantities[card]!)"
         cell.roleLabel.text = card.cardName
         cell.updateQuantityDelegate = self
+        cell.updateButtons()
         return cell
+    }
+    
+    func setNumPlayersRequired(){
+        numPlayersRequired = 0
+        for card in cardQuantities {
+            numPlayersRequired += card.value
+        }
+        peopleNeededLabel.text = "\(numPlayersRequired) People Needed"
     }
     
     func updateQuantity(card: Card, incremented: Bool) {
