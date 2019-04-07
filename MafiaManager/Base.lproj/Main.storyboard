@@ -709,7 +709,7 @@
         <!--Wait For Players-->
         <scene sceneID="cS4-Yi-mwK">
             <objects>
-                <viewController storyboardIdentifier="WaitForPlayers" title="Wait For Players" id="J8G-QU-3yv" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WaitForPlayers" title="Wait For Players" id="J8G-QU-3yv" customClass="WaitForPlayersViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qjL-ni-idd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -724,7 +724,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Fp-Eg-GFX">
-                                <rect key="frame" x="8" y="120" width="398" height="574.5"/>
+                                <rect key="frame" x="8" y="120" width="398" height="574"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nWe-ex-DsC">
@@ -735,8 +735,8 @@
                                     <segue destination="5QB-2p-CQS" kind="show" id="qNv-sJ-Gxh"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 players joined" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zim-3l-frA">
-                                <rect key="frame" x="8" y="702.5" width="398" height="14.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/5 players joined" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zim-3l-frA">
+                                <rect key="frame" x="8" y="702" width="398" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -767,6 +767,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="playerCountLabel" destination="Zim-3l-frA" id="bbI-FS-Xug"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="EUo-eL-TlP"/>
                     </connections>
                 </viewController>
@@ -975,7 +976,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
-                                    <segue destination="J8G-QU-3yv" kind="show" id="yD9-vY-Gqm"/>
+                                    <segue destination="J8G-QU-3yv" kind="show" identifier="fromRoleQuantitytoPlayerJoin" id="yD9-vY-Gqm"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -995,7 +996,7 @@
                     <navigationItem key="navigationItem" title="How Many of Each Role?" id="Ng3-lt-Kk7">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="VcQ-bM-aU4">
                             <connections>
-                                <segue destination="J8G-QU-3yv" kind="show" id="Zcs-n1-7wB"/>
+                                <segue destination="J8G-QU-3yv" kind="show" identifier="fromRoleQuantitytoPlayerJoin" id="Zcs-n1-7wB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
