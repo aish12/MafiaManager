@@ -19,7 +19,7 @@ class DeckSelectionViewController: UIViewController, UICollectionViewDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                nextButton.isEnabled = false
+        nextButton.isEnabled = false
         decksCollectionView.dataSource = self
         decksCollectionView.delegate = self
         let longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(longPressGR:)))
@@ -27,7 +27,6 @@ class DeckSelectionViewController: UIViewController, UICollectionViewDelegate, U
         longPressGR.delaysTouchesBegan = true
         self.decksCollectionView.addGestureRecognizer(longPressGR)
         loadDecks()
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool){
@@ -46,20 +45,26 @@ class DeckSelectionViewController: UIViewController, UICollectionViewDelegate, U
         cell.deckImageView.image = UIImage(data: deck.value(forKey: "deckImage") as! Data)
         cell.deckImageView.layer.cornerRadius = 10
         cell.deckImageView.layer.masksToBounds = true
+        let selectedCells = decksCollectionView.indexPathsForSelectedItems
+        if selectedCells!.count > 0, selectedCells![0] == indexPath {
+            CoreGraphicsHelper.createSelectedImageBorder(imageView: cell.deckImageView)
+        } else {
+            CoreGraphicsHelper.removeSelectedImageBorder(imageView: cell.deckImageView)
+        }
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("did called")
+        nextButton.isEnabled = true
         let selectedCell = decksCollectionView.cellForItem(at: indexPath) as! DeckSelectionCollectionViewCell
         CoreGraphicsHelper.createSelectedImageBorder(imageView: selectedCell.deckImageView)
     }
     
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        print("should called")
         let selectedCell = decksCollectionView.cellForItem(at: indexPath) as! DeckSelectionCollectionViewCell
         let selectedArr = decksCollectionView.indexPathsForSelectedItems
         if (selectedArr?.count)! > 0, indexPath == selectedArr![0] {
+            nextButton.isEnabled = false
             CoreGraphicsHelper.removeSelectedImageBorder(imageView: selectedCell.deckImageView)
             decksCollectionView.deselectItem(at: indexPath, animated: true)
             return false
@@ -68,7 +73,6 @@ class DeckSelectionViewController: UIViewController, UICollectionViewDelegate, U
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        print("deselect called")
         let selectedCell = decksCollectionView.cellForItem(at: indexPath) as! DeckSelectionCollectionViewCell
         CoreGraphicsHelper.removeSelectedImageBorder(imageView: selectedCell.deckImageView)
     }
@@ -76,7 +80,12 @@ class DeckSelectionViewController: UIViewController, UICollectionViewDelegate, U
     // Retrieves the decks data from core data and reloads the Collection View's data with this
     func loadDecks() {
         deckObjects = (retrieveDecks() as! [Deck])
+        let selectedCell: IndexPath? = decksCollectionView.indexPathsForSelectedItems!.count > 0 ? decksCollectionView.indexPathsForSelectedItems![0] : nil
         decksCollectionView.reloadData()
+        if selectedCell != nil {
+//            print("happening")
+            decksCollectionView.selectItem(at: selectedCell!, animated: true, scrollPosition: [])
+        }
     }
     
     // Retrieves decks from core data
