@@ -681,7 +681,7 @@
                     <navigationItem key="navigationItem" title="Pick A Deck!" id="1iV-WJ-hC2">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="mH8-IT-yek">
                             <connections>
-                                <segue destination="x23-G5-JGJ" kind="show" id="2S1-se-lW1"/>
+                                <segue destination="x23-G5-JGJ" kind="show" identifier="fromDeckSelectToRoleQuantity" id="2S1-se-lW1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -894,7 +894,7 @@
         <!--Number Per Role-->
         <scene sceneID="kqk-e6-nU8">
             <objects>
-                <viewController storyboardIdentifier="GameNumberPerRole" title="Number Per Role" id="x23-G5-JGJ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameNumberPerRole" title="Number Per Role" id="x23-G5-JGJ" customClass="RoleQuantityViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eAx-ta-CkT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -939,6 +939,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="peopleNeededLabel" destination="dQS-e4-EFy" id="6F7-OI-NQ6"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="xut-2e-mCP"/>
                     </connections>
                 </viewController>

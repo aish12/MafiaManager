@@ -83,7 +83,6 @@ class DeckSelectionViewController: UIViewController, UICollectionViewDelegate, U
         let selectedCell: IndexPath? = decksCollectionView.indexPathsForSelectedItems!.count > 0 ? decksCollectionView.indexPathsForSelectedItems![0] : nil
         decksCollectionView.reloadData()
         if selectedCell != nil {
-//            print("happening")
             decksCollectionView.selectItem(at: selectedCell!, animated: true, scrollPosition: [])
         }
     }
@@ -134,6 +133,11 @@ class DeckSelectionViewController: UIViewController, UICollectionViewDelegate, U
                 destinationVC.popoverPresentationController?.permittedArrowDirections = .init(rawValue: 0)
                 destinationVC.modalPresentationStyle = .popover
                 destinationVC.popoverPresentationController?.delegate = self
+            }
+        } else if segue.identifier == "fromDeckSelectToRoleQuantity" {
+            if let destinationVC = segue.destination as? RoleQuantityViewController {
+                let deck: Deck = deckObjects[decksCollectionView.indexPathsForSelectedItems![0].item]
+                destinationVC.deck = deck
             }
         }
     }

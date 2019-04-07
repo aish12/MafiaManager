@@ -12,6 +12,7 @@
 		7B14651A224ADAA200241B00 /* CopyCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B146519224ADAA200241B00 /* CopyCardViewController.swift */; };
 		7B146520224AE62C00241B00 /* NarratorDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B14651F224AE62C00241B00 /* NarratorDashboardViewController.swift */; };
 		7B32DF3C225A262600F0072B /* CoreGraphicsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B32DF3B225A262600F0072B /* CoreGraphicsHelper.swift */; };
+		7B32DF3E225A39CC00F0072B /* RoleQuantityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B32DF3D225A39CC00F0072B /* RoleQuantityViewController.swift */; };
 		7B4E70FF224990C0001395F2 /* ViewDeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4E70FE224990C0001395F2 /* ViewDeckCell.swift */; };
 		7B4E7101224990D7001395F2 /* AddDeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4E7100224990D7001395F2 /* AddDeckCell.swift */; };
 		7B4F1AD0224B26E60038225D /* RecordWinnersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F1ACF224B26E60038225D /* RecordWinnersViewController.swift */; };
@@ -54,6 +55,7 @@
 		7B146519224ADAA200241B00 /* CopyCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyCardViewController.swift; sourceTree = "<group>"; };
 		7B14651F224AE62C00241B00 /* NarratorDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NarratorDashboardViewController.swift; sourceTree = "<group>"; };
 		7B32DF3B225A262600F0072B /* CoreGraphicsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreGraphicsHelper.swift; sourceTree = "<group>"; };
+		7B32DF3D225A39CC00F0072B /* RoleQuantityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleQuantityViewController.swift; sourceTree = "<group>"; };
 		7B4E70FE224990C0001395F2 /* ViewDeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDeckCell.swift; sourceTree = "<group>"; };
 		7B4E7100224990D7001395F2 /* AddDeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeckCell.swift; sourceTree = "<group>"; };
 		7B4F1ACF224B26E60038225D /* RecordWinnersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordWinnersViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				7B921AA12259724B003A219D /* DeckSelectionViewController.swift */,
 				7B921AA32259742B003A219D /* DeckSelectionCollectionViewCell.swift */,
 				7B921AA522597ACF003A219D /* SelectDetailViewController.swift */,
+				7B32DF3D225A39CC00F0072B /* RoleQuantityViewController.swift */,
 			);
 			path = Setup;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				7B8B9A6622557153002260E9 /* NewDeckCellCollectionViewCell.swift in Sources */,
 				7BE7DAAE224C165A00E267CA /* PlayViewController.swift in Sources */,
 				F6B2E13C2257D2AA00EFB394 /* CardCellCollectionViewCell.swift in Sources */,
+				7B32DF3E225A39CC00F0072B /* RoleQuantityViewController.swift in Sources */,
 				7B921AA42259742B003A219D /* DeckSelectionCollectionViewCell.swift in Sources */,
 				BF01BDCE22487FA200C883D8 /* DecksViewController.swift in Sources */,
 				BF01BDD222487FCA00C883D8 /* HistoryViewController.swift in Sources */,
