@@ -8,8 +8,9 @@
 
 import UIKit
 import CoreData
+import CoreGraphics
 
-class CardViewController: UIViewController, ImagePickerDelegate {
+class CardViewController: UIViewController, ImagePickerDelegate, UITextViewDelegate {
 
     @IBOutlet weak var cardName: UITextView!
     @IBOutlet weak var cardDescription: UITextView!
@@ -26,7 +27,7 @@ class CardViewController: UIViewController, ImagePickerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //  Creates an image picker for user to select deck image
+        //  Creates an image picker for user to select card image
         self.editImagePicker = ImagePicker(presentationController: self, delegate: self)
         
         self.cardName.text = cardObject.value(forKey: "cardName") as? String
@@ -34,7 +35,6 @@ class CardViewController: UIViewController, ImagePickerDelegate {
         self.cardImageButton.setImage(UIImage(data: cardObject.value(forKey: "cardImage") as! Data), for: .normal)
         
         cardName.text = cardObject.value(forKey: "cardName") as? String
-        //editDeckNameTextView.textColor = UIColor.lightGray
         cardName.becomeFirstResponder()
         cardName.selectedTextRange = cardName.textRange(from: cardName.endOfDocument, to: cardName.endOfDocument)
         //cardName.delegate = self
@@ -46,8 +46,6 @@ class CardViewController: UIViewController, ImagePickerDelegate {
         cardName.layer.masksToBounds = false
         
         cardDescription.text = cardObject.value(forKey: "cardDescription") as? String
-        //editDeckDescriptionTextView.textColor = UIColor.lightGray
-        //cardDescription.delegate = self
         cardDescription.layer.shadowOpacity = 0.4
         cardDescription.layer.shadowOffset = CGSize(width: 3, height: 3)
         cardDescription.layer.shadowColor = UIColor.lightGray.cgColor
@@ -64,15 +62,36 @@ class CardViewController: UIViewController, ImagePickerDelegate {
         cardName.isEditable = true
         cardName.isSelectable = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(endEditState))
+    
+        cardName.becomeFirstResponder()
+        cardName.selectedTextRange = cardName.textRange(from: cardName.endOfDocument, to: cardName.endOfDocument)
+        cardName.delegate = self
+        cardDescription.delegate = self
     }
     
     @objc func endEditState() {
         inEditMode = false
+        cardName.textColor = UIColor.black
+        cardDescription.textColor = UIColor.black
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        // Just set the editDeckObject
-        cardObject.setValue(cardName.text, forKey: "cardName")
-        cardObject.setValue(cardDescription.text, forKey: "cardDescription")
+        // Just set the card object
+        
+        // Don't change if they didn't have anything in the text:
+        if cardName.text != "Enter card name" {
+            cardObject.setValue(cardName.text, forKey: "cardName")
+        } else {
+            // On done, have the text still show in text view
+            cardName.text = (cardObject.value(forKey: "cardName") as! String)
+        }
+        
+        if cardDescription.text != "Enter card description" {
+            cardObject.setValue(cardDescription.text, forKey: "cardDescription")
+        } else {
+            // On done, have the text still show in text view
+            cardName.text = (cardObject.value(forKey: "cardDescription") as! String)
+        }
+        
         let cardImage = cardImageButton.image(for: .normal)
         cardObject.setValue(cardImage?.pngData(), forKey: "cardImage")
         
@@ -113,5 +132,67 @@ class CardViewController: UIViewController, ImagePickerDelegate {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    // Creates and manages placeholder text, and character limits for card name and description textviews
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        // Combine the textView text and the replacement text to
+        // create the updated text string
+        let currentText:String = textView.text
+        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
+        
+        // If updated text view will be empty, add the placeholder
+        // and set the cursor to the beginning of the text view
+        
+        if updatedText.isEmpty {
+            if textView == cardName {
+                textView.text = "Enter card name"
+            } else if textView == cardDescription {
+                textView.text = "Enter card description"
+            } else {
+                textView.text = "This should not appear. Oops."
+            }
+            textView.textColor = UIColor.lightGray
+            
+            textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+        }
+            
+            // Else if the text view's placeholder is showing and the
+            // length of the replacement string is greater than 0, set
+            // the text color to black then set its text to the
+            // replacement string
+        else if textView.textColor == UIColor.lightGray && !text.isEmpty {
+            textView.textColor = UIColor.black
+            textView.text = text
+        }
+            
+            // For every other case, the text should change with the usual
+            // behavior...
+        else {
+            let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+            let numberOfChars = newText.count
+            if textView == cardName {
+                return numberOfChars <= 30
+            } else if textView == cardDescription {
+                return numberOfChars <= 500
+            } else {
+                print("Should not reach, character limits in textView")
+                return true
+            }
+        }
+        
+        // ...otherwise return false since the updates have already
+        // been made
+        return false
+    }
+    
+    // Manages placeholder text for card name and description text views
+    func textViewDidChangeSelection(_ textView: UITextView) {
+        if self.view.window != nil {
+            if textView.textColor == UIColor.lightGray {
+                textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+            }
+        }
+    }
+    
 }
