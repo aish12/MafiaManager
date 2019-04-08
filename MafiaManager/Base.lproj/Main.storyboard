@@ -22,21 +22,21 @@
                                 <rect key="frame" x="0.0" y="144" width="414" height="669"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pIj-Bd-ibK">
-                                    <size key="itemSize" width="120" height="130"/>
+                                    <size key="itemSize" width="100" height="110"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="18" minY="16" maxX="16" maxY="16"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NewDeckCell" id="RxD-qY-mIQ" customClass="NewDeckCellCollectionViewCell" customModule="MafiaManager" customModuleProvider="target">
-                                        <rect key="frame" x="18" y="16" width="120" height="130"/>
+                                        <rect key="frame" x="18" y="16" width="100" height="110"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="120" height="130"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f0N-g9-LDU">
-                                                    <rect key="frame" x="35" y="40" width="50" height="50"/>
+                                                    <rect key="frame" x="25" y="30" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="Uvi-co-Tx6"/>
                                                         <constraint firstAttribute="width" constant="50" id="gIg-wv-tRj"/>
@@ -45,6 +45,8 @@
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="f0N-g9-LDU" firstAttribute="centerX" secondItem="RxD-qY-mIQ" secondAttribute="centerX" id="CfN-yw-nYs"/>
+                                            <constraint firstItem="f0N-g9-LDU" firstAttribute="centerY" secondItem="RxD-qY-mIQ" secondAttribute="centerY" id="I45-yS-FJE"/>
                                             <constraint firstItem="f0N-g9-LDU" firstAttribute="centerX" secondItem="RxD-qY-mIQ" secondAttribute="centerX" id="IVw-4F-bAV"/>
                                             <constraint firstItem="f0N-g9-LDU" firstAttribute="centerY" secondItem="RxD-qY-mIQ" secondAttribute="centerY" id="zjw-ac-IKB"/>
                                         </constraints>
@@ -54,33 +56,33 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DeckCell" id="Cne-6C-0cc" customClass="DeckCellCollectionViewCell" customModule="MafiaManager" customModuleProvider="target">
-                                        <rect key="frame" x="148" y="16" width="120" height="130"/>
+                                        <rect key="frame" x="158" y="16" width="100" height="110"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="120" height="130"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ymc-FA-yZX">
-                                                    <rect key="frame" x="10" y="10" width="100" height="100"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="100" id="E1t-eh-JxV"/>
-                                                        <constraint firstAttribute="width" constant="100" id="EkK-tF-8EX"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmS-b7-J6U">
-                                                    <rect key="frame" x="0.0" y="130" width="120" height="0.0"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Example" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmS-b7-J6U">
+                                                    <rect key="frame" x="0.0" y="93" width="100" height="12"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ymc-FA-yZX">
+                                                    <rect key="frame" x="10" y="10" width="80" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="80" id="E1t-eh-JxV" userLabel="height = 90"/>
+                                                        <constraint firstAttribute="width" constant="80" id="EkK-tF-8EX" userLabel="width = 90"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="ymc-FA-yZX" firstAttribute="centerX" secondItem="Cne-6C-0cc" secondAttribute="centerX" id="JOj-Nu-hDD"/>
-                                            <constraint firstItem="ymc-FA-yZX" firstAttribute="top" secondItem="Cne-6C-0cc" secondAttribute="top" constant="10" id="N4f-vf-JLm"/>
+                                            <constraint firstItem="ymc-FA-yZX" firstAttribute="centerX" secondItem="Cne-6C-0cc" secondAttribute="centerX" id="RT1-8p-Heg"/>
                                             <constraint firstAttribute="trailing" secondItem="bmS-b7-J6U" secondAttribute="trailing" id="fUy-s4-j5l"/>
-                                            <constraint firstAttribute="bottom" secondItem="bmS-b7-J6U" secondAttribute="bottom" id="gra-Ut-ni6"/>
+                                            <constraint firstAttribute="bottom" secondItem="bmS-b7-J6U" secondAttribute="bottom" constant="5" id="gra-Ut-ni6"/>
                                             <constraint firstItem="bmS-b7-J6U" firstAttribute="leading" secondItem="Cne-6C-0cc" secondAttribute="leading" id="if6-2f-ogU"/>
+                                            <constraint firstItem="ymc-FA-yZX" firstAttribute="top" secondItem="Cne-6C-0cc" secondAttribute="top" constant="10" id="jOg-54-5Oc"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="deckCellImageView" destination="ymc-FA-yZX" id="tJm-Qa-Wgc"/>
