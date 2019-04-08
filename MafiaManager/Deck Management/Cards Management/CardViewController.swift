@@ -89,7 +89,7 @@ class CardViewController: UIViewController, ImagePickerDelegate, UITextViewDeleg
             cardObject.setValue(cardDescription.text, forKey: "cardDescription")
         } else {
             // On done, have the text still show in text view
-            cardName.text = (cardObject.value(forKey: "cardDescription") as! String)
+            cardDescription.text = (cardObject.value(forKey: "cardDescription") as! String)
         }
         
         let cardImage = cardImageButton.image(for: .normal)

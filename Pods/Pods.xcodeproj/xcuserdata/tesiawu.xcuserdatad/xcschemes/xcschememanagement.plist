@@ -81,6 +81,11 @@
 			<key>orderHint</key>
 			<integer>9</integer>
 		</dict>
+		<key>MultiPeer.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>15</integer>
+		</dict>
 		<key>Pods-MafiaManager.xcscheme</key>
 		<dict>
 			<key>isShown</key>
