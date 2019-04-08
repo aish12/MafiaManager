@@ -38,20 +38,10 @@ class CardViewController: UIViewController, ImagePickerDelegate, UITextViewDeleg
         cardName.becomeFirstResponder()
         cardName.selectedTextRange = cardName.textRange(from: cardName.endOfDocument, to: cardName.endOfDocument)
         //cardName.delegate = self
-        cardName.layer.shadowOpacity = 0.4
-        cardName.layer.shadowColor = UIColor.lightGray.cgColor
-        cardName.layer.shadowOffset = CGSize(width: 3, height: 3)
-        cardName.layer.shadowRadius = 5
-        cardName.layer.cornerRadius = 5
-        cardName.layer.masksToBounds = false
+        CoreGraphicsHelper.shadeTextViews(textView: cardName)
         
         cardDescription.text = cardObject.value(forKey: "cardDescription") as? String
-        cardDescription.layer.shadowOpacity = 0.4
-        cardDescription.layer.shadowOffset = CGSize(width: 3, height: 3)
-        cardDescription.layer.shadowColor = UIColor.lightGray.cgColor
-        cardDescription.layer.shadowRadius = 5
-        cardDescription.layer.cornerRadius = 5
-        cardDescription.layer.masksToBounds = false
+        CoreGraphicsHelper.shadeTextViews(textView: cardDescription)
     }
 
     

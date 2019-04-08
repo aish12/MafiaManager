@@ -33,22 +33,12 @@ class NewDeckViewController: UIViewController, ImagePickerDelegate, UITextViewDe
         deckNameTextView.becomeFirstResponder()
         deckNameTextView.selectedTextRange = deckNameTextView.textRange(from: deckNameTextView.beginningOfDocument, to: deckNameTextView.beginningOfDocument)
         deckNameTextView.delegate = self
-        deckNameTextView.layer.shadowOpacity = 0.4
-        deckNameTextView.layer.shadowColor = UIColor.lightGray.cgColor
-        deckNameTextView.layer.shadowOffset = CGSize(width: 3, height: 3)
-        deckNameTextView.layer.shadowRadius = 5
-        deckNameTextView.layer.cornerRadius = 5
-        deckNameTextView.layer.masksToBounds = false
+        CoreGraphicsHelper.shadeTextViews(textView: deckNameTextView)
         
         deckDetailTextView.text = "Enter deck description"
         deckDetailTextView.textColor = UIColor.lightGray
         deckDetailTextView.delegate = self
-        deckDetailTextView.layer.shadowOpacity = 0.4
-        deckDetailTextView.layer.shadowOffset = CGSize(width: 3, height: 3)
-        deckDetailTextView.layer.shadowColor = UIColor.lightGray.cgColor
-        deckDetailTextView.layer.shadowRadius = 5
-        deckDetailTextView.layer.cornerRadius = 5
-        deckDetailTextView.layer.masksToBounds = false
+        CoreGraphicsHelper.shadeTextViews(textView: deckDetailTextView)
     }
     
     //  When user taps imagePicker, let them select from camera roll

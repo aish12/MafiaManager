@@ -22,12 +22,7 @@ class SelectDetailViewController: UIViewController {
         deckDetailView.text = deck?.deckDescription
         navBar.topItem!.title = deck?.deckName
         
-        deckDetailView.layer.shadowOpacity = 0.4
-        deckDetailView.layer.shadowColor = UIColor.lightGray.cgColor
-        deckDetailView.layer.shadowOffset = CGSize(width: 3, height: 3)
-        deckDetailView.layer.shadowRadius = 5
-        deckDetailView.layer.cornerRadius = 5
-        deckDetailView.layer.masksToBounds = false
+        CoreGraphicsHelper.shadeTextViews(textView: deckDetailView)
     }
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
