@@ -16,6 +16,13 @@ class CoreGraphicsHelper: NSObject {
     static let unselectedBorderColor: CGColor = UIColor.clear.cgColor
     static let unselectedBorderWidth: CGFloat = 0
     
+    static let textShadowOpacity: Float = 0.4
+    static let textShadowColor: CGColor = UIColor.lightGray.cgColor
+    static let textShadowOffset: CGSize = CGSize(width: 3, height: 3)
+    static let textShadowRadius: CGFloat = 5
+    static let textCornerRadius: CGFloat = 5
+    
+    
     // Takes any imageView and gives it a border of width and color depending on
     // above constants
     static func createSelectedImageBorder(imageView: UIImageView) {
@@ -26,5 +33,14 @@ class CoreGraphicsHelper: NSObject {
     static func removeSelectedImageBorder(imageView: UIImageView) {
         imageView.layer.borderColor = unselectedBorderColor
         imageView.layer.borderWidth = unselectedBorderWidth
+    }
+    
+    static func shadeTextViews (textView: UITextView) {
+        textView.layer.shadowOpacity = textShadowOpacity
+        textView.layer.shadowColor = textShadowColor
+        textView.layer.shadowOffset = textShadowOffset
+        textView.layer.shadowRadius = textShadowRadius
+        textView.layer.cornerRadius = textCornerRadius
+        textView.layer.masksToBounds = false
     }
 }

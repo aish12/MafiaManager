@@ -34,26 +34,14 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
         editDeckImagePickerButton.setImage(UIImage(data: editDeckObject.value(forKey: "deckImage") as! Data), for: .normal)
         
         editDeckNameTextView.text = editDeckObject.value(forKey: "deckName") as? String
-        //editDeckNameTextView.textColor = UIColor.lightGray
         editDeckNameTextView.becomeFirstResponder()
         editDeckNameTextView.selectedTextRange = editDeckNameTextView.textRange(from: editDeckNameTextView.endOfDocument, to: editDeckNameTextView.endOfDocument)
         editDeckNameTextView.delegate = self
-        editDeckNameTextView.layer.shadowOpacity = 0.4
-        editDeckNameTextView.layer.shadowColor = UIColor.lightGray.cgColor
-        editDeckNameTextView.layer.shadowOffset = CGSize(width: 3, height: 3)
-        editDeckNameTextView.layer.shadowRadius = 5
-        editDeckNameTextView.layer.cornerRadius = 5
-        editDeckNameTextView.layer.masksToBounds = false
+        CoreGraphicsHelper.shadeTextViews(textView: editDeckNameTextView)
         
         editDeckDescriptionTextView.text = editDeckObject.value(forKey: "deckDescription") as? String
-        //editDeckDescriptionTextView.textColor = UIColor.lightGray
         editDeckDescriptionTextView.delegate = self
-        editDeckDescriptionTextView.layer.shadowOpacity = 0.4
-        editDeckDescriptionTextView.layer.shadowOffset = CGSize(width: 3, height: 3)
-        editDeckDescriptionTextView.layer.shadowColor = UIColor.lightGray.cgColor
-        editDeckDescriptionTextView.layer.shadowRadius = 5
-        editDeckDescriptionTextView.layer.cornerRadius = 5
-        editDeckDescriptionTextView.layer.masksToBounds = false
+        CoreGraphicsHelper.shadeTextViews(textView: editDeckDescriptionTextView)
         
         // Add done button to finish editing
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(finishedEditing))
