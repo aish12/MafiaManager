@@ -13,6 +13,7 @@ class PlayerWaitingViewController: UIViewController {
     var cardName: String?
     var cardDescription: String?
     var cardImage: UIImage?
+    var statusText: String?
     var playerName: String?
     
     override func viewDidLoad() {
@@ -42,6 +43,7 @@ class PlayerWaitingViewController: UIViewController {
             destinationVC.cardName = cardName
             destinationVC.cardDescription = cardDescription
             destinationVC.cardImage = cardImage
+            destinationVC.statusLabelText = "Alive"
         }
     }
 

@@ -1703,8 +1703,8 @@
                                     <constraint firstAttribute="height" constant="160" id="eN4-S6-KfZ"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1GU-1b-R8n">
-                                <rect key="frame" x="238" y="104" width="160" height="160"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1GU-1b-R8n">
+                                <rect key="frame" x="238" y="104" width="160" height="108"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="lMM-go-bFG"/>
@@ -1736,6 +1736,16 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L2l-Ej-zHS">
+                                <rect key="frame" x="238" y="229" width="156" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="hYI-yf-pix"/>
+                                    <constraint firstAttribute="width" constant="156" id="mEp-ua-aeT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -1765,6 +1775,7 @@
                         <outlet property="cardImageView" destination="Wnc-J9-6nU" id="6Jv-7B-zFP"/>
                         <outlet property="cardNameTextView" destination="1GU-1b-R8n" id="HeC-RP-HeD"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="Q4W-cZ-kzZ"/>
+                        <outlet property="statusLabel" destination="L2l-Ej-zHS" id="v2K-xf-xjW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="epP-GQ-ili" sceneMemberID="firstResponder"/>
@@ -1778,7 +1789,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="3816" y="1115"/>
+            <point key="canvasLocation" x="3815.9420289855075" y="1114.9553571428571"/>
         </scene>
         <!--Narrator Dashboard-->
         <scene sceneID="eCm-Tk-gPd">
@@ -2127,10 +2138,10 @@
     </scenes>
     <resources>
         <image name="Decks" width="35" height="41"/>
-        <image name="GearIcon" width="24" height="24"/>
+        <image name="GearIcon" width="1.239598274230957" height="1.239598274230957"/>
         <image name="MafiaIcon" width="250" height="250"/>
         <image name="Play" width="35" height="37"/>
-        <image name="WelcomeLoadingPicture" width="1000" height="1000"/>
+        <image name="WelcomeLoadingPicture" width="500" height="500"/>
         <image name="helpIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>

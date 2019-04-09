@@ -10,6 +10,7 @@ import UIKit
 
 class PlayerViewController: UIViewController {
 
+    @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var cardNameTextView: UITextView!
     @IBOutlet weak var cardDescriptionTextView: UITextView!
     @IBOutlet weak var cardImageView: UIImageView!
@@ -17,6 +18,7 @@ class PlayerViewController: UIViewController {
     var cardName: String?
     var cardDescription: String?
     var cardImage: UIImage?
+    var statusLabelText: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +26,8 @@ class PlayerViewController: UIViewController {
         cardDescriptionTextView.text = cardDescription!
         cardImageView.image = cardImage!
         // Do any additional setup after loading the view.
+        statusLabel.text = statusLabelText
+        statusLabel.textColor = UIColor.green
     }
     
     // If the player chooses the leave button, display a confirmation
