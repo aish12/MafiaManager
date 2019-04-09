@@ -38,7 +38,8 @@ class JoinGameViewController: UIViewController, MCBrowserViewControllerDelegate 
     
     func returnToPlayView() {
         mpcManager.setupBrowser(shouldBrowse: false)
-        dismiss(animated: true, completion: nil)
+//        dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     // MCBrowserViewDelegate methods
@@ -47,6 +48,7 @@ class JoinGameViewController: UIViewController, MCBrowserViewControllerDelegate 
     }
     
     func browserViewControllerWasCancelled(_ browserViewController: MCBrowserViewController) {
+        print("browser cancelled!")
         dismiss(animated: true, completion: returnToPlayView)
     }
     
