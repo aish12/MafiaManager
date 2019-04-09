@@ -11,6 +11,7 @@ import UIKit
 class PlayerViewController: UIViewController {
 
     @IBOutlet weak var statusLabel: UILabel!
+    
     @IBOutlet weak var cardNameTextView: UITextView!
     @IBOutlet weak var cardDescriptionTextView: UITextView!
     @IBOutlet weak var cardImageView: UIImageView!
@@ -22,6 +23,8 @@ class PlayerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        CoreGraphicsHelper.shadeTextViews(textView: cardNameTextView)
+        CoreGraphicsHelper.shadeTextViews(textView: cardDescriptionTextView)
         cardNameTextView.text = cardName!
         cardDescriptionTextView.text = cardDescription!
         cardImageView.image = cardImage!

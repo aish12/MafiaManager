@@ -1703,11 +1703,11 @@
                                     <constraint firstAttribute="height" constant="160" id="eN4-S6-KfZ"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1GU-1b-R8n">
-                                <rect key="frame" x="238" y="104" width="160" height="108"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1GU-1b-R8n">
+                                <rect key="frame" x="238" y="104" width="160" height="112"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="160" id="lMM-go-bFG"/>
+                                    <constraint firstAttribute="height" constant="112" id="Qut-Za-qoO"/>
                                     <constraint firstAttribute="width" constant="160" id="m6m-UI-yQd"/>
                                 </constraints>
                                 <attributedString key="attributedText">
@@ -1736,12 +1736,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L2l-Ej-zHS">
-                                <rect key="frame" x="238" y="229" width="156" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="hYI-yf-pix"/>
-                                    <constraint firstAttribute="width" constant="156" id="mEp-ua-aeT"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gS9-ba-26M">
+                                <rect key="frame" x="238" y="239" width="156" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1775,7 +1772,7 @@
                         <outlet property="cardImageView" destination="Wnc-J9-6nU" id="6Jv-7B-zFP"/>
                         <outlet property="cardNameTextView" destination="1GU-1b-R8n" id="HeC-RP-HeD"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="Q4W-cZ-kzZ"/>
-                        <outlet property="statusLabel" destination="L2l-Ej-zHS" id="v2K-xf-xjW"/>
+                        <outlet property="statusLabel" destination="gS9-ba-26M" id="jtV-UM-qoy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="epP-GQ-ili" sceneMemberID="firstResponder"/>
