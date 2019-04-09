@@ -8,53 +8,94 @@
 import UIKit
 import MultipeerConnectivity
 
-class WaitForPlayersViewController: UIViewController, MCSessionDelegate {
+class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var cardQuantities: [Card: Int]?
-    var connections: [Int] = []
+    var connectedDevices: [MCPeerID] = []
     var numPlayers: Int = 0
     
-    var peerID: MCPeerID!
-    var mcSession: MCSession!
-    var mcAdvertiserAssistant: MCAdvertiserAssistant!
-    var hosting: Bool!
+    @IBOutlet weak var joinedPlayersTableView: UITableView!
+    
+    private var mpcManager: MPCManager!
+    private var appDelegate: AppDelegate!
+    
+    @IBOutlet weak var availableNarratorsTableView: UITableView!
+    @IBOutlet weak var joinButton: UIButton!
+    @IBOutlet weak var numPlayersJoinedLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //resetPlayerCountLabel()
-        peerID = MCPeerID(displayName: UIDevice.current.name)
-        mcSession = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: .required)
-        mcSession.delegate = self
-        hosting = true
-        mcAdvertiserAssistant = MCAdvertiserAssistant(serviceType: "mafiamanager-mp", discoveryInfo: nil, session: mcSession)
-        mcAdvertiserAssistant.start()
-        mcSession.disconnect()
+        
+        numPlayersJoinedLabel.text = "0/\(numPlayers) joined"
+        joinedPlayersTableView.delegate = self
+        joinedPlayersTableView.dataSource = self
+        
+        appDelegate = UIApplication.shared.delegate as? AppDelegate
+        mpcManager = appDelegate.mpcManager!
+        mpcManager.setupPeerAndSession()
+        mpcManager.advertiseSelf(shouldAdvertise: true)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(peerDidChangeStateWithNotification), name: NSNotification.Name("MCDidChangeStateNotification"), object: nil)
         
     }
     
-    override func didReceiveMemoryWarning(){
-        super.didReceiveMemoryWarning()
+    @objc func peerDidChangeStateWithNotification(notification: Notification){
+        let peerID: MCPeerID = notification.userInfo!["peerID"] as! MCPeerID
+        let state: MCSessionState = notification.userInfo!["state"] as! MCSessionState
+        if state != MCSessionState.connecting {
+            if state == MCSessionState.connected {
+                    connectedDevices.append(peerID)
+                    if connectedDevices.count == numPlayers {
+                        mpcManager.advertiseSelf(shouldAdvertise: false)
+                    } else if connectedDevices.count > numPlayers {
+                        mpcManager.advertiseSelf(shouldAdvertise: false)
+                        mpcManager.removePeer(peerID: peerID)
+                        connectedDevices.remove(at: connectedDevices.count - 1)
+                    }
+            } else if state == MCSessionState.notConnected {
+                let deviceIndex = connectedDevices.index(of: peerID)
+                if deviceIndex != nil {
+                    connectedDevices.remove(at: deviceIndex!)
+                    if connectedDevices.count < numPlayers && mpcManager.advertiser == nil {
+                        mpcManager.advertiseSelf(shouldAdvertise: true)
+                    }
+                }
+            }
+        }
+        DispatchQueue.main.async {
+        self.updateNumPlayersLabel()
+        self.joinedPlayersTableView.reloadData()
+        }
     }
     
-    // MCSessionDelegate methods
-    func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState){
-        
+    @IBAction func nextButtonPressed(_ sender: Any) {
+        connectedDevices.shuffle()
+        var playerIndex = 0
+        for (card, count) in cardQuantities! {
+            for i in 1...count {
+                setPlayerRole(peerID: connectedDevices[playerIndex],card: card)
+                playerIndex += 1
+            }
+        }
     }
     
-    func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID){
-        
+    func setPlayerRole(peerID: MCPeerID, card: Card){
+        let playerCard: [String: Any] = ["assignCard": ["cardName": card.cardName!, "cardDescription": card.cardDescription!, "cardImage": card.cardImage!]]
+        mpcManager.sendObject(objData: playerCard, peers: [peerID])
     }
     
-    func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID){
-        
+    func updateNumPlayersLabel() {
+        numPlayersJoinedLabel.text = "\(connectedDevices.count)/\(numPlayers) joined"
     }
     
-    func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress){
-        
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return connectedDevices.count
     }
     
-    func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localUrl: URL?, withError error: Error?){
-        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = joinedPlayersTableView.dequeueReusableCell(withIdentifier: "joinedPlayerCell", for: indexPath as IndexPath)
+        cell.textLabel!.text = connectedDevices[indexPath.item].displayName
+        return cell
     }
     
     /*

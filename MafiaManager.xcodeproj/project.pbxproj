@@ -18,6 +18,7 @@
 		7B4E70FF224990C0001395F2 /* ViewDeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4E70FE224990C0001395F2 /* ViewDeckCell.swift */; };
 		7B4E7101224990D7001395F2 /* AddDeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4E7100224990D7001395F2 /* AddDeckCell.swift */; };
 		7B4F1AD0224B26E60038225D /* RecordWinnersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F1ACF224B26E60038225D /* RecordWinnersViewController.swift */; };
+		7B874965225C4EA9003EC5EE /* PlayerWaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B874964225C4EA9003EC5EE /* PlayerWaitingViewController.swift */; };
 		7B8B9A622255644D002260E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B9A612255644D002260E9 /* AppDelegate.swift */; };
 		7B8B9A6622557153002260E9 /* NewDeckCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B9A6522557153002260E9 /* NewDeckCellCollectionViewCell.swift */; };
 		7B8EF74E22540ABC00816B5F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EF74D22540ABC00816B5F /* ImagePicker.swift */; };
@@ -32,8 +33,6 @@
 		7BE7DAAE224C165A00E267CA /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE7DAAD224C165A00E267CA /* PlayViewController.swift */; };
 		7BEA9F51225A7302005FBDE7 /* JoinGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA9F50225A7302005FBDE7 /* JoinGameViewController.swift */; };
 		7BEA9F58225A79F2005FBDE7 /* MPCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA9F57225A79F2005FBDE7 /* MPCManager.swift */; };
-		7BEA9F5C225A80E7005FBDE7 /* MPCNarrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA9F5B225A80E7005FBDE7 /* MPCNarrator.swift */; };
-		7BEA9F5E225A81AD005FBDE7 /* MPCPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA9F5D225A81AD005FBDE7 /* MPCPlayer.swift */; };
 		8F974F8D37A5B79031110456 /* Pods_MafiaManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3736DE08530B5A6DD9C82E73 /* Pods_MafiaManager.framework */; };
 		BF01BDCE22487FA200C883D8 /* DecksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01BDCD22487FA200C883D8 /* DecksViewController.swift */; };
 		BF01BDD022487FB800C883D8 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01BDCF22487FB800C883D8 /* PlayerViewController.swift */; };
@@ -67,6 +66,7 @@
 		7B4E70FE224990C0001395F2 /* ViewDeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDeckCell.swift; sourceTree = "<group>"; };
 		7B4E7100224990D7001395F2 /* AddDeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeckCell.swift; sourceTree = "<group>"; };
 		7B4F1ACF224B26E60038225D /* RecordWinnersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordWinnersViewController.swift; sourceTree = "<group>"; };
+		7B874964225C4EA9003EC5EE /* PlayerWaitingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerWaitingViewController.swift; sourceTree = "<group>"; };
 		7B8B9A612255644D002260E9 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B8B9A6522557153002260E9 /* NewDeckCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeckCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		7B8EF74D22540ABC00816B5F /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -81,8 +81,6 @@
 		7BE7DAAD224C165A00E267CA /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		7BEA9F50225A7302005FBDE7 /* JoinGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameViewController.swift; sourceTree = "<group>"; };
 		7BEA9F57225A79F2005FBDE7 /* MPCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCManager.swift; sourceTree = "<group>"; };
-		7BEA9F5B225A80E7005FBDE7 /* MPCNarrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCNarrator.swift; sourceTree = "<group>"; };
-		7BEA9F5D225A81AD005FBDE7 /* MPCPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCPlayer.swift; sourceTree = "<group>"; };
 		BF01BDCD22487FA200C883D8 /* DecksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecksViewController.swift; sourceTree = "<group>"; };
 		BF01BDCF22487FB800C883D8 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		BF01BDD122487FCA00C883D8 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +209,7 @@
 			children = (
 				BF01BDCF22487FB800C883D8 /* PlayerViewController.swift */,
 				7BEA9F50225A7302005FBDE7 /* JoinGameViewController.swift */,
+				7B874964225C4EA9003EC5EE /* PlayerWaitingViewController.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -231,8 +230,6 @@
 			children = (
 				7B32DF3B225A262600F0072B /* CoreGraphicsHelper.swift */,
 				7BEA9F57225A79F2005FBDE7 /* MPCManager.swift */,
-				7BEA9F5B225A80E7005FBDE7 /* MPCNarrator.swift */,
-				7BEA9F5D225A81AD005FBDE7 /* MPCPlayer.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -271,15 +268,15 @@
 				7B8EF7242254045500816B5F /* Deck Management */,
 				7B8EF726225404D200816B5F /* Gameplay */,
 				7B8EF727225404D900816B5F /* History */,
-				F64DF7C2224B000000513FD7 /* GoogleService-Info.plist */,
+				7BEA9F52225A7528005FBDE7 /* Helpers */,
 				F6F54C782246D95000F6DFDF /* MafiaManager.entitlements */,
+				F64DF7C2224B000000513FD7 /* GoogleService-Info.plist */,
 				BFFDFE57223845160033F15B /* Assets.xcassets */,
 				BFFDFE59223845170033F15B /* LaunchScreen.storyboard */,
 				BFFDFE5C223845170033F15B /* Info.plist */,
 				F618EE8022488DE500E32DA5 /* TabBarViewController.swift */,
 				BFFDFE54223844C00033F15B /* Main.storyboard */,
 				7B8EF74F2254180500816B5F /* MafiaManager.xcdatamodeld */,
-				7BEA9F52225A7528005FBDE7 /* Helpers */,
 			);
 			path = MafiaManager;
 			sourceTree = "<group>";
@@ -431,9 +428,7 @@
 				7B8EF74E22540ABC00816B5F /* ImagePicker.swift in Sources */,
 				F6B2E13E2257D2B900EFB394 /* NewCardCellCollectionViewCell.swift in Sources */,
 				7BEA9F58225A79F2005FBDE7 /* MPCManager.swift in Sources */,
-				7BEA9F5C225A80E7005FBDE7 /* MPCNarrator.swift in Sources */,
 				7B32DF42225A5A0100F0072B /* WaitForPlayersViewController.swift in Sources */,
-				7BEA9F5E225A81AD005FBDE7 /* MPCPlayer.swift in Sources */,
 				F6A22D4722571E2B000F694B /* EditDeckViewController.swift in Sources */,
 				F6F54C732244644700F6DFDF /* LoginViewController.swift in Sources */,
 				7B32DF40225A3E7900F0072B /* RoleQuantityTableViewCell.swift in Sources */,
@@ -447,6 +442,7 @@
 				F6B2E13C2257D2AA00EFB394 /* CardCellCollectionViewCell.swift in Sources */,
 				7B32DF3E225A39CC00F0072B /* RoleQuantityViewController.swift in Sources */,
 				7B921AA42259742B003A219D /* DeckSelectionCollectionViewCell.swift in Sources */,
+				7B874965225C4EA9003EC5EE /* PlayerWaitingViewController.swift in Sources */,
 				BF01BDCE22487FA200C883D8 /* DecksViewController.swift in Sources */,
 				BF01BDD222487FCA00C883D8 /* HistoryViewController.swift in Sources */,
 				7B921AA622597ACF003A219D /* SelectDetailViewController.swift in Sources */,

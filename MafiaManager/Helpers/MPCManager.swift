@@ -10,56 +10,94 @@ import UIKit
 import Foundation
 import MultipeerConnectivity
 
-class MPCManager: NSObject {
-    // Service type must be a unique string, at most 15 characters long
-    // and can contain only ASCII lowercase letters, numbers and hyphens.
-    private let serviceType = "mafiamanager-mp"
+class MPCManager: NSObject, MCSessionDelegate {
+    var peerID: MCPeerID!
+    var session: MCSession!
+    var browser: MCBrowserViewController!
+    var advertiser: MCAdvertiserAssistant!
     
-    private let myPeerId = MCPeerID(displayName: UIDevice.current.name)
-    private let serviceAdvertiser: MCNearbyServiceAdvertiser
-    private let serviceBrowser: MCNearbyServiceBrowser
-    override init() {
-        self.serviceAdvertiser = MCNearbyServiceAdvertiser(peer: myPeerId, discoveryInfo: nil, serviceType: serviceType)
-        self.serviceBrowser = MCNearbyServiceBrowser(peer: myPeerId, serviceType: serviceType)
+    override init(){
+        self.peerID = nil
+        self.session = nil
+        self.browser = nil
+        self.advertiser = nil
         super.init()
-        self.serviceAdvertiser.delegate = self
-        self.serviceAdvertiser.startAdvertisingPeer()
+    }
+    
+    func setupPeerAndSession(){
+        self.peerID = MCPeerID(displayName: UIDevice.current.name)
+        self.session = MCSession.init(peer: self.peerID)
+        self.session.delegate = self
+    }
+    
+    func setupBrowser(shouldBrowse: Bool){
+        if shouldBrowse {
+            self.browser = MCBrowserViewController.init(serviceType: "mafiamanager-mp", session: self.session)
+        } else {
+            browser = nil
+        }
+    }
+    
+    func advertiseSelf(shouldAdvertise: Bool){
+        if shouldAdvertise {
+            advertiser = MCAdvertiserAssistant.init(serviceType: "mafiamanager-mp", discoveryInfo: nil, session: self.session)
+            advertiser.start()
+        } else {
+            if (advertiser != nil){
+                advertiser.stop()
+            }
+            advertiser = nil
+        }
+    }
+    
+    func removePeer(peerID: MCPeerID){
+        sendObject(objData: ["disconnect": "disconnect"], peers: [peerID])
+    }
+    
+    func sendObject(objData: [String: Any], peers: [MCPeerID]){
+        var data: Data
+        do {
+             data = try NSKeyedArchiver.archivedData(withRootObject: objData, requiringSecureCoding: false)
+            try session.send(data, toPeers: peers, with: MCSessionSendDataMode.reliable)
+        } catch {
+            
+        }
+    }
+    
+    func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
+        let dict: [String: Any] = ["peerID": peerID, "state": state]
+        NotificationCenter.default.post(name: NSNotification.Name("MCDidChangeStateNotification"), object: nil, userInfo: dict)
         
-        self.serviceBrowser.delegate = self
-        self.serviceBrowser.startBrowsingForPeers()
     }
     
-    deinit {
-        self.serviceAdvertiser.stopAdvertisingPeer()
-        self.serviceBrowser.stopBrowsingForPeers()
+    func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
+        var dataDict: [String: Any] = [:]
+        do {
+            dataDict = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as! [String: Any]
+        } catch {
+            
+        }
+        let objName: String = dataDict.keys[dataDict.keys.startIndex]
+        let obj = dataDict[objName] as! [String: Any]
+        if objName == "disconnect" {
+            print("disconnecting")
+            session.disconnect()
+        } else if objName == "assignCard" {
+        }
+        NotificationCenter.default.post(name: NSNotification.Name(objName), object: nil, userInfo: obj)
 
     }
     
-}
-
-extension MPCManager : MCNearbyServiceAdvertiserDelegate {
-    
-    func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: Error) {
-        NSLog("%@", "didNotStartAdvertisingPeer: \(error)")
+    func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
+        
     }
     
-    func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
-        NSLog("%@", "didReceiveInvitationFromPeer \(peerID)")
+    func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
+        
     }
     
-}
-extension MPCManager : MCNearbyServiceBrowserDelegate {
-    
-    func browser(_ browser: MCNearbyServiceBrowser, didNotStartBrowsingForPeers error: Error) {
-        NSLog("%@", "didNotStartBrowsingForPeers: \(error)")
-    }
-    
-    func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
-        NSLog("%@", "foundPeer: \(peerID)")
-    }
-    
-    func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
-        NSLog("%@", "lostPeer: \(peerID)")
+    func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
+        
     }
     
 }

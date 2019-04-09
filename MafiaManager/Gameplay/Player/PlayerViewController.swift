@@ -10,9 +10,19 @@ import UIKit
 
 class PlayerViewController: UIViewController {
 
+    @IBOutlet weak var cardNameTextView: UITextView!
+    @IBOutlet weak var cardDescriptionTextView: UITextView!
+    @IBOutlet weak var cardImageView: UIImageView!
+    
+    var cardName: String?
+    var cardDescription: String?
+    var cardImage: UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        cardNameTextView.text = cardName!
+        cardDescriptionTextView.text = cardDescription!
+        cardImageView.image = cardImage!
         // Do any additional setup after loading the view.
     }
     

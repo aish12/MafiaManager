@@ -725,28 +725,50 @@
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Fp-Eg-GFX">
-                                <rect key="frame" x="8" y="120" width="398" height="574"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Fp-Eg-GFX">
+                                <rect key="frame" x="8" y="120" width="398" height="598.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="joinedPlayerCell" id="TaU-ae-QHH">
+                                        <rect key="frame" x="0.0" y="28" width="398" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TaU-ae-QHH" id="7dI-2b-OLQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="398" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nWe-ex-DsC">
                                 <rect key="frame" x="8" y="749" width="398" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Start Game"/>
                                 <connections>
-                                    <segue destination="5QB-2p-CQS" kind="show" id="qNv-sJ-Gxh"/>
+                                    <action selector="startGameButtonPressed:" destination="J8G-QU-3yv" eventType="touchUpInside" id="44e-Ak-OhT"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="out of" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jup-RN-XVS">
+                                <rect key="frame" x="0.0" y="726.5" width="414" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="jup-RN-XVS" firstAttribute="centerX" secondItem="qjL-ni-idd" secondAttribute="centerX" id="3Ct-FN-5AQ"/>
+                            <constraint firstItem="2Fp-Eg-GFX" firstAttribute="top" secondItem="utr-O9-EtG" secondAttribute="bottom" constant="8" id="AxZ-f3-6pf"/>
                             <constraint firstItem="ZV3-Yo-mLL" firstAttribute="trailing" secondItem="2Fp-Eg-GFX" secondAttribute="trailing" constant="8" id="Bot-Ky-0Ko"/>
+                            <constraint firstItem="ZV3-Yo-mLL" firstAttribute="trailing" secondItem="jup-RN-XVS" secondAttribute="trailing" id="Ip8-iP-ABV"/>
                             <constraint firstItem="2Fp-Eg-GFX" firstAttribute="leading" secondItem="ZV3-Yo-mLL" secondAttribute="leading" constant="8" id="Kh7-JD-J4C"/>
                             <constraint firstItem="ZV3-Yo-mLL" firstAttribute="trailing" secondItem="nWe-ex-DsC" secondAttribute="trailing" constant="8" id="MVm-Av-u4u"/>
                             <constraint firstItem="utr-O9-EtG" firstAttribute="centerX" secondItem="qjL-ni-idd" secondAttribute="centerX" id="Vf6-aI-p0x"/>
+                            <constraint firstItem="jup-RN-XVS" firstAttribute="top" secondItem="2Fp-Eg-GFX" secondAttribute="bottom" constant="8" id="WAn-UM-TJZ"/>
                             <constraint firstItem="2Fp-Eg-GFX" firstAttribute="top" secondItem="utr-O9-EtG" secondAttribute="bottom" constant="8" id="d3b-8n-0Hs"/>
                             <constraint firstItem="ZV3-Yo-mLL" firstAttribute="bottom" secondItem="nWe-ex-DsC" secondAttribute="bottom" constant="32" id="gan-jl-caI"/>
                             <constraint firstItem="utr-O9-EtG" firstAttribute="top" secondItem="ZV3-Yo-mLL" secondAttribute="top" constant="8" id="gpI-pB-bOW"/>
+                            <constraint firstItem="nWe-ex-DsC" firstAttribute="top" secondItem="jup-RN-XVS" secondAttribute="bottom" constant="8" id="jNq-Yg-zf2"/>
+                            <constraint firstItem="jup-RN-XVS" firstAttribute="leading" secondItem="ZV3-Yo-mLL" secondAttribute="leading" id="oUq-03-6wn"/>
                             <constraint firstItem="nWe-ex-DsC" firstAttribute="leading" secondItem="ZV3-Yo-mLL" secondAttribute="leading" constant="8" id="uaI-tS-muR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZV3-Yo-mLL"/>
@@ -754,12 +776,15 @@
                     <navigationItem key="navigationItem" title="Wait For Players" id="jA4-2i-bWx">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="iJr-4d-wEH">
                             <connections>
-                                <segue destination="5QB-2p-CQS" kind="show" id="zyS-kh-uZt"/>
+                                <action selector="nextButtonPressed:" destination="J8G-QU-3yv" id="S0c-zC-6U6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="joinedPlayersTableView" destination="2Fp-Eg-GFX" id="c2Q-wk-62S"/>
+                        <outlet property="numPlayersJoinedLabel" destination="jup-RN-XVS" id="3QP-ss-Hbf"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="EUo-eL-TlP"/>
+                        <segue destination="5QB-2p-CQS" kind="show" identifier="fromWaitForPlayersToDashboard" id="HRx-dl-MDt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4MA-5c-l4g" sceneMemberID="firstResponder"/>
@@ -987,6 +1012,7 @@
                     <navigationItem key="navigationItem" title="How Many of Each Role?" id="Ng3-lt-Kk7">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="VcQ-bM-aU4">
                             <connections>
+                                <action selector="nextButtonPressed:" destination="N35-Uc-qv2" id="8zL-SP-Y6X"/>
                                 <segue destination="J8G-QU-3yv" kind="show" identifier="fromRoleQuantitytoPlayerJoin" id="Zcs-n1-7wB"/>
                             </connections>
                         </barButtonItem>
@@ -998,6 +1024,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hLg-yo-oob" sceneMemberID="firstResponder"/>
+                <exit id="N35-Uc-qv2" userLabel="Exit" sceneMemberID="exit"/>
                 <searchDisplayController id="hMJ-qp-08Z">
                     <connections>
                         <outlet property="delegate" destination="x23-G5-JGJ" id="8rc-LS-wuB"/>
@@ -1596,7 +1623,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Join Game"/>
                                 <connections>
-                                    <segue destination="XGn-98-kfH" kind="show" id="Xi8-Ub-RBE"/>
+                                    <action selector="joinButtonPressed:" destination="cRM-OF-s3b" eventType="touchUpInside" id="eH3-4j-fQh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1616,7 +1643,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Join Game" id="D84-2Y-joe"/>
                     <connections>
+                        <outlet property="availableNarratorsTableView" destination="7Bl-dI-sKY" id="ulD-db-DUx"/>
+                        <outlet property="joinButton" destination="ZDE-eI-uNs" id="tWS-KU-v32"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="IXa-wJ-kYB"/>
+                        <segue destination="6fB-Kj-zlD" kind="show" identifier="fromJoinToWaitSegue" id="yDl-OU-WYA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sBQ-Ce-2Rt" sceneMemberID="firstResponder"/>
@@ -1630,6 +1660,33 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="2460" y="1114.992503748126"/>
+        </scene>
+        <!--Player Waiting View Controller-->
+        <scene sceneID="i9R-Ms-JG2">
+            <objects>
+                <viewController id="6fB-Kj-zlD" customClass="PlayerWaitingViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mYc-6Y-edM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Waiting for narrator to start game" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kWd-QX-6OT">
+                                <rect key="frame" x="79" y="438" width="256" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="2hZ-XL-dZG"/>
+                    </view>
+                    <connections>
+                        <segue destination="XGn-98-kfH" kind="show" identifier="fromWaitingToPlayer" id="MHl-LY-Cem"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WzE-CP-LkH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3137.68115942029" y="1116.9642857142856"/>
         </scene>
         <!--Player Role Controller-->
         <scene sceneID="EGC-KN-tbZ">
@@ -1697,13 +1754,16 @@
                     </view>
                     <navigationItem key="navigationItem" title="Player Name" id="Yjy-jK-8hm">
                         <barButtonItem key="leftBarButtonItem" id="ztq-N9-fqG"/>
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="0Xp-Xl-KhE">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" image="GearIcon" id="0Xp-Xl-KhE">
                             <connections>
                                 <segue destination="dNu-fC-IOV" kind="show" id="Z3o-Ch-q8U"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cardDescriptionTextView" destination="d4t-Lj-pOz" id="oIl-EE-noL"/>
+                        <outlet property="cardImageView" destination="Wnc-J9-6nU" id="6Jv-7B-zFP"/>
+                        <outlet property="cardNameTextView" destination="1GU-1b-R8n" id="HeC-RP-HeD"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="Q4W-cZ-kzZ"/>
                     </connections>
                 </viewController>
@@ -1718,7 +1778,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="3196" y="1114.992503748126"/>
+            <point key="canvasLocation" x="3816" y="1115"/>
         </scene>
         <!--Narrator Dashboard-->
         <scene sceneID="eCm-Tk-gPd">
@@ -2067,15 +2127,14 @@
     </scenes>
     <resources>
         <image name="Decks" width="35" height="41"/>
-        <image name="GearIcon" width="1.239598274230957" height="1.239598274230957"/>
+        <image name="GearIcon" width="24" height="24"/>
         <image name="MafiaIcon" width="250" height="250"/>
         <image name="Play" width="35" height="37"/>
-        <image name="WelcomeLoadingPicture" width="500" height="500"/>
+        <image name="WelcomeLoadingPicture" width="1000" height="1000"/>
         <image name="helpIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="l60-1W-HGq"/>
-        <segue reference="zyS-kh-uZt"/>
+        <segue reference="Z3o-Ch-q8U"/>
         <segue reference="Zcs-n1-7wB"/>
     </inferredMetricsTieBreakers>
 </document>
