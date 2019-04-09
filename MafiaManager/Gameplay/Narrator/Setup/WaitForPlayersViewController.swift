@@ -73,7 +73,7 @@ class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITab
         connectedDevices.shuffle()
         var playerIndex = 0
         for (card, count) in cardQuantities! {
-            for i in 1...count {
+            for _ in 1...count {
                 setPlayerRole(peerID: connectedDevices[playerIndex],card: card)
                // Also store it in the dictionary that ties the name and the card role for narrator dashboard
                 cardPlayer.append([connectedDevices[playerIndex].displayName:card])

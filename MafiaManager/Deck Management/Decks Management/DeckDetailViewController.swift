@@ -218,7 +218,7 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
     func updateDeckDetail(name: String, desc: String) {
         navbar.title = name
         deckDetailTextView.text = desc
-        decksCollectionView?.reloadItems(at: [deckIPath as! IndexPath])
+        decksCollectionView?.reloadItems(at: [deckIPath! as IndexPath])
     }
     
     // Long press for each collection view cell
