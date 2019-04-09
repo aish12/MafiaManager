@@ -15,10 +15,12 @@ class NarratorChangeRoleViewController: UIViewController {
     @IBOutlet weak var playerStatus: UILabel!
     @IBOutlet weak var playerDescription: UITextView!
     
+    var name: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        playerName.text = name
     }
     
 

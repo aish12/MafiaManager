@@ -28,7 +28,6 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = narratorTableView.dequeueReusableCell(withIdentifier: "narratorTableCell", for: indexPath as IndexPath) as! NarratorDashboardTableViewCell
-        //cell.!.text = cardPlayerDict![indexPath.item].keys[0]
         cell.playerName = cardPlayer[indexPath.item].keys.first
         cell.playerNameLabel.text = cell.playerName
 
@@ -43,19 +42,10 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         narratorTableView.deselectRow(at: indexPath, animated: true)
         // the "row"th note
-        //let row = indexPath.row
-        //print(row)
+        let row = indexPath.row
+        print(row)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     // If the narrator decides to end the game, display a confirmation
     // If they choose yes, segue to the record winners screen, if no, stay on dashboard
@@ -70,4 +60,22 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
         self.present(alert, animated: true)
     }
     
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "fromNarratorDashboardCellToPlayerCard" {
+            let destinationVC = segue.destination as! NarratorChangeRoleViewController
+            
+            let funcIndex = narratorTableView.indexPathForSelectedRow?.row
+            let card = cardPlayer[funcIndex!].values.first
+            destinationVC.name = card?.cardName
+            //destinationVC.playerDescription.text = card?.cardDescription
+            //destinationVC.playerImageView.image = UIImage(data: (card?.cardImage)!)
+            // TODO: do status logic
+            //destinationVC.playerStatus.text = "Alive"
+        }
+    }
 }
