@@ -10,17 +10,23 @@ import UIKit
 
 class NarratorChangeRoleViewController: UIViewController {
 
-    @IBOutlet weak var playerImageView: UIImageView!
-    @IBOutlet weak var playerName: UITextView!
+    @IBOutlet weak var cardImageView: UIImageView!
+    @IBOutlet weak var cardNameTextView: UITextView!
     @IBOutlet weak var playerStatus: UILabel!
-    @IBOutlet weak var playerDescription: UITextView!
     
-    var name: String?
+    @IBOutlet weak var cardDescriptionTextView: UITextView!
+    
+    var cardName: String?
+    var cardDescription: String?
+    var cardImage: Data?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        playerName.text = name
+        CoreGraphicsHelper.shadeTextViews(textView: cardNameTextView)
+        CoreGraphicsHelper.shadeTextViews(textView: cardDescriptionTextView)
+        cardNameTextView.text = cardName
+        cardDescriptionTextView.text = cardDescription
+        cardImageView.image = UIImage(data:cardImage!)
     }
     
 
