@@ -13,21 +13,30 @@ import MultipeerConnectivity
 class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var narratorTableView: UITableView!
-    var connectedDevices: [MCPeerID] = []
+    var cardPlayer = [Dictionary<String, Card>]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         narratorTableView.delegate = self
         narratorTableView.dataSource = self
+        narratorTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return connectedDevices.count
+        return cardPlayer.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = narratorTableView.dequeueReusableCell(withIdentifier: "narratorTableCell", for: indexPath as IndexPath)
-        cell.textLabel!.text = connectedDevices[indexPath.item].displayName
+        let cell = narratorTableView.dequeueReusableCell(withIdentifier: "narratorTableCell", for: indexPath as IndexPath) as! NarratorDashboardTableViewCell
+        //cell.!.text = cardPlayerDict![indexPath.item].keys[0]
+        cell.playerName = cardPlayer[indexPath.item].keys.first
+        cell.playerNameLabel.text = cell.playerName
+
+        let card = cardPlayer[indexPath.item].values.first
+        cell.roleLabel.text = card?.cardName
+        // TODO: change?
+        cell.playerStatusLabel.text = "Alive"
+
         return cell
     }
 
