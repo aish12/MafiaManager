@@ -74,6 +74,7 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
             destinationVC.cardName = card?.cardName
             destinationVC.cardDescription = card?.cardDescription
             destinationVC.cardImage = card?.cardImage
+            destinationVC.playerName = cardPlayer[funcIndex!].keys.first
             // TODO: do status logic
             //destinationVC.playerStatus.text = "Alive"
         }
