@@ -77,6 +77,7 @@ class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITab
                 playerIndex += 1
             }
         }
+        self.performSegue(withIdentifier: "fromWaitForPlayersToDashboard", sender: self)
     }
     
     func setPlayerRole(peerID: MCPeerID, card: Card){
@@ -101,10 +102,12 @@ class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITab
     /*
      // MARK: - Navigation
      // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
      */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "fromWaitForPlayersToDashboard" {
+            let destinationVC = segue.destination as! NarratorDashboardViewController
+            destinationVC.connectedDevices = self.connectedDevices
+        }
+    }
     
 }

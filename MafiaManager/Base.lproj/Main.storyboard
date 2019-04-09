@@ -1799,6 +1799,16 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0AH-5h-gMD">
                                 <rect key="frame" x="8" y="104" width="398" height="597"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="narratorTableCell" id="0bD-gj-9Kf">
+                                        <rect key="frame" x="0.0" y="28" width="398" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0bD-gj-9Kf" id="pVk-Dt-JSr">
+                                            <rect key="frame" x="0.0" y="0.0" width="398" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DLb-Wz-1M9">
                                 <rect key="frame" x="8" y="749" width="398" height="32"/>
@@ -1834,6 +1844,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="narratorTableView" destination="0AH-5h-gMD" id="6JU-5l-w5t"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="win-Ub-pMO"/>
                         <segue destination="lou-Ij-zi1" kind="show" identifier="fromDashboardToRecordSegue" id="aJs-ll-KHM"/>
                     </connections>
@@ -2142,7 +2153,7 @@
         <image name="helpIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Z3o-Ch-q8U"/>
+        <segue reference="b7z-LG-cRN"/>
         <segue reference="Zcs-n1-7wB"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -8,15 +8,28 @@
 //  Responsible for handling the narrator's dashboard view controller
 
 import UIKit
+import MultipeerConnectivity
 
-class NarratorDashboardViewController: UIViewController {
+class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var narratorTableView: UITableView!
+    var connectedDevices: [MCPeerID] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        narratorTableView.delegate = self
+        narratorTableView.dataSource = self
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return connectedDevices.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = narratorTableView.dequeueReusableCell(withIdentifier: "narratorTableCell", for: indexPath as IndexPath)
+        cell.textLabel!.text = connectedDevices[indexPath.item].displayName
+        return cell
+    }
 
     /*
     // MARK: - Navigation
