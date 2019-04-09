@@ -38,7 +38,7 @@ class JoinGameViewController: UIViewController, MCBrowserViewControllerDelegate 
     
     func returnToPlayView() {
         mpcManager.setupBrowser(shouldBrowse: false)
-//        dismiss(animated: true, completion: nil)
+        // Dismiss does not pop current VC correctly; use this instead
         self.navigationController?.popViewController(animated: true)
     }
     
