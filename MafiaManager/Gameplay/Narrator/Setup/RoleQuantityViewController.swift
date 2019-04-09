@@ -53,6 +53,7 @@ class RoleQuantityViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = roleTable.dequeueReusableCell(withIdentifier: "roleCell", for: indexPath as IndexPath) as! RoleQuantityTableViewCell
+        cell.selectionStyle = .none
         let card = cards![indexPath.item]
         cell.card = card
         cell.quantity = cardQuantities[card]!

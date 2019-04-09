@@ -34,10 +34,17 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
 
         let card = cardPlayer[indexPath.item].values.first
         cell.roleLabel.text = card?.cardName
-        // TODO: change?
+        // TODO: change to a variable for now
         cell.playerStatusLabel.text = "Alive"
 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        narratorTableView.deselectRow(at: indexPath, animated: true)
+        // the "row"th note
+        //let row = indexPath.row
+        //print(row)
     }
 
     /*
