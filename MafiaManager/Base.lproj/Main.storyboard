@@ -1834,6 +1834,7 @@
                                             <outlet property="playerNameLabel" destination="xPs-rA-EEW" id="DgJ-0Y-R8r"/>
                                             <outlet property="playerStatusLabel" destination="eE4-NE-rCb" id="e1o-tF-lcQ"/>
                                             <outlet property="roleLabel" destination="Lxv-hH-HI5" id="yed-0P-50P"/>
+                                            <segue destination="PkS-fp-C9J" kind="show" identifier="fromNarratorDashboardCellToPlayerCard" id="rj5-O9-Dva"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1935,7 +1936,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Efj-Mb-XK5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5894" y="373"/>
+            <point key="canvasLocation" x="6730" y="373"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="oz2-aG-w5K">
@@ -2140,6 +2141,65 @@
             </objects>
             <point key="canvasLocation" x="4605.6000000000004" y="-321.58920539730138"/>
         </scene>
+        <!--Narrator Change Role View Controller-->
+        <scene sceneID="UyT-4C-4TV">
+            <objects>
+                <viewController id="PkS-fp-C9J" customClass="NarratorChangeRoleViewController" customModule="MafiaManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Eq3-Gs-0ao">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Y3-os-iNm">
+                                <rect key="frame" x="16" y="104" width="160" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="4wm-qE-34R"/>
+                                    <constraint firstAttribute="height" constant="160" id="SAh-E3-8hc"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="NTf-Ug-HAM">
+                                <rect key="frame" x="238" y="104" width="160" height="112"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGE-PT-j0S">
+                                <rect key="frame" x="234" y="243" width="160" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zsR-i3-HoS">
+                                <rect key="frame" x="8" y="280" width="398" height="268"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5Y3-os-iNm" firstAttribute="top" secondItem="G4X-Mz-kZq" secondAttribute="top" constant="16" id="CyO-U4-MoI"/>
+                            <constraint firstItem="zsR-i3-HoS" firstAttribute="centerX" secondItem="Eq3-Gs-0ao" secondAttribute="centerX" id="HeT-fu-2bt"/>
+                            <constraint firstItem="G4X-Mz-kZq" firstAttribute="trailing" secondItem="NTf-Ug-HAM" secondAttribute="trailing" constant="16" id="JG4-y9-uG1"/>
+                            <constraint firstItem="NTf-Ug-HAM" firstAttribute="top" secondItem="G4X-Mz-kZq" secondAttribute="top" constant="16" id="NV5-ex-HiD"/>
+                            <constraint firstItem="G4X-Mz-kZq" firstAttribute="bottom" secondItem="zsR-i3-HoS" secondAttribute="bottom" constant="203" id="c4R-w9-ykT"/>
+                            <constraint firstItem="NTf-Ug-HAM" firstAttribute="leading" secondItem="5Y3-os-iNm" secondAttribute="trailing" constant="62" id="gjC-ek-f6L"/>
+                            <constraint firstItem="zsR-i3-HoS" firstAttribute="leading" secondItem="G4X-Mz-kZq" secondAttribute="leading" constant="8" id="qci-vg-nqG"/>
+                            <constraint firstItem="5Y3-os-iNm" firstAttribute="leading" secondItem="G4X-Mz-kZq" secondAttribute="leading" constant="16" id="who-wO-R4L"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="G4X-Mz-kZq"/>
+                    </view>
+                    <connections>
+                        <outlet property="playerDescription" destination="zsR-i3-HoS" id="jlF-Nd-VKR"/>
+                        <outlet property="playerImageView" destination="5Y3-os-iNm" id="m13-oH-fUg"/>
+                        <outlet property="playerName" destination="NTf-Ug-HAM" id="pFX-L5-Bwv"/>
+                        <outlet property="playerStatus" destination="eGE-PT-j0S" id="4es-gH-dGh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XQa-oR-P4F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6000.0000000000009" y="-66.294642857142861"/>
+        </scene>
         <!--Help-->
         <scene sceneID="QNL-sU-Scb">
             <objects>
@@ -2181,7 +2241,7 @@
         <image name="helpIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="b7z-LG-cRN"/>
+        <segue reference="Z3o-Ch-q8U"/>
         <segue reference="Zcs-n1-7wB"/>
     </inferredMetricsTieBreakers>
 </document>
