@@ -13,7 +13,7 @@ class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITab
     var cardQuantities: [Card: Int]?
     var connectedDevices: [MCPeerID] = []
     var numPlayers: Int = 0
-    var cardPlayer = [Dictionary<String, Card>]()
+    var playerAndCard: [(player: MCPeerID, card: Card)] = []
     
     @IBOutlet weak var joinedPlayersTableView: UITableView!
     
@@ -82,7 +82,7 @@ class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITab
             for _ in 1...count {
                 setPlayerRole(peerID: connectedDevices[playerIndex],card: card)
                // Also store it in the dictionary that ties the name and the card role for narrator dashboard
-                cardPlayer.append([connectedDevices[playerIndex].displayName:card])
+                playerAndCard.append((player: connectedDevices[playerIndex], card: card))
                 playerIndex += 1
                 
             }
@@ -116,7 +116,7 @@ class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITab
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "fromWaitForPlayersToDashboard" {
             let destinationVC = segue.destination as! NarratorDashboardViewController
-            destinationVC.cardPlayer = self.cardPlayer
+            destinationVC.playerAndCard = self.playerAndCard
         }
     }
     

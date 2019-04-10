@@ -55,6 +55,7 @@ class MPCManager: NSObject, MCSessionDelegate {
     }
     
     func sendObject(objData: [String: Any], peers: [MCPeerID]){
+        print("sending object to \(peers[0].displayName)")
         var data: Data
         do {
              data = try NSKeyedArchiver.archivedData(withRootObject: objData, requiringSecureCoding: false)
@@ -77,14 +78,17 @@ class MPCManager: NSObject, MCSessionDelegate {
         } catch {
             
         }
+        print("Received from \(peerID.displayName)")
         let objName: String = dataDict.keys[dataDict.keys.startIndex]
-        let obj = dataDict[objName] as! [String: Any]
+        let obj = dataDict[objName]
         if objName == "disconnect" {
             print("disconnecting")
             session.disconnect()
-        } else if objName == "assignCard" {
+        } else if objName == "assignStatus" {
+            print("Received message in helper")
         }
-        NotificationCenter.default.post(name: NSNotification.Name(objName), object: nil, userInfo: obj)
+        print("Notification w/ name \(objName)")
+        NotificationCenter.default.post(name: NSNotification.Name(objName), object: nil, userInfo: dataDict)
 
     }
     

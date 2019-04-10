@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MultipeerConnectivity
 
 class NarratorDashboardTableViewCell: UITableViewCell {
 
@@ -14,6 +15,7 @@ class NarratorDashboardTableViewCell: UITableViewCell {
     @IBOutlet weak var roleLabel: UILabel!
     @IBOutlet weak var playerStatusLabel: UILabel!
     
+    var playerID: MCPeerID?
     var playerName: String?
     var playerRole: String?
     var playerStatus: String?

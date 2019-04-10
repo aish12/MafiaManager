@@ -8,11 +8,11 @@
 //  Responsible for handling the record winner's view controller
 
 import UIKit
+import MultipeerConnectivity
 
 class RecordWinnersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-
-    var cardPlayer : [Dictionary<String, Card>]?
+    var playerAndCard: [(player: MCPeerID, card: Card)] = []
     var playerStatuses : [String]?
     @IBOutlet weak var recordResultsTableView: UITableView!
     
@@ -34,16 +34,16 @@ class RecordWinnersViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (cardPlayer?.count)!
+        return (playerAndCard.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = recordResultsTableView.dequeueReusableCell(withIdentifier: "recordResultsTableCell", for: indexPath as IndexPath) as! RecordWinnerTableViewCell
-        cell.playerName = cardPlayer![indexPath.item].keys.first
+        cell.playerName = playerAndCard[indexPath.item].player.displayName
         cell.playerNameLabel.text = cell.playerName
         
-        let card = cardPlayer![indexPath.item].values.first
-        cell.roleLabel.text = card?.cardName
+        let card = playerAndCard[indexPath.item].card
+        cell.roleLabel.text = card.cardName
         // TODO: change to a variable for now
         cell.playerStatusLabel.text = playerStatuses![indexPath.item]
         

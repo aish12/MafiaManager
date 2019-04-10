@@ -31,6 +31,8 @@ class PlayerViewController: UIViewController {
         // Do any additional setup after loading the view.
         statusLabel.text = statusLabelText
         statusLabel.textColor = UIColor.green
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateStatus), name: NSNotification.Name("assignStatus"), object: nil)
     }
     
     // If the player chooses the leave button, display a confirmation
@@ -43,6 +45,19 @@ class PlayerViewController: UIViewController {
             self.navigationController?.popToRootViewController(animated: true)
         }))
         self.present(alert, animated: true)
+    }
+    
+    @objc func updateStatus(notification: Notification) {
+        DispatchQueue.main.async {
+            let status = Array((notification.userInfo?.values)!)[0] as! String
+            
+            if status == "Alive" {
+                self.statusLabel.textColor = UIColor.green
+            } else if status == "Dead" {
+                self.statusLabel.textColor = UIColor.red
+            }
+            self.statusLabel.text = status
+        }
     }
     /*
     // MARK: - Navigation

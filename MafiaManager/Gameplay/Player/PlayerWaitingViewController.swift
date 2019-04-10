@@ -26,7 +26,7 @@ class PlayerWaitingViewController: UIViewController {
     @objc func goToCard(notification: Notification){
         print("In go to card")
         DispatchQueue.main.async {
-            let cardInfo = notification.userInfo!
+            let cardInfo = notification.userInfo!["assignCard"] as! [String: Any]
             self.cardName = cardInfo["cardName"] as? String
             self.cardDescription = cardInfo["cardDescription"] as? String
             self.cardImage = UIImage(data: cardInfo["cardImage"] as! Data)

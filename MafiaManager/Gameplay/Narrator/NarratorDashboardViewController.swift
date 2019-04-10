@@ -14,30 +14,35 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
     
 
     @IBOutlet weak var narratorTableView: UITableView!
-    var cardPlayer = [Dictionary<String, Card>]()
+    var playerAndCard: [(player: MCPeerID, card: Card)] = []
     var playerStatuses = [String]();
+    var mpcManager: MPCManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         narratorTableView.delegate = self
         narratorTableView.dataSource = self
-        for _ in 1...cardPlayer.count {
+        for _ in 1...playerAndCard.count {
             playerStatuses.append("Alive")
         }
         narratorTableView.reloadData()
+        
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        mpcManager = appDelegate!.mpcManager!
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cardPlayer.count
+        return playerAndCard.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = narratorTableView.dequeueReusableCell(withIdentifier: "narratorTableResultsCell", for: indexPath as IndexPath) as! NarratorDashboardTableViewCell
-        cell.playerName = cardPlayer[indexPath.item].keys.first
+        cell.playerName = playerAndCard[indexPath.item].player.displayName
         cell.playerNameLabel.text = cell.playerName
 
-        let card = cardPlayer[indexPath.item].values.first
-        cell.roleLabel.text = card?.cardName
+        let card = playerAndCard[indexPath.item].card
+        cell.playerID = playerAndCard[indexPath.item].player
+        cell.roleLabel.text = card.cardName
         // TODO: change to a variable for now
         cell.playerStatusLabel.text = playerStatuses[indexPath.item]
 
@@ -55,7 +60,7 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
     // If the narrator decides to end the game, display a confirmation
     // If they choose yes, segue to the record winners screen, if no, stay on dashboard
     @IBAction func endGameButtonPressed(_ sender: Any) {
-        let alert = UIAlertController(title: "Are you sure?", message: "Ending a game cannot be undone", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Are you sure?", message: "Ending a game cannot be undone.", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
             self.performSegue(withIdentifier: "fromDashboardToRecordSegue", sender: nil)
@@ -66,11 +71,13 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
     }
     
     func updatePlayerStatus(status: String, indexPath: IndexPath) {
-        playerStatuses[indexPath.item] = status;
+        playerStatuses[indexPath.item] = status
         let cell = narratorTableView.cellForRow(at: indexPath) as! NarratorDashboardTableViewCell
         cell.playerStatus = status
         cell.playerStatusLabel.text = status
         narratorTableView.reloadData()
+        
+        mpcManager.sendObject(objData: ["assignStatus": status], peers: [cell.playerID!])
     }
     
     /*
@@ -83,12 +90,12 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
             let destinationVC = segue.destination as! NarratorChangeRoleViewController
             
             let funcIndex = narratorTableView.indexPathForSelectedRow?.row
-            let card = cardPlayer[funcIndex!].values.first
+            let card = playerAndCard[funcIndex!].card
             
-            destinationVC.cardName = card?.cardName
-            destinationVC.cardDescription = card?.cardDescription
-            destinationVC.cardImage = card?.cardImage
-            destinationVC.playerName = cardPlayer[funcIndex!].keys.first
+            destinationVC.cardName = card.cardName
+            destinationVC.cardDescription = card.cardDescription
+            destinationVC.cardImage = card.cardImage
+            destinationVC.playerName = playerAndCard[funcIndex!].player.displayName
             destinationVC.playerStatusLabel = playerStatuses[funcIndex!]
             destinationVC.indexPath = narratorTableView.indexPathForSelectedRow
             destinationVC.changePlayerDelegate = self
@@ -97,7 +104,7 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
         } else if segue.identifier == "fromDashboardToRecordSegue" {
             print ("Ending Game")
             let destinationVC = segue.destination as! RecordWinnersViewController
-            destinationVC.cardPlayer = cardPlayer
+            destinationVC.playerAndCard = playerAndCard
             destinationVC.playerStatuses = playerStatuses
         }
     }
