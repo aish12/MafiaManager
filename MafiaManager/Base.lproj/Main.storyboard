@@ -2117,7 +2117,24 @@
                                     <constraint firstAttribute="height" constant="32" id="rm9-eG-5XK"/>
                                 </constraints>
                                 <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="onStartPressed:" destination="aqy-qI-FXH" eventType="touchUpInside" id="u3f-PB-MOd"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJU-JO-iJ0">
+                                <rect key="frame" x="242" y="579" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ynj-jL-Yca">
+                                <rect key="frame" x="102" y="579" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -2130,8 +2147,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Timer" id="DzY-h7-Fu2"/>
                     <connections>
+                        <outlet property="minCountdownLabel" destination="Ynj-jL-Yca" id="cwx-Kf-FJu"/>
                         <outlet property="minutePicker" destination="qgy-1m-ZSw" id="YEy-Hp-wTk"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="krm-bC-wZI"/>
+                        <outlet property="secCountdownLabel" destination="AJU-JO-iJ0" id="Miu-Il-bjf"/>
                         <outlet property="secondPicker" destination="7x3-jH-KwW" id="ZZX-Py-7mV"/>
                     </connections>
                 </viewController>
@@ -2257,10 +2276,10 @@
     </scenes>
     <resources>
         <image name="Decks" width="35" height="41"/>
-        <image name="GearIcon" width="24" height="24"/>
+        <image name="GearIcon" width="1.239598274230957" height="1.239598274230957"/>
         <image name="MafiaIcon" width="250" height="250"/>
         <image name="Play" width="35" height="37"/>
-        <image name="WelcomeLoadingPicture" width="1000" height="1000"/>
+        <image name="WelcomeLoadingPicture" width="500" height="500"/>
         <image name="helpIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
