@@ -727,7 +727,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Fp-Eg-GFX">
-                                <rect key="frame" x="8" y="120" width="398" height="598.5"/>
+                                <rect key="frame" x="8" y="120" width="398" height="654.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="joinedPlayerCell" id="TaU-ae-QHH">
@@ -740,16 +740,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nWe-ex-DsC">
-                                <rect key="frame" x="8" y="749" width="398" height="32"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="Start Game"/>
-                                <connections>
-                                    <action selector="startGameButtonPressed:" destination="J8G-QU-3yv" eventType="touchUpInside" id="44e-Ak-OhT"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="out of" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jup-RN-XVS">
-                                <rect key="frame" x="0.0" y="726.5" width="414" height="14.5"/>
+                                <rect key="frame" x="0.0" y="782.5" width="414" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -761,20 +753,17 @@
                             <constraint firstItem="ZV3-Yo-mLL" firstAttribute="trailing" secondItem="2Fp-Eg-GFX" secondAttribute="trailing" constant="8" id="Bot-Ky-0Ko"/>
                             <constraint firstItem="ZV3-Yo-mLL" firstAttribute="trailing" secondItem="jup-RN-XVS" secondAttribute="trailing" id="Ip8-iP-ABV"/>
                             <constraint firstItem="2Fp-Eg-GFX" firstAttribute="leading" secondItem="ZV3-Yo-mLL" secondAttribute="leading" constant="8" id="Kh7-JD-J4C"/>
-                            <constraint firstItem="ZV3-Yo-mLL" firstAttribute="trailing" secondItem="nWe-ex-DsC" secondAttribute="trailing" constant="8" id="MVm-Av-u4u"/>
                             <constraint firstItem="utr-O9-EtG" firstAttribute="centerX" secondItem="qjL-ni-idd" secondAttribute="centerX" id="Vf6-aI-p0x"/>
                             <constraint firstItem="jup-RN-XVS" firstAttribute="top" secondItem="2Fp-Eg-GFX" secondAttribute="bottom" constant="8" id="WAn-UM-TJZ"/>
                             <constraint firstItem="2Fp-Eg-GFX" firstAttribute="top" secondItem="utr-O9-EtG" secondAttribute="bottom" constant="8" id="d3b-8n-0Hs"/>
-                            <constraint firstItem="ZV3-Yo-mLL" firstAttribute="bottom" secondItem="nWe-ex-DsC" secondAttribute="bottom" constant="32" id="gan-jl-caI"/>
                             <constraint firstItem="utr-O9-EtG" firstAttribute="top" secondItem="ZV3-Yo-mLL" secondAttribute="top" constant="8" id="gpI-pB-bOW"/>
-                            <constraint firstItem="nWe-ex-DsC" firstAttribute="top" secondItem="jup-RN-XVS" secondAttribute="bottom" constant="8" id="jNq-Yg-zf2"/>
                             <constraint firstItem="jup-RN-XVS" firstAttribute="leading" secondItem="ZV3-Yo-mLL" secondAttribute="leading" id="oUq-03-6wn"/>
-                            <constraint firstItem="nWe-ex-DsC" firstAttribute="leading" secondItem="ZV3-Yo-mLL" secondAttribute="leading" constant="8" id="uaI-tS-muR"/>
+                            <constraint firstItem="ZV3-Yo-mLL" firstAttribute="bottom" secondItem="jup-RN-XVS" secondAttribute="bottom" constant="16" id="qsJ-j2-Gze"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZV3-Yo-mLL"/>
                     </view>
                     <navigationItem key="navigationItem" title="Wait For Players" id="jA4-2i-bWx">
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="iJr-4d-wEH">
+                        <barButtonItem key="rightBarButtonItem" title="Start" id="iJr-4d-wEH">
                             <connections>
                                 <action selector="nextButtonPressed:" destination="J8G-QU-3yv" id="S0c-zC-6U6"/>
                             </connections>

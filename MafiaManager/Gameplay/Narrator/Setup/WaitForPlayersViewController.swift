@@ -72,6 +72,12 @@ class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITab
     @IBAction func nextButtonPressed(_ sender: Any) {
         connectedDevices.shuffle()
         var playerIndex = 0
+        if connectedDevices.count < numPlayers {
+            let alert = UIAlertController(title: "Insufficient Number of Players", message: "Wait for all players to join before starting the game.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            return
+        }
         for (card, count) in cardQuantities! {
             for _ in 1...count {
                 setPlayerRole(peerID: connectedDevices[playerIndex],card: card)
