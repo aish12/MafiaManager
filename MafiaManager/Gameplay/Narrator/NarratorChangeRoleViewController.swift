@@ -28,6 +28,8 @@ class NarratorChangeRoleViewController: UIViewController {
         cardNameTextView.text = cardName
         cardDescriptionTextView.text = cardDescription
         cardImageView.image = UIImage(data:cardImage!)
+        playerStatus.text = ""
+        self.navigationItem.title = playerName
         // TODO: navigation bar title = playerName and set the status label
     }
     
