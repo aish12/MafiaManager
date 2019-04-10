@@ -20,6 +20,7 @@ class NarratorChangeRoleViewController: UIViewController {
     var cardDescription: String?
     var cardImage: Data?
     var playerName: String?
+    var playerStatusLabel : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,7 @@ class NarratorChangeRoleViewController: UIViewController {
         cardNameTextView.text = cardName
         cardDescriptionTextView.text = cardDescription
         cardImageView.image = UIImage(data:cardImage!)
-        playerStatus.text = ""
+        playerStatus.text = playerStatusLabel
         self.navigationItem.title = playerName
         // TODO: navigation bar title = playerName and set the status label
     }
