@@ -17,18 +17,21 @@ class TimerManager: NSObject {
     
     static func start(withSeconds: Int) {
         // For some reason, doesn't start at the time clicked
-        seconds = withSeconds + 1
+        seconds = withSeconds
         timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(TimerManager.update), userInfo: nil, repeats: true)
+        
+        let value = getString(from: TimeInterval(seconds))
+        timeString?(value, false)
     }
     
     @objc static func update() {
         if seconds == 0 {
             timer?.invalidate()
-            timeString?(nil,true)
+            timeString?(nil, true)
         } else {
             seconds -= 1
             let value = getString(from: TimeInterval(seconds))
-            timeString?(value,false)
+            timeString?(value, false)
         }
     }
     

@@ -16,6 +16,7 @@ class TimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     @IBOutlet weak var countdownLabel: UILabel!
     
     var timerStarted: Bool = false
+    var paused: Bool = false
     var timeLeft: Int = 0
     
     let minutePickerValues: [Int] = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
@@ -32,6 +33,13 @@ class TimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        timerStarted = false
+        self.countdownLabel.text = "00:00"
+        TimerManager.stop()
+        timeLeft = 0
+    }
+    
     @IBAction func onStartPressed(_ sender: UIButton) {
         let minute: Int!
         let second: Int!
@@ -42,22 +50,37 @@ class TimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             second = self.secondPicker.selectedRow(inComponent: 0)
             duration = (minute * 60) + second
             timerStarted = true
-        }
-        
-        if timeLeft > 0 {
-            duration = timeLeft - 1
-        }
-        
-        TimerManager.start(withSeconds: duration)
-        TimerManager.timeString = { time, ends in
-            if ends == false {
-                self.countdownLabel.text = time
+            
+            if timeLeft > 0 {
+                duration = timeLeft - 1
             }
+            
+            TimerManager.timeString = { time, ends in
+                if ends == false {
+                    self.countdownLabel.text = time
+                }
+            }
+            TimerManager.start(withSeconds: duration)
+        } else if paused {
+            paused = false
+            if timeLeft > 0 {
+                duration = timeLeft - 1
+            }
+            
+            TimerManager.timeString = { time, ends in
+                if ends == false {
+                    self.countdownLabel.text = time
+                }
+            }
+            TimerManager.start(withSeconds: duration)
         }
     }
     
     @IBAction func onPausePressed(_ sender: Any) {
-        timeLeft = TimerManager.stop()
+        if timerStarted {
+            timeLeft = TimerManager.stop()
+            paused = true
+        }
     }
     
     @IBAction func onStopPressed(_ sender: Any) {

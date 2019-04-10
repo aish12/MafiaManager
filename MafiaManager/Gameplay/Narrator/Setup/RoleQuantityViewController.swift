@@ -13,6 +13,7 @@ class RoleQuantityViewController: UIViewController, UITableViewDelegate, UITable
 
     @IBOutlet weak var peopleNeededLabel: UILabel!
     @IBOutlet weak var roleTable: UITableView!
+    @IBOutlet weak var nextButton: UIBarButtonItem!
     
     var deck: Deck?
     var cards: [Card]?
@@ -27,7 +28,8 @@ class RoleQuantityViewController: UIViewController, UITableViewDelegate, UITable
         for card in cards! {
             cardQuantities[card] = 0
         }
-        peopleNeededLabel.text = "0 People Needed"
+        peopleNeededLabel.text = "Players Are Needed to Continue"
+        nextButton.isEnabled = false
         print("view did load")
     }
     
@@ -69,7 +71,13 @@ class RoleQuantityViewController: UIViewController, UITableViewDelegate, UITable
         for card in cardQuantities {
             numPlayersRequired += card.value
         }
-        peopleNeededLabel.text = "\(numPlayersRequired) People Needed"
+        if numPlayersRequired == 0 {
+            nextButton.isEnabled = false
+            peopleNeededLabel.text = "Players Are Needed to Continue"
+        } else if numPlayersRequired > 0 {
+            nextButton.isEnabled = true
+            peopleNeededLabel.text = "\(numPlayersRequired) Players Needed"
+        }
     }
     
     func updateQuantity(card: Card, incremented: Bool) {
@@ -80,7 +88,14 @@ class RoleQuantityViewController: UIViewController, UITableViewDelegate, UITable
             self.cardQuantities[card] = self.cardQuantities[card]! - 1
             numPlayersRequired -= 1
         }
-        self.peopleNeededLabel.text = "\(numPlayersRequired) People Needed"
+        
+        if numPlayersRequired == 0 {
+            nextButton.isEnabled = false
+            peopleNeededLabel.text = "Players Are Needed to Continue"
+        } else if numPlayersRequired > 0 {
+            nextButton.isEnabled = true
+            peopleNeededLabel.text = "\(numPlayersRequired) Players Needed"
+        }
     }
     
     // Retrieves decks from core data
