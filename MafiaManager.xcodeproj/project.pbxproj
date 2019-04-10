@@ -44,6 +44,7 @@
 		BFFDFE5B223845170033F15B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFDFE59223845170033F15B /* LaunchScreen.storyboard */; };
 		F618EE8122488DE500E32DA5 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618EE8022488DE500E32DA5 /* TabBarViewController.swift */; };
 		F64DF7C3224B000000513FD7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F64DF7C2224B000000513FD7 /* GoogleService-Info.plist */; };
+		F6830DD4225DB9D400D80114 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6830DD3225DB9D400D80114 /* Timer.swift */; };
 		F6A22D4722571E2B000F694B /* EditDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A22D4622571E2B000F694B /* EditDeckViewController.swift */; };
 		F6B2E13C2257D2AA00EFB394 /* CardCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B2E13B2257D2AA00EFB394 /* CardCellCollectionViewCell.swift */; };
 		F6B2E13E2257D2B900EFB394 /* NewCardCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B2E13D2257D2B900EFB394 /* NewCardCellCollectionViewCell.swift */; };
@@ -97,6 +98,7 @@
 		F2AF33E2E3064D2FD43B2DBF /* Pods-MafiaManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MafiaManager.release.xcconfig"; path = "Target Support Files/Pods-MafiaManager/Pods-MafiaManager.release.xcconfig"; sourceTree = "<group>"; };
 		F618EE8022488DE500E32DA5 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		F64DF7C2224B000000513FD7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F6830DD3225DB9D400D80114 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		F6A22D4622571E2B000F694B /* EditDeckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDeckViewController.swift; sourceTree = "<group>"; };
 		F6B2E13B2257D2AA00EFB394 /* CardCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		F6B2E13D2257D2B900EFB394 /* NewCardCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCardCellCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				F6B2E141225D2F1500EFB394 /* NarratorDashboardTableViewCell.swift */,
 				F6B2E143225D40E100EFB394 /* NarratorChangeRoleViewController.swift */,
 				7BE7DAA9224C0F9F00E267CA /* TimerViewController.swift */,
+				F6830DD3225DB9D400D80114 /* Timer.swift */,
 				7B32DF3A225A1DF300F0072B /* Setup */,
 			);
 			path = Narrator;
@@ -435,6 +438,7 @@
 				7B32DF3C225A262600F0072B /* CoreGraphicsHelper.swift in Sources */,
 				7B4E7101224990D7001395F2 /* AddDeckCell.swift in Sources */,
 				F6B2E142225D2F1500EFB394 /* NarratorDashboardTableViewCell.swift in Sources */,
+				F6830DD4225DB9D400D80114 /* Timer.swift in Sources */,
 				F6B2E144225D40E100EFB394 /* NarratorChangeRoleViewController.swift in Sources */,
 				7B8EF74E22540ABC00816B5F /* ImagePicker.swift in Sources */,
 				F6B2E13E2257D2B900EFB394 /* NewCardCellCollectionViewCell.swift in Sources */,

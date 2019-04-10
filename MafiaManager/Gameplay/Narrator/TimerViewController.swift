@@ -13,9 +13,10 @@ class TimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 
     @IBOutlet weak var minutePicker: UIPickerView!
     @IBOutlet weak var secondPicker: UIPickerView!
+    @IBOutlet weak var countdownLabel: UILabel!
     
-    @IBOutlet weak var minCountdownLabel: UILabel!
-    @IBOutlet weak var secCountdownLabel: UILabel!
+    var timerStarted: Bool = false
+    var timeLeft: Int = 0
     
     let minutePickerValues: [Int] = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
     let secondPickerValues: [Int] = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59]
@@ -31,43 +32,42 @@ class TimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         // Do any additional setup after loading the view.
     }
     
-    func timer(minute: Int, second: Int) {
-        // Anchor time
-        let startTime: Date = Date()
-        // The total amount of time to wait in a total of seconds
-        let duration: TimeInterval = TimeInterval((minute * 60) + second)
-        
-        let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = [.minute, .second]
-        formatter.zeroFormattingBehavior = .dropLeading
-        formatter.unitsStyle = .short
-        // The amount of time which has past since we started
-        var runningTime: TimeInterval = 0
-        
-        // This is just so I can atrificially update the time
-        var time: Date = Date()
-        let cal: Calendar = Calendar.current
-        repeat {
-            // Simulate the passing of time, by the minute
-            // If this was been called from a timer, then you'd
-            // simply use the current time
-            time = cal.date(byAdding: .second, value: 1, to: time)!
-            
-            // How long have we been running for?
-            runningTime = time.timeIntervalSince(startTime)
-            // Have we run out of time?
-            if runningTime < duration {
-                // Print the amount of time remaining
-                print(formatter.string(from: duration - runningTime)!)
-            }
-        } while runningTime < duration
-    }
-    
-    
     @IBAction func onStartPressed(_ sender: UIButton) {
-        print(minutePicker.selectedRow(inComponent: 0))
-        print(secondPicker.selectedRow(inComponent: 0))
+        let minute: Int!
+        let second: Int!
+        var duration: Int = 0
+        
+        if !timerStarted {
+            minute = self.minutePicker.selectedRow(inComponent: 0)
+            second = self.secondPicker.selectedRow(inComponent: 0)
+            duration = (minute * 60) + second
+            timerStarted = true
+        }
+        
+        if timeLeft > 0 {
+            duration = timeLeft - 1
+        }
+        
+        TimerManager.start(withSeconds: duration)
+        TimerManager.timeString = { time, ends in
+            if ends == false {
+                self.countdownLabel.text = time
+            }
+        }
     }
+    
+    @IBAction func onPausePressed(_ sender: Any) {
+        timeLeft = TimerManager.stop()
+    }
+    
+    @IBAction func onStopPressed(_ sender: Any) {
+        timerStarted = false
+        self.countdownLabel.text = "00:00"
+        TimerManager.stop()
+        timeLeft = 0
+    }
+    
+    
     
     
     // For both minute and second, they only have one component, always return 1
