@@ -7,6 +7,7 @@
 //
 //  Responsible for handling the game player view controller
 import UIKit
+import MultipeerConnectivity
 
 class PlayerViewController: UIViewController {
 
@@ -20,6 +21,7 @@ class PlayerViewController: UIViewController {
     var cardDescription: String?
     var cardImage: UIImage?
     var statusLabelText: String?
+    var mpcManager: MPCManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +33,7 @@ class PlayerViewController: UIViewController {
         // Do any additional setup after loading the view.
         statusLabel.text = statusLabelText
         statusLabel.textColor = UIColor.green
-        
+        mpcManager = (UIApplication.shared.delegate as! AppDelegate).mpcManager
         NotificationCenter.default.addObserver(self, selector: #selector(updateStatus), name: NSNotification.Name("assignStatus"), object: nil)
     }
     
@@ -42,6 +44,7 @@ class PlayerViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+            self.mpcManager.session.disconnect()
             self.navigationController?.popToRootViewController(animated: true)
         }))
         self.present(alert, animated: true)

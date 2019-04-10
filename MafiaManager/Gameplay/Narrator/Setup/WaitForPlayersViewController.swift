@@ -64,6 +64,7 @@ class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITab
             }
         }
         DispatchQueue.main.async {
+            print("Happening")
         self.updateNumPlayersLabel()
         self.joinedPlayersTableView.reloadData()
         }
