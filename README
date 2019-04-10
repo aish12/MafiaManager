@@ -21,7 +21,7 @@ Differences:
 
 Clarifications:
  - This wasn't clear in our proposal, but we have not implemented searching functionality. We will do so during the final release.
- - While it said in our proposal that we'd have the statistics functionality done for this release, we also specified in the Alpha release that because that is releated to our stretch goal (the History tab), we would include that with our final release.
+ - While it said in our proposal that we'd have the statistics functionality done for this release, we also specified in the Alpha release that because that is releated to our stretch goal (the History tab), we would include that with our final release. This should be shown when the narrator taps "Skip" or "Record Winners" at the very end of the game. For now, it just leads the narrator back to the initial view of the player tab (Start Game as Narrator and Join Game as Player options).
  - It was never specified in our proposal, but we have decided to save everything into Core Data for now, meaning each unique user doesn't have their own decks/cards/game. We were thinking for the final release, when the user logs in, they download their data and information onto their own device, using Core Data.
  - The most number of connections with the multipeer networking is 8 for this release. For the final release, we were thinking of possibily allowing it to handle more connections.
 
