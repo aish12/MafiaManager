@@ -2172,8 +2172,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cFw-CC-54F">
-                                <rect key="frame" x="16" y="312" width="382" height="485"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cFw-CC-54F">
+                                <rect key="frame" x="16" y="312" width="382" height="382"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -2184,6 +2184,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1wG-zt-ihc">
+                                <rect key="frame" x="36" y="702" width="342" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="killOrReviveButtonPressed:" destination="PkS-fp-C9J" eventType="touchUpInside" id="bkH-2c-agr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -2207,12 +2215,13 @@
                         <outlet property="cardDescriptionTextView" destination="cFw-CC-54F" id="4pe-i2-clN"/>
                         <outlet property="cardImageView" destination="5Y3-os-iNm" id="Sul-pP-IgI"/>
                         <outlet property="cardNameTextView" destination="ZMW-GO-06d" id="akx-sN-ZH2"/>
+                        <outlet property="killOrReviveButton" destination="1wG-zt-ihc" id="Dm3-2m-CRv"/>
                         <outlet property="playerStatus" destination="eGE-PT-j0S" id="ugi-ZO-319"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XQa-oR-P4F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5964" y="-322"/>
+            <point key="canvasLocation" x="5963.768115942029" y="-322.09821428571428"/>
         </scene>
         <!--Help-->
         <scene sceneID="QNL-sU-Scb">

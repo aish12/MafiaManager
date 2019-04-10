@@ -8,19 +8,25 @@
 
 import UIKit
 
+protocol ChangePlayerStatusProtocol: class {
+    func updatePlayerStatus(status:String, indexPath:IndexPath)
+}
 class NarratorChangeRoleViewController: UIViewController {
 
     @IBOutlet weak var cardImageView: UIImageView!
     @IBOutlet weak var cardNameTextView: UITextView!
     @IBOutlet weak var playerStatus: UILabel!
+    @IBOutlet weak var killOrReviveButton: UIButton!
     
     @IBOutlet weak var cardDescriptionTextView: UITextView!
     
+    weak var changePlayerDelegate:ChangePlayerStatusProtocol?
     var cardName: String?
     var cardDescription: String?
     var cardImage: Data?
     var playerName: String?
     var playerStatusLabel : String?
+    var indexPath: IndexPath? //for the delegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +36,33 @@ class NarratorChangeRoleViewController: UIViewController {
         cardDescriptionTextView.text = cardDescription
         cardImageView.image = UIImage(data:cardImage!)
         playerStatus.text = playerStatusLabel
+        setKillOrReviveButtonColor()
         self.navigationItem.title = playerName
-        // TODO: navigation bar title = playerName and set the status label
     }
     
-
+    func setKillOrReviveButtonColor() {
+        if (playerStatusLabel == "Alive") {
+            
+            killOrReviveButton.setTitle("Kill", for: .normal)
+            killOrReviveButton.layer.backgroundColor = UIColor.red.cgColor
+        } else {
+            killOrReviveButton.setTitle("Revive", for: .normal)
+            killOrReviveButton.layer.backgroundColor = UIColor.green.cgColor
+        }
+    }
+    
+    @IBAction func killOrReviveButtonPressed(_ sender: Any) {
+        if playerStatusLabel == "Alive" {
+            playerStatusLabel = "Dead"
+            playerStatus.text = "Dead"
+        } else {
+            playerStatusLabel = "Alive"
+            playerStatus.text = "Alive"
+        }
+        setKillOrReviveButtonColor()
+        changePlayerDelegate?.updatePlayerStatus(status: playerStatusLabel!, indexPath: indexPath!)
+    }
+    
     /*
     // MARK: - Navigation
 
