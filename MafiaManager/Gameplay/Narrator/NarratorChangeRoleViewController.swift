@@ -36,6 +36,8 @@ class NarratorChangeRoleViewController: UIViewController {
         cardDescriptionTextView.text = cardDescription
         cardImageView.image = UIImage(data:cardImage!)
         playerStatus.text = playerStatusLabel
+        
+        killOrReviveButton.layer.cornerRadius = 5
         setKillOrReviveButtonColor()
         self.navigationItem.title = playerName
     }
@@ -44,10 +46,10 @@ class NarratorChangeRoleViewController: UIViewController {
         if (playerStatusLabel == "Alive") {
             
             killOrReviveButton.setTitle("Kill", for: .normal)
-            killOrReviveButton.layer.backgroundColor = UIColor.red.cgColor
+            killOrReviveButton.layer.backgroundColor = UIColor(red: 0.8275, green: 0, blue: 0.0118, alpha: 1.0).cgColor
         } else {
             killOrReviveButton.setTitle("Revive", for: .normal)
-            killOrReviveButton.layer.backgroundColor = UIColor.green.cgColor
+            killOrReviveButton.layer.backgroundColor = UIColor(red: 0.0706, green: 0.7294, blue: 0, alpha: 1.0).cgColor
         }
     }
     

@@ -2269,7 +2269,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="uVr-80-mSJ"/>
                                 </constraints>
-                                <state key="normal" title="Kill/Revive"/>
+                                <state key="normal" title="Kill/Revive">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="killOrReviveButtonPressed:" destination="PkS-fp-C9J" eventType="touchUpInside" id="bkH-2c-agr"/>
                                 </connections>
@@ -2342,10 +2344,10 @@
     </scenes>
     <resources>
         <image name="Decks" width="35" height="41"/>
-        <image name="GearIcon" width="24" height="24"/>
+        <image name="GearIcon" width="1.239598274230957" height="1.239598274230957"/>
         <image name="MafiaIcon" width="250" height="250"/>
         <image name="Play" width="35" height="37"/>
-        <image name="WelcomeLoadingPicture" width="1000" height="1000"/>
+        <image name="WelcomeLoadingPicture" width="500" height="500"/>
         <image name="helpIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
