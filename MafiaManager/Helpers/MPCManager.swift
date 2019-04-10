@@ -34,7 +34,9 @@ class MPCManager: NSObject, MCSessionDelegate {
         if shouldBrowse {
             self.browser = MCBrowserViewController.init(serviceType: "mafiamanager-mp", session: self.session)
         } else {
+            browser.dismiss(animated: true, completion: nil)
             browser = nil
+
         }
     }
     

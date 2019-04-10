@@ -24,6 +24,18 @@ class JoinGameViewController: UIViewController, MCBrowserViewControllerDelegate 
         mpcManager.setupPeerAndSession()
         mpcManager.advertiseSelf(shouldAdvertise: false)
         browseForDevices()
+        NotificationCenter.default.addObserver(self, selector: #selector(peerDidChangeStateWithNotification), name: NSNotification.Name("MCDidChangeStateNotification"), object: nil)
+    }
+    
+    @objc func peerDidChangeStateWithNotification(notification: Notification){
+        let peerID: MCPeerID = notification.userInfo!["peerID"] as! MCPeerID
+        let state: MCSessionState = notification.userInfo!["state"] as! MCSessionState
+        if state == MCSessionState.connected {
+            DispatchQueue.main.async {
+                    self.mpcManager.setupBrowser(shouldBrowse: false)
+                    self.performSegue(withIdentifier: "fromJoinToWaitSegue", sender: self)
+            }
+        }
     }
     
     func browseForDevices(){
@@ -53,7 +65,7 @@ class JoinGameViewController: UIViewController, MCBrowserViewControllerDelegate 
     }
     
     @IBAction func joinButtonPressed(_ sender: Any) {
-        performSegue(withIdentifier: "fromJoinToWaitSegue", sender: self)
+//        performSegue(withIdentifier: "fromJoinToWaitSegue", sender: self)
     }
     
     
