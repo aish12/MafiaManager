@@ -15,9 +15,8 @@ class PlayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        narratorButton.layer.cornerRadius = 10
-        playerButton.layer.cornerRadius = 10
-        // Do any additional setup after loading the view.
+        CoreGraphicsHelper.colorButtons(button: narratorButton, color: CoreGraphicsHelper.navyBlueColor)
+        CoreGraphicsHelper.colorButtons(button: playerButton, color: CoreGraphicsHelper.navyBlueColor)
     }
     
 

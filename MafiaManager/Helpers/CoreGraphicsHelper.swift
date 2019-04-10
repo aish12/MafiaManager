@@ -10,7 +10,9 @@ import UIKit
 
 class CoreGraphicsHelper: NSObject {
 
-    static let selectedBorderColor: CGColor = UIColor(red: 0.0, green: 122.0/255.0, blue: 1.0, alpha: 1.0).cgColor
+    static let navyBlueColor = UIColor(red: 0, green: 0.1137, blue: 0.4588, alpha: 1.0)
+    
+    static let selectedBorderColor: CGColor = UIColor(red: 0, green: 0.451, blue: 0.8784, alpha: 1.0).cgColor
     static let selectedBorderWidth: CGFloat = 5
     
     static let unselectedBorderColor: CGColor = UIColor.clear.cgColor
@@ -35,6 +37,7 @@ class CoreGraphicsHelper: NSObject {
         imageView.layer.borderWidth = unselectedBorderWidth
     }
     
+    // Shades the text views in deck and card creations/edits/views
     static func shadeTextViews (textView: UITextView) {
         textView.layer.shadowOpacity = textShadowOpacity
         textView.layer.shadowColor = textShadowColor
@@ -43,4 +46,10 @@ class CoreGraphicsHelper: NSObject {
         textView.layer.cornerRadius = textCornerRadius
         textView.layer.masksToBounds = false
     }
+    
+    static func colorButtons(button: UIButton, color: UIColor) {
+        button.backgroundColor = navyBlueColor
+        button.layer.cornerRadius = 10
+    }
+    
 }
