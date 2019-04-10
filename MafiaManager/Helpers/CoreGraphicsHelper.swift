@@ -12,7 +12,7 @@ class CoreGraphicsHelper: NSObject {
 
     static let navyBlueColor = UIColor(red: 0, green: 0.1137, blue: 0.4588, alpha: 1.0)
     
-    static let selectedBorderColor: CGColor = UIColor(red: 0, green: 0.451, blue: 0.8784, alpha: 1.0).cgColor
+    static let selectedBorderColor: CGColor = UIColor(red: 0, green: 0.651, blue: 0.9294, alpha: 1.0).cgColor
     static let selectedBorderWidth: CGFloat = 5
     
     static let unselectedBorderColor: CGColor = UIColor.clear.cgColor

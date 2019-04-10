@@ -14,6 +14,8 @@ class LoginViewController: UIViewController {
     
     let signUpSegueIdentifier = "signUpSegueIdentifier"
 
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var mafiaImage: UIImageView!
     
     @IBOutlet weak var emailTextfield: UITextField!
@@ -59,7 +61,8 @@ class LoginViewController: UIViewController {
         // Mafia icon should appear
         mafiaImage.image = UIImage(named: "MafiaIcon")
         passwordTextfield.isSecureTextEntry = true
-        
+        CoreGraphicsHelper.colorButtons(button: loginButton, color: CoreGraphicsHelper.navyBlueColor)
+        CoreGraphicsHelper.colorButtons(button: signUpButton, color: CoreGraphicsHelper.navyBlueColor)
         // After signing in
         Auth.auth().addStateDidChangeListener() { auth, user in
             if user != nil {

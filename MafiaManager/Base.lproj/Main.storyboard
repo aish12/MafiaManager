@@ -178,7 +178,9 @@
                                             <constraint firstAttribute="height" constant="48" id="2Hl-gS-5cE"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="128" id="AvB-Pk-i3M"/>
                                         </constraints>
-                                        <state key="normal" title="Log In"/>
+                                        <state key="normal" title="Log In">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="onLogInButtonPressed:" destination="3zU-Rx-iRc" eventType="touchUpInside" id="1PX-Vb-oG8"/>
                                         </connections>
@@ -189,7 +191,9 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="128" id="5Dd-ha-12T"/>
                                             <constraint firstAttribute="height" constant="48" id="H9T-8V-LYS"/>
                                         </constraints>
-                                        <state key="normal" title="Sign Up"/>
+                                        <state key="normal" title="Sign Up">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <segue destination="f0Y-tC-J2b" kind="show" identifier="signUpSegueIdentifier" id="XkN-8o-Ioc"/>
                                         </connections>
@@ -236,8 +240,10 @@
                     </view>
                     <connections>
                         <outlet property="emailTextfield" destination="o2m-cl-zun" id="1AH-Gx-WbJ"/>
+                        <outlet property="loginButton" destination="cHC-yG-dUI" id="3H8-ca-onf"/>
                         <outlet property="mafiaImage" destination="sBp-eM-kkR" id="fZN-Ve-qzX"/>
                         <outlet property="passwordTextfield" destination="cF2-BE-xyq" id="YVO-v9-a1K"/>
+                        <outlet property="signUpButton" destination="Se9-XX-xgx" id="nx0-Si-3kQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kiY-So-cMf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -301,11 +307,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmJ-Ia-4BU">
-                                <rect key="frame" x="171" y="592" width="72" height="36"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmJ-Ia-4BU">
+                                <rect key="frame" x="133" y="592" width="144" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="-2" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Register"/>
+                                <state key="normal" title="Register">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="onRegisterButtonPressed:" destination="f0Y-tC-J2b" eventType="touchUpInside" id="3sh-bp-uCc"/>
                                 </connections>
@@ -423,11 +431,12 @@
                         <outlet property="mafiaImage" destination="NeO-U9-GPO" id="chp-sj-a4w"/>
                         <outlet property="nameTextfield" destination="U4g-N1-atP" id="HkJ-L7-aNo"/>
                         <outlet property="passwordTextfield" destination="MP0-wg-Vt6" id="XBz-eS-1ku"/>
+                        <outlet property="registerButton" destination="fmJ-Ia-4BU" id="Xb7-YK-p9e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mxU-rQ-EV8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1962.4000000000001" y="729.98500749625191"/>
+            <point key="canvasLocation" x="-1963.7681159420292" y="729.91071428571422"/>
         </scene>
         <!--Play-->
         <scene sceneID="wg7-f3-ORb">

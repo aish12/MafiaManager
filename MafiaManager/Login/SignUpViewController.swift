@@ -14,6 +14,7 @@ class SignUpViewController: UIViewController {
 
     let signInSegueIdentifier = "signInSegueIdentifier"
     
+    @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var mafiaImage: UIImageView!
     
     @IBOutlet weak var nameTextfield: UITextField!
@@ -87,6 +88,7 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         // Mafia icon should appear
+        CoreGraphicsHelper.colorButtons(button: registerButton, color: CoreGraphicsHelper.navyBlueColor)
         mafiaImage.image = UIImage(named: "MafiaIcon")
         passwordTextfield.isSecureTextEntry = true
         confirmPasswordTextfield.isSecureTextEntry = true
