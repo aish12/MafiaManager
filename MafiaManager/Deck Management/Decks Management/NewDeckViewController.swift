@@ -53,8 +53,13 @@ class NewDeckViewController: UIViewController, ImagePickerDelegate, UITextViewDe
     
     // When the done button is pressed, the "new deck" view is popped
     // So the user returns to the Decks view
+    // Also makes sure not to leave any sections missing
     @IBAction func doneButtonPressed(_ sender: Any) {
-        if let newName = deckNameTextView.text,
+        if deckNameTextView.text == "Enter deck name" || deckDetailTextView.text == "Enter deck description" {
+            let alert = UIAlertController(title: "Mission sections", message: "Please fill out any missing sections before continuing.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+            self.present(alert, animated: true)
+        } else if let newName = deckNameTextView.text,
             let newDescription = deckDetailTextView.text,
             let image = deckImagePickerButton.image(for: .normal) {
             let newImage = image.pngData()
