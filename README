@@ -1,3 +1,44 @@
+Beta Release:
+  - This release has most of the functionality of our project. There are a few things that don't yet have functionality, and we will specify this in the Clarifications/Differences section.
+
+
+Contributions:
+
+Tesia
+
+Daniel
+
+Aish
+
+Robby
+
+
+
+Differences:
+
+
+
+Clarifications:
+ - This wasn't clear in our proposal, but we have not implemented searching functionality. We will do so during the final release.
+ - While it said in our proposal that we'd have the statistics functionality done for this release, we also specified in the Alpha release that because that is releated to our stretch goal (the History tab), we would include that with our final release.
+ - It was never specified in our proposal, but we have decided to save everything into Core Data for now, meaning each unique user doesn't have their own decks/cards/game. We were thinking for the final release, when the user logs in, they download their data and information onto their own device, using Core Data.
+ - The most number of connections with the multipeer networking is 8 for this release. For the final release, we were thinking of possibily allowing it to handle more connections.
+
+
+Known Bugs:
+ - In the Decks and Cards tab, when you press and hold on a deck/card to delete it, it jiggles. If you continue to let it jiggle and then press the add deck/card cell, it will add the deck/card and the old decks/cards will jiggle and be deletable, EXCEPT for the one that you just added.
+ - 
+
+
+
+
+
+
+
+
+
+
+
 Alpha Release:
   - This release is the skeleton of our project. What we have right now is what our app is going to look and feel like, 
     but most functionality has not yet been implemented.
@@ -52,3 +93,4 @@ Clarifications:
  - In our design doc, we forgot to include a section for game instructions. To account for this we put this as part of the settings 
  - A lot of the views won't look like much due to lack of data. 
    - Due to this, we have temporary buttons so you can access the views dependent on collection/table data.
+   
