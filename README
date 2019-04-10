@@ -1,5 +1,6 @@
 Beta Release:
   - This release has most of the functionality of our project. There are a few things that don't yet have functionality, and we will specify this in the Clarifications/Differences section.
+  - The game is best seen on the iPhone XR (this is clarified in the Known Bugs section)
 
 
 Contributions:
@@ -27,7 +28,8 @@ Clarifications:
 
 Known Bugs:
  - In the Decks and Cards tab, when you press and hold on a deck/card to delete it, it jiggles. If you continue to let it jiggle and then press the add deck/card cell, it will add the deck/card and the old decks/cards will jiggle and be deletable, EXCEPT for the one that you just added.
- - 
+ - In the collection view for both Decks and Cards, there is a big gap between the decks/cards on smaller screens.
+ - When you let the app close and reopen it, the app will automatically go to the welcome loading page and stay there. We should fix this to to the Decks tab.
 
 
 
