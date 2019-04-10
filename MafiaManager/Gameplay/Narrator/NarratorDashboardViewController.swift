@@ -32,7 +32,7 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = narratorTableView.dequeueReusableCell(withIdentifier: "narratorTableCell", for: indexPath as IndexPath) as! NarratorDashboardTableViewCell
+        let cell = narratorTableView.dequeueReusableCell(withIdentifier: "narratorTableResultsCell", for: indexPath as IndexPath) as! NarratorDashboardTableViewCell
         cell.playerName = cardPlayer[indexPath.item].keys.first
         cell.playerNameLabel.text = cell.playerName
 
@@ -94,6 +94,11 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
             destinationVC.changePlayerDelegate = self
             // TODO: do status logic
             //destinationVC.playerStatus.text = "Alive"
+        } else if segue.identifier == "fromDashboardToRecordSegue" {
+            print ("Ending Game")
+            let destinationVC = segue.destination as! RecordWinnersViewController
+            destinationVC.cardPlayer = cardPlayer
+            destinationVC.playerStatuses = playerStatuses
         }
     }
 }

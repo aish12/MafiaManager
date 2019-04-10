@@ -38,6 +38,7 @@
 		BF01BDD022487FB800C883D8 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01BDCF22487FB800C883D8 /* PlayerViewController.swift */; };
 		BF01BDD222487FCA00C883D8 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01BDD122487FCA00C883D8 /* HistoryViewController.swift */; };
 		BF32AF31224AAA1700D32277 /* DeckDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32AF30224AAA1700D32277 /* DeckDetailViewController.swift */; };
+		BF750EA0225DAE6200A92D4A /* RecordWinnerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF750E9F225DAE6200A92D4A /* RecordWinnerTableViewCell.swift */; };
 		BFFDFE56223844C00033F15B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFDFE54223844C00033F15B /* Main.storyboard */; };
 		BFFDFE58223845160033F15B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFFDFE57223845160033F15B /* Assets.xcassets */; };
 		BFFDFE5B223845170033F15B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFDFE59223845170033F15B /* LaunchScreen.storyboard */; };
@@ -87,6 +88,7 @@
 		BF01BDCF22487FB800C883D8 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		BF01BDD122487FCA00C883D8 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		BF32AF30224AAA1700D32277 /* DeckDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckDetailViewController.swift; sourceTree = "<group>"; };
+		BF750E9F225DAE6200A92D4A /* RecordWinnerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordWinnerTableViewCell.swift; sourceTree = "<group>"; };
 		BFFDFE4B223844C00033F15B /* MafiaManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MafiaManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFFDFE55223844C00033F15B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BFFDFE57223845160033F15B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				7B4F1ACF224B26E60038225D /* RecordWinnersViewController.swift */,
+				BF750E9F225DAE6200A92D4A /* RecordWinnerTableViewCell.swift */,
 				7B14651F224AE62C00241B00 /* NarratorDashboardViewController.swift */,
 				F6B2E141225D2F1500EFB394 /* NarratorDashboardTableViewCell.swift */,
 				F6B2E143225D40E100EFB394 /* NarratorChangeRoleViewController.swift */,
@@ -454,6 +457,7 @@
 				BF01BDCE22487FA200C883D8 /* DecksViewController.swift in Sources */,
 				BF01BDD222487FCA00C883D8 /* HistoryViewController.swift in Sources */,
 				7B921AA622597ACF003A219D /* SelectDetailViewController.swift in Sources */,
+				BF750EA0225DAE6200A92D4A /* RecordWinnerTableViewCell.swift in Sources */,
 				7B14651A224ADAA200241B00 /* CopyCardViewController.swift in Sources */,
 				7BE7DAAA224C0F9F00E267CA /* TimerViewController.swift in Sources */,
 				7B8EF7532254260600816B5F /* DeckCellCollectionViewCell.swift in Sources */,

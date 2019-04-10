@@ -9,12 +9,18 @@
 
 import UIKit
 
-class RecordWinnersViewController: UIViewController {
+class RecordWinnersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
 
+    var cardPlayer : [Dictionary<String, Card>]?
+    var playerStatuses : [String]?
+    @IBOutlet weak var recordResultsTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        recordResultsTableView.delegate = self
+        recordResultsTableView.dataSource = self
+        recordResultsTableView.reloadData()
     }
     
     // If they do not want to record winners, return back to play tab screen
@@ -26,6 +32,24 @@ class RecordWinnersViewController: UIViewController {
     @IBAction func recordResultsButtonPressed(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (cardPlayer?.count)!
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = recordResultsTableView.dequeueReusableCell(withIdentifier: "recordResultsTableCell", for: indexPath as IndexPath) as! RecordWinnerTableViewCell
+        cell.playerName = cardPlayer![indexPath.item].keys.first
+        cell.playerNameLabel.text = cell.playerName
+        
+        let card = cardPlayer![indexPath.item].values.first
+        cell.roleLabel.text = card?.cardName
+        // TODO: change to a variable for now
+        cell.playerStatusLabel.text = playerStatuses![indexPath.item]
+        
+        return cell
+    }
+    
     /*
     // MARK: - Navigation
 
