@@ -1268,7 +1268,7 @@
                                     <constraint firstAttribute="width" secondItem="QKs-0q-cDP" secondAttribute="height" multiplier="1:1" id="wgH-Sh-Nqu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <state key="normal" title="Press to select image">
+                                <state key="normal" title="Press to select image" image="deckOfCards">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
@@ -2348,6 +2348,7 @@
         <image name="MafiaIcon" width="250" height="250"/>
         <image name="Play" width="35" height="37"/>
         <image name="WelcomeLoadingPicture" width="500" height="500"/>
+        <image name="deckOfCards" width="200" height="200"/>
         <image name="helpIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
