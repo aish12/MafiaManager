@@ -47,5 +47,4 @@ class PlayerWaitingViewController: UIViewController {
         }
     }
 
-
 }

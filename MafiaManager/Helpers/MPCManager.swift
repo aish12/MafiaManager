@@ -75,7 +75,6 @@ class MPCManager: NSObject, MCSessionDelegate {
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
         let dict: [String: Any] = ["peerID": peerID, "state": state]
         NotificationCenter.default.post(name: NSNotification.Name("MCDidChangeStateNotification"), object: nil, userInfo: dict)
-        
     }
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {

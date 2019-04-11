@@ -77,7 +77,6 @@ class CreateCardViewController: UIViewController, ImagePickerDelegate, UITextVie
         self.cardImageButton.setImage(image, for: .normal)
     }
     
-    
     func storeCard(card: NSManagedObject, context: NSManagedObjectContext) {
         do {
             try context.save()
@@ -89,7 +88,6 @@ class CreateCardViewController: UIViewController, ImagePickerDelegate, UITextVie
             abort()
         }
     }
-    
     
     // Creates and manages placeholder text, and character limits for deck name and description textviews
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {

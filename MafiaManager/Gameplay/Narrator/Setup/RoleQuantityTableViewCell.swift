@@ -27,8 +27,6 @@ class RoleQuantityTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        roleLabel.text = card?.cardName
-//        quantityLabel.text = "\(quantity)"
         updateButtons()
     }
 

@@ -44,7 +44,6 @@ class RecordWinnersViewController: UIViewController, UITableViewDelegate, UITabl
         
         let card = playerAndCard[indexPath.item].card
         cell.roleLabel.text = card.cardName
-        // TODO: change to a variable for now
         cell.playerStatusLabel.text = playerStatuses![indexPath.item]
         
         return cell

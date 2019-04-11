@@ -18,7 +18,6 @@ class PlayViewController: UIViewController {
         CoreGraphicsHelper.colorButtons(button: narratorButton, color: CoreGraphicsHelper.navyBlueColor)
         CoreGraphicsHelper.colorButtons(button: playerButton, color: CoreGraphicsHelper.navyBlueColor)
     }
-    
 
     /*
     // MARK: - Navigation

@@ -24,7 +24,6 @@ class CoreGraphicsHelper: NSObject {
     static let textShadowRadius: CGFloat = 5
     static let textCornerRadius: CGFloat = 5
     
-    
     // Takes any imageView and gives it a border of width and color depending on
     // above constants
     static func createSelectedImageBorder(imageView: UIImageView) {

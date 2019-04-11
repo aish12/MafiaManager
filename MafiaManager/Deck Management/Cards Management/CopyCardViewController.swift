@@ -31,7 +31,6 @@ class CopyCardViewController: UIViewController, UICollectionViewDelegate, UIColl
         cell.cardImageView.layer.masksToBounds = true
         return cell
     }
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()

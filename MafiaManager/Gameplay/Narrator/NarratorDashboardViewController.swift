@@ -12,7 +12,6 @@ import MultipeerConnectivity
 
 class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChangePlayerStatusProtocol {
     
-
     @IBOutlet weak var narratorTableView: UITableView!
     var playerAndCard: [(player: MCPeerID, card: Card)] = []
     var playerStatuses = [String]();
@@ -56,7 +55,6 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
         print(row)
     }
 
-    
     // If the narrator decides to end the game, display a confirmation
     // If they choose yes, segue to the record winners screen, if no, stay on dashboard
     @IBAction func endGameButtonPressed(_ sender: Any) {
