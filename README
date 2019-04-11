@@ -55,19 +55,31 @@ Robby (Release 40%, Overall 32.5%)
 
 
 Differences:
- - In our Design doc, we stated that the player would be able to pick which narrator to join from a table view, but with the MultipeerConnectivity library, it already gives us a popup to select which device to connect to. Therefore, when trying to connect to a narrator, the player can just select the device the narrator has.
+ - In our Design doc, we stated that the player would be able to pick which narrator to join from a table view, 
+   but with the MultipeerConnectivity library, it already gives us a popup to select which device to connect to. 
+   Therefore, when trying to connect to a narrator, the player can just select the device the narrator has.
 
 
 Clarifications:
  - This wasn't clear in our proposal, but we have not implemented searching functionality. We will do so during the final release.
- - While it said in our proposal that we'd have the statistics functionality done for this release, we also specified in the Alpha release that because that is releated to our stretch goal (the History tab), we would include that with our final release. This should be shown when the narrator taps "Skip" or "Record Winners" at the very end of the game. For now, it just leads the narrator back to the initial view of the player tab (Start Game as Narrator and Join Game as Player options).
- - It was never specified in our proposal, but we have decided to save everything into Core Data for now, meaning each unique user doesn't have their own decks/cards/game. We were thinking for the final release, when the user logs in, they download their data and information onto their own device, using Core Data.
- - The most number of connections with the multipeer networking is 8 for this release. For the final release, we were thinking of possibily allowing it to handle more connections.
+ - While it said in our proposal that we'd have the statistics functionality done for this release, we also specified in the 
+   Alpha release that because that is releated to our stretch goal (the History tab), we would include that with our final release. 
+   This should be shown when the narrator taps "Skip" or "Record Winners" at the very end of the game. 
+   For now, it just leads the narrator back to the initial view of the player tab 
+   (Start Game as Narrator and Join Game as Player options).
+ - It was never specified in our proposal, but we have decided to save everything into Core Data for now, meaning each 
+   unique user doesn't have their own decks/cards/game. We were thinking for the final release, when the user logs in, 
+   they download their data and information onto their own device, using Core Data.
+ - The most number of connections with the multipeer networking is 8 for this release. For the final release, 
+   we were thinking of possibily allowing it to handle more connections.
 
 
 Known Bugs:
- - In the Decks and Cards tab, when you press and hold on a deck/card to delete it, it jiggles. If you continue to let it jiggle and then press the add deck/card cell, it will add the deck/card and the old decks/cards will jiggle and be deletable, EXCEPT for the one that you just added.
- - When you let the app close and reopen it, the app will automatically go to the welcome loading page and stay there. We should fix this to to the Decks tab.
+ - In the Decks and Cards tab, when you press and hold on a deck/card to delete it, it jiggles. If you continue to let it 
+   jiggle and then press the add deck/card cell, it will add the deck/card and the old decks/cards will jiggle and be deletable, 
+   EXCEPT for the one that you just added.
+ - When you let the app close and reopen it, the app will automatically go to the welcome loading page and stay there. 
+   We should fix this to to the Decks tab.
 
 
 
