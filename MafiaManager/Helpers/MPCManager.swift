@@ -56,6 +56,10 @@ class MPCManager: NSObject, MCSessionDelegate {
         sendObject(objData: ["disconnect": "disconnect"], peers: [peerID])
     }
     
+    func endGame(){
+        sendObject(objData: ["endGame": "endGame"], peers: session.connectedPeers)
+    }
+    
     func sendObject(objData: [String: Any], peers: [MCPeerID]){
         print("sending object to \(peers[0].displayName)")
         var data: Data
