@@ -9,7 +9,7 @@ Testing Instructions:
 
 Contributions:
 
-Tesia (Release 40%, Overall 32%)
+Tesia (Release 35%, Overall 30%)
   - Deck Management functionality
     - Pair programmed with Robby to implement Deck Management folder: creating, editing, deleting decks and cards. Also helped with styling those views and logic for them. 
     - Also helped with the copying card functionality into a certain deck.
@@ -39,7 +39,6 @@ Clarifications:
 
 Known Bugs:
  - In the Decks and Cards tab, when you press and hold on a deck/card to delete it, it jiggles. If you continue to let it jiggle and then press the add deck/card cell, it will add the deck/card and the old decks/cards will jiggle and be deletable, EXCEPT for the one that you just added.
- - In the collection view for both Decks and Cards, there is a big gap between the decks/cards on smaller screens.
  - When you let the app close and reopen it, the app will automatically go to the welcome loading page and stay there. We should fix this to to the Decks tab.
 
 
