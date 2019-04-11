@@ -42,7 +42,7 @@ class PlayerViewController: UIViewController {
     // If the player chooses the leave button, display a confirmation
     // If the player chooses yes, segue to the root controller, aka the play tab
     @IBAction func leaveButtonPressed(_ sender: Any) {
-        let alert = UIAlertController(title: "Are you sure?", message: "Leaving a game cannot be undone",         preferredStyle: .alert)
+        let alert = UIAlertController(title: "Are you sure?", message: "Leaving a game cannot be undone!",         preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in

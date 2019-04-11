@@ -86,7 +86,6 @@ class MPCManager: NSObject, MCSessionDelegate {
         }
         print("Received from \(peerID.displayName)")
         let objName: String = dataDict.keys[dataDict.keys.startIndex]
-        let obj = dataDict[objName]
         if objName == "disconnect" {
             print("disconnecting")
             session.disconnect()

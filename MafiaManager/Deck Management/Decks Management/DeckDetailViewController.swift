@@ -271,4 +271,14 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
             }
         }
     }
+    
+    // code to dismiss keyboard when user clicks on background
+    func textFieldShouldReturn(textField:UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }

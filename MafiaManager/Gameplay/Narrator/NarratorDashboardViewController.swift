@@ -58,7 +58,7 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
     // If the narrator decides to end the game, display a confirmation
     // If they choose yes, segue to the record winners screen, if no, stay on dashboard
     @IBAction func endGameButtonPressed(_ sender: Any) {
-        let alert = UIAlertController(title: "Are you sure?", message: "Ending a game cannot be undone.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Are you sure?", message: "Ending a game cannot be undone!", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
             self.mpcManager.endGame()
