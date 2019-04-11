@@ -1,6 +1,8 @@
 Beta Release:
   - This release has most of the functionality of our project. There are a few things that don't yet have functionality, and we will specify this in the Clarifications/Differences section.
   - The game is best seen on the iPhone XR (this is clarified in the Known Bugs section)
+  
+ 
 
 
 Contributions:
@@ -16,7 +18,7 @@ Robby
 
 
 Differences:
-
+ - In our Design doc, we stated that the player would be able to pick which narrator to join from a table view, but with the MultipeerConnectivity library, it already gives us a popup to select which device to connect to. Therefore, when trying to connect to a narrator, the player can just select the device the narrator has.
 
 
 Clarifications:
