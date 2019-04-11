@@ -4,12 +4,12 @@ Beta Release:
   - For the Deck icons and Card icons, you can press and hold to delete (we need to add a label to clarify, and we will for the next release)
   
 Testing Instructions:
- - It's best if you use two simulators to test the networking. At the start of the game, on simulator should be the narrator and the other should be the player. The narrator can follow the given directions and once it gets to the "Wait for Players" view, the narrator needs to wait for the players to connect. The player can then connect and a popup should show the devices that are available. The player should then select the narrator and the narrator can then press the "Start" button to begin the game.
+ - It's best if you use two simulators to test the networking. At the start of the game, on simulator should be the narrator and the other should be the player. The narrator can follow the given directions and once it gets to the "Wait for Players" view, the narrator needs to wait for the players to connect. The player can then connect and a popup should show the devices that are available. The player should then select the narrator and the narrator can then press the "Start" button to begin the game. If a player leaves, the narrator will not be notified and the table will not change. If the narrator leave, the players will be notified.
 
 
 Contributions:
 
-Tesia
+Tesia (Release 40%, Overall 32%)
   - Deck Management functionality
     - Pair programmed with Robby to implement Deck Management folder: creating, editing, deleting decks and cards. Also helped with styling those views and logic for them. 
     - Also helped with the copying card functionality into a certain deck.
