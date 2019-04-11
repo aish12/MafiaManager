@@ -51,7 +51,14 @@ Daniel (Release 15%, Overall 20%)
 Aish (Release 10%, Overall 17.5%)
 
 Robby (Release 40%, Overall 32.5%)
-
+  - Deck Management functionality
+    - Pair programmed with Tesia, implementing Deck and Card creation, editing, and deletion functionality
+    - Did some styling changes
+  - Gameplay Functionality
+    - Created functionality for the narrator to set up the game, including choosing a deck number of players per role, 
+      and connecting the narrator to players
+    - Created networking helper class (MPCManager) for MultipeerNetworking
+    - Implemented messaging between narrator and players to kick players, send kill messages, and end the game
 
 
 Differences:
