@@ -49,6 +49,14 @@ Daniel (Release 15%, Overall 20%)
       - Prevented narrator from starting a game with not enough players
 
 Aish (Release 10%, Overall 17.5%)
+  - Gameplay Functionality
+    - Pair programmed with Tesia to store player statuses on the narrator dashboard during gameplay. 
+        Implemented the kill/revive button and made sure that the status on both the individual player view on the narrator dashboard
+        and the table view updated properly. 
+  - General Bug Fixes
+    - Worked on making the collection view cells show up properly for both iPhone 8 and iPhone XR
+    - Pair programmed with Daniel to propect against invalid entries such as the narrator starting the game with an
+        insufficient number of players
 
 Robby (Release 40%, Overall 32.5%)
   - Deck Management functionality
