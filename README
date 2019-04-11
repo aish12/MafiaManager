@@ -2,7 +2,8 @@ Beta Release:
   - This release has most of the functionality of our project. There are a few things that don't yet have functionality, and we will specify this in the Clarifications/Differences section.
   - The game is best seen on the iPhone XR (this is clarified in the Known Bugs section)
   
- 
+Testing Instructions:
+ - It's best if you use two simulators to test the networking. At the start of the game, on simulator should be the narrator and the other should be the player. The narrator can follow the given directions and once it gets to the "Wait for Players" view, the narrator needs to wait for the players to connect. The player can then connect and a popup should show the devices that are available. The player should then select the narrator and the narrator can then press the "Start" button to begin the game.
 
 
 Contributions:
