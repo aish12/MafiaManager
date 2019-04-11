@@ -56,7 +56,7 @@ class NewDeckViewController: UIViewController, ImagePickerDelegate, UITextViewDe
     // Also makes sure not to leave any sections missing
     @IBAction func doneButtonPressed(_ sender: Any) {
         if deckNameTextView.text == "Enter deck name" || deckDetailTextView.text == "Enter deck description" {
-            let alert = UIAlertController(title: "Mission sections", message: "Please fill out any missing sections before continuing.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Missing sections", message: "Please fill out any missing sections before continuing.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
             self.present(alert, animated: true)
         } else if let newName = deckNameTextView.text,

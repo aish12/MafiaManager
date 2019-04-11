@@ -47,7 +47,7 @@ class CreateCardViewController: UIViewController, ImagePickerDelegate, UITextVie
     // Also save the card into core data
     @IBAction func doneButtonPressed(_ sender: Any) {
         if cardNameTextView.text == "Enter card name" || cardDescriptionTextView.text == "Enter card description" {
-            let alert = UIAlertController(title: "Mission sections", message: "Please fill out any missing sections before continuing.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Missing sections", message: "Please fill out any missing sections before continuing.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
             self.present(alert, animated: true)
         } else if let newName = cardNameTextView.text,
