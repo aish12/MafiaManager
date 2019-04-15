@@ -1615,47 +1615,10 @@
                     <view key="view" contentMode="scaleToFill" id="3rI-zd-WPT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching for nearby narrators..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeo-HK-X9Y">
-                                <rect key="frame" x="115" y="96" width="184" height="16"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="16" id="1sQ-w4-yye"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Bl-dI-sKY">
-                                <rect key="frame" x="8" y="120" width="398" height="613"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZDE-eI-uNs">
-                                <rect key="frame" x="8" y="749" width="398" height="32"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="Join Game"/>
-                                <connections>
-                                    <action selector="joinButtonPressed:" destination="cRM-OF-s3b" eventType="touchUpInside" id="eH3-4j-fQh"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="yeo-HK-X9Y" firstAttribute="top" secondItem="R2F-M4-HiS" secondAttribute="top" constant="8" id="5XL-RU-uRl"/>
-                            <constraint firstItem="R2F-M4-HiS" firstAttribute="trailing" secondItem="ZDE-eI-uNs" secondAttribute="trailing" constant="8" id="9AP-Uh-EiU"/>
-                            <constraint firstItem="R2F-M4-HiS" firstAttribute="bottom" secondItem="ZDE-eI-uNs" secondAttribute="bottom" constant="32" id="LM1-EU-4zh"/>
-                            <constraint firstItem="ZDE-eI-uNs" firstAttribute="leading" secondItem="R2F-M4-HiS" secondAttribute="leading" constant="8" id="MEZ-2X-wnE"/>
-                            <constraint firstItem="7Bl-dI-sKY" firstAttribute="top" secondItem="yeo-HK-X9Y" secondAttribute="bottom" constant="8" id="Qak-Ru-28o"/>
-                            <constraint firstItem="7Bl-dI-sKY" firstAttribute="leading" secondItem="R2F-M4-HiS" secondAttribute="leading" constant="8" id="VYe-h7-Skr"/>
-                            <constraint firstItem="ZDE-eI-uNs" firstAttribute="top" secondItem="7Bl-dI-sKY" secondAttribute="bottom" constant="16" id="meg-y2-smW"/>
-                            <constraint firstItem="yeo-HK-X9Y" firstAttribute="centerX" secondItem="3rI-zd-WPT" secondAttribute="centerX" id="odz-1d-QdC"/>
-                            <constraint firstItem="R2F-M4-HiS" firstAttribute="trailing" secondItem="7Bl-dI-sKY" secondAttribute="trailing" constant="8" id="pdm-ns-qFJ"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="R2F-M4-HiS"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Join Game" id="D84-2Y-joe"/>
                     <connections>
-                        <outlet property="availableNarratorsTableView" destination="7Bl-dI-sKY" id="ulD-db-DUx"/>
-                        <outlet property="joinButton" destination="ZDE-eI-uNs" id="tWS-KU-v32"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="IXa-wJ-kYB"/>
                         <segue destination="6fB-Kj-zlD" kind="show" identifier="fromJoinToWaitSegue" id="yDl-OU-WYA"/>
                     </connections>
