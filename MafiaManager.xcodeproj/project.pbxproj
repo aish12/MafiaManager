@@ -11,6 +11,7 @@
 		7B146518224AD68500241B00 /* CreateCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B146517224AD68500241B00 /* CreateCardViewController.swift */; };
 		7B14651A224ADAA200241B00 /* CopyCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B146519224ADAA200241B00 /* CopyCardViewController.swift */; };
 		7B146520224AE62C00241B00 /* NarratorDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B14651F224AE62C00241B00 /* NarratorDashboardViewController.swift */; };
+		7B3121902265498300316E17 /* PlayerSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B31218F2265498300316E17 /* PlayerSession.swift */; };
 		7B32DF3C225A262600F0072B /* CoreGraphicsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B32DF3B225A262600F0072B /* CoreGraphicsHelper.swift */; };
 		7B32DF3E225A39CC00F0072B /* RoleQuantityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B32DF3D225A39CC00F0072B /* RoleQuantityViewController.swift */; };
 		7B32DF40225A3E7900F0072B /* RoleQuantityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B32DF3F225A3E7900F0072B /* RoleQuantityTableViewCell.swift */; };
@@ -63,6 +64,7 @@
 		7B146517224AD68500241B00 /* CreateCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardViewController.swift; sourceTree = "<group>"; };
 		7B146519224ADAA200241B00 /* CopyCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyCardViewController.swift; sourceTree = "<group>"; };
 		7B14651F224AE62C00241B00 /* NarratorDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NarratorDashboardViewController.swift; sourceTree = "<group>"; };
+		7B31218F2265498300316E17 /* PlayerSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSession.swift; sourceTree = "<group>"; };
 		7B32DF3B225A262600F0072B /* CoreGraphicsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreGraphicsHelper.swift; sourceTree = "<group>"; };
 		7B32DF3D225A39CC00F0072B /* RoleQuantityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleQuantityViewController.swift; sourceTree = "<group>"; };
 		7B32DF3F225A3E7900F0072B /* RoleQuantityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleQuantityTableViewCell.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				7B921AA822598B91003A219D /* Narrator */,
 				7BE7DAAB224C137C00E267CA /* SettingsViewController.swift */,
 				7BE7DAAD224C165A00E267CA /* PlayViewController.swift */,
+				7B31218F2265498300316E17 /* PlayerSession.swift */,
 			);
 			path = Gameplay;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				F6A22D4722571E2B000F694B /* EditDeckViewController.swift in Sources */,
 				F6F54C732244644700F6DFDF /* LoginViewController.swift in Sources */,
 				7B32DF40225A3E7900F0072B /* RoleQuantityTableViewCell.swift in Sources */,
+				7B3121902265498300316E17 /* PlayerSession.swift in Sources */,
 				7B146518224AD68500241B00 /* CreateCardViewController.swift in Sources */,
 				F6B2E1402257D82000EFB394 /* CardViewController.swift in Sources */,
 				7BEA9F51225A7302005FBDE7 /* JoinGameViewController.swift in Sources */,
