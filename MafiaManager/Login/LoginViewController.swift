@@ -10,7 +10,7 @@
 import UIKit
 import Firebase
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     let signUpSegueIdentifier = "signUpSegueIdentifier"
 
@@ -21,7 +21,34 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        // Mafia icon should appear
+        mafiaImage.image = UIImage(named: "MafiaIcon")
+        passwordTextfield.isSecureTextEntry = true
+        
+        
+        emailTextfield.delegate = self
+        passwordTextfield.delegate = self
+        
+        CoreGraphicsHelper.colorButtons(button: loginButton, color: CoreGraphicsHelper.navyBlueColor)
+        CoreGraphicsHelper.colorButtons(button: signUpButton, color: CoreGraphicsHelper.navyBlueColor)
+        
+        // After signing in
+        Auth.auth().addStateDidChangeListener() { auth, user in
+            if user != nil {
+                self.emailTextfield.text = nil
+                self.passwordTextfield.text = nil
+            }
+        }
+    }
+    
     @IBAction func onLogInButtonPressed(_ sender: Any) {
+        login()
+    }
+    
+    func login() {
         // Check valid inputs
         guard
             let email = emailTextfield.text,
@@ -36,7 +63,7 @@ class LoginViewController: UIViewController {
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
                 self.present(alert, animated: true, completion: nil)
                 return
-            }
+        }
         
         Auth.auth().signIn(withEmail: email, password: password) { user, error in
             if let error = error, user == nil {
@@ -55,25 +82,9 @@ class LoginViewController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        // Mafia icon should appear
-        mafiaImage.image = UIImage(named: "MafiaIcon")
-        passwordTextfield.isSecureTextEntry = true
-        CoreGraphicsHelper.colorButtons(button: loginButton, color: CoreGraphicsHelper.navyBlueColor)
-        CoreGraphicsHelper.colorButtons(button: signUpButton, color: CoreGraphicsHelper.navyBlueColor)
-        // After signing in
-        Auth.auth().addStateDidChangeListener() { auth, user in
-            if user != nil {
-                self.emailTextfield.text = nil
-                self.passwordTextfield.text = nil
-            }
-        }
-    }
-    
-    func textFieldShouldReturn(textField:UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField:UITextField) -> Bool {
         textField.resignFirstResponder()
+        login()
         return true
     }
     

@@ -115,6 +115,7 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
         self.decks.append(deckToAdd)
         let newIPath: IndexPath = IndexPath(item: decks.count, section: 0)
         self.decksCollectionView.insertItems(at: [newIPath])
+        endEditState()
     }
     
     // Deletes a deck at cellIndex from both core data and the collection view.
@@ -176,12 +177,10 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
         let point = longPressGR.location(in: self.decksCollectionView)
         let indexPath = self.decksCollectionView.indexPathForItem(at: point)
         if let indexPath = indexPath,
-            indexPath.row != 0,
-            inEditMode != true {
+                indexPath.row != 0,
+                inEditMode != true {
             inEditMode = true
             startEditState()
-            self.settingsNavBarItem = navigationItem.rightBarButtonItem
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(endEditState))
         } else {
             print("Could not find indexPath")
         }
@@ -206,6 +205,8 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
     // Brings cells to edit mode, where they wobble and have an X icon that when pressed deletes the deck
     func startEditState() {
         inEditMode = true
+        self.settingsNavBarItem = navigationItem.rightBarButtonItem
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(endEditState))
         for section in 0..<self.decksCollectionView.numberOfSections {
             for item in 0..<self.decksCollectionView.numberOfItems(inSection: section){
                 if section == 0 && item == 0 {
