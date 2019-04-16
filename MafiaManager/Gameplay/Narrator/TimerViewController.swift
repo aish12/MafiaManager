@@ -18,6 +18,8 @@ class TimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     @IBOutlet weak var pickerStackView: UIStackView!
     @IBOutlet weak var buttonStackView: UIStackView!
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var stopButton: UIButton!
     
     let maxMinuteValue: Int = 15
     let maxSecondValue: Int = 59
@@ -31,7 +33,13 @@ class TimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         secondPicker.dataSource = self
         secondPicker.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(timerTick), name: NSNotification.Name("timerTick"), object: nil)
-        
+        formatButtons()
+    }
+    
+    func formatButtons(){
+        CoreGraphicsHelper.styleButton(button: startButton, buttonClass: CoreGraphicsHelper.Class.Confirm)
+        CoreGraphicsHelper.styleButton(button: pauseButton, buttonClass: CoreGraphicsHelper.Class.Warning)
+        CoreGraphicsHelper.styleButton(button: stopButton, buttonClass: CoreGraphicsHelper.Class.Cancel)
     }
     
     func updateShownElements(){
@@ -40,13 +48,14 @@ class TimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             pickerStackView.isHidden = true
             startButton.isHidden = true
             countdownLabel.isHidden = false
-            buttonStackView.isHidden = false
-            
+            pauseButton.isHidden = false
+            stopButton.isHidden = false
         } else {
             pickerStackView.isHidden = false
             startButton.isHidden = false
             countdownLabel.isHidden = true
-            buttonStackView.isHidden = true
+            stopButton.isHidden = true
+            pauseButton.isHidden = true
         }
     }
     @objc func timerTick(notification: Notification){
@@ -73,6 +82,9 @@ class TimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             minutes = self.minutePicker.selectedRow(inComponent: 0)
             seconds = self.secondPicker.selectedRow(inComponent: 0)
             duration = (minutes * 60) + seconds
+            if duration == 0 {
+                return
+            }
             timer.startTimer(duration: duration)
             updateCountdownLabel(timeLeft: duration)
             updateShownElements()

@@ -11,7 +11,10 @@ import UIKit
 class CoreGraphicsHelper: NSObject {
 
     static let navyBlueColor = UIColor(red: 0, green: 0.1137, blue: 0.4588, alpha: 1.0)
-    
+    static let greenColor = UIColor(red: 0.302, green: 0.757, blue: 0.431, alpha: 1.0)
+    static let redColor = UIColor(red: 0.576, green: 0.188, blue: 0.008, alpha: 1.0)
+    static let orangeColor = UIColor(red: 0.827, green: 0.725, blue: 0.204, alpha: 1.0)
+    static let whiteColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     static let selectedBorderColor: CGColor = UIColor(red: 0, green: 0.651, blue: 0.9294, alpha: 1.0).cgColor
     static let selectedBorderWidth: CGFloat = 5
     
@@ -24,6 +27,12 @@ class CoreGraphicsHelper: NSObject {
     static let textShadowRadius: CGFloat = 5
     static let textCornerRadius: CGFloat = 5
     
+    enum Class {
+        case System
+        case Confirm
+        case Cancel
+        case Warning
+    }
     // Takes any imageView and gives it a border of width and color depending on
     // above constants
     static func createSelectedImageBorder(imageView: UIImageView) {
@@ -47,7 +56,24 @@ class CoreGraphicsHelper: NSObject {
     }
     
     static func colorButtons(button: UIButton, color: UIColor) {
-        button.backgroundColor = navyBlueColor
+        button.backgroundColor = color
+        button.layer.cornerRadius = 10
+    }
+    
+    static func styleButton(button: UIButton, buttonClass: Class) {
+        switch buttonClass {
+        case Class.System:
+            button.backgroundColor = navyBlueColor
+        case Class.Confirm:
+            button.backgroundColor = greenColor
+            button.setTitleColor(whiteColor, for: .normal)
+        case Class.Warning:
+            button.backgroundColor = orangeColor
+            button.setTitleColor(whiteColor, for: .normal)
+        case Class.Cancel:
+            button.backgroundColor = redColor
+            button.setTitleColor(whiteColor, for: .normal)
+        }
         button.layer.cornerRadius = 10
     }
     
