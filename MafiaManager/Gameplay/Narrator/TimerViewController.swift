@@ -16,7 +16,6 @@ class TimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     @IBOutlet weak var secondPicker: UIPickerView!
     @IBOutlet weak var countdownLabel: UILabel!
     @IBOutlet weak var pickerStackView: UIStackView!
-    @IBOutlet weak var buttonStackView: UIStackView!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
@@ -76,6 +75,11 @@ class TimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         let minutesLeft = timeLeft / 60
         let secondsLeft = timeLeft % 60
         self.countdownLabel.text = String(format: "%02d:%02d", minutesLeft, secondsLeft)
+        if timeLeft == 0 {
+            Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: {(timer: Timer) in
+                self.updateShownElements()
+            })
+        }
     }
     
     @IBAction func onStartPressed(_ sender: UIButton) {
