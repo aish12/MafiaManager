@@ -17,7 +17,6 @@ class SelectDetailViewController: UIViewController {
     var deck: Deck?
     override func viewDidLoad() {
         super.viewDidLoad()
-        //print(deck)
         deckImageView.image = UIImage(data: (deck?.deckImage)!)
         deckDetailView.text = deck?.deckDescription
         navBar.topItem!.title = deck?.deckName
@@ -26,7 +25,6 @@ class SelectDetailViewController: UIViewController {
     }
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
-        print("in here")
         dismiss(animated: true, completion: nil)
     }
     

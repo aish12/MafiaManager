@@ -16,6 +16,7 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
     var playerAndCard: [(player: MCPeerID, card: Card)] = []
     var playerStatuses = [String]();
     var mpcManager: MPCManager!
+    var connectedPlayers: [PlayerSession]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,14 +37,14 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = narratorTableView.dequeueReusableCell(withIdentifier: "narratorTableResultsCell", for: indexPath as IndexPath) as! NarratorDashboardTableViewCell
-        cell.playerName = playerAndCard[indexPath.item].player.displayName
+        cell.playerName = connectedPlayers[indexPath.item].playerID.displayName
         cell.playerNameLabel.text = cell.playerName
 
-        let card = playerAndCard[indexPath.item].card
-        cell.playerID = playerAndCard[indexPath.item].player
-        cell.roleLabel.text = card.cardName
+        let card = connectedPlayers[indexPath.item].card
+        cell.playerID = connectedPlayers[indexPath.item].playerID
+        cell.roleLabel.text = card!.cardName
         // TODO: change to a variable for now
-        cell.playerStatusLabel.text = playerStatuses[indexPath.item]
+        cell.playerStatusLabel.text = connectedPlayers[indexPath.item].isAlive ? "Alive" : "Dead"
 
         return cell
     }
@@ -52,7 +53,6 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
         narratorTableView.deselectRow(at: indexPath, animated: true)
         // the "row"th note
         let row = indexPath.row
-        print(row)
     }
 
     // If the narrator decides to end the game, display a confirmation
@@ -101,7 +101,6 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
             // TODO: do status logic
             //destinationVC.playerStatus.text = "Alive"
         } else if segue.identifier == "fromDashboardToRecordSegue" {
-            print ("Ending Game")
             let destinationVC = segue.destination as! RecordWinnersViewController
             destinationVC.playerAndCard = playerAndCard
             destinationVC.playerStatuses = playerStatuses

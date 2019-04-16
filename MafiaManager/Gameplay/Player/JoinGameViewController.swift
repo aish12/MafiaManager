@@ -60,7 +60,6 @@ class JoinGameViewController: UIViewController, MCBrowserViewControllerDelegate 
     }
     
     func browserViewControllerWasCancelled(_ browserViewController: MCBrowserViewController) {
-        print("browser cancelled!")
         dismiss(animated: true, completion: returnToPlayView)
     }
     

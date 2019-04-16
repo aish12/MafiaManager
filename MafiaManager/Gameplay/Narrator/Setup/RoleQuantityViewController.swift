@@ -30,7 +30,6 @@ class RoleQuantityViewController: UIViewController, UITableViewDelegate, UITable
         }
         peopleNeededLabel.text = "Players Are Needed to Continue"
         nextButton.isEnabled = false
-        print("view did load")
     }
     
     override func viewDidAppear(_ animated: Bool) {

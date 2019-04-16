@@ -14,7 +14,7 @@ class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITab
     var connectedDevices: [MCPeerID] = []
     var numPlayers: Int = 0
     var playerAndCard: [(player: MCPeerID, card: Card)] = []
-    
+    var connectedPlayers: [PlayerSession] = []
     @IBOutlet weak var joinedPlayersTableView: UITableView!
     
     private var mpcManager: MPCManager!
@@ -45,15 +45,25 @@ class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITab
         let state: MCSessionState = notification.userInfo!["state"] as! MCSessionState
         if state != MCSessionState.connecting {
             if state == MCSessionState.connected {
+                    let newPlayer = PlayerSession(playerID: peerID)
                     connectedDevices.append(peerID)
                     if connectedDevices.count == numPlayers {
+                        connectedPlayers.append(newPlayer)
                         mpcManager.advertiseSelf(shouldAdvertise: false)
                     } else if connectedDevices.count > numPlayers {
                         mpcManager.advertiseSelf(shouldAdvertise: false)
                         mpcManager.removePeer(peerID: peerID)
                         connectedDevices.remove(at: connectedDevices.count - 1)
+                    } else {
+                        connectedPlayers.append(newPlayer)
                     }
             } else if state == MCSessionState.notConnected {
+                let removedPlayerIndex = connectedPlayers.firstIndex(where: {(session: PlayerSession) -> Bool in
+                    session.playerID == peerID
+                })
+                if removedPlayerIndex != nil {
+                    connectedPlayers.remove(at: removedPlayerIndex!)
+                }
                 let deviceIndex = connectedDevices.index(of: peerID)
                 if deviceIndex != nil {
                     connectedDevices.remove(at: deviceIndex!)
@@ -64,28 +74,30 @@ class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITab
             }
         }
         DispatchQueue.main.async {
-            print("Happening")
         self.updateNumPlayersLabel()
         self.joinedPlayersTableView.reloadData()
         }
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
-        connectedDevices.shuffle()
-        var playerIndex = 0
         if connectedDevices.count < numPlayers {
             let alert = UIAlertController(title: "Insufficient Number of Players", message: "Wait for all players to join before starting the game", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             self.present(alert, animated: true)
             return
         }
+        connectedDevices.shuffle()
+        var playerIndex = 0
         for (card, count) in cardQuantities! {
-            for _ in 1...count {
-                setPlayerRole(peerID: connectedDevices[playerIndex],card: card)
-               // Also store it in the dictionary that ties the name and the card role for narrator dashboard
-                playerAndCard.append((player: connectedDevices[playerIndex], card: card))
-                playerIndex += 1
-                
+            if count > 0 {
+                var connectedPlayer = connectedPlayers[playerIndex]
+                for _ in 1...count {
+                    connectedPlayer.card = card
+                    setPlayerRole(peerID: connectedDevices[playerIndex],card: card)
+                    // Also store it in the dictionary that ties the name and the card role for narrator dashboard
+                    playerAndCard.append((player: connectedDevices[playerIndex], card: card))
+                    playerIndex += 1
+                }
             }
         }
         self.performSegue(withIdentifier: "fromWaitForPlayersToDashboard", sender: self)
@@ -118,6 +130,7 @@ class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITab
         if segue.identifier == "fromWaitForPlayersToDashboard" {
             let destinationVC = segue.destination as! NarratorDashboardViewController
             destinationVC.playerAndCard = self.playerAndCard
+            destinationVC.connectedPlayers = self.connectedPlayers
         }
     }
     

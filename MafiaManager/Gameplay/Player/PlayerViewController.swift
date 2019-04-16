@@ -66,7 +66,6 @@ class PlayerViewController: UIViewController {
     }
     
     @objc func narratorEndedGame(notification: Notification){
-        print("running notification handler")
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Narrator has ended the game", message: "", preferredStyle: .alert)
             
