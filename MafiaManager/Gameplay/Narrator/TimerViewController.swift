@@ -24,8 +24,10 @@ class TimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         super.viewDidLoad()
         if timer.isRunning() {
             updateCountdownLabel(timeLeft: timer.timeLeft!)
+            countdownLabel.isOpaque = true
         } else {
             updateCountdownLabel(timeLeft: 0)
+            countdownLabel.isOpaque = false
         }
         minutePicker.dataSource = self
         minutePicker.delegate = self
