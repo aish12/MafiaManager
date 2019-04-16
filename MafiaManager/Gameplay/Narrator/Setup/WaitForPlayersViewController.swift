@@ -89,7 +89,7 @@ class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITab
         connectedDevices.shuffle()
         var playerIndex = 0
         for (card, count) in cardQuantities! {
-//            if count > 0 {
+            if count > 0 {
                 for _ in 1...count {
                     print("loop running")
                     connectedPlayers[playerIndex].card = card
@@ -98,7 +98,7 @@ class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITab
                     playerAndCard.append((player: connectedDevices[playerIndex], card: card))
                     playerIndex += 1
                 }
-//            }
+            }
         }
         for player in connectedPlayers {
             print("player status before calling segue \(player)")
