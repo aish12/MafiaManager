@@ -26,7 +26,7 @@ class MPCManager: NSObject, MCSessionDelegate {
     }
     
     func setupPeerAndSession(){
-        self.peerID = MCPeerID(displayName: UIDevice.current.name)
+        self.peerID = MCPeerID(displayName: (UIApplication.shared.delegate as! AppDelegate).username)
         self.session = MCSession.init(peer: self.peerID)
         self.session.delegate = self
     }

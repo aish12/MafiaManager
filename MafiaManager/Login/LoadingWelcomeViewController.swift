@@ -30,6 +30,7 @@ class LoadingWelcomeViewController: UIViewController {
             // Get user value
             let value = snapshot.value as! NSDictionary
             self.usersNameLabel.text = value["name"] as? String
+            (UIApplication.shared.delegate as! AppDelegate).username = (value["name"] as? String) ?? "user"
         }) { (error) in
             print(error.localizedDescription)
         }
