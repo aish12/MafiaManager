@@ -50,6 +50,13 @@ class TimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             countdownLabel.isHidden = false
             pauseButton.isHidden = false
             stopButton.isHidden = false
+            if timer.isPaused() {
+                pauseButton.setTitle("Resume", for: .normal)
+                CoreGraphicsHelper.styleButton(button: pauseButton, buttonClass: CoreGraphicsHelper.Class.Confirm)
+            } else {
+                pauseButton.setTitle("Pause", for: .normal)
+                CoreGraphicsHelper.styleButton(button: pauseButton, buttonClass: CoreGraphicsHelper.Class.Warning)
+            }
         } else {
             pickerStackView.isHidden = false
             startButton.isHidden = false
@@ -92,9 +99,12 @@ class TimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     @IBAction func onPausePressed(_ sender: Any) {
-        if timer.isRunning() {
+        if timer.isRunning() && !timer.isPaused() {
             timer.pauseTimer()
+        } else if timer.isPaused(){
+            timer.resumeTimer()
         }
+        updateShownElements()
     }
     
     @IBAction func onStopPressed(_ sender: Any) {
