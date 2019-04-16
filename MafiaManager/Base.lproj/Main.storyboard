@@ -2208,8 +2208,11 @@
                     <navigationItem key="navigationItem" title="Timer" id="DzY-h7-Fu2"/>
                     <connections>
                         <outlet property="countdownLabel" destination="Ynj-jL-Yca" id="8hO-k2-hoY"/>
+                        <outlet property="minLabel" destination="x0o-9A-08a" id="qiT-IB-EDF"/>
                         <outlet property="minutePicker" destination="qgy-1m-ZSw" id="YEy-Hp-wTk"/>
+                        <outlet property="pickerStackView" destination="DQ4-Ga-7CI" id="XTm-DA-TmE"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="krm-bC-wZI"/>
+                        <outlet property="secLabel" destination="rK0-cO-bP8" id="9hB-e5-P9M"/>
                         <outlet property="secondPicker" destination="7x3-jH-KwW" id="ZZX-Py-7mV"/>
                     </connections>
                 </viewController>
@@ -2342,10 +2345,10 @@
     </scenes>
     <resources>
         <image name="Decks" width="35" height="41"/>
-        <image name="GearIcon" width="1.239598274230957" height="1.239598274230957"/>
+        <image name="GearIcon" width="24" height="24"/>
         <image name="MafiaIcon" width="250" height="250"/>
         <image name="Play" width="35" height="37"/>
-        <image name="WelcomeLoadingPicture" width="500" height="500"/>
+        <image name="WelcomeLoadingPicture" width="1000" height="1000"/>
         <image name="deckOfCards" width="200" height="200"/>
         <image name="helpIcon" width="25" height="25"/>
     </resources>
