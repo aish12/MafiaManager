@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ChangePlayerStatusProtocol: class {
-    func updatePlayerStatus(status:String, indexPath:IndexPath)
+    func updatePlayerStatus(isAlive: Bool, indexPath:IndexPath)
 }
 class NarratorChangeRoleViewController: UIViewController {
 
@@ -17,34 +17,30 @@ class NarratorChangeRoleViewController: UIViewController {
     @IBOutlet weak var cardNameTextView: UITextView!
     @IBOutlet weak var playerStatus: UILabel!
     @IBOutlet weak var killOrReviveButton: UIButton!
-    
     @IBOutlet weak var cardDescriptionTextView: UITextView!
     
+    var playerSession: PlayerSession!
     weak var changePlayerDelegate:ChangePlayerStatusProtocol?
-    var cardName: String?
-    var cardDescription: String?
-    var cardImage: Data?
-    var playerName: String?
-    var playerStatusLabel : String?
     var indexPath: IndexPath? //for the delegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cardImageView.image = UIImage(data: playerSession.card.cardImage!)
+        cardNameTextView.text = playerSession.card.cardName
+        playerStatus.text = playerSession.isAlive ? "Alive" : "Dead"
+        playerStatus.textColor = playerSession.isAlive ? UIColor.green : UIColor.red
+        cardDescriptionTextView.text = playerSession.card.cardDescription
+        
         CoreGraphicsHelper.shadeTextViews(textView: cardNameTextView)
         CoreGraphicsHelper.shadeTextViews(textView: cardDescriptionTextView)
-        cardNameTextView.text = cardName
-        cardDescriptionTextView.text = cardDescription
-        cardImageView.image = UIImage(data:cardImage!)
-        playerStatus.text = playerStatusLabel
         
         killOrReviveButton.layer.cornerRadius = 5
         setKillOrReviveButtonColor()
-        self.navigationItem.title = playerName
+        self.navigationItem.title = playerSession.playerID.displayName
     }
     
     func setKillOrReviveButtonColor() {
-        if (playerStatusLabel == "Alive") {
-            
+        if (playerSession.isAlive) {
             killOrReviveButton.setTitle("Kill", for: .normal)
             killOrReviveButton.layer.backgroundColor = UIColor(red: 0.8275, green: 0, blue: 0.0118, alpha: 1.0).cgColor
         } else {
@@ -54,15 +50,11 @@ class NarratorChangeRoleViewController: UIViewController {
     }
     
     @IBAction func killOrReviveButtonPressed(_ sender: Any) {
-        if playerStatusLabel == "Alive" {
-            playerStatusLabel = "Dead"
-            playerStatus.text = "Dead"
-        } else {
-            playerStatusLabel = "Alive"
-            playerStatus.text = "Alive"
-        }
+        playerSession.isAlive = !playerSession.isAlive
+        playerStatus.text = playerSession.isAlive ? "Alive" : "Dead"
+        playerStatus.textColor = playerSession.isAlive ? UIColor.green : UIColor.red
         setKillOrReviveButtonColor()
-        changePlayerDelegate?.updatePlayerStatus(status: playerStatusLabel!, indexPath: indexPath!)
+        changePlayerDelegate?.updatePlayerStatus(isAlive: playerSession!.isAlive, indexPath: indexPath!)
     }
     
     /*

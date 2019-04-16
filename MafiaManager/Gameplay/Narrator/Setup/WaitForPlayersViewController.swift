@@ -132,7 +132,6 @@ class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITab
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "fromWaitForPlayersToDashboard" {
             let destinationVC = segue.destination as! NarratorDashboardViewController
-            destinationVC.playerAndCard = self.playerAndCard
             destinationVC.connectedPlayers = self.connectedPlayers
         }
     }
