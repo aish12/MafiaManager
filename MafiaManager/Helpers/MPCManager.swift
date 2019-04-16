@@ -15,12 +15,13 @@ class MPCManager: NSObject, MCSessionDelegate {
     var session: MCSession!
     var browser: MCBrowserViewController!
     var advertiser: MCAdvertiserAssistant!
-    
+    var narratorID: MCPeerID!
     override init(){
         self.peerID = nil
         self.session = nil
         self.browser = nil
         self.advertiser = nil
+        self.narratorID = nil
         super.init()
     }
     

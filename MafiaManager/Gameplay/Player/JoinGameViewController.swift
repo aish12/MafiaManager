@@ -12,7 +12,7 @@ class JoinGameViewController: UIViewController, MCBrowserViewControllerDelegate 
     
     private var mpcManager: MPCManager!
     private var appDelegate: AppDelegate!
-    
+    private var narratorPeerID: MCPeerID?
     @IBOutlet weak var availableNarratorsTableView: UITableView!
     @IBOutlet weak var joinButton: UIButton!
     
@@ -32,8 +32,13 @@ class JoinGameViewController: UIViewController, MCBrowserViewControllerDelegate 
         let state: MCSessionState = notification.userInfo!["state"] as! MCSessionState
         if state == MCSessionState.connected {
             DispatchQueue.main.async {
-                    self.mpcManager.setupBrowser(shouldBrowse: false)
-                    self.performSegue(withIdentifier: "fromJoinToWaitSegue", sender: self)
+                    if self.mpcManager.narratorID == nil {
+                        self.mpcManager.narratorID = peerID
+                    }
+                    if self.mpcManager.narratorID == peerID {
+                        self.mpcManager.setupBrowser(shouldBrowse: false)
+                        self.performSegue(withIdentifier: "fromJoinToWaitSegue", sender: self)
+                    }
             }
         }
     }
