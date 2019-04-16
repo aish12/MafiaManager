@@ -34,6 +34,7 @@
 		7BE7DAAE224C165A00E267CA /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE7DAAD224C165A00E267CA /* PlayViewController.swift */; };
 		7BEA9F51225A7302005FBDE7 /* JoinGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA9F50225A7302005FBDE7 /* JoinGameViewController.swift */; };
 		7BEA9F58225A79F2005FBDE7 /* MPCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA9F57225A79F2005FBDE7 /* MPCManager.swift */; };
+		7BF7AF0D22666D3F0013D96B /* GlobalTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF7AF0C22666D3F0013D96B /* GlobalTimer.swift */; };
 		8F974F8D37A5B79031110456 /* Pods_MafiaManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3736DE08530B5A6DD9C82E73 /* Pods_MafiaManager.framework */; };
 		BF01BDCE22487FA200C883D8 /* DecksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01BDCD22487FA200C883D8 /* DecksViewController.swift */; };
 		BF01BDD022487FB800C883D8 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01BDCF22487FB800C883D8 /* PlayerViewController.swift */; };
@@ -45,7 +46,6 @@
 		BFFDFE5B223845170033F15B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFDFE59223845170033F15B /* LaunchScreen.storyboard */; };
 		F618EE8122488DE500E32DA5 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618EE8022488DE500E32DA5 /* TabBarViewController.swift */; };
 		F64DF7C3224B000000513FD7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F64DF7C2224B000000513FD7 /* GoogleService-Info.plist */; };
-		F6830DD4225DB9D400D80114 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6830DD3225DB9D400D80114 /* Timer.swift */; };
 		F6A22D4722571E2B000F694B /* EditDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A22D4622571E2B000F694B /* EditDeckViewController.swift */; };
 		F6B2E13C2257D2AA00EFB394 /* CardCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B2E13B2257D2AA00EFB394 /* CardCellCollectionViewCell.swift */; };
 		F6B2E13E2257D2B900EFB394 /* NewCardCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B2E13D2257D2B900EFB394 /* NewCardCellCollectionViewCell.swift */; };
@@ -87,6 +87,7 @@
 		7BE7DAAD224C165A00E267CA /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		7BEA9F50225A7302005FBDE7 /* JoinGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameViewController.swift; sourceTree = "<group>"; };
 		7BEA9F57225A79F2005FBDE7 /* MPCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCManager.swift; sourceTree = "<group>"; };
+		7BF7AF0C22666D3F0013D96B /* GlobalTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalTimer.swift; sourceTree = "<group>"; };
 		BF01BDCD22487FA200C883D8 /* DecksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecksViewController.swift; sourceTree = "<group>"; };
 		BF01BDCF22487FB800C883D8 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		BF01BDD122487FCA00C883D8 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -100,7 +101,6 @@
 		F2AF33E2E3064D2FD43B2DBF /* Pods-MafiaManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MafiaManager.release.xcconfig"; path = "Target Support Files/Pods-MafiaManager/Pods-MafiaManager.release.xcconfig"; sourceTree = "<group>"; };
 		F618EE8022488DE500E32DA5 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		F64DF7C2224B000000513FD7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		F6830DD3225DB9D400D80114 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		F6A22D4622571E2B000F694B /* EditDeckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDeckViewController.swift; sourceTree = "<group>"; };
 		F6B2E13B2257D2AA00EFB394 /* CardCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		F6B2E13D2257D2B900EFB394 /* NewCardCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCardCellCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -234,7 +234,7 @@
 				F6B2E141225D2F1500EFB394 /* NarratorDashboardTableViewCell.swift */,
 				F6B2E143225D40E100EFB394 /* NarratorChangeRoleViewController.swift */,
 				7BE7DAA9224C0F9F00E267CA /* TimerViewController.swift */,
-				F6830DD3225DB9D400D80114 /* Timer.swift */,
+				7BF7AF0C22666D3F0013D96B /* GlobalTimer.swift */,
 				7B32DF3A225A1DF300F0072B /* Setup */,
 			);
 			path = Narrator;
@@ -441,7 +441,6 @@
 				7B32DF3C225A262600F0072B /* CoreGraphicsHelper.swift in Sources */,
 				7B4E7101224990D7001395F2 /* AddDeckCell.swift in Sources */,
 				F6B2E142225D2F1500EFB394 /* NarratorDashboardTableViewCell.swift in Sources */,
-				F6830DD4225DB9D400D80114 /* Timer.swift in Sources */,
 				F6B2E144225D40E100EFB394 /* NarratorChangeRoleViewController.swift in Sources */,
 				7B8EF74E22540ABC00816B5F /* ImagePicker.swift in Sources */,
 				F6B2E13E2257D2B900EFB394 /* NewCardCellCollectionViewCell.swift in Sources */,
@@ -466,6 +465,7 @@
 				BF01BDD222487FCA00C883D8 /* HistoryViewController.swift in Sources */,
 				7B921AA622597ACF003A219D /* SelectDetailViewController.swift in Sources */,
 				BF750EA0225DAE6200A92D4A /* RecordWinnerTableViewCell.swift in Sources */,
+				7BF7AF0D22666D3F0013D96B /* GlobalTimer.swift in Sources */,
 				7B14651A224ADAA200241B00 /* CopyCardViewController.swift in Sources */,
 				7BE7DAAA224C0F9F00E267CA /* TimerViewController.swift in Sources */,
 				7B8EF7532254260600816B5F /* DeckCellCollectionViewCell.swift in Sources */,

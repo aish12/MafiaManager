@@ -17,8 +17,7 @@ class TimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     var timerStarted: Bool = false
     var paused: Bool = false
-    var timeLeft: Int = 0
-    
+    var timer: GlobalTimer = GlobalTimer.sharedTimer
     let minutePickerValues: [Int] = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
     let secondPickerValues: [Int] = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59]
     
@@ -29,64 +28,36 @@ class TimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         minutePicker.delegate = self
         secondPicker.dataSource = self
         secondPicker.delegate = self
-        // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(timerTick), name: NSNotification.Name("timerTick"), object: nil)
+        
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        timerStarted = false
-        self.countdownLabel.text = "00:00"
-        TimerManager.stop()
-        timeLeft = 0
+    @objc func timerTick(notification: Notification){
+        let timeLeft = notification.userInfo!["timeLeft"] as! Int
+        let minutesLeft = timeLeft / 60
+        let secondsLeft = timeLeft % 60
+        DispatchQueue.main.async {
+            self.countdownLabel.text = "\(minutesLeft):\(secondsLeft)"
+        }
     }
     
     @IBAction func onStartPressed(_ sender: UIButton) {
-        let minute: Int!
-        let second: Int!
+        let minutes: Int!
+        let seconds: Int!
         var duration: Int = 0
         
-        if !timerStarted {
-            minute = self.minutePicker.selectedRow(inComponent: 0)
-            second = self.secondPicker.selectedRow(inComponent: 0)
-            duration = (minute * 60) + second
-            timerStarted = true
-            
-            if timeLeft > 0 {
-                duration = timeLeft - 1
-            }
-            
-            TimerManager.timeString = { time, ends in
-                if ends == false {
-                    self.countdownLabel.text = time
-                }
-            }
-            TimerManager.start(withSeconds: duration)
-        } else if paused {
-            paused = false
-            if timeLeft > 0 {
-                duration = timeLeft - 1
-            }
-            
-            TimerManager.timeString = { time, ends in
-                if ends == false {
-                    self.countdownLabel.text = time
-                }
-            }
-            TimerManager.start(withSeconds: duration)
+        if !timer.isRunning() {
+            minutes = self.minutePicker.selectedRow(inComponent: 0)
+            seconds = self.secondPicker.selectedRow(inComponent: 0)
+            duration = (minutes * 60) + seconds
+            timer.startTimer(duration: duration)
         }
     }
     
     @IBAction func onPausePressed(_ sender: Any) {
-        if timerStarted {
-            timeLeft = TimerManager.stop()
-            paused = true
-        }
     }
     
     @IBAction func onStopPressed(_ sender: Any) {
-        timerStarted = false
-        self.countdownLabel.text = "00:00"
-        TimerManager.stop()
-        timeLeft = 0
     }
     
     // For both minute and second, they only have one component, always return 1
