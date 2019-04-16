@@ -42,7 +42,7 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
 
         let card = connectedPlayers[indexPath.item].card
         cell.playerID = connectedPlayers[indexPath.item].playerID
-        cell.roleLabel.text = card!.cardName
+        cell.roleLabel.text = card?.cardName
         // TODO: change to a variable for now
         cell.playerStatusLabel.text = connectedPlayers[indexPath.item].isAlive ? "Alive" : "Dead"
 
