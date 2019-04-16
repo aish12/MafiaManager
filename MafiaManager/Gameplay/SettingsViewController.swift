@@ -8,6 +8,7 @@
 //  Responsible for handling the settings view controller
 
 import UIKit
+import Firebase
 
 class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -55,6 +56,25 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             return ""
         }
     }
+    
+    
+    @IBAction func onSignOutPressed(_ sender: Any) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            print("Signed out successfully")
+            //dismiss(animated: true, completion: nil)
+        
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                (appDelegate.window?.rootViewController as? UINavigationController)?.popToRootViewController(animated: true)
+            }
+            
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
+    
 
     /*
     // MARK: - Navigation

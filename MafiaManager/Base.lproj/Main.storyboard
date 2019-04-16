@@ -1996,7 +1996,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Log Out"/>
                                 <connections>
-                                    <action selector="endGameButtonPressed:" destination="dNu-fC-IOV" eventType="touchUpInside" id="v9i-HX-uge"/>
+                                    <action selector="onSignOutPressed:" destination="dNu-fC-IOV" eventType="touchUpInside" id="Dt7-hD-bFW"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Muted" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lbe-3A-onM">
@@ -2342,14 +2342,14 @@
     </scenes>
     <resources>
         <image name="Decks" width="35" height="41"/>
-        <image name="GearIcon" width="24" height="24"/>
+        <image name="GearIcon" width="1.239598274230957" height="1.239598274230957"/>
         <image name="MafiaIcon" width="250" height="250"/>
         <image name="Play" width="35" height="37"/>
-        <image name="WelcomeLoadingPicture" width="1000" height="1000"/>
+        <image name="WelcomeLoadingPicture" width="500" height="500"/>
         <image name="deckOfCards" width="200" height="200"/>
         <image name="helpIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Z3o-Ch-q8U"/>
+        <segue reference="b7z-LG-cRN"/>
     </inferredMetricsTieBreakers>
 </document>
