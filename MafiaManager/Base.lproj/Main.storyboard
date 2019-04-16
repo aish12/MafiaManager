@@ -2149,34 +2149,48 @@
                                     <constraint firstAttribute="width" constant="270" id="NPG-w8-4UY"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMO-TA-KpS">
-                                <rect key="frame" x="190" y="376" width="34" height="32"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="158" translatesAutoresizingMaskIntoConstraints="NO" id="q83-Xc-Igz" userLabel="Button Stack View">
+                                <rect key="frame" x="32" y="376" width="350" height="48"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c1E-qa-NoC">
+                                        <rect key="frame" x="0.0" y="0.0" width="96" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="96" id="e7R-uH-LQc"/>
+                                            <constraint firstAttribute="height" constant="48" id="qLy-cy-yxR"/>
+                                        </constraints>
+                                        <state key="normal" title="Pause"/>
+                                        <connections>
+                                            <action selector="onPausePressed:" destination="aqy-qI-FXH" eventType="touchUpInside" id="Q7I-fD-EqO"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Lt-iD-T9a">
+                                        <rect key="frame" x="254" y="0.0" width="96" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="aC1-BW-clT"/>
+                                            <constraint firstAttribute="width" constant="96" id="c0n-No-2Ku"/>
+                                        </constraints>
+                                        <state key="normal" title="Stop"/>
+                                        <connections>
+                                            <action selector="onStopPressed:" destination="aqy-qI-FXH" eventType="touchUpInside" id="l7d-W2-Vtu"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="rm9-eG-5XK"/>
+                                    <constraint firstAttribute="trailing" secondItem="3Lt-iD-T9a" secondAttribute="trailing" id="Aft-ej-yfD"/>
+                                    <constraint firstItem="c1E-qa-NoC" firstAttribute="leading" secondItem="q83-Xc-Igz" secondAttribute="leading" id="We8-Dj-3Mz"/>
+                                    <constraint firstAttribute="height" constant="48" id="bnL-IF-rRu"/>
+                                    <constraint firstItem="3Lt-iD-T9a" firstAttribute="centerY" secondItem="q83-Xc-Igz" secondAttribute="centerY" id="lGH-1N-Sz1"/>
+                                    <constraint firstItem="c1E-qa-NoC" firstAttribute="centerY" secondItem="q83-Xc-Igz" secondAttribute="centerY" id="zln-Y7-FxU"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMO-TA-KpS">
+                                <rect key="frame" x="32" y="376" width="350" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="rm9-eG-5XK"/>
                                 </constraints>
                                 <state key="normal" title="Start"/>
                                 <connections>
                                     <action selector="onStartPressed:" destination="aqy-qI-FXH" eventType="touchUpInside" id="u3f-PB-MOd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Lt-iD-T9a">
-                                <rect key="frame" x="191" y="456" width="32" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="CaQ-Bv-h2z"/>
-                                </constraints>
-                                <state key="normal" title="Stop"/>
-                                <connections>
-                                    <action selector="onStopPressed:" destination="aqy-qI-FXH" eventType="touchUpInside" id="l7d-W2-Vtu"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c1E-qa-NoC">
-                                <rect key="frame" x="186" y="416" width="42" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="5si-be-DQK"/>
-                                </constraints>
-                                <state key="normal" title="Pause"/>
-                                <connections>
-                                    <action selector="onPausePressed:" destination="aqy-qI-FXH" eventType="touchUpInside" id="Q7I-fD-EqO"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ynj-jL-Yca">
@@ -2188,32 +2202,29 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="aMO-TA-KpS" firstAttribute="leading" secondItem="Fre-1b-ckx" secondAttribute="leading" constant="190" id="4ft-nM-z9R"/>
                             <constraint firstItem="Fre-1b-ckx" firstAttribute="trailing" secondItem="Ynj-jL-Yca" secondAttribute="trailing" constant="16" id="GV0-zS-is2"/>
-                            <constraint firstItem="c1E-qa-NoC" firstAttribute="top" secondItem="aMO-TA-KpS" secondAttribute="bottom" constant="8" id="TCP-uZ-r0T"/>
-                            <constraint firstItem="Fre-1b-ckx" firstAttribute="trailing" secondItem="aMO-TA-KpS" secondAttribute="trailing" constant="190" id="TS4-Yg-Qc1"/>
-                            <constraint firstItem="c1E-qa-NoC" firstAttribute="leading" secondItem="Fre-1b-ckx" secondAttribute="leading" constant="186" id="U8l-zd-0cc"/>
+                            <constraint firstItem="aMO-TA-KpS" firstAttribute="leading" secondItem="Fre-1b-ckx" secondAttribute="leading" constant="32" id="Hjp-rG-e5R"/>
+                            <constraint firstItem="q83-Xc-Igz" firstAttribute="leading" secondItem="Fre-1b-ckx" secondAttribute="leading" constant="32" id="V7t-KP-sX3"/>
                             <constraint firstItem="Ynj-jL-Yca" firstAttribute="leading" secondItem="Fre-1b-ckx" secondAttribute="leading" constant="16" id="Vv2-0q-hQ2"/>
-                            <constraint firstItem="3Lt-iD-T9a" firstAttribute="top" secondItem="c1E-qa-NoC" secondAttribute="bottom" constant="8" id="b8X-0Z-9FJ"/>
+                            <constraint firstItem="Fre-1b-ckx" firstAttribute="trailing" secondItem="aMO-TA-KpS" secondAttribute="trailing" constant="32" id="Wmh-nm-5ou"/>
                             <constraint firstItem="DQ4-Ga-7CI" firstAttribute="top" secondItem="Fre-1b-ckx" secondAttribute="top" constant="32" id="cCn-SH-EFJ"/>
                             <constraint firstItem="aMO-TA-KpS" firstAttribute="top" secondItem="DQ4-Ga-7CI" secondAttribute="bottom" constant="32" id="fgt-Vi-tJO"/>
+                            <constraint firstItem="q83-Xc-Igz" firstAttribute="centerY" secondItem="aMO-TA-KpS" secondAttribute="centerY" id="fwJ-vD-5hp"/>
                             <constraint firstItem="Ynj-jL-Yca" firstAttribute="centerY" secondItem="DQ4-Ga-7CI" secondAttribute="centerY" id="kgw-1v-yPJ"/>
-                            <constraint firstItem="Fre-1b-ckx" firstAttribute="trailing" secondItem="c1E-qa-NoC" secondAttribute="trailing" constant="186" id="mkj-0C-SwZ"/>
                             <constraint firstItem="DQ4-Ga-7CI" firstAttribute="centerX" secondItem="sJI-DU-vz8" secondAttribute="centerX" id="nxT-Bv-YPP"/>
-                            <constraint firstItem="3Lt-iD-T9a" firstAttribute="leading" secondItem="Fre-1b-ckx" secondAttribute="leading" constant="191" id="qzC-Q2-asC"/>
-                            <constraint firstItem="Fre-1b-ckx" firstAttribute="trailing" secondItem="3Lt-iD-T9a" secondAttribute="trailing" constant="191" id="ve8-Fv-90m"/>
+                            <constraint firstItem="Fre-1b-ckx" firstAttribute="trailing" secondItem="q83-Xc-Igz" secondAttribute="trailing" constant="32" id="xNq-Kd-tMS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Fre-1b-ckx"/>
                     </view>
                     <navigationItem key="navigationItem" title="Timer" id="DzY-h7-Fu2"/>
                     <connections>
+                        <outlet property="buttonStackView" destination="q83-Xc-Igz" id="WPq-W1-mX6"/>
                         <outlet property="countdownLabel" destination="Ynj-jL-Yca" id="8hO-k2-hoY"/>
-                        <outlet property="minLabel" destination="x0o-9A-08a" id="qiT-IB-EDF"/>
                         <outlet property="minutePicker" destination="qgy-1m-ZSw" id="YEy-Hp-wTk"/>
                         <outlet property="pickerStackView" destination="DQ4-Ga-7CI" id="XTm-DA-TmE"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="krm-bC-wZI"/>
-                        <outlet property="secLabel" destination="rK0-cO-bP8" id="9hB-e5-P9M"/>
                         <outlet property="secondPicker" destination="7x3-jH-KwW" id="ZZX-Py-7mV"/>
+                        <outlet property="startButton" destination="aMO-TA-KpS" id="7lf-rx-Xx7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MRC-mX-WEG" sceneMemberID="firstResponder"/>

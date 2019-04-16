@@ -14,10 +14,10 @@ class TimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 
     @IBOutlet weak var minutePicker: UIPickerView!
     @IBOutlet weak var secondPicker: UIPickerView!
-    @IBOutlet weak var minLabel: UILabel!
-    @IBOutlet weak var secLabel: UILabel!
     @IBOutlet weak var countdownLabel: UILabel!
     @IBOutlet weak var pickerStackView: UIStackView!
+    @IBOutlet weak var buttonStackView: UIStackView!
+    @IBOutlet weak var startButton: UIButton!
     
     let maxMinuteValue: Int = 15
     let maxSecondValue: Int = 59
@@ -25,7 +25,7 @@ class TimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        showPickerOrCountdown()
+        updateShownElements()
         minutePicker.dataSource = self
         minutePicker.delegate = self
         secondPicker.dataSource = self
@@ -34,19 +34,19 @@ class TimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         
     }
     
-    func showPickerOrCountdown(){
+    func updateShownElements(){
         if timer.isRunning() {
             updateCountdownLabel(timeLeft: timer.timeLeft!)
-            countdownLabel.isHidden = false
             pickerStackView.isHidden = true
-//            minutePicker.isHidden = true
-//            secondPicker.isHidden = true
+            startButton.isHidden = true
+            countdownLabel.isHidden = false
+            buttonStackView.isHidden = false
             
         } else {
-            countdownLabel.isHidden = true
             pickerStackView.isHidden = false
-//            minutePicker.isHidden = false
-//            secondPicker.isHidden = false
+            startButton.isHidden = false
+            countdownLabel.isHidden = true
+            buttonStackView.isHidden = true
         }
     }
     @objc func timerTick(notification: Notification){
@@ -75,7 +75,7 @@ class TimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             duration = (minutes * 60) + seconds
             timer.startTimer(duration: duration)
             updateCountdownLabel(timeLeft: duration)
-            showPickerOrCountdown()
+            updateShownElements()
         }
     }
     
@@ -89,7 +89,7 @@ class TimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         if timer.isRunning() {
             timer.stopTimer()
             updateCountdownLabel(timeLeft: 0)
-            showPickerOrCountdown()
+            updateShownElements()
         }
     }
     
