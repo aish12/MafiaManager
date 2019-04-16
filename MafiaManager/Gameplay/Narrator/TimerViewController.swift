@@ -8,6 +8,7 @@
 //  Responsible for handling the timer's view controller
 
 import UIKit
+import Foundation
 
 class TimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -44,7 +45,7 @@ class TimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     func updateCountdownLabel(timeLeft: Int){
         let minutesLeft = timeLeft / 60
         let secondsLeft = timeLeft % 60
-        self.countdownLabel.text = "\(minutesLeft):\(secondsLeft)"
+        self.countdownLabel.text = String(format: "%02d:%02d", minutesLeft, secondsLeft)
     }
     
     @IBAction func onStartPressed(_ sender: UIButton) {
