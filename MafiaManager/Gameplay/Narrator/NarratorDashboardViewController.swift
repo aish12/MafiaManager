@@ -13,20 +13,50 @@ import MultipeerConnectivity
 class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChangePlayerStatusProtocol {
     
     @IBOutlet weak var narratorTableView: UITableView!
+    @IBOutlet weak var timerBarButtonItem: UIBarButtonItem!
     var mpcManager: MPCManager!
     var connectedPlayers: [PlayerSession]!
+    var timer = GlobalTimer.sharedTimer
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if timer.isRunning(){
+            if timer.timeLeft! > 30 {
+                timerBarButtonItem.tintColor = UIColor.black
+            }
+            timerBarButtonItem.title = timer.timeAsString()
+        } else {
+            timerBarButtonItem.tintColor = UIColor.black
+        }
+        NotificationCenter.default.addObserver(self, selector: #selector(timerTick), name: NSNotification.Name("timerTick"), object: nil)
+        
         narratorTableView.delegate = self
         narratorTableView.dataSource = self
         narratorTableView.reloadData()
-        
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         mpcManager = appDelegate!.mpcManager!
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return connectedPlayers.count
+    }
+    
+    @objc func timerTick(notification: Notification) {
+        let timeLeft = notification.userInfo!["timeLeft"] as! Int
+        DispatchQueue.main.async {
+            if timeLeft > 0 {
+                if timeLeft <= 30 {
+                    self.timerBarButtonItem.tintColor = UIColor.red
+                }
+                self.timerBarButtonItem.title = self.timer.timeAsString()
+            } else {
+                self.timerBarButtonItem.title = self.timer.timeAsString()
+                Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: {(timer: Timer) in
+                    self.timerBarButtonItem.tintColor = UIColor.black
+                    self.timerBarButtonItem.title = "Timer"
+                })            }
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

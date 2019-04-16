@@ -1866,6 +1866,7 @@
                     <connections>
                         <outlet property="narratorTableView" destination="0AH-5h-gMD" id="6JU-5l-w5t"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="win-Ub-pMO"/>
+                        <outlet property="timerBarButtonItem" destination="XDY-Rh-whf" id="lYC-9N-SXt"/>
                         <segue destination="lou-Ij-zi1" kind="show" identifier="fromDashboardToRecordSegue" id="aJs-ll-KHM"/>
                     </connections>
                 </viewController>

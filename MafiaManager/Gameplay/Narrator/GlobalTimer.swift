@@ -71,4 +71,8 @@ class GlobalTimer: NSObject {
     func isPaused() -> Bool {
         return internalTimer != nil && !(internalTimer!.isValid)
     }
+    
+    func timeAsString() -> String {
+        return String(format: "%02d:%02d", timeLeft!/60, timeLeft!%60)
+    }
 }
