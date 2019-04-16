@@ -67,4 +67,8 @@ class GlobalTimer: NSObject {
         print("isRunning \(internalTimer != nil)")
         return internalTimer != nil
     }
+    
+    func isPaused() -> Bool {
+        return internalTimer != nil && !(internalTimer!.isValid)
+    }
 }

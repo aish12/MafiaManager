@@ -46,7 +46,9 @@ class TimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         let seconds: Int!
         var duration: Int = 0
         
-        if !timer.isRunning() {
+        if timer.isPaused() {
+            timer.resumeTimer()
+        } else if !timer.isRunning() {
             minutes = self.minutePicker.selectedRow(inComponent: 0)
             seconds = self.secondPicker.selectedRow(inComponent: 0)
             duration = (minutes * 60) + seconds
@@ -55,9 +57,15 @@ class TimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     @IBAction func onPausePressed(_ sender: Any) {
+        if timer.isRunning() {
+            timer.pauseTimer()
+        }
     }
     
     @IBAction func onStopPressed(_ sender: Any) {
+        if timer.isRunning() {
+            timer.stopTimer()
+        }
     }
     
     // For both minute and second, they only have one component, always return 1
