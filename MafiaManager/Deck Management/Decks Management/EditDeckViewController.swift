@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 protocol updateDeckDetailDelegate:class {
     func updateDeckDetail(name: String, desc: String)
@@ -49,12 +50,51 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
     }
     
     @objc func finishedEditing() {
+        let editedName = editDeckNameTextView.text
+        let editedDesc = editDeckDescriptionTextView.text
+        let editedImage = editDeckImagePickerButton.image(for: .normal)
+
+        let oldName = editDeckObject.value(forKey: "deckName") as! String
+        let oldDesc = editDeckObject.value(forKey: "deckDescription") as! String
+        let oldImage = UIImage(data: editDeckObject.value(forKey: "deckImage") as! Data)
+        
+        // Firebase
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        
+        //ref.child("users").child(Auth.auth().currentUser!.uid).updateChildValues(["\(newName)":"deck name"])
+        //var targetDeck = Database.database().reference().ref.child("users").child(Auth.auth().currentUser!.uid).child("deckName:\(oldName)")
+        //targetDeck.updateChildValues(["deckName:\(editedName)":["test":"test"]])
+        
+        
+        ref.child("users").child(Auth.auth().currentUser!.uid).child("deckName:\(oldName)").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value 
+            let value = snapshot.value as! NSDictionary
+            
+            
+            (UIApplication.shared.delegate as! AppDelegate).username = (value["name"] as? String) ?? "user"
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+ 
+ 
+        
+        
+        //ref.child("users").child(Auth.auth().currentUser!.uid).updateChildValues(["deckName:\(editedName)" : ["deckDescription": editedDesc]])
+        // Store the data of newImage
+        //let strBase64 = newImage!.base64EncodedString(options: .lineLength64Characters)
+        //print(strBase64)
+        //ref.child("users").child(Auth.auth().currentUser!.uid).child("deckName:\(newName)").updateChildValues(["deckImage":strBase64])
+        
+        
+        
+        
+        // Core Data
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         // Just set the editDeckObject
         editDeckObject.setValue(editDeckNameTextView.text, forKey: "deckName")
         editDeckObject.setValue(editDeckDescriptionTextView.text, forKey: "deckDescription")
-        let editedImage = editDeckImagePickerButton.image(for: .normal)
         editDeckObject.setValue(editedImage?.pngData(), forKey: "deckImage")
         
         // Commit the changes
