@@ -30,6 +30,19 @@ class LoadingWelcomeViewController: UIViewController {
             // Get user value
             let value = snapshot.value as! NSDictionary
             self.usersNameLabel.text = value["name"] as? String
+            
+            // Check if has deck names
+            if (snapshot.hasChild("decks")) {
+                print("has stuff")
+                // it exists! So do core data logic by setting up the decks child in Firebase
+                //ref.child("users").child(userID).updateChildValues("decks")
+                // TODO check if this works when it actually has stuff
+                
+            }else{
+                // does not exist
+                print("Does not have stuff")
+            }
+            
             (UIApplication.shared.delegate as! AppDelegate).username = (value["name"] as? String) ?? "user"
         }) { (error) in
             print(error.localizedDescription)

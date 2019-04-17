@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import CoreGraphics
+import Firebase
 
 protocol AddDeckDelegate: class {
     func addDeck(deckToAdd: NSManagedObject)
@@ -63,6 +64,21 @@ class NewDeckViewController: UIViewController, ImagePickerDelegate, UITextViewDe
             let newDescription = deckDetailTextView.text,
             let image = deckImagePickerButton.image(for: .normal) {
             let newImage = image.pngData()
+            
+            
+            // Firebase
+            var ref: DatabaseReference!
+            ref = Database.database().reference()
+            
+            //ref.child("users").child(Auth.auth().currentUser!.uid).updateChildValues(["\(newName)":"deck name"])
+            ref.child("users").child(Auth.auth().currentUser!.uid).child("deckName:\(newName)").setValue(["deckDescription":newDescription])
+            // Store the data of newImage
+            let strBase64 = newImage!.base64EncodedString(options: .lineLength64Characters)
+            print(strBase64)
+            ref.child("users").child(Auth.auth().currentUser!.uid).child("deckName:\(newName)").updateChildValues(["deckImage":strBase64])
+            
+            
+            // Core Data
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
             let deck = NSEntityDescription.insertNewObject(forEntityName: "Deck", into: context)
