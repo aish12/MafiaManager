@@ -9,6 +9,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 class DecksViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, AddDeckDelegate, DeleteDeckDelegate {
 
@@ -124,6 +125,16 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
         let alert = UIAlertController(title: "Are you sure?", message: "Deleting a deck cannot be undone", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: {_ in
+            
+            
+            // Firebase deletion
+            var ref: DatabaseReference!
+            ref = Database.database().reference()
+            
+            let deckName = self.decks[cellIndex].value(forKey: "deckName")!
+            ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(deckName)").removeValue()
+            
+            
             // Deleting the deck from core data
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext

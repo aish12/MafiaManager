@@ -66,18 +66,18 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
         //var targetDeck = Database.database().reference().ref.child("users").child(Auth.auth().currentUser!.uid).child("deckName:\(oldName)")
         //targetDeck.updateChildValues(["deckName:\(editedName)":["test":"test"]])
         
-        
-        ref.child("users").child(Auth.auth().currentUser!.uid).child("deckName:\(oldName)").observeSingleEvent(of: .value, with: { (snapshot) in
+        /*
+        ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(oldName)").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value 
             let value = snapshot.value as! NSDictionary
-            
+            print(value)
             
             (UIApplication.shared.delegate as! AppDelegate).username = (value["name"] as? String) ?? "user"
         }) { (error) in
             print(error.localizedDescription)
         }
  
- 
+ */
         
         
         //ref.child("users").child(Auth.auth().currentUser!.uid).updateChildValues(["deckName:\(editedName)" : ["deckDescription": editedDesc]])
