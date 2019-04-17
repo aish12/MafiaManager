@@ -72,7 +72,6 @@ class NewDeckViewController: UIViewController, ImagePickerDelegate, UITextViewDe
             
             ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(newName)").setValue(["deckDescription":newDescription])
             let strBase64 = newImage!.base64EncodedString(options: .lineLength64Characters)
-            print(strBase64)
             ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(newName)").updateChildValues(["deckImage":strBase64])
             
             // Core Data

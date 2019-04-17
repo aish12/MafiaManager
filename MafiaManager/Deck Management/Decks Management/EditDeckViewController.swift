@@ -50,8 +50,8 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
     }
     
     @objc func finishedEditing() {
-        let editedName = editDeckNameTextView.text
-        let editedDesc = editDeckDescriptionTextView.text
+        let editedName = editDeckNameTextView.text!
+        let editedDesc = editDeckDescriptionTextView.text!
         let editedImage = editDeckImagePickerButton.image(for: .normal)
 
         let oldName = editDeckObject.value(forKey: "deckName") as! String
@@ -62,22 +62,30 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
         var ref: DatabaseReference!
         ref = Database.database().reference()
         
-        //ref.child("users").child(Auth.auth().currentUser!.uid).updateChildValues(["\(newName)":"deck name"])
-        //var targetDeck = Database.database().reference().ref.child("users").child(Auth.auth().currentUser!.uid).child("deckName:\(oldName)")
-        //targetDeck.updateChildValues(["deckName:\(editedName)":["test":"test"]])
-        
-        /*
         ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(oldName)").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value 
             let value = snapshot.value as! NSDictionary
-            print(value)
+            //print("@#!@#!@#!@#!@#@!")
+            //print(value)
+            //print("DONT!@#@#@!#!@#@#!@#")
+            
+            // Delete the old deck's name node
+            ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(oldName)").removeValue()
+            // Create a node with the edited deck name
+            ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(editedName)").setValue(value)
+            
+            // Change the description
+            ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(editedName)").updateChildValues(["deckDescription":editedDesc])
+            // Change the images
+            let editImageData = editedImage!.pngData()
+            let strBase64 = editImageData!.base64EncodedString(options: .lineLength64Characters)
+            ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(editedName)").updateChildValues(["deckImage":strBase64])
             
             (UIApplication.shared.delegate as! AppDelegate).username = (value["name"] as? String) ?? "user"
         }) { (error) in
             print(error.localizedDescription)
         }
  
- */
         
         
         //ref.child("users").child(Auth.auth().currentUser!.uid).updateChildValues(["deckName:\(editedName)" : ["deckDescription": editedDesc]])
