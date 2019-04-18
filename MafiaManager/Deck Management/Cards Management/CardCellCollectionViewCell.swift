@@ -9,7 +9,7 @@
 import UIKit
 
 protocol DeleteCardDelegate: class {
-    func deleteCard(cellIndex: Int)
+    func deleteCard(cardCell: CardCellCollectionViewCell)
 }
 class CardCellCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var cardCellImageView: UIImageView!
@@ -20,6 +20,7 @@ class CardCellCollectionViewCell: UICollectionViewCell {
     weak var delegate: DeleteCardDelegate?
     var deleteButton: UIButton!
     var deleteButtonImg: UIImage!
+    var card: Card!
     
     // If not already in edit mode, add the x icon and a wiggle to the cell to show it is editable
     func enterEditMode() {
@@ -46,7 +47,7 @@ class CardCellCollectionViewCell: UICollectionViewCell {
     
     // Called when the x icon is pressed in edit mode, begins process to delete card in DeckDetailViewController
     @objc func deleteCard() {
-        delegate?.deleteCard(cellIndex: cellIndex)
+        delegate?.deleteCard(cardCell: self)
     }
     
     // Helper function to animate wiggle

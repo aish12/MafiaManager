@@ -24,7 +24,7 @@ class RoleQuantityViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         roleTable.delegate = self
         roleTable.dataSource = self
-        cards = retrieveCards()
+        cards = CoreDataHelper.retrieveCards(deck: deck)
         for card in cards! {
             cardQuantities[card] = 0
         }
@@ -34,7 +34,7 @@ class RoleQuantityViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidAppear(_ animated: Bool) {
         roleTable.reloadData()
-        cards = retrieveCards()
+        cards = CoreDataHelper.retrieveCards(deck: deck)
         for cardQuantity in cardQuantities {
             if !(cards?.contains(cardQuantity.key))!{
                 cardQuantities.removeValue(forKey: cardQuantity.key)
@@ -95,26 +95,6 @@ class RoleQuantityViewController: UIViewController, UITableViewDelegate, UITable
             nextButton.isEnabled = true
             peopleNeededLabel.text = "\(numPlayersRequired) Players Needed"
         }
-    }
-    
-    // Retrieves decks from core data
-    func retrieveCards() -> [Card] {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let request =
-            NSFetchRequest<NSFetchRequestResult>(entityName:"Card")
-        request.predicate = NSPredicate(format: "deckForCard == %@", deck!)
-        var fetchedResults:[NSManagedObject]? = nil
-        
-        do {
-            try fetchedResults = context.fetch(request) as? [NSManagedObject]
-        } catch {
-            // If an error occurs
-            let nserror = error as NSError
-            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
-            abort()
-        }
-        return(fetchedResults) as! [Card]
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

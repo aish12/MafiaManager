@@ -13,7 +13,7 @@ import CoreGraphics
 import Firebase
 
 protocol AddCardDelegate: class {
-    func addCard(cardToAdd: NSManagedObject)
+    func addCard(cardToAdd: Card)
 }
 
 class CreateCardViewController: UIViewController, ImagePickerDelegate, UITextViewDelegate {
@@ -22,7 +22,7 @@ class CreateCardViewController: UIViewController, ImagePickerDelegate, UITextVie
     @IBOutlet weak var cardDescriptionTextView: UITextView!
     @IBOutlet weak var cardImageButton: UIButton!
     weak var cardsViewControllerDelegate: AddCardDelegate?
-    var deck: NSManagedObject?
+    var deck: Deck!
     var imagePicker: ImagePicker!
     
     override func viewDidLoad() {
@@ -55,7 +55,7 @@ class CreateCardViewController: UIViewController, ImagePickerDelegate, UITextVie
             let newDescription = cardDescriptionTextView.text,
             let image = cardImageButton.image(for: .normal) {
             let newImage = image.pngData()
-            let deckName = deck?.value(forKey: "deckName") as! String
+            let deckName = deck.deckName!
             
             // Firebase
             var ref: DatabaseReference!
@@ -66,16 +66,16 @@ class CreateCardViewController: UIViewController, ImagePickerDelegate, UITextVie
             ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(deckName)").child("cards").child("cardName:\(newName)").updateChildValues(["cardImage":strBase64])
             
             // Core Data
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let context = appDelegate.persistentContainer.viewContext
-            let card = Card(context: context)
-            card.setValue(newName, forKey: "cardName")
-            card.setValue(newDescription, forKey: "cardDescription")
-            card.setValue(newImage, forKey: "cardImage")
-            card.deckForCard = deck as! Deck?
-            storeCard(card: card, context: context)
-            
-            cardsViewControllerDelegate?.addCard(cardToAdd: card)
+//            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//            let context = appDelegate.persistentContainer.viewContext
+//            let card = Card(context: context)
+//            card.setValue(newName, forKey: "cardName")
+//            card.setValue(newDescription, forKey: "cardDescription")
+//            card.setValue(newImage, forKey: "cardImage")
+//            card.deckForCard = deck
+            print(deck)
+            let newCard = CoreDataHelper.addCard(deck: deck, newName: newName, newDescription: newDescription, newImage: newImage!)
+            cardsViewControllerDelegate?.addCard(cardToAdd: newCard)
         }
         
         navigationController?.popViewController(animated: true)
@@ -87,18 +87,6 @@ class CreateCardViewController: UIViewController, ImagePickerDelegate, UITextVie
     
     func didSelect(image: UIImage?) {
         self.cardImageButton.setImage(image, for: .normal)
-    }
-    
-    func storeCard(card: NSManagedObject, context: NSManagedObjectContext) {
-        do {
-            try context.save()
-            print("Successfully saved card")
-        } catch {
-            // If an error occurs
-            let nserror = error as NSError
-            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
-            abort()
-        }
     }
     
     // Creates and manages placeholder text, and character limits for deck name and description textviews

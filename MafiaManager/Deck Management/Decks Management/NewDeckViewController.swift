@@ -12,7 +12,7 @@ import CoreGraphics
 import Firebase
 
 protocol AddDeckDelegate: class {
-    func addDeck(deckToAdd: NSManagedObject)
+    func addDeck(deckToAdd: Deck)
 }
 class NewDeckViewController: UIViewController, ImagePickerDelegate, UITextViewDelegate {
     @IBOutlet weak var deckNameTextView: UITextView!
@@ -75,29 +75,12 @@ class NewDeckViewController: UIViewController, ImagePickerDelegate, UITextViewDe
             ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(newName)").updateChildValues(["deckImage":strBase64])
             
             // Core Data
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let context = appDelegate.persistentContainer.viewContext
-            let deck = NSEntityDescription.insertNewObject(forEntityName: "Deck", into: context)
-            deck.setValue(newName, forKey: "deckName")
-            deck.setValue(newDescription, forKey: "deckDescription")
-            deck.setValue(newImage, forKey: "deckImage")
-            storeDeck(deck: deck, context: context)
-            decksViewControllerDelegate?.addDeck(deckToAdd: deck)
+            let newDeck = CoreDataHelper.addDeck(newName: newName, newDescription: newDescription, newImage: newImage!)
+            
+            decksViewControllerDelegate?.addDeck(deckToAdd: newDeck)
 
         }
         navigationController?.popViewController(animated: true)
-    }
-    
-    func storeDeck(deck: NSManagedObject, context: NSManagedObjectContext) {
-        do {
-            try context.save()
-            print("Successfully saved deck")
-        } catch {
-            // If an error occurs
-            let nserror = error as NSError
-            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
-            abort()
-        }
     }
     
     // Creates and manages placeholder text, and character limits for deck name and description textviews

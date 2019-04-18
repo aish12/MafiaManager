@@ -21,7 +21,7 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
     @IBOutlet weak var editDeckImagePickerButton: UIButton!
     
     weak var updateDetail: updateDeckDetailDelegate?
-    var editDeckObject: NSManagedObject = NSManagedObject()
+    var editDeckObject: Deck!
     var editImagePicker: ImagePicker!
     
     //  Set placeholder text for name and description entry
@@ -83,23 +83,9 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
             print(error.localizedDescription)
         }
         
-        // Core Data
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        // Just set the editDeckObject
-        editDeckObject.setValue(editDeckNameTextView.text, forKey: "deckName")
-        editDeckObject.setValue(editDeckDescriptionTextView.text, forKey: "deckDescription")
-        editDeckObject.setValue(editedImage?.pngData(), forKey: "deckImage")
         
-        // Commit the changes
-        do {
-            try context.save()
-        } catch {
-            // If an error occurs
-            let nserror = error as NSError
-            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
-            abort()
-        }
+        // Core Data
+        CoreDataHelper.editDeck(deck: editDeckObject as! Deck, newName: editDeckNameTextView.text, newDescription: editDeckDescriptionTextView.text, newImage: (editedImage?.pngData())!)
         
         // Go back to the Deck detail with new edits in store
         // TODO: update with image param

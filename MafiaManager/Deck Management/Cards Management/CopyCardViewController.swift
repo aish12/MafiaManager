@@ -13,10 +13,10 @@ import Firebase
 class CopyCardViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var cardCollectionView: UICollectionView!
-    var cards: [NSManagedObject] = []
+    var cards: [Card] = []
     let copyCardReuseIdentifier: String = "copyCard"
     var selectedCards: [IndexPath] = []
-    var deck: NSManagedObject?
+    var deck: Deck!
     weak var cardsViewControllerDelegate: AddCardDelegate?
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cards.count
@@ -35,7 +35,7 @@ class CopyCardViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        cards = retrieveCards()
+        cards = CoreDataHelper.retrieveCards(deck: nil)
         cardCollectionView.delegate = self
         cardCollectionView.dataSource = self
         cardCollectionView.allowsMultipleSelection = true
@@ -61,30 +61,11 @@ class CopyCardViewController: UIViewController, UICollectionViewDelegate, UIColl
                 ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(deckName)").child("cards").child("cardName:\(newName)").updateChildValues(["cardImage":strBase64])
                 
                 // Core Data
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                let context = appDelegate.persistentContainer.viewContext
-                let newCard = Card(context: context)
-                newCard.setValue(newName, forKey: "cardName")
-                newCard.setValue(newDescription, forKey: "cardDescription")
-                newCard.setValue(newImage, forKey: "cardImage")
-                newCard.deckForCard = deck as! Deck?
-                storeCard(card: newCard, context: context)
+                let newCard = CoreDataHelper.addCard(deck: deck, newName: newName, newDescription: newDescription, newImage: newImage)
                 cardsViewControllerDelegate?.addCard(cardToAdd: newCard)
             }
         }
         navigationController?.popViewController(animated: true)
-    }
-    
-    func storeCard(card: NSManagedObject, context: NSManagedObjectContext) {
-        do {
-            try context.save()
-            print("Successfully saved card")
-        } catch {
-            // If an error occurs
-            let nserror = error as NSError
-            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
-            abort()
-        }
     }
     
     // Handles the selection
@@ -101,25 +82,6 @@ class CopyCardViewController: UIViewController, UICollectionViewDelegate, UIColl
             let cell = cardCollectionView.cellForItem(at: indexPath) as! CopyCardCollectionViewCell
             CoreGraphicsHelper.createSelectedImageBorder(imageView: cell.cardImageView)
         }
-    }
-    
-    // Retrieves decks from core data
-    func retrieveCards() -> [NSManagedObject] {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let request =
-            NSFetchRequest<NSFetchRequestResult>(entityName:"Card")
-        var fetchedResults:[NSManagedObject]? = nil
-        
-        do {
-            try fetchedResults = context.fetch(request) as? [NSManagedObject]
-        } catch {
-            // If an error occurs
-            let nserror = error as NSError
-            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
-            abort()
-        }
-        return(fetchedResults)!
     }
     
     // code to dismiss keyboard when user clicks on background

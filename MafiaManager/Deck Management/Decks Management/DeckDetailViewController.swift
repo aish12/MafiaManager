@@ -17,10 +17,10 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
     let cardCellIdentifier = "CardCell"
     let addCardCellIdentifier = "NewCardCell"
     var inEditMode: Bool = false
-    var cards: [NSManagedObject] = []
+    var cards: [Card] = []
     weak var decksCollectionView: UICollectionView?
     var deckIPath: NSIndexPath?
-    var deckObject: NSManagedObject = NSManagedObject()
+    var deckObject: Deck!
     var editNavBarItem:UIBarButtonItem!
     @IBOutlet weak var navbar: UINavigationItem!
     @IBOutlet weak var deckDetailTextView: UITextView!
@@ -52,6 +52,7 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
             cardCell.cardCellImageView.layer.masksToBounds = true
             cardCell.delegate = self
             cardCell.cellIndex = indexPath.item - 1
+            cardCell.card = card
             // If the view is not in edit mode, ensure the reusable cell is not in edit mode
             // Without this, if the cell held another item in edit mode which was deleted, then another item was added to this cell
             // It would retain the styling of an editable cell
@@ -94,31 +95,11 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
     
     // Retrieves the cards data from core data and reloads the Collection View's data with this
     func loadCards() {
-        cards = retrieveCards()
+        cards = CoreDataHelper.retrieveCards(deck: deckObject)
         cardsCollectionView.reloadData()
     }
     
-    // Retrieves cards from core data
-    func retrieveCards() -> [NSManagedObject] {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let request =
-            NSFetchRequest<NSFetchRequestResult>(entityName:"Card")
-        request.predicate = NSPredicate(format: "deckForCard == %@", deckObject as! Deck)
-        var fetchedResults:[NSManagedObject]? = nil
-        
-        do {
-            try fetchedResults = context.fetch(request) as? [NSManagedObject]
-        } catch {
-            // If an error occurs
-            let nserror = error as NSError
-            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
-            abort()
-        }
-        return(fetchedResults)!
-    }
-    
-    func addCard(cardToAdd: NSManagedObject) {
+    func addCard(cardToAdd: Card) {
         self.cards.append(cardToAdd)
         let newIPath: IndexPath = IndexPath(item: cards.count, section: 0)
         self.cardsCollectionView.insertItems(at: [newIPath])
@@ -147,7 +128,7 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
         self.present(optionMenu, animated: true, completion: nil)
     }
     
-    func deleteCard(cellIndex: Int) {
+    func deleteCard(cardCell: CardCellCollectionViewCell) {
         let alert = UIAlertController(title: "Are you sure?", message: "Deleting a card cannot be undone", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: {_ in
@@ -155,39 +136,23 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
             // Firebase deletion of the cards
             var ref: DatabaseReference!
             ref = Database.database().reference()
+            let card = cardCell.card!
+            let deckName = card.deckForCard!.deckName!
+            let cardName = card.cardName!
             
-            let deckName = self.deckObject.value(forKey: "deckName")!
-            let cardName = self.cards[cellIndex].value(forKey: "cardName")!
+            // Deleting the card from firebase
             ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(deckName)").child("cards").child("cardName:\(cardName)").removeValue()
             
             
             // Deleting the card from core data
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let context = appDelegate.persistentContainer.viewContext
-            let request =
-                NSFetchRequest<NSFetchRequestResult>(entityName:"Card")
-            let targetCell: NSManagedObject = self.cards[cellIndex]
-            var fetchResults:[NSManagedObject]
+            CoreDataHelper.removeCard(card: card)
+
+            // Removes the card from decks (collection view data source), and the collectionView itself
+            self.cards.remove(at: self.cards.firstIndex(where: {(testCard: Card) in
+                return testCard == card
+            })!)
+            self.cardsCollectionView.deleteItems(at: [self.cardsCollectionView.indexPath(for: cardCell)!])
             
-            do {
-                try fetchResults = context.fetch(request) as! [NSManagedObject]
-                if fetchResults.count > 0 {
-                    for result:AnyObject in fetchResults {
-                        if result as! NSObject == targetCell {
-                            context.delete(result as! NSManagedObject)
-                        }
-                    }
-                }
-                try context.save()
-                // Removes the card from decks (collection view data source), and the collectionView itself
-                self.cards.remove(at: cellIndex)
-                self.cardsCollectionView.deleteItems(at: [IndexPath(item: cellIndex + 1, section: 0)])
-                
-            } catch {
-                let nserror = error as NSError
-                NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
-                abort()
-            }
         })
         alert.addAction(cancelAction)
         alert.addAction(deleteAction)

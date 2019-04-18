@@ -21,7 +21,7 @@ class CardViewController: UIViewController, ImagePickerDelegate, UITextViewDeleg
     
     weak var cardsCollectionView: UICollectionView?
     var cardIPath: NSIndexPath?
-    var cardObject: NSManagedObject = NSManagedObject()
+    var cardObject: Card!
     var deckName: String!
     
     var editImagePicker: ImagePicker!
@@ -100,37 +100,8 @@ class CardViewController: UIViewController, ImagePickerDelegate, UITextViewDeleg
         }
         
         // Core Data
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        // Just set the card object
-        
-        // Don't change if they didn't have anything in the text:
-        if cardName.text != "Enter card name" {
-            cardObject.setValue(cardName.text, forKey: "cardName")
-        } else {
-            // On done, have the text still show in text view
-            cardName.text = (cardObject.value(forKey: "cardName") as! String)
-        }
-        
-        if cardDescription.text != "Enter card description" {
-            cardObject.setValue(cardDescription.text, forKey: "cardDescription")
-        } else {
-            // On done, have the text still show in text view
-            cardDescription.text = (cardObject.value(forKey: "cardDescription") as! String)
-        }
-        
-        let cardImage = cardImageButton.image(for: .normal)
-        cardObject.setValue(cardImage?.pngData(), forKey: "cardImage")
-        
-        // Commit the changes
-        do {
-            try context.save()
-        } catch {
-            // If an error occurs
-            let nserror = error as NSError
-            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
-            abort()
-        }
+        CoreDataHelper.editCard(card: cardObject as! Card, newName: cardName.text, newDescription: cardDescription.text, newImage: (cardImageButton.image(for: .normal)?.pngData()!)!)
+
         cardsCollectionView?.reloadItems(at: [cardIPath! as IndexPath])
         
         cardDescription.isEditable = false

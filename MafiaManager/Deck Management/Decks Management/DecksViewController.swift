@@ -20,6 +20,20 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
     var settingsNavBarItem:UIBarButtonItem!
     var inEditMode = false
     
+    
+    // On load, round the corners of any buttons to standard size (10), assign an action to long press
+    // on a cell where handleLongPress is called, and load the deck's data from core data
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(longPressGR:)))
+        longPressGR.minimumPressDuration = 0.5
+        longPressGR.delaysTouchesBegan = true
+        self.decksCollectionView.addGestureRecognizer(longPressGR)
+        decksCollectionView.dataSource = self
+        decksCollectionView.delegate = self
+        loadDecks()
+    }
+    
     // Returns the number of items in the decks collection. Returns the number of decks + 1 to
     // account for the "new deck" button
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -73,47 +87,15 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
         decksCollectionView.deselectItem(at: indexPath, animated: true)
     }
     
-    // On load, round the corners of any buttons to standard size (10), assign an action to long press
-    // on a cell where handleLongPress is called, and load the deck's data from core data
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(longPressGR:)))
-        longPressGR.minimumPressDuration = 0.5
-        longPressGR.delaysTouchesBegan = true
-        self.decksCollectionView.addGestureRecognizer(longPressGR)
-        decksCollectionView.dataSource = self
-        decksCollectionView.delegate = self
-        loadDecks()
-    }
-    
     // Retrieves the decks data from core data and reloads the Collection View's data with this
     func loadDecks() {
-        decks = retrieveDecks() as! [Deck]
+        decks = CoreDataHelper.retrieveDecks()
         decksCollectionView.reloadData()
     }
     
-    // Retrieves decks from core data
-    func retrieveDecks() -> [NSManagedObject] {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let request =
-            NSFetchRequest<NSFetchRequestResult>(entityName:"Deck")
-        var fetchedResults:[NSManagedObject]? = nil
-        
-        do {
-            try fetchedResults = context.fetch(request) as? [NSManagedObject]
-        } catch {
-            // If an error occurs
-            let nserror = error as NSError
-            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
-            abort()
-        }
-        return(fetchedResults)!
-    }
-    
     // Adds a newly created deck to the collection view
-    func addDeck(deckToAdd: NSManagedObject) {
-        self.decks.append(deckToAdd as! Deck)
+    func addDeck(deckToAdd: Deck) {
+        self.decks.append(deckToAdd)
         let newIPath: IndexPath = IndexPath(item: decks.count, section: 0)
         self.decksCollectionView.insertItems(at: [newIPath])
         endEditState()
@@ -133,28 +115,12 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
             let deckName = deck.deckName!
             ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(deckName)").removeValue()
             
+            CoreDataHelper.removeDeck(deck: deck)
             
-            // Deleting the deck from core data
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let context = appDelegate.persistentContainer.viewContext
-            let targetCards: NSOrderedSet? = deck.cardForDeck
-            context.delete(deck)
-            if targetCards != nil {
-                for targetCard in targetCards! {
-                    context.delete(targetCard as! Card)
-                }
-            }
-            self.decks.remove(at: self.decks.firstIndex(where: {(testDeck: NSManagedObject) in
-                    return (testDeck as! Deck) == deck
+            self.decks.remove(at: self.decks.firstIndex(where: {(testDeck: Deck) in
+                    return testDeck == deck
             })!)
             self.decksCollectionView.deleteItems(at: [self.decksCollectionView.indexPath(for: deckCell)!])
-            do {
-                try context.save()
-            } catch {
-                let nserror = error as NSError
-                NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
-                abort()
-            }
         })
         alert.addAction(cancelAction)
         alert.addAction(deleteAction)

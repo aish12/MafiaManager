@@ -79,31 +79,12 @@ class DeckSelectionViewController: UIViewController, UICollectionViewDelegate, U
     
     // Retrieves the decks data from core data and reloads the Collection View's data with this
     func loadDecks() {
-        deckObjects = (retrieveDecks() as! [Deck])
+        deckObjects = CoreDataHelper.retrieveDecks()
         let selectedCell: IndexPath? = decksCollectionView.indexPathsForSelectedItems!.count > 0 ? decksCollectionView.indexPathsForSelectedItems![0] : nil
         decksCollectionView.reloadData()
         if selectedCell != nil {
             decksCollectionView.selectItem(at: selectedCell!, animated: true, scrollPosition: [])
         }
-    }
-    
-    // Retrieves decks from core data
-    func retrieveDecks() -> [NSManagedObject] {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let request =
-            NSFetchRequest<NSFetchRequestResult>(entityName:"Deck")
-        var fetchedResults:[NSManagedObject]? = nil
-        
-        do {
-            try fetchedResults = context.fetch(request) as? [NSManagedObject]
-        } catch {
-            // If an error occurs
-            let nserror = error as NSError
-            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
-            abort()
-        }
-        return(fetchedResults)!
     }
     
     // Long press for each collection view cell
