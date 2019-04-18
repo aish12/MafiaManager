@@ -8,6 +8,7 @@
 //  Manages the copy card view controller
 import UIKit
 import CoreData
+import Firebase
 
 class CopyCardViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -46,9 +47,20 @@ class CopyCardViewController: UIViewController, UICollectionViewDelegate, UIColl
     @IBAction func doneButtonPressed(_ sender: Any) {
         for selectedCardIPath in selectedCards {
             let selectedCard = cardCollectionView.cellForItem(at: selectedCardIPath) as! CopyCardCollectionViewCell
+            let deckName = deck?.value(forKey: "deckName") as! String
             if let newName = selectedCard.cardLabel.text,
             let newDescription = selectedCard.cardDescription,
             let newImage = selectedCard.cardImageView.image?.pngData() {
+                
+                // Firebase
+                var ref: DatabaseReference!
+                ref = Database.database().reference()
+                
+                ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(deckName)").child("cards").child("cardName:\(newName)").setValue(["cardDescription":newDescription])
+                let strBase64 = newImage.base64EncodedString(options: .lineLength64Characters)
+                ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(deckName)").child("cards").child("cardName:\(newName)").updateChildValues(["cardImage":strBase64])
+                
+                // Core Data
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 let context = appDelegate.persistentContainer.viewContext
                 let newCard = Card(context: context)
