@@ -47,7 +47,7 @@ class PlayerViewController: UIViewController {
                 let alert = UIAlertController(title: "Narrator has ended the game", message: "", preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
-                    self.mpcManager.session.disconnect()
+                    self.mpcManager.close()
                     self.navigationController?.popToRootViewController(animated: true)
                 }))
                 self.present(alert, animated: true)

@@ -16,6 +16,7 @@ class MPCManager: NSObject, MCSessionDelegate {
     var browser: MCBrowserViewController!
     var advertiser: MCAdvertiserAssistant!
     var narratorID: MCPeerID!
+    
     override init(){
         self.peerID = nil
         self.session = nil
@@ -60,6 +61,19 @@ class MPCManager: NSObject, MCSessionDelegate {
     
     func endGame(){
         session.disconnect()
+    }
+    
+    func close(){
+        session.disconnect()
+        if self.advertiser != nil {
+            advertiseSelf(shouldAdvertise: false)
+            advertiser = nil
+        }
+        if self.browser != nil {
+            setupBrowser(shouldBrowse: false)
+            browser = nil
+        }
+        narratorID = nil
     }
     
     func sendObject(objData: [String: Any], peers: [MCPeerID]){
