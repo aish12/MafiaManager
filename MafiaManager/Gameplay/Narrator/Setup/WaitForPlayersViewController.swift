@@ -34,8 +34,10 @@ class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITab
         appDelegate = UIApplication.shared.delegate as? AppDelegate
         mpcManager = appDelegate.mpcManager!
         mpcManager.setupPeerAndSession()
-        mpcManager.advertiseSelf(shouldAdvertise: true)
-        
+        if connectedDevices.count < numPlayers {
+            mpcManager.advertiseSelf(shouldAdvertise: true)
+        }
+    
         NotificationCenter.default.addObserver(self, selector: #selector(peerDidChangeStateWithNotification), name: NSNotification.Name("MCDidChangeStateNotification"), object: nil)
         
     }

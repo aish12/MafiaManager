@@ -59,11 +59,11 @@ class MPCManager: NSObject, MCSessionDelegate {
     }
     
     func endGame(){
-        sendObject(objData: ["endGame": "endGame"], peers: session.connectedPeers)
         session.disconnect()
     }
     
     func sendObject(objData: [String: Any], peers: [MCPeerID]){
+        print("SENDING \(objData) to \(peers)")
         var data: Data
         do {
              data = try NSKeyedArchiver.archivedData(withRootObject: objData, requiringSecureCoding: false)
@@ -79,6 +79,7 @@ class MPCManager: NSObject, MCSessionDelegate {
     }
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
+        print("RECEIVING DATA")
         var dataDict: [String: Any] = [:]
         do {
             dataDict = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as! [String: Any]
@@ -86,7 +87,8 @@ class MPCManager: NSObject, MCSessionDelegate {
             
         }
         let objName: String = dataDict.keys[dataDict.keys.startIndex]
-        if objName == "disconnect" {
+        if objName == "disconnect" || objName == "endGame" {
+            print("DISCONNECTING")
             session.disconnect()
         } else if objName == "assignStatus" {
         }

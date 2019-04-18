@@ -30,6 +30,8 @@ class JoinGameViewController: UIViewController, MCBrowserViewControllerDelegate 
     @objc func peerDidChangeStateWithNotification(notification: Notification){
         let peerID: MCPeerID = notification.userInfo!["peerID"] as! MCPeerID
         let state: MCSessionState = notification.userInfo!["state"] as! MCSessionState
+        print(self.mpcManager.narratorID)
+        print(peerID)
         if state == MCSessionState.connected {
             DispatchQueue.main.async {
                     if self.mpcManager.narratorID == nil {

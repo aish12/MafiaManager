@@ -35,8 +35,24 @@ class PlayerViewController: UIViewController {
         statusLabel.textColor = UIColor.green
         mpcManager = (UIApplication.shared.delegate as! AppDelegate).mpcManager
         NotificationCenter.default.addObserver(self, selector: #selector(updateStatus), name: NSNotification.Name("assignStatus"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(narratorEndedGame), name: NSNotification.Name("endGame"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(peerDidChangeStateWithNotification), name: NSNotification.Name("MCDidChangeStateNotification"), object: nil)
 
+    }
+    
+    @objc func peerDidChangeStateWithNotification(notification: Notification){
+        let peerID: MCPeerID = notification.userInfo!["peerID"] as! MCPeerID
+        let state: MCSessionState = notification.userInfo!["state"] as! MCSessionState
+        if peerID == self.mpcManager.narratorID && state == MCSessionState.notConnected {
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Narrator has ended the game", message: "", preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+                    self.mpcManager.session.disconnect()
+                    self.navigationController?.popToRootViewController(animated: true)
+                }))
+                self.present(alert, animated: true)
+            }
+        }
     }
     
     // If the player chooses the leave button, display a confirmation
@@ -62,18 +78,6 @@ class PlayerViewController: UIViewController {
                 self.statusLabel.textColor = UIColor.red
             }
             self.statusLabel.text = status
-        }
-    }
-    
-    @objc func narratorEndedGame(notification: Notification){
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Narrator has ended the game", message: "", preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
-                self.mpcManager.session.disconnect()
-                self.navigationController?.popToRootViewController(animated: true)
-            }))
-            self.present(alert, animated: true)
         }
     }
     /*
