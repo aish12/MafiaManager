@@ -16,7 +16,7 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
     @IBOutlet weak var decksCollectionView: UICollectionView!
     let deckCellIdentifier = "DeckCell"
     let addDeckCellIdentifier = "NewDeckCell"
-    var decks: [NSManagedObject] = []
+    var decks: [Deck] = []
     var settingsNavBarItem:UIBarButtonItem!
     var inEditMode = false
     
@@ -44,12 +44,12 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
             
             // The index of the deck in decks is item - 1 to account for the "new deck" button being item 0
             let deck = decks[indexPath.item - 1]
-            deckCell.deckNameLabel.text = deck.value(forKey: "deckName") as? String
-            deckCell.deckCellImageView.image = UIImage(data: deck.value(forKey: "deckImage") as! Data)
+            deckCell.deckNameLabel.text = deck.deckName
+            deckCell.deckCellImageView.image = UIImage(data: deck.deckImage!)
             deckCell.deckCellImageView.layer.cornerRadius = 10
             deckCell.deckCellImageView.layer.masksToBounds = true
             deckCell.delegate = self
-            deckCell.cellIndex = indexPath.item - 1
+            deckCell.deck = deck
             // If the view is not in edit mode, ensure the reusable cell is not in edit mode
             // Without this, if the cell held another item in edit mode which was deleted, then another item was added to this cell
             // It would retain the styling of an editable cell
@@ -88,7 +88,7 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     // Retrieves the decks data from core data and reloads the Collection View's data with this
     func loadDecks() {
-        decks = retrieveDecks()
+        decks = retrieveDecks() as! [Deck]
         decksCollectionView.reloadData()
     }
     
@@ -113,7 +113,7 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     // Adds a newly created deck to the collection view
     func addDeck(deckToAdd: NSManagedObject) {
-        self.decks.append(deckToAdd)
+        self.decks.append(deckToAdd as! Deck)
         let newIPath: IndexPath = IndexPath(item: decks.count, section: 0)
         self.decksCollectionView.insertItems(at: [newIPath])
         endEditState()
@@ -121,33 +121,33 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     // Deletes a deck at cellIndex from both core data and the collection view.
     // cellIndex is the index of the deck in decks, not the item index
-    func deleteDeck(cellIndex: Int) {
+    func deleteDeck(deckCell: DeckCellCollectionViewCell) {
         let alert = UIAlertController(title: "Are you sure?", message: "Deleting a deck cannot be undone", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: {_ in
             
-            
+            let deck = deckCell.deck!
             // Firebase deletion
             var ref: DatabaseReference!
             ref = Database.database().reference()
-            
-            let deckName = self.decks[cellIndex].value(forKey: "deckName")!
+            let deckName = deck.deckName!
             ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(deckName)").removeValue()
             
             
             // Deleting the deck from core data
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
-            let targetDeck: Deck = self.decks[cellIndex] as! Deck
-            let targetCards: NSOrderedSet? = targetDeck.cardForDeck
-            context.delete(targetDeck)
+            let targetCards: NSOrderedSet? = deck.cardForDeck
+            context.delete(deck)
             if targetCards != nil {
                 for targetCard in targetCards! {
                     context.delete(targetCard as! Card)
                 }
             }
-            self.decks.remove(at: cellIndex)
-            self.decksCollectionView.deleteItems(at: [IndexPath(item: cellIndex + 1, section: 0)])
+            self.decks.remove(at: self.decks.firstIndex(where: {(testDeck: NSManagedObject) in
+                    return (testDeck as! Deck) == deck
+            })!)
+            self.decksCollectionView.deleteItems(at: [self.decksCollectionView.indexPath(for: deckCell)!])
             do {
                 try context.save()
             } catch {
