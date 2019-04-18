@@ -64,7 +64,6 @@ class GlobalTimer: NSObject {
     }
     
     func isRunning() -> Bool {
-        print("isRunning \(internalTimer != nil)")
         return internalTimer != nil
     }
     

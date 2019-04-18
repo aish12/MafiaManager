@@ -91,7 +91,6 @@ class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITab
         for (card, count) in cardQuantities! {
             if count > 0 {
                 for _ in 1...count {
-                    print("loop running")
                     connectedPlayers[playerIndex].card = card
                     setPlayerRole(peerID: connectedDevices[playerIndex],card: card)
                     // Also store it in the dictionary that ties the name and the card role for narrator dashboard
@@ -99,9 +98,6 @@ class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITab
                     playerIndex += 1
                 }
             }
-        }
-        for player in connectedPlayers {
-            print("player status before calling segue \(player)")
         }
         self.performSegue(withIdentifier: "fromWaitForPlayersToDashboard", sender: self)
     }

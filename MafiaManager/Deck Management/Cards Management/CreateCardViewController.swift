@@ -65,15 +65,6 @@ class CreateCardViewController: UIViewController, ImagePickerDelegate, UITextVie
             let strBase64 = newImage!.base64EncodedString(options: .lineLength64Characters)
             ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(deckName)").child("cards").child("cardName:\(newName)").updateChildValues(["cardImage":strBase64])
             
-            // Core Data
-//            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//            let context = appDelegate.persistentContainer.viewContext
-//            let card = Card(context: context)
-//            card.setValue(newName, forKey: "cardName")
-//            card.setValue(newDescription, forKey: "cardDescription")
-//            card.setValue(newImage, forKey: "cardImage")
-//            card.deckForCard = deck
-            print(deck)
             let newCard = CoreDataHelper.addCard(deck: deck, newName: newName, newDescription: newDescription, newImage: newImage!)
             cardsViewControllerDelegate?.addCard(cardToAdd: newCard)
         }
