@@ -8,6 +8,7 @@
 //  Responsible for managing the Deck Detail View Controller
 import UIKit
 import CoreData
+import Firebase
 
 class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, updateDeckDetailDelegate, AddCardDelegate, DeleteCardDelegate {
     
@@ -150,6 +151,16 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
         let alert = UIAlertController(title: "Are you sure?", message: "Deleting a card cannot be undone", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: {_ in
+            
+            // Firebase deletion
+            var ref: DatabaseReference!
+            ref = Database.database().reference()
+            
+            let deckName = self.deckObject.value(forKey: "deckName")!
+            let cardName = self.cards[cellIndex].value(forKey: "cardName")!
+            ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(deckName)").child("cards").child("cardName:\(cardName)").removeValue()
+            
+            
             // Deleting the card from core data
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
@@ -207,6 +218,7 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
                 destinationVC.cardsCollectionView = cardsCollectionView
                 destinationVC.cardIPath = firstPath
                 destinationVC.cardObject = cards[firstPath.row - 1]
+                destinationVC.deckName = (deckObject.value(forKey: "deckName") as! String)
             }
         } else if segue.identifier == "fromDetailToCopyCardSegue",
             let destinationVC = segue.destination as? CopyCardViewController {

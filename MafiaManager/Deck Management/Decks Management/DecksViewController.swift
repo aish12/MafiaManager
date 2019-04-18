@@ -131,7 +131,6 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
             var ref: DatabaseReference!
             ref = Database.database().reference()
             
-            print(cellIndex)
             let deckName = self.decks[cellIndex].value(forKey: "deckName")!
             ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(deckName)").removeValue()
             

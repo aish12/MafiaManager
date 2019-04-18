@@ -10,6 +10,7 @@
 import UIKit
 import CoreData
 import CoreGraphics
+import Firebase
 
 protocol AddCardDelegate: class {
     func addCard(cardToAdd: NSManagedObject)
@@ -54,6 +55,17 @@ class CreateCardViewController: UIViewController, ImagePickerDelegate, UITextVie
             let newDescription = cardDescriptionTextView.text,
             let image = cardImageButton.image(for: .normal) {
             let newImage = image.pngData()
+            let deckName = deck?.value(forKey: "deckName") as! String
+            
+            // Firebase
+            var ref: DatabaseReference!
+            ref = Database.database().reference()
+            
+            ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(deckName)").child("cards").child("cardName:\(newName)").setValue(["cardDescription":newDescription])
+            let strBase64 = newImage!.base64EncodedString(options: .lineLength64Characters)
+            ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(deckName)").child("cards").child("cardName:\(newName)").updateChildValues(["cardImage":strBase64])
+            
+            // Core Data
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
             let card = Card(context: context)

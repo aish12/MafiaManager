@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import CoreGraphics
+import Firebase
 
 class CardViewController: UIViewController, ImagePickerDelegate, UITextViewDelegate {
 
@@ -21,6 +22,7 @@ class CardViewController: UIViewController, ImagePickerDelegate, UITextViewDeleg
     weak var cardsCollectionView: UICollectionView?
     var cardIPath: NSIndexPath?
     var cardObject: NSManagedObject = NSManagedObject()
+    var deckName: String!
     
     var editImagePicker: ImagePicker!
     
@@ -63,6 +65,8 @@ class CardViewController: UIViewController, ImagePickerDelegate, UITextViewDeleg
         inEditMode = false
         cardName.textColor = UIColor.black
         cardDescription.textColor = UIColor.black
+        
+        // Core Data
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         // Just set the card object
