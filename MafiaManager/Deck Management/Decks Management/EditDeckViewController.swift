@@ -65,9 +65,6 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
         ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(oldName)").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value 
             let value = snapshot.value as! NSDictionary
-            //print("@#!@#!@#!@#!@#@!")
-            //print(value)
-            //print("DONT!@#@#@!#!@#@#!@#")
             
             // Delete the old deck's name node
             ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(oldName)").removeValue()
@@ -85,17 +82,6 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
         }) { (error) in
             print(error.localizedDescription)
         }
- 
-        
-        
-        //ref.child("users").child(Auth.auth().currentUser!.uid).updateChildValues(["deckName:\(editedName)" : ["deckDescription": editedDesc]])
-        // Store the data of newImage
-        //let strBase64 = newImage!.base64EncodedString(options: .lineLength64Characters)
-        //print(strBase64)
-        //ref.child("users").child(Auth.auth().currentUser!.uid).child("deckName:\(newName)").updateChildValues(["deckImage":strBase64])
-        
-        
-        
         
         // Core Data
         let appDelegate = UIApplication.shared.delegate as! AppDelegate

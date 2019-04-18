@@ -152,7 +152,7 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: {_ in
             
-            // Firebase deletion
+            // Firebase deletion of the cards
             var ref: DatabaseReference!
             ref = Database.database().reference()
             

@@ -45,7 +45,6 @@ class CardViewController: UIViewController, ImagePickerDelegate, UITextViewDeleg
         cardDescription.text = cardObject.value(forKey: "cardDescription") as? String
         CoreGraphicsHelper.shadeTextViews(textView: cardDescription)
     }
-
     
     @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
         inEditMode = true
@@ -65,6 +64,40 @@ class CardViewController: UIViewController, ImagePickerDelegate, UITextViewDeleg
         inEditMode = false
         cardName.textColor = UIColor.black
         cardDescription.textColor = UIColor.black
+        
+        let editedName = cardName.text!
+        let editedDesc = cardDescription.text!
+        let editedImage = cardImageButton.image(for: .normal)
+        
+        let oldName = cardObject.value(forKey: "cardName") as! String
+        let oldDesc = cardObject.value(forKey: "cardDescription") as! String
+        let oldImage = UIImage(data: cardObject.value(forKey: "cardImage") as! Data)
+        
+        // Firebase
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        
+        ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(deckName!)").child("cards").child("cardName:\(oldName)").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as! NSDictionary
+            
+            // Delete the old deck's name node
+            ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(self.deckName!)").child("cards").child("cardName:\(oldName)").removeValue()
+            // Create a node with the edited deck name
+            ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(self.deckName!)").child("cards").child("cardName:\(editedName)").setValue(value)
+            
+            // Change the description
+            ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(self.deckName!)").child("cards").child("cardName:\(editedName)").updateChildValues(["cardDescription":editedDesc])
+            // Change the images
+            let editImageData = editedImage!.pngData()
+            let strBase64 = editImageData!.base64EncodedString(options: .lineLength64Characters)
+            ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(self.deckName!)").child("cards").child("cardName:\(editedName)").updateChildValues(["cardImage":strBase64])
+            
+            (UIApplication.shared.delegate as! AppDelegate).username = (value["name"] as? String) ?? "user"
+
+        }) { (error) in
+            print(error.localizedDescription)
+        }
         
         // Core Data
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
