@@ -13,22 +13,26 @@ struct PlayerSession {
     var playerID: MCPeerID
     var card: Card!
     var isAlive: Bool!
+    var isWinner: Bool!
     
     init(playerID: MCPeerID, card: Card, isAlive: Bool){
         self.playerID = playerID
         self.card = card
         self.isAlive = isAlive
+        self.isWinner = false
     }
     
     init(playerID: MCPeerID, card: Card){
         self.playerID = playerID
         self.card = card
         self.isAlive = true
+        self.isWinner = false
     }
     
     init(playerID: MCPeerID){
         self.playerID = playerID
         self.card = nil
         self.isAlive = true
+        self.isWinner = false
     }
 }

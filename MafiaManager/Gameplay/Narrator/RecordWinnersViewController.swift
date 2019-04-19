@@ -15,7 +15,7 @@ class RecordWinnersViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var recordResultsTableView: UITableView!
     
     var players: [PlayerSession]!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         recordResultsTableView.delegate = self
@@ -41,13 +41,41 @@ class RecordWinnersViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = recordResultsTableView.dequeueReusableCell(withIdentifier: "recordResultsTableCell", for: indexPath as IndexPath) as! RecordWinnerTableViewCell
-
+//        let cell = recordResultsTableView.dequeueReusableCell(withIdentifier: "recordResultsTableCell", for: indexPath as IndexPath) as! RecordWinnerTableViewCell
+//
+//        let player = players[indexPath.item]
+//        cell.playerNameLabel.text = player.playerID.displayName
+//        cell.roleLabel.text = player.card.cardName
+//        cell.playerStatusLabel.text = player.isAlive ? "Alive" : "Dead"
+//        return cell
+        let cell = recordResultsTableView.dequeueReusableCell(withIdentifier: "recordResultsTableCell", for: indexPath as IndexPath)
         let player = players[indexPath.item]
-        cell.playerNameLabel.text = player.playerID.displayName
-        cell.roleLabel.text = player.card.cardName
-        cell.playerStatusLabel.text = player.isAlive ? "Alive" : "Dead"
+        cell.textLabel!.text = player.playerID.displayName
+        cell.detailTextLabel!.text = "\(player.card.cardName!) \u{2022} \(player.isAlive ? "Alive": "Dead")"
+        if player.isAlive {
+            cell.detailTextLabel?.textColor = CoreGraphicsHelper.greenColor
+        } else {
+            cell.detailTextLabel?.textColor = CoreGraphicsHelper.redColor
+        }
+        if player.isWinner {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        recordResultsTableView.deselectRow(at: indexPath, animated: true)
+        let cell = recordResultsTableView.dequeueReusableCell(withIdentifier: "recordResultsTableCell", for: indexPath as IndexPath)
+        players[indexPath.item].isWinner = !players[indexPath.item].isWinner
+        if players[indexPath.item].isWinner {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
+        recordResultsTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.fade)
     }
     
     /*

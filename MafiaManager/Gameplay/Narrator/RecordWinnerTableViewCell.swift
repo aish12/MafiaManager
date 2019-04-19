@@ -13,7 +13,7 @@ class RecordWinnerTableViewCell: UITableViewCell {
     @IBOutlet weak var playerNameLabel: UILabel!
     @IBOutlet weak var roleLabel: UILabel!
     @IBOutlet weak var playerStatusLabel: UILabel!
-        
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
