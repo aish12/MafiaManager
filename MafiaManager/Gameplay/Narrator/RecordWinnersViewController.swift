@@ -12,9 +12,9 @@ import MultipeerConnectivity
 
 class RecordWinnersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var playerAndCard: [(player: MCPeerID, card: Card)] = []
-    var playerStatuses : [String]?
     @IBOutlet weak var recordResultsTableView: UITableView!
+    
+    var players: [PlayerSession]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,18 +34,19 @@ class RecordWinnersViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (playerAndCard.count)
+        if section == 0 {
+            return players.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = recordResultsTableView.dequeueReusableCell(withIdentifier: "recordResultsTableCell", for: indexPath as IndexPath) as! RecordWinnerTableViewCell
-        cell.playerName = playerAndCard[indexPath.item].player.displayName
-        cell.playerNameLabel.text = cell.playerName
-        
-        let card = playerAndCard[indexPath.item].card
-        cell.roleLabel.text = card.cardName
-        cell.playerStatusLabel.text = playerStatuses![indexPath.item]
-        
+
+        let player = players[indexPath.item]
+        cell.playerNameLabel.text = player.playerID.displayName
+        cell.roleLabel.text = player.card.cardName
+        cell.playerStatusLabel.text = player.isAlive ? "Alive" : "Dead"
         return cell
     }
     

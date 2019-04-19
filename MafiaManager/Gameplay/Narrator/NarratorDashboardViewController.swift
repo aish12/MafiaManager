@@ -109,9 +109,10 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
             destinationVC.indexPath = narratorTableView.indexPathForSelectedRow
             destinationVC.changePlayerDelegate = self
         } else if segue.identifier == "fromDashboardToRecordSegue" {
+            print("IN SEGUE")
+            print(self.connectedPlayers)
             let destinationVC = segue.destination as! RecordWinnersViewController
-            destinationVC.playerAndCard = []
-            destinationVC.playerStatuses = []
+            destinationVC.players = self.connectedPlayers
         }
     }
 }

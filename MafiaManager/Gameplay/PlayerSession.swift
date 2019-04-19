@@ -12,7 +12,7 @@ import MultipeerConnectivity
 struct PlayerSession {
     var playerID: MCPeerID
     var card: Card!
-    var isAlive: Bool
+    var isAlive: Bool!
     
     init(playerID: MCPeerID, card: Card, isAlive: Bool){
         self.playerID = playerID
