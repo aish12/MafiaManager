@@ -64,6 +64,13 @@ extension UITextView: UITextViewDelegate {
         }
     }
     
+    public func setText(newText: String?){
+        self.text = newText
+        if let placeholderLabel = self.viewWithTag(100) as? UILabel {
+            placeholderLabel.isHidden =  self.text.count > 0
+        }
+    }
+    
     /// Resize the placeholder UILabel to make sure it's in the same position as the UITextView text
     private func resizePlaceholder() {
         if let placeholderLabel = self.viewWithTag(100) as! UILabel? {

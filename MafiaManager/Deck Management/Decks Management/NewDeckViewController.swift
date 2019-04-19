@@ -52,7 +52,7 @@ class NewDeckViewController: UIViewController, ImagePickerDelegate {
     // So the user returns to the Decks view
     // Also makes sure not to leave any sections missing
     @IBAction func doneButtonPressed(_ sender: Any) {
-        if deckNameTextView.text == "Enter deck name" || deckDetailTextView.text == "Enter deck description" {
+        if deckNameTextView.text == "" || deckDetailTextView.text == "" {
             let alert = UIAlertController(title: "Missing sections", message: "Please fill out any missing sections before continuing.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
             self.present(alert, animated: true)

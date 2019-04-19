@@ -30,16 +30,13 @@ class CreateCardViewController: UIViewController, ImagePickerDelegate, UITextVie
 
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         
-        cardNameTextView.text = "Enter card name"
-        cardNameTextView.textColor = UIColor.lightGray
         cardNameTextView.becomeFirstResponder()
         cardNameTextView.selectedTextRange = cardNameTextView.textRange(from: cardNameTextView.beginningOfDocument, to: cardNameTextView.beginningOfDocument)
-        cardNameTextView.delegate = self
+        
+        cardNameTextView.placeholder = "Enter card name"
         CoreGraphicsHelper.shadeTextViews(textView: cardNameTextView)
         
-        cardDescriptionTextView.text = "Enter card description"
-        cardDescriptionTextView.textColor = UIColor.lightGray
-        cardDescriptionTextView.delegate = self
+        cardDescriptionTextView.placeholder = "Enter card description"
         CoreGraphicsHelper.shadeTextViews(textView: cardDescriptionTextView)
     }
     
@@ -47,7 +44,7 @@ class CreateCardViewController: UIViewController, ImagePickerDelegate, UITextVie
     // the Deck Detail VC
     // Also save the card into core data
     @IBAction func doneButtonPressed(_ sender: Any) {
-        if cardNameTextView.text == "Enter card name" || cardDescriptionTextView.text == "Enter card description" {
+        if cardNameTextView.text == "" || cardDescriptionTextView.text == "" {
             let alert = UIAlertController(title: "Missing sections", message: "Please fill out any missing sections before continuing.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
             self.present(alert, animated: true)
@@ -80,57 +77,6 @@ class CreateCardViewController: UIViewController, ImagePickerDelegate, UITextVie
         self.cardImageButton.setImage(image, for: .normal)
     }
     
-    // Creates and manages placeholder text, and character limits for deck name and description textviews
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        
-        // Combine the textView text and the replacement text to
-        // create the updated text string
-        let currentText:String = textView.text
-        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
-        
-        // If updated text view will be empty, add the placeholder
-        // and set the cursor to the beginning of the text view
-        if updatedText.isEmpty {
-            if textView == cardNameTextView {
-                textView.text = "Enter card name"
-            } else if textView == cardDescriptionTextView {
-                textView.text = "Enter card description"
-            } else {
-                textView.text = "This should not appear. Oops."
-            }
-            textView.textColor = UIColor.lightGray
-            
-            textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
-        }
-            
-            // Else if the text view's placeholder is showing and the
-            // length of the replacement string is greater than 0, set
-            // the text color to black then set its text to the
-            // replacement string
-        else if textView.textColor == UIColor.lightGray && !text.isEmpty {
-            textView.textColor = UIColor.black
-            textView.text = text
-        }
-            
-            // For every other case, the text should change with the usual
-            // behavior...
-        else {
-            let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
-            let numberOfChars = newText.count
-            if textView == cardNameTextView {
-                return numberOfChars <= 30
-            } else if textView == cardDescriptionTextView {
-                return numberOfChars <= 500
-            } else {
-                print("Should not reach, character limits in textView")
-                return true
-            }
-        }
-        
-        // ...otherwise return false since the updates have already
-        // been made
-        return false
-    }
     
     // code to dismiss keyboard when user clicks on background
     func textFieldShouldReturn(textField:UITextField) -> Bool {

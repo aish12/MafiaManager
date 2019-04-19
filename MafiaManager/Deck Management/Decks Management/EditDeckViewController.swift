@@ -59,11 +59,11 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
         let oldDesc = editDeckObject.deckDescription!
         // If user presses done without changing
         if editedName == "" {
-            editDeckNameTextView.text = oldName
+            editDeckNameTextView.setText(newText: oldName)
             editedName = oldName
         }
         if editedDesc == "" {
-            editDeckDescriptionTextView.text = oldDesc
+            editDeckDescriptionTextView.setText(newText: oldDesc)
             editedDesc = oldDesc
         }
         

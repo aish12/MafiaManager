@@ -32,18 +32,13 @@ class CardViewController: UIViewController, ImagePickerDelegate, UITextViewDeleg
         //  Creates an image picker for user to select card image
         self.editImagePicker = ImagePicker(presentationController: self, delegate: self)
         
-        self.cardName.text = cardObject.value(forKey: "cardName") as? String
-        self.cardDescription.text = cardObject.value(forKey: "cardDescription") as? String
-        self.cardImageButton.setImage(UIImage(data: cardObject.value(forKey: "cardImage") as! Data), for: .normal)
-        
-        cardName.text = cardObject.value(forKey: "cardName") as? String
-        cardName.becomeFirstResponder()
-        cardName.selectedTextRange = cardName.textRange(from: cardName.endOfDocument, to: cardName.endOfDocument)
-        //cardName.delegate = self
+        self.cardName.text = cardObject.cardName!
+        self.cardDescription.text = cardObject.cardDescription!
+        self.cardImageButton.setImage(UIImage(data: cardObject.cardImage!), for: .normal)
         CoreGraphicsHelper.shadeTextViews(textView: cardName)
-        
-        cardDescription.text = cardObject.value(forKey: "cardDescription") as? String
         CoreGraphicsHelper.shadeTextViews(textView: cardDescription)
+        
+        cardName.selectedTextRange = cardName.textRange(from: cardName.endOfDocument, to: cardName.endOfDocument)
     }
     
     @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
@@ -52,12 +47,12 @@ class CardViewController: UIViewController, ImagePickerDelegate, UITextViewDeleg
         cardDescription.isSelectable = true
         cardName.isEditable = true
         cardName.isSelectable = true
+        self.cardName.placeholder = "Enter card name"
+        self.cardDescription.placeholder = "Enter card name"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(endEditState))
     
         cardName.becomeFirstResponder()
         cardName.selectedTextRange = cardName.textRange(from: cardName.endOfDocument, to: cardName.endOfDocument)
-        cardName.delegate = self
-        cardDescription.delegate = self
     }
     
     @objc func endEditState() {
@@ -71,14 +66,13 @@ class CardViewController: UIViewController, ImagePickerDelegate, UITextViewDeleg
         
         let oldName = cardObject.value(forKey: "cardName") as! String
         let oldDesc = cardObject.value(forKey: "cardDescription") as! String
-        let oldImage = UIImage(data: cardObject.value(forKey: "cardImage") as! Data)
         
-        if editedName == "Enter card name" {
-            cardName.text = oldName
+        if editedName == "" {
+            cardName.setText(newText: oldName)
             editedName = oldName
         }
-        if editedDesc == "Enter card description" {
-            cardDescription.text = oldDesc
+        if editedDesc == "" {
+            cardDescription.setText(newText: oldDesc)
             editedDesc = oldDesc
         }
         
@@ -109,7 +103,7 @@ class CardViewController: UIViewController, ImagePickerDelegate, UITextViewDeleg
         }
         
         // Core Data
-        CoreDataHelper.editCard(card: cardObject as! Card, newName: editedName, newDescription: editedDesc, newImage: (cardImageButton.image(for: .normal)?.pngData()!)!)
+        CoreDataHelper.editCard(card: cardObject as Card, newName: editedName, newDescription: editedDesc, newImage: (cardImageButton.image(for: .normal)?.pngData()!)!)
 
         cardsCollectionView?.reloadItems(at: [cardIPath! as IndexPath])
         
@@ -129,68 +123,6 @@ class CardViewController: UIViewController, ImagePickerDelegate, UITextViewDeleg
     
     func didSelect(image: UIImage?) {
         self.cardImageButton.setImage(image, for: .normal)
-    }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    // Creates and manages placeholder text, and character limits for card name and description textviews
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        
-        // Combine the textView text and the replacement text to
-        // create the updated text string
-        let currentText:String = textView.text
-        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
-        
-        // If updated text view will be empty, add the placeholder
-        // and set the cursor to the beginning of the text view
-        
-        if updatedText.isEmpty {
-            if textView == cardName {
-                textView.text = "Enter card name"
-            } else if textView == cardDescription {
-                textView.text = "Enter card description"
-            } else {
-                textView.text = "This should not appear. Oops."
-            }
-            textView.textColor = UIColor.lightGray
-            
-            textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
-        }
-            
-            // Else if the text view's placeholder is showing and the
-            // length of the replacement string is greater than 0, set
-            // the text color to black then set its text to the
-            // replacement string
-        else if textView.textColor == UIColor.lightGray && !text.isEmpty {
-            textView.textColor = UIColor.black
-            textView.text = text
-        }
-            
-            // For every other case, the text should change with the usual
-            // behavior...
-        else {
-            let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
-            let numberOfChars = newText.count
-            if textView == cardName {
-                return numberOfChars <= 30
-            } else if textView == cardDescription {
-                return numberOfChars <= 500
-            } else {
-                print("Should not reach, character limits in textView")
-                return true
-            }
-        }
-        
-        // ...otherwise return false since the updates have already
-        // been made
-        return false
     }
     
     // code to dismiss keyboard when user clicks on background
