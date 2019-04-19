@@ -135,15 +135,6 @@ class NewDeckViewController: UIViewController, ImagePickerDelegate, UITextViewDe
         return false
     }
     
-    // Manages placeholder text for deck name and description text views
-    func textViewDidChangeSelection(_ textView: UITextView) {
-        if self.view.window != nil {
-            if textView.textColor == UIColor.lightGray {
-                textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
-            }
-        }
-    }
-    
     // code to dismiss keyboard when user clicks on background
     func textFieldShouldReturn(textField:UITextField) -> Bool {
         textField.resignFirstResponder()

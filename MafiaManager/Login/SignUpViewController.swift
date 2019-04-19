@@ -60,7 +60,7 @@ class SignUpViewController: UIViewController {
                 // In the database, tie the name to the user
                 var ref: DatabaseReference!
                 ref = Database.database().reference()
-                ref.child("users").child(user!.user.uid).setValue(["name":name])
+                ref.child("users").child(user!.user.uid).setValue(["Name":name])
                 
                 // Just automatically sign in
                 Auth.auth().signIn(withEmail: self.emailTextfield.text!,

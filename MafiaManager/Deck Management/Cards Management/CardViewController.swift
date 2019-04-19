@@ -65,13 +65,22 @@ class CardViewController: UIViewController, ImagePickerDelegate, UITextViewDeleg
         cardName.textColor = UIColor.black
         cardDescription.textColor = UIColor.black
         
-        let editedName = cardName.text!
-        let editedDesc = cardDescription.text!
+        var editedName = cardName.text!
+        var editedDesc = cardDescription.text!
         let editedImage = cardImageButton.image(for: .normal)
         
         let oldName = cardObject.value(forKey: "cardName") as! String
         let oldDesc = cardObject.value(forKey: "cardDescription") as! String
         let oldImage = UIImage(data: cardObject.value(forKey: "cardImage") as! Data)
+        
+        if editedName == "Enter card name" {
+            cardName.text = oldName
+            editedName = oldName
+        }
+        if editedDesc == "Enter card description" {
+            cardDescription.text = oldDesc
+            editedDesc = oldDesc
+        }
         
         // Firebase
         var ref: DatabaseReference!
@@ -100,7 +109,7 @@ class CardViewController: UIViewController, ImagePickerDelegate, UITextViewDeleg
         }
         
         // Core Data
-        CoreDataHelper.editCard(card: cardObject as! Card, newName: cardName.text, newDescription: cardDescription.text, newImage: (cardImageButton.image(for: .normal)?.pngData()!)!)
+        CoreDataHelper.editCard(card: cardObject as! Card, newName: editedName, newDescription: editedDesc, newImage: (cardImageButton.image(for: .normal)?.pngData()!)!)
 
         cardsCollectionView?.reloadItems(at: [cardIPath! as IndexPath])
         
@@ -182,15 +191,6 @@ class CardViewController: UIViewController, ImagePickerDelegate, UITextViewDeleg
         // ...otherwise return false since the updates have already
         // been made
         return false
-    }
-    
-    // Manages placeholder text for card name and description text views
-    func textViewDidChangeSelection(_ textView: UITextView) {
-        if self.view.window != nil {
-            if textView.textColor == UIColor.lightGray {
-                textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
-            }
-        }
     }
     
     // code to dismiss keyboard when user clicks on background

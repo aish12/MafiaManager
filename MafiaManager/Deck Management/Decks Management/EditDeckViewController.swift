@@ -50,20 +50,30 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
     }
     
     @objc func finishedEditing() {
-        let editedName = editDeckNameTextView.text!
-        let editedDesc = editDeckDescriptionTextView.text!
+        
+        var editedName = editDeckNameTextView.text!
+        var editedDesc = editDeckDescriptionTextView.text!
         let editedImage = editDeckImagePickerButton.image(for: .normal)
 
         let oldName = editDeckObject.value(forKey: "deckName") as! String
         let oldDesc = editDeckObject.value(forKey: "deckDescription") as! String
         let oldImage = UIImage(data: editDeckObject.value(forKey: "deckImage") as! Data)
         
+        // If user presses done without changing
+        if editedName == "Enter deck name" {
+            editDeckNameTextView.text = oldName
+            editedName = oldName
+        }
+        if editedDesc == "Enter deck description" {
+            editDeckDescriptionTextView.text = oldDesc
+            editedDesc = oldDesc
+        }
+        
         // Firebase
         var ref: DatabaseReference!
         ref = Database.database().reference()
-        
         ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(oldName)").observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value 
+            // Get user value
             let value = snapshot.value as! NSDictionary
             
             // Delete the old deck's name node
@@ -78,14 +88,14 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
             let strBase64 = editImageData!.base64EncodedString(options: .lineLength64Characters)
             ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(editedName)").updateChildValues(["deckImage":strBase64])
             
-            (UIApplication.shared.delegate as! AppDelegate).username = (value["name"] as? String) ?? "user"
+            //(UIApplication.shared.delegate as! AppDelegate).username = (value["name"] as? String) ?? "user"
         }) { (error) in
             print(error.localizedDescription)
         }
         
         
         // Core Data
-        CoreDataHelper.editDeck(deck: editDeckObject as! Deck, newName: editDeckNameTextView.text, newDescription: editDeckDescriptionTextView.text, newImage: (editedImage?.pngData())!)
+        CoreDataHelper.editDeck(deck: editDeckObject as! Deck, newName: editedName, newDescription: editedDesc, newImage: (editedImage?.pngData())!)
         
         // Go back to the Deck detail with new edits in store
         // TODO: update with image param
@@ -153,15 +163,6 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
         // ...otherwise return false since the updates have already
         // been made
         return false
-    }
-
-    // Manages placeholder text for deck name and description text views
-    func textViewDidChangeSelection(_ textView: UITextView) {
-        if self.view.window != nil {
-            if textView.textColor == UIColor.lightGray {
-                textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
-            }
-        }
     }
     
     // code to dismiss keyboard when user clicks on background
