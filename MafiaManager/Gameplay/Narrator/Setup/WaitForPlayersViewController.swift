@@ -105,7 +105,7 @@ class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func setPlayerRole(peerID: MCPeerID, card: Card){
-        let playerCard: [String: Any] = ["assignCard": ["cardName": card.cardName!, "cardDescription": card.cardDescription!, "cardImage": card.cardImage!]]
+        let playerCard: [String: Any] = ["assignCard": ["playerName": peerID.displayName, "cardName": card.cardName!, "cardDescription": card.cardDescription!, "cardImage": card.cardImage!]]
         mpcManager.sendObject(objData: playerCard, peers: [peerID])
     }
     

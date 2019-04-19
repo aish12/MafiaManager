@@ -11,12 +11,14 @@ import MultipeerConnectivity
 
 class PlayerViewController: UIViewController {
 
+    @IBOutlet weak var playerNavBar: UINavigationItem!
     @IBOutlet weak var statusLabel: UILabel!
     
     @IBOutlet weak var cardNameTextView: UITextView!
     @IBOutlet weak var cardDescriptionTextView: UITextView!
     @IBOutlet weak var cardImageView: UIImageView!
     
+    var playerName: String?
     var cardName: String?
     var cardDescription: String?
     var cardImage: UIImage?
@@ -27,6 +29,7 @@ class PlayerViewController: UIViewController {
         super.viewDidLoad()
         CoreGraphicsHelper.shadeTextViews(textView: cardNameTextView)
         CoreGraphicsHelper.shadeTextViews(textView: cardDescriptionTextView)
+        playerNavBar.title = playerName
         cardNameTextView.text = cardName!
         cardDescriptionTextView.text = cardDescription!
         cardImageView.image = cardImage!

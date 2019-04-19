@@ -1751,6 +1751,7 @@
                         <outlet property="cardDescriptionTextView" destination="d4t-Lj-pOz" id="oIl-EE-noL"/>
                         <outlet property="cardImageView" destination="Wnc-J9-6nU" id="6Jv-7B-zFP"/>
                         <outlet property="cardNameTextView" destination="1GU-1b-R8n" id="HeC-RP-HeD"/>
+                        <outlet property="playerNavBar" destination="Yjy-jK-8hm" id="kqA-4i-Wbb"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="Q4W-cZ-kzZ"/>
                         <outlet property="statusLabel" destination="gS9-ba-26M" id="jtV-UM-qoy"/>
                     </connections>
@@ -2355,6 +2356,6 @@
         <image name="helpIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="b7z-LG-cRN"/>
+        <segue reference="rDd-hE-V4G"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -10,11 +10,11 @@ import UIKit
 
 class PlayerWaitingViewController: UIViewController {
 
+    var playerName: String?
     var cardName: String?
     var cardDescription: String?
     var cardImage: UIImage?
     var statusText: String?
-    var playerName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +26,7 @@ class PlayerWaitingViewController: UIViewController {
     @objc func goToCard(notification: Notification){
         DispatchQueue.main.async {
             let cardInfo = notification.userInfo!["assignCard"] as! [String: Any]
+            self.playerName = cardInfo["playerName"] as? String
             self.cardName = cardInfo["cardName"] as? String
             self.cardDescription = cardInfo["cardDescription"] as? String
             self.cardImage = UIImage(data: cardInfo["cardImage"] as! Data)
@@ -39,6 +40,7 @@ class PlayerWaitingViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "fromWaitingToPlayer" {
             let destinationVC = segue.destination as! PlayerViewController
+            destinationVC.playerName = playerName
             destinationVC.cardName = cardName
             destinationVC.cardDescription = cardDescription
             destinationVC.cardImage = cardImage
