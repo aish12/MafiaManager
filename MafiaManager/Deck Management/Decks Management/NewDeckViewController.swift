@@ -14,7 +14,7 @@ import Firebase
 protocol AddDeckDelegate: class {
     func addDeck(deckToAdd: Deck)
 }
-class NewDeckViewController: UIViewController, ImagePickerDelegate, UITextViewDelegate {
+class NewDeckViewController: UIViewController, ImagePickerDelegate {
     @IBOutlet weak var deckNameTextView: UITextView!
     @IBOutlet weak var deckDetailTextView: UITextView!
     @IBOutlet weak var deckImagePickerButton: UIButton!
@@ -29,17 +29,13 @@ class NewDeckViewController: UIViewController, ImagePickerDelegate, UITextViewDe
         //  Creates an image picker for user to select deck image
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         
-        deckNameTextView.text = "Enter deck name"
-        deckNameTextView.textColor = UIColor.lightGray
-        deckNameTextView.becomeFirstResponder()
-        deckNameTextView.selectedTextRange = deckNameTextView.textRange(from: deckNameTextView.beginningOfDocument, to: deckNameTextView.beginningOfDocument)
-        deckNameTextView.delegate = self
+        deckNameTextView.placeholder = "Enter deck name"
         CoreGraphicsHelper.shadeTextViews(textView: deckNameTextView)
         
-        deckDetailTextView.text = "Enter deck description"
-        deckDetailTextView.textColor = UIColor.lightGray
-        deckDetailTextView.delegate = self
+        deckDetailTextView.placeholder = "Enter deck description"
         CoreGraphicsHelper.shadeTextViews(textView: deckDetailTextView)
+
+        deckNameTextView.becomeFirstResponder()
     }
     
     //  When user taps imagePicker, let them select from camera roll
@@ -83,57 +79,56 @@ class NewDeckViewController: UIViewController, ImagePickerDelegate, UITextViewDe
         navigationController?.popViewController(animated: true)
     }
     
-    // Creates and manages placeholder text, and character limits for deck name and description textviews
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        
-        // Combine the textView text and the replacement text to
-        // create the updated text string
-        let currentText:String = textView.text
-        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
-        
-        // If updated text view will be empty, add the placeholder
-        // and set the cursor to the beginning of the text view
-        if updatedText.isEmpty {
-            if textView == deckNameTextView {
-                textView.text = "Enter deck name"
-            } else if textView == deckDetailTextView {
-                textView.text = "Enter deck description"
-            } else {
-                textView.text = "This should not appear. Oops."
-            }
-            textView.textColor = UIColor.lightGray
-            
-            textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
-        }
-            
-            // Else if the text view's placeholder is showing and the
-            // length of the replacement string is greater than 0, set
-            // the text color to black then set its text to the
-            // replacement string
-        else if textView.textColor == UIColor.lightGray && !text.isEmpty {
-            textView.textColor = UIColor.black
-            textView.text = text
-        }
-            
-            // For every other case, the text should change with the usual
-            // behavior...
-        else {
-            let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
-            let numberOfChars = newText.count
-            if textView == deckNameTextView {
-                return numberOfChars <= 30
-            } else if textView == deckDetailTextView {
-                return numberOfChars <= 500
-            } else {
-                print("Should not reach, character limits in textView")
-                return true
-            }
-        }
-        
-        // ...otherwise return false since the updates have already
-        // been made
-        return false
-    }
+//    // Creates and manages placeholder text, and character limits for deck name and description textviews
+//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//
+//        // Combine the textView text and the replacement text to
+//        // create the updated text string
+//        let currentText:String = textView.text
+//        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
+//        // If updated text view will be empty, add the placeholder
+//        // and set the cursor to the beginning of the text view
+//        if updatedText.isEmpty {
+//            if textView == deckNameTextView {
+//                textView.text = "Enter deck name"
+//            } else if textView == deckDetailTextView {
+//                textView.text = "Enter deck description"
+//            } else {
+//                textView.text = "This should not appear. Oops."
+//            }
+//            textView.textColor = UIColor.lightGray
+//
+//            textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+//        }
+//
+//            // Else if the text view's placeholder is showing and the
+//            // length of the replacement string is greater than 0, set
+//            // the text color to black then set its text to the
+//            // replacement string
+//        else if textView.textColor == UIColor.lightGray && !text.isEmpty {
+//            textView.textColor = UIColor.black
+//            textView.text = text
+//        }
+//
+//            // For every other case, the text should change with the usual
+//            // behavior...
+//        else {
+//            let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+//            let numberOfChars = newText.count
+//            if textView == deckNameTextView {
+//                return numberOfChars <= 30
+//            } else if textView == deckDetailTextView {
+//                return numberOfChars <= 500
+//            } else {
+//                print("Should not reach, character limits in textView")
+//                return true
+//            }
+//        }
+//
+//        // ...otherwise return false since the updates have already
+//        // been made
+//        return false
+//    }
     
     // code to dismiss keyboard when user clicks on background
     func textFieldShouldReturn(textField:UITextField) -> Bool {
