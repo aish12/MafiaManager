@@ -60,20 +60,20 @@ class MPCManager: NSObject, MCSessionDelegate {
     }
     
     func endGame(){
-        session.disconnect()
-    }
-    
-    func close(){
-        session.disconnect()
-        if self.advertiser != nil {
+        if session != nil {
+            session.disconnect()
+            session = nil
+        }
+        if advertiser != nil {
             advertiseSelf(shouldAdvertise: false)
             advertiser = nil
         }
-        if self.browser != nil {
+        if browser != nil {
             setupBrowser(shouldBrowse: false)
             browser = nil
         }
         narratorID = nil
+        peerID = nil
     }
     
     func sendObject(objData: [String: Any], peers: [MCPeerID]){
@@ -88,8 +88,13 @@ class MPCManager: NSObject, MCSessionDelegate {
     }
     
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
-        let dict: [String: Any] = ["peerID": peerID, "state": state]
-        NotificationCenter.default.post(name: NSNotification.Name("MCDidChangeStateNotification"), object: nil, userInfo: dict)
+        if peerID == narratorID && state == MCSessionState.notConnected {
+            endGame()
+            NotificationCenter.default.post(name: NSNotification.Name("narratorDisconnected"), object: nil, userInfo: nil)
+        } else {
+            let dict: [String: Any] = ["peerID": peerID, "state": state]
+            NotificationCenter.default.post(name: NSNotification.Name("MCDidChangeStateNotification"), object: nil, userInfo: dict)
+        }
     }
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
@@ -98,16 +103,14 @@ class MPCManager: NSObject, MCSessionDelegate {
         do {
             dataDict = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as! [String: Any]
         } catch {
-            
+            abort()
         }
         let objName: String = dataDict.keys[dataDict.keys.startIndex]
-        if objName == "disconnect" || objName == "endGame" {
-            print("DISCONNECTING")
-            session.disconnect()
-        } else if objName == "assignStatus" {
+        if objName == "disconnect" {
+            endGame()
+        } else {
+            NotificationCenter.default.post(name: NSNotification.Name(objName), object: nil, userInfo: dataDict)
         }
-        NotificationCenter.default.post(name: NSNotification.Name(objName), object: nil, userInfo: dataDict)
-
     }
     
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {

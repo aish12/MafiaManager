@@ -18,15 +18,9 @@ class PlayViewController: UIViewController {
         CoreGraphicsHelper.colorButtons(button: narratorButton, color: CoreGraphicsHelper.navyBlueColor)
         CoreGraphicsHelper.colorButtons(button: playerButton, color: CoreGraphicsHelper.navyBlueColor)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let mpcManager = (UIApplication.shared.delegate as? AppDelegate)!.mpcManager
+        mpcManager!.endGame()
     }
-    */
-
 }

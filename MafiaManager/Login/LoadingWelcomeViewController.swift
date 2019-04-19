@@ -42,7 +42,7 @@ class LoadingWelcomeViewController: UIViewController {
                 // does not exist
             }
             
-            (UIApplication.shared.delegate as! AppDelegate).username = (value["name"] as? String) ?? "user"
+            (UIApplication.shared.delegate as! AppDelegate).username = (value["Name"] as? String) ?? "user"
         }) { (error) in
             print(error.localizedDescription)
         }

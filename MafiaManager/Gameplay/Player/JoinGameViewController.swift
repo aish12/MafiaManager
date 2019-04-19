@@ -21,8 +21,10 @@ class JoinGameViewController: UIViewController, MCBrowserViewControllerDelegate 
         super.viewDidLoad()
         appDelegate = UIApplication.shared.delegate as? AppDelegate
         mpcManager = appDelegate.mpcManager!
+        if mpcManager.session != nil {
+            mpcManager.endGame()
+        }
         mpcManager.setupPeerAndSession()
-        mpcManager.advertiseSelf(shouldAdvertise: false)
         browseForDevices()
         NotificationCenter.default.addObserver(self, selector: #selector(peerDidChangeStateWithNotification), name: NSNotification.Name("MCDidChangeStateNotification"), object: nil)
     }
@@ -30,17 +32,15 @@ class JoinGameViewController: UIViewController, MCBrowserViewControllerDelegate 
     @objc func peerDidChangeStateWithNotification(notification: Notification){
         let peerID: MCPeerID = notification.userInfo!["peerID"] as! MCPeerID
         let state: MCSessionState = notification.userInfo!["state"] as! MCSessionState
-        print(self.mpcManager.narratorID)
-        print(peerID)
+        print("Narrator ID in player browser: \(self.mpcManager.narratorID)")
+        print("PeerID: \(peerID)")
         if state == MCSessionState.connected {
             DispatchQueue.main.async {
-                    if self.mpcManager.narratorID == nil {
-                        self.mpcManager.narratorID = peerID
-                    }
-                    if self.mpcManager.narratorID == peerID {
-                        self.mpcManager.setupBrowser(shouldBrowse: false)
-                        self.performSegue(withIdentifier: "fromJoinToWaitSegue", sender: self)
-                    }
+                if state == MCSessionState.connected && self.mpcManager.narratorID == nil {
+                    self.mpcManager.narratorID = peerID
+                    self.mpcManager.setupBrowser(shouldBrowse: false)
+                    self.performSegue(withIdentifier: "fromJoinToWaitSegue", sender: self)
+                }
             }
         }
     }
@@ -69,19 +69,4 @@ class JoinGameViewController: UIViewController, MCBrowserViewControllerDelegate 
     func browserViewControllerWasCancelled(_ browserViewController: MCBrowserViewController) {
         dismiss(animated: true, completion: returnToPlayView)
     }
-    
-    @IBAction func joinButtonPressed(_ sender: Any) {
-//        performSegue(withIdentifier: "fromJoinToWaitSegue", sender: self)
-    }
-    
-    
-    /*
-     // MARK: - Navigation
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

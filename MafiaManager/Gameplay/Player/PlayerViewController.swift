@@ -38,23 +38,19 @@ class PlayerViewController: UIViewController {
         statusLabel.textColor = UIColor.green
         mpcManager = (UIApplication.shared.delegate as! AppDelegate).mpcManager
         NotificationCenter.default.addObserver(self, selector: #selector(updateStatus), name: NSNotification.Name("assignStatus"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(peerDidChangeStateWithNotification), name: NSNotification.Name("MCDidChangeStateNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(narratorDisconnected), name: NSNotification.Name("narratorDisconnected"), object: nil)
 
     }
     
-    @objc func peerDidChangeStateWithNotification(notification: Notification){
-        let peerID: MCPeerID = notification.userInfo!["peerID"] as! MCPeerID
-        let state: MCSessionState = notification.userInfo!["state"] as! MCSessionState
-        if peerID == self.mpcManager.narratorID && state == MCSessionState.notConnected {
-            DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Narrator has ended the game", message: "", preferredStyle: .alert)
-                
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
-                    self.mpcManager.close()
-                    self.navigationController?.popToRootViewController(animated: true)
-                }))
-                self.present(alert, animated: true)
-            }
+    @objc func narratorDisconnected(notification: Notification){
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Narrator has ended the game", message: "", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+                self.mpcManager.endGame()
+                self.navigationController?.popToRootViewController(animated: true)
+            }))
+            self.present(alert, animated: true)
         }
     }
     
@@ -65,7 +61,8 @@ class PlayerViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
-            self.mpcManager.session.disconnect()
+            NotificationCenter.default.removeObserver(self)
+            self.mpcManager.endGame()
             self.navigationController?.popToRootViewController(animated: true)
         }))
         self.present(alert, animated: true)
@@ -83,14 +80,4 @@ class PlayerViewController: UIViewController {
             self.statusLabel.text = status
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
