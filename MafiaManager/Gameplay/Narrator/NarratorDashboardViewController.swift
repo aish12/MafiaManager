@@ -23,11 +23,11 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
         
         if timer.isRunning(){
             if timer.timeLeft! > 30 {
-                timerBarButtonItem.tintColor = UIColor.black
+                timerBarButtonItem.tintColor = self.view.tintColor
             }
             timerBarButtonItem.title = timer.timeAsString()
         } else {
-            timerBarButtonItem.tintColor = UIColor.black
+            timerBarButtonItem.tintColor = self.view.tintColor
         }
         NotificationCenter.default.addObserver(self, selector: #selector(timerTick), name: NSNotification.Name("timerTick"), object: nil)
         
@@ -48,12 +48,14 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
             if timeLeft > 0 {
                 if timeLeft <= 30 {
                     self.timerBarButtonItem.tintColor = UIColor.red
+                } else {
+                    self.timerBarButtonItem.tintColor = self.view.tintColor
                 }
                 self.timerBarButtonItem.title = self.timer.timeAsString()
             } else {
                 self.timerBarButtonItem.title = self.timer.timeAsString()
                 Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: {(timer: Timer) in
-                    self.timerBarButtonItem.tintColor = UIColor.black
+                    self.timerBarButtonItem.tintColor = self.view.tintColor
                     self.timerBarButtonItem.title = "Timer"
                 })            }
         }
@@ -100,7 +102,7 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "fromNarratorDashboardCellToPlayerCard" {
-            let destinationVC = segue.destination as! NarratorChangeRoleViewController
+            let destinationVC = segue.destination as! NarratorDetailViewController
             
             let funcIndex = narratorTableView.indexPathForSelectedRow?.row
             destinationVC.playerSession = connectedPlayers[funcIndex!]

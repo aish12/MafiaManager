@@ -1,5 +1,5 @@
 //
-//  NarratorChangeRoleViewController.swift
+//  NarratorDetailViewController.swift
 //  MafiaManager
 //
 //  Created by Tesia Wu on 4/9/19.
@@ -11,7 +11,7 @@ import UIKit
 protocol ChangePlayerStatusProtocol: class {
     func updatePlayerStatus(isAlive: Bool, indexPath:IndexPath)
 }
-class NarratorChangeRoleViewController: UIViewController {
+class NarratorDetailViewController: UIViewController {
 
     @IBOutlet weak var cardImageView: UIImageView!
     @IBOutlet weak var cardNameTextView: UITextView!

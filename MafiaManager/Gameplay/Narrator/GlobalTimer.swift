@@ -53,6 +53,7 @@ class GlobalTimer: NSObject {
         internalTimer?.invalidate()
         internalTimer = nil
         timeLeft = 0
+        NotificationCenter.default.post(name: NSNotification.Name("timerTick"), object: nil, userInfo: ["timeLeft": timeLeft!])
     }
     
     @objc func timerTick(){
