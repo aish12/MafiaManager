@@ -10,26 +10,47 @@ import UIKit
 import CoreData
 import Firebase
 
-class CopyCardViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class CopyCardViewController: UIViewController, UICollectionViewDelegate, UISearchResultsUpdating, UICollectionViewDataSource {
+    
+    
     
     @IBOutlet weak var cardCollectionView: UICollectionView!
     var cards: [Card] = []
+    var cardSearchController = UISearchController(searchResultsController: nil)
+    var filteredCards: [Card] = []
     let copyCardReuseIdentifier: String = "copyCard"
-    var selectedCards: [IndexPath] = []
+    var selectedCards: [Card] = []
     var deck: Deck!
     weak var cardsViewControllerDelegate: AddCardDelegate?
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if isFiltering() {
+            return filteredCards.count
+        }
         return cards.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: copyCardReuseIdentifier, for: indexPath as IndexPath) as! CopyCardCollectionViewCell
-        let card = cards[indexPath.item]
+        
+        var card: Card!
+        if isFiltering() {
+            card = filteredCards[indexPath.item]
+        } else {
+            card = cards[indexPath.item]
+        }
+        print(card)
         cell.cardLabel.text = card.value(forKey: "cardName") as? String
         cell.cardDescription = card.value(forKey: "cardDescription") as? String
         cell.cardImageView.image = UIImage(data: card.value(forKey: "cardImage") as! Data)
         cell.cardImageView.layer.cornerRadius = 10
         cell.cardImageView.layer.masksToBounds = true
+        if selectedCards.contains(where: {(selectedCard: Card) in
+            selectedCard == card
+        }) {
+            CoreGraphicsHelper.createSelectedImageBorder(imageView: cell.cardImageView)
+        } else {
+            CoreGraphicsHelper.removeSelectedImageBorder(imageView: cell.cardImageView)
+        }
         return cell
     }
 
@@ -40,17 +61,43 @@ class CopyCardViewController: UIViewController, UICollectionViewDelegate, UIColl
         cardCollectionView.dataSource = self
         cardCollectionView.allowsMultipleSelection = true
 
-        // Do any additional setup after loading the view.
+        cardSearchController.searchResultsUpdater = self
+        cardSearchController.obscuresBackgroundDuringPresentation = false
+        cardSearchController.searchBar.placeholder = "Search Cards"
+        navigationItem.searchController = cardSearchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
     }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    func isFiltering() -> Bool {
+        return cardSearchController.isActive && !searchBarIsEmpty()
+    }
+    
+    func searchBarIsEmpty() -> Bool {
+        // Returns true if the text is empty or nil
+        return cardSearchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        filteredCards = cards.filter({( card : Card) -> Bool in
+            return card.cardName!.lowercased().contains(searchText.lowercased())
+        })
+        
+        cardCollectionView.reloadData()
+    }
+    
     
     // When the done button is pressed, return to the Deck Detail VC
     @IBAction func doneButtonPressed(_ sender: Any) {
-        for selectedCardIPath in selectedCards {
-            let selectedCard = cardCollectionView.cellForItem(at: selectedCardIPath) as! CopyCardCollectionViewCell
-            let deckName = deck?.value(forKey: "deckName") as! String
-            if let newName = selectedCard.cardLabel.text,
+        for selectedCard in selectedCards {
+            let deckName = deck.deckName
+            if let newName = selectedCard.cardName,
             let newDescription = selectedCard.cardDescription,
-            let newImage = selectedCard.cardImageView.image?.pngData() {
+            let newImage = selectedCard.cardImage {
                 
                 // Firebase
                 var ref: DatabaseReference!
@@ -71,17 +118,22 @@ class CopyCardViewController: UIViewController, UICollectionViewDelegate, UIColl
     // Handles the selection
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         cardCollectionView.deselectItem(at: indexPath, animated: true)
-        let indexOfSelected = selectedCards.firstIndex(of:indexPath)
-        if (indexOfSelected != nil) {
-            selectedCards.remove(at: indexOfSelected!)
-            let cell = cardCollectionView.cellForItem(at: indexPath) as! CopyCardCollectionViewCell
-            CoreGraphicsHelper.removeSelectedImageBorder(imageView: cell.cardImageView)
+        let selectedCard: Card!
+        if isFiltering() {
+            selectedCard = filteredCards[indexPath.item]
+        } else {
+            selectedCard = cards[indexPath.item]
+        }
+        let indexOfSelectedCard = selectedCards.firstIndex(where: {(card: Card) in
+            card == selectedCard
+        })
+        if (indexOfSelectedCard != nil) {
+            selectedCards.remove(at: indexOfSelectedCard!)
 
         } else {
-            selectedCards.append(indexPath)
-            let cell = cardCollectionView.cellForItem(at: indexPath) as! CopyCardCollectionViewCell
-            CoreGraphicsHelper.createSelectedImageBorder(imageView: cell.cardImageView)
+            selectedCards.append(selectedCard)
         }
+        cardCollectionView.reloadData()
     }
     
     // code to dismiss keyboard when user clicks on background
