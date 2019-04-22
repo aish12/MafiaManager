@@ -28,6 +28,9 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var deckDetailTextView: UITextView!
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if isFiltering() {
+            return filteredCards.count + 1
+        }
         return cards.count + 1
     }
     
@@ -47,7 +50,12 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
             let cardCell = collectionView.dequeueReusableCell(withReuseIdentifier: cardCellIdentifier, for: indexPath as IndexPath) as! CardCellCollectionViewCell
             
             // The index of the card in decks is item - 1 to account for the "new card" button being item 0
-            let card = cards[indexPath.item - 1]
+            var card: Card!
+            if isFiltering() {
+                card = filteredCards[indexPath.item - 1]
+            } else {
+                card = cards[indexPath.item - 1]
+            }
             cardCell.cardNameLabel.text = card.value(forKey: "cardName") as? String
             cardCell.cardCellImageView.image = UIImage(data: card.value(forKey: "cardImage") as! Data)
             cardCell.cardCellImageView.layer.cornerRadius = 10
@@ -117,7 +125,9 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
         cardSearchController.searchResultsUpdater = self
         cardSearchController.obscuresBackgroundDuringPresentation = false
         cardSearchController.searchBar.placeholder = "Search Cards"
+        navbar.searchController = cardSearchController
         navigationItem.searchController = cardSearchController
+        navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
     }
     
