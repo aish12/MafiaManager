@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import Firebase
 
-class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, updateDeckDetailDelegate, AddCardDelegate, DeleteCardDelegate {
+class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchResultsUpdating, updateDeckDetailDelegate, AddCardDelegate, DeleteCardDelegate {
     
     @IBOutlet weak var cardsCollectionView: UICollectionView!
     
@@ -19,6 +19,8 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
     var inEditMode: Bool = false
     var cards: [Card] = []
     weak var decksCollectionView: UICollectionView?
+    var cardSearchController = UISearchController(searchResultsController: nil)
+    var filteredCards: [Card] = []
     var deckIPath: NSIndexPath?
     var deckObject: Deck!
     var editNavBarItem:UIBarButtonItem!
@@ -79,6 +81,26 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
         cardsCollectionView.deselectItem(at: indexPath, animated: true)
     }
     
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    func isFiltering() -> Bool {
+        return cardSearchController.isActive && !searchBarIsEmpty()
+    }
+    
+    func searchBarIsEmpty() -> Bool {
+        // Returns true if the text is empty or nil
+        return cardSearchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        filteredCards = cards.filter({( card : Card) -> Bool in
+            return card.cardName!.lowercased().contains(searchText.lowercased())
+        })
+        
+        cardsCollectionView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +113,12 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
         cardsCollectionView.dataSource = self
         cardsCollectionView.delegate = self
         loadCards()
+        
+        cardSearchController.searchResultsUpdater = self
+        cardSearchController.obscuresBackgroundDuringPresentation = false
+        cardSearchController.searchBar.placeholder = "Search Cards"
+        navigationItem.searchController = cardSearchController
+        definesPresentationContext = true
     }
     
     // Retrieves the cards data from core data and reloads the Collection View's data with this

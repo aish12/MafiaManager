@@ -1133,15 +1133,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <searchBar contentMode="redraw" placeholder="Search for cards in this deck!" translatesAutoresizingMaskIntoConstraints="NO" id="pjh-gU-76r">
-                                <rect key="frame" x="0.0" y="212" width="414" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="anC-0n-0wL"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DXH-sw-7aU">
-                                <rect key="frame" x="0.0" y="268" width="414" height="501"/>
+                                <rect key="frame" x="0.0" y="212" width="414" height="557"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qo6-cO-cqJ">
                                     <size key="itemSize" width="100" height="110"/>
@@ -1216,19 +1209,15 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="DXH-sw-7aU" firstAttribute="top" secondItem="pjh-gU-76r" secondAttribute="bottom" id="12K-UN-Pg8"/>
-                            <constraint firstItem="pjh-gU-76r" firstAttribute="trailing" secondItem="B64-uA-zb4" secondAttribute="trailing" id="76c-vr-QkE"/>
                             <constraint firstItem="B64-uA-zb4" firstAttribute="bottom" secondItem="DXH-sw-7aU" secondAttribute="bottom" constant="44" id="DPf-it-IYj"/>
-                            <constraint firstItem="pjh-gU-76r" firstAttribute="centerX" secondItem="Kvv-iO-Vkc" secondAttribute="centerX" id="J3R-VD-PM7"/>
-                            <constraint firstItem="pjh-gU-76r" firstAttribute="top" secondItem="UwS-MO-qan" secondAttribute="bottom" constant="16" id="J4O-nf-7x0"/>
                             <constraint firstItem="DXH-sw-7aU" firstAttribute="leading" secondItem="B64-uA-zb4" secondAttribute="leading" id="N0k-gc-qDG"/>
-                            <constraint firstItem="pjh-gU-76r" firstAttribute="leading" secondItem="B64-uA-zb4" secondAttribute="leading" id="RB2-jo-xTJ"/>
                             <constraint firstItem="UwS-MO-qan" firstAttribute="centerX" secondItem="Kvv-iO-Vkc" secondAttribute="centerX" id="Tpk-dz-XQs"/>
                             <constraint firstItem="DXH-sw-7aU" firstAttribute="trailing" secondItem="B64-uA-zb4" secondAttribute="trailing" id="TuG-ML-QEN"/>
                             <constraint firstItem="UwS-MO-qan" firstAttribute="leading" secondItem="B64-uA-zb4" secondAttribute="leading" constant="16" id="Wfs-Uc-y2O"/>
                             <constraint firstItem="UwS-MO-qan" firstAttribute="top" secondItem="B64-uA-zb4" secondAttribute="top" constant="16" id="XnP-uF-7lQ"/>
                             <constraint firstItem="DXH-sw-7aU" firstAttribute="centerX" secondItem="Kvv-iO-Vkc" secondAttribute="centerX" id="aOI-8G-DX9"/>
                             <constraint firstItem="B64-uA-zb4" firstAttribute="trailing" secondItem="UwS-MO-qan" secondAttribute="trailing" constant="16" id="kDl-a6-u6i"/>
+                            <constraint firstItem="DXH-sw-7aU" firstAttribute="top" secondItem="UwS-MO-qan" secondAttribute="bottom" constant="16" id="pXx-LM-BjI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="B64-uA-zb4"/>
                     </view>
