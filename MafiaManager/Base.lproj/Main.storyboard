@@ -24,15 +24,8 @@
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <searchBar contentMode="redraw" placeholder="Search for decks" translatesAutoresizingMaskIntoConstraints="NO" id="4fq-7F-526">
-                                <rect key="frame" x="0.0" y="119" width="414" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="U4F-07-aFo"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="h9b-9I-vwb">
-                                <rect key="frame" x="0.0" y="175" width="414" height="638"/>
+                                <rect key="frame" x="0.0" y="143" width="414" height="670"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pIj-Bd-ibK">
                                     <size key="itemSize" width="100" height="110"/>
@@ -109,12 +102,9 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="91N-OF-eIu" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="8" id="3WM-Sf-RXa"/>
-                            <constraint firstItem="4fq-7F-526" firstAttribute="top" secondItem="91N-OF-eIu" secondAttribute="bottom" constant="8" id="9Fr-Ot-kOo"/>
-                            <constraint firstItem="4fq-7F-526" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="CUz-6V-iQY"/>
-                            <constraint firstItem="h9b-9I-vwb" firstAttribute="top" secondItem="4fq-7F-526" secondAttribute="bottom" id="JGZ-63-0eJ"/>
-                            <constraint firstItem="4fq-7F-526" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="R5g-96-rzG"/>
                             <constraint firstItem="h9b-9I-vwb" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="T3n-ak-XxP"/>
                             <constraint firstItem="h9b-9I-vwb" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="UYG-vk-cU1"/>
+                            <constraint firstItem="h9b-9I-vwb" firstAttribute="top" secondItem="91N-OF-eIu" secondAttribute="bottom" constant="32" id="f93-Ly-waf"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="h9b-9I-vwb" secondAttribute="bottom" id="g88-bl-RjQ"/>
                             <constraint firstItem="91N-OF-eIu" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="ySO-0i-xnK"/>
                         </constraints>
@@ -129,7 +119,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="decksCollectionView" destination="h9b-9I-vwb" id="l7H-qp-Hdj"/>
-                        <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="K9C-eb-2QG"/>
+                        <outlet property="searchDisplayController" destination="86g-80-W1N" id="5Pi-rj-jFA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -139,6 +129,14 @@
                         <outlet property="searchContentsController" destination="9pv-A4-QxB" id="ikP-nN-oV4"/>
                         <outlet property="searchResultsDataSource" destination="9pv-A4-QxB" id="hvr-yf-4tD"/>
                         <outlet property="searchResultsDelegate" destination="9pv-A4-QxB" id="zIx-gK-NaN"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="86g-80-W1N">
+                    <connections>
+                        <outlet property="delegate" destination="9pv-A4-QxB" id="L7N-56-a7a"/>
+                        <outlet property="searchContentsController" destination="9pv-A4-QxB" id="nBK-MY-KlV"/>
+                        <outlet property="searchResultsDataSource" destination="9pv-A4-QxB" id="TVK-Rs-HHU"/>
+                        <outlet property="searchResultsDelegate" destination="9pv-A4-QxB" id="TEX-xg-cHR"/>
                     </connections>
                 </searchDisplayController>
             </objects>
@@ -717,7 +715,7 @@
                     <connections>
                         <outlet property="decksCollectionView" destination="JXm-b7-mjf" id="tlM-c5-bw8"/>
                         <outlet property="nextButton" destination="mH8-IT-yek" id="RuF-1j-njt"/>
-                        <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="ddI-fG-bQM"/>
+                        <outlet property="searchDisplayController" destination="Vcg-tn-3f8" id="b5y-D2-CeH"/>
                         <segue destination="zXX-Gg-pNt" kind="popoverPresentation" identifier="fromDeckSelectToDeckDetail" popoverAnchorView="LlK-mY-3QC" id="pay-7Q-lAb">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
@@ -730,6 +728,14 @@
                         <outlet property="searchContentsController" destination="jaa-no-Yze" id="k4a-S2-U5S"/>
                         <outlet property="searchResultsDataSource" destination="jaa-no-Yze" id="ndk-q0-DHO"/>
                         <outlet property="searchResultsDelegate" destination="jaa-no-Yze" id="yiL-Qb-eyL"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="Vcg-tn-3f8">
+                    <connections>
+                        <outlet property="delegate" destination="jaa-no-Yze" id="1hX-4N-a85"/>
+                        <outlet property="searchContentsController" destination="jaa-no-Yze" id="pUE-Mc-F6N"/>
+                        <outlet property="searchResultsDataSource" destination="jaa-no-Yze" id="c6O-6W-YLy"/>
+                        <outlet property="searchResultsDelegate" destination="jaa-no-Yze" id="0RL-8v-KS4"/>
                     </connections>
                 </searchDisplayController>
             </objects>
@@ -2310,6 +2316,6 @@
         <image name="helpIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rDd-hE-V4G"/>
+        <segue reference="l60-1W-HGq"/>
     </inferredMetricsTieBreakers>
 </document>

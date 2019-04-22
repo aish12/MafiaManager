@@ -11,9 +11,11 @@ import UIKit
 import CoreData
 import Firebase
 
-class DecksViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, AddDeckDelegate, DeleteDeckDelegate {
+class DecksViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchResultsUpdating, AddDeckDelegate, DeleteDeckDelegate {
 
     @IBOutlet weak var decksCollectionView: UICollectionView!
+    var deckSearchController = UISearchController(searchResultsController: nil)
+    var filteredDecks: [Deck] = []
     let deckCellIdentifier = "DeckCell"
     let addDeckCellIdentifier = "NewDeckCell"
     var decks: [Deck] = []
@@ -32,11 +34,20 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
         decksCollectionView.dataSource = self
         decksCollectionView.delegate = self
         loadDecks()
+        
+        deckSearchController.searchResultsUpdater = self
+        deckSearchController.obscuresBackgroundDuringPresentation = false
+        deckSearchController.searchBar.placeholder = "Search Decks"
+        navigationItem.searchController = deckSearchController
+        definesPresentationContext = true
     }
     
     // Returns the number of items in the decks collection. Returns the number of decks + 1 to
     // account for the "new deck" button
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if isFiltering() {
+            return filteredDecks.count + 1
+        }
         return decks.count + 1
     }
     
@@ -57,7 +68,12 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
             let deckCell = collectionView.dequeueReusableCell(withReuseIdentifier: deckCellIdentifier, for: indexPath as IndexPath) as! DeckCellCollectionViewCell
             
             // The index of the deck in decks is item - 1 to account for the "new deck" button being item 0
-            let deck = decks[indexPath.item - 1]
+            var deck: Deck!
+            if isFiltering() {
+                deck = filteredDecks[indexPath.item - 1]
+            } else {
+                deck = decks[indexPath.item - 1]
+            }
             deckCell.deckNameLabel.text = deck.deckName
             deckCell.deckCellImageView.image = UIImage(data: deck.deckImage!)
             deckCell.deckCellImageView.layer.cornerRadius = 10
@@ -80,6 +96,27 @@ class DecksViewController: UIViewController, UICollectionViewDataSource, UIColle
             abort()
         }
         return cell
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    func isFiltering() -> Bool {
+        return deckSearchController.isActive && !searchBarIsEmpty()
+    }
+    
+    func searchBarIsEmpty() -> Bool {
+        // Returns true if the text is empty or nil
+        return deckSearchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        filteredDecks = decks.filter({( deck : Deck) -> Bool in
+            return deck.deckName!.lowercased().contains(searchText.lowercased())
+        })
+        
+        decksCollectionView.reloadData()
     }
     
     // If an item is selected, deselect it since we do not implement "selected" traits
