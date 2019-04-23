@@ -35,18 +35,61 @@ class LoadingWelcomeViewController: UIViewController {
             // Check if has deck names
             if (snapshot.hasChild("decks")) {
                 // it exists! So do core data logic by setting up the decks child in Firebase
-                //ref.child("users").child(userID).updateChildValues("decks")
-                // TODO check if this works when it actually has stuff
-                
+                // Get a snapshot for the decks
+                ref.child("users").child(userID).child("decks").observeSingleEvent(of: .value, with: { (snapshot1) in
+                    let enumerator = snapshot1.children
+                    var deckNameSnapshot: String = ""
+                    var deckDescSnapshot: String = ""
+                    var deckImageSnapshot: String = ""
+                    while let rest = enumerator.nextObject() as? DataSnapshot {
+                        // The deck name
+                        let sub: Substring = rest.key.split(separator: ":")[1]
+                        deckNameSnapshot = String(sub)
+                        
+                        // Go through the values and don't know which is which
+                        let vals = rest.value as! NSDictionary
+                        deckDescSnapshot = (vals["deckDescription"] as! String)
+                        deckImageSnapshot = (vals["deckImage"] as! String)
+                        let deckImageData = NSData(base64Encoded: deckImageSnapshot, options: .ignoreUnknownCharacters)
+                        let newDeck = CoreDataHelper.addDeck(newName: deckNameSnapshot, newDescription: deckDescSnapshot, newImage: deckImageData! as Data)
+                        
+                        // Go through the cards too
+                        if vals["cards"] != nil {
+                            ref.child("users").child(userID).child("decks").child("deckName:\(deckNameSnapshot)").child("cards").observeSingleEvent(of: .value, with: { (snapshot2) in
+                                let enumeratorCards = snapshot2.children
+                                var cardNameSnapshot: String = ""
+                                var cardDescSnapshot: String = ""
+                                var cardImageSnapshot: String = ""
+                                while let cards = enumeratorCards.nextObject() as? DataSnapshot {
+                                    // The card name
+                                    let subCard: Substring = cards.key.split(separator: ":")[1]
+                                    print(subCard)
+                                    cardNameSnapshot = String(subCard)
+                                    
+                                    // Go through the values and don't know which is which
+                                    let cardVals = cards.value as! NSDictionary
+                                    cardDescSnapshot = (cardVals["cardDescription"] as! String)
+                                    cardImageSnapshot = (cardVals["cardImage"] as! String)
+                                    let cardImageData = NSData(base64Encoded: cardImageSnapshot, options: .ignoreUnknownCharacters)
+                                    let newCard = CoreDataHelper.addCard(deck: newDeck, newName: cardNameSnapshot, newDescription: cardDescSnapshot, newImage: cardImageData! as Data)
+                                    
+                                }
+                            }) { (error2) in
+                                print(error2.localizedDescription)
+                            }
+                        }
+                    }
+                    
+                }) { (error1) in
+                    print(error1.localizedDescription)
+                }
             }else{
                 // does not exist
             }
-            
-            (UIApplication.shared.delegate as! AppDelegate).username = (value["Name"] as? String) ?? "user"
         }) { (error) in
             print(error.localizedDescription)
         }
-       
+        
         // Transitions after a few seconds to the first VC (deck management)
         Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { timer in
             let homeView = self.storyboard?.instantiateViewController(withIdentifier: "tabBarSegueIdentifier") as! TabBarViewController
