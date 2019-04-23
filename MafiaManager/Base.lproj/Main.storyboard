@@ -1946,6 +1946,9 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="left" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5Qy-9o-qee">
                                 <rect key="frame" x="333" y="120" width="51" height="31"/>
+                                <connections>
+                                    <action selector="mutedSwitchPressed:" destination="dNu-fC-IOV" eventType="valueChanged" id="dwU-kr-5fj"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default Timer Length" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iV4-ue-aIG">
                                 <rect key="frame" x="0.0" y="184" width="414" height="20.5"/>
@@ -2019,6 +2022,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="minutePicker" destination="kXz-mL-bIk" id="iz2-4u-oMJ"/>
+                        <outlet property="mutedSwitch" destination="5Qy-9o-qee" id="FE3-gB-6fv"/>
                         <outlet property="searchDisplayController" destination="lFg-HK-m3x" id="oPE-Sb-dds"/>
                         <outlet property="secondPicker" destination="0Pm-Bt-q7p" id="spC-8t-WQI"/>
                     </connections>

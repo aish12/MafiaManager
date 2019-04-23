@@ -32,7 +32,16 @@ class TimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         secondPicker.dataSource = self
         secondPicker.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(timerTick), name: NSNotification.Name("timerTick"), object: nil)
+        setTimerToDefault()
         formatButtons()
+    }
+    
+    func setTimerToDefault() {
+        let defaultTimerLength = UserDefaults.standard.integer(forKey: "defaultTimerLength")
+        let defaultMinuteValue = defaultTimerLength / 60
+        let defaultSecondValue = defaultTimerLength % 60
+        minutePicker.selectRow(defaultMinuteValue, inComponent: 0, animated: true)
+        secondPicker.selectRow(defaultSecondValue, inComponent: 0, animated: true)
     }
     
     func formatButtons(){
@@ -57,6 +66,7 @@ class TimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                 CoreGraphicsHelper.styleButton(button: pauseButton, buttonClass: CoreGraphicsHelper.Class.Warning)
             }
         } else {
+            setTimerToDefault()
             pickerStackView.isHidden = false
             startButton.isHidden = false
             countdownLabel.isHidden = true
