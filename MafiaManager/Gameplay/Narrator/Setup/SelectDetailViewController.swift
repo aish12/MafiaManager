@@ -8,19 +8,25 @@
 
 import UIKit
 
-class SelectDetailViewController: UIViewController {
+class SelectDetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     @IBOutlet weak var deckImageView: UIImageView!
     @IBOutlet weak var deckDetailView: UITextView!
     @IBOutlet weak var navBar: UINavigationBar!
+    @IBOutlet weak var cardCollectionView: UICollectionView!
     
     var deck: Deck?
+    var cards: [Card] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         deckImageView.image = UIImage(data: (deck?.deckImage)!)
         deckDetailView.text = deck?.deckDescription
         navBar.topItem!.title = deck?.deckName
-        
+        cards = CoreDataHelper.retrieveCards(deck: deck)
+        cardCollectionView.reloadData()
+        cardCollectionView.delegate = self
+        cardCollectionView.dataSource = self
         CoreGraphicsHelper.shadeTextViews(textView: deckDetailView)
     }
     
@@ -28,14 +34,17 @@ class SelectDetailViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return cards.count
     }
-    */
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cardCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SetupDeckDetailCell", for: indexPath as IndexPath) as! SetupDeckDetailCell
+        let card = cards[indexPath.item]
+        cardCell.cardImageView.image = UIImage(data: card.cardImage!)!
+        cardCell.cardNameLabel.text = card.cardName
+        print(cardCell)
+        return cardCell
+    }
 
 }

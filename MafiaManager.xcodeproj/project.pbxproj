@@ -35,6 +35,7 @@
 		7BE7DAAE224C165A00E267CA /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE7DAAD224C165A00E267CA /* PlayViewController.swift */; };
 		7BEA9F51225A7302005FBDE7 /* JoinGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA9F50225A7302005FBDE7 /* JoinGameViewController.swift */; };
 		7BEA9F58225A79F2005FBDE7 /* MPCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA9F57225A79F2005FBDE7 /* MPCManager.swift */; };
+		7BF5BFF5226E99E000A7EECF /* SetupDeckDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF5BFF4226E99E000A7EECF /* SetupDeckDetailCell.swift */; };
 		7BF7AF0D22666D3F0013D96B /* GlobalTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF7AF0C22666D3F0013D96B /* GlobalTimer.swift */; };
 		8F974F8D37A5B79031110456 /* Pods_MafiaManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3736DE08530B5A6DD9C82E73 /* Pods_MafiaManager.framework */; };
 		BD8A829E226952590075BA0A /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8A829D226952590075BA0A /* CoreDataHelper.swift */; };
@@ -90,6 +91,7 @@
 		7BE7DAAD224C165A00E267CA /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		7BEA9F50225A7302005FBDE7 /* JoinGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameViewController.swift; sourceTree = "<group>"; };
 		7BEA9F57225A79F2005FBDE7 /* MPCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCManager.swift; sourceTree = "<group>"; };
+		7BF5BFF4226E99E000A7EECF /* SetupDeckDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupDeckDetailCell.swift; sourceTree = "<group>"; };
 		7BF7AF0C22666D3F0013D96B /* GlobalTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalTimer.swift; sourceTree = "<group>"; };
 		BD8A829D226952590075BA0A /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		BF01BDCD22487FA200C883D8 /* DecksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecksViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				7B32DF3D225A39CC00F0072B /* RoleQuantityViewController.swift */,
 				7B32DF3F225A3E7900F0072B /* RoleQuantityTableViewCell.swift */,
 				7B32DF41225A5A0100F0072B /* WaitForPlayersViewController.swift */,
+				7BF5BFF4226E99E000A7EECF /* SetupDeckDetailCell.swift */,
 			);
 			path = Setup;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				7B8B9A622255644D002260E9 /* AppDelegate.swift in Sources */,
 				7B8EF7512254180500816B5F /* MafiaManager.xcdatamodeld in Sources */,
 				7B4F1AD0224B26E60038225D /* RecordWinnersViewController.swift in Sources */,
+				7BF5BFF5226E99E000A7EECF /* SetupDeckDetailCell.swift in Sources */,
 				F618EE8122488DE500E32DA5 /* TabBarViewController.swift in Sources */,
 				7B146516224ACFEF00241B00 /* NewDeckViewController.swift in Sources */,
 				BF01BDD022487FB800C883D8 /* PlayerViewController.swift in Sources */,
