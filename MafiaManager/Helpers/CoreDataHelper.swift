@@ -125,4 +125,54 @@ class CoreDataHelper: NSObject {
             abort()
         }
     }
+    
+    static func clearAllData() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let requestDeck = NSFetchRequest<NSFetchRequestResult>(entityName:
+            "Deck")
+        var fetchedDecks:[NSManagedObject]
+        
+        do {
+            try fetchedDecks = context.fetch(requestDeck) as! [NSManagedObject]
+           
+            if fetchedDecks.count > 0 {
+                
+                for result:AnyObject in fetchedDecks {
+                    context.delete(result as! NSManagedObject)
+                }
+            }
+            try context.save()
+        
+        } catch {
+            // If an error occurs
+            let nserror = error as NSError
+            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+            abort()
+        }
+        
+        let requestCards = NSFetchRequest<NSFetchRequestResult>(entityName:
+            "Card")
+        var fetchedCards:[NSManagedObject]
+        
+        do {
+            try fetchedCards = context.fetch(requestCards) as! [NSManagedObject]
+            print(fetchedCards)
+            
+            if fetchedCards.count > 0 {
+                
+                for result:AnyObject in fetchedCards {
+                    context.delete(result as! NSManagedObject)
+                }
+            }
+            try context.save()
+            
+        } catch {
+            // If an error occurs
+            let nserror = error as NSError
+            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+            abort()
+        }
+    }
 }

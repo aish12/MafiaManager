@@ -21,7 +21,10 @@ class LoadingWelcomeViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         mafiaUserImage.image = UIImage(named: "WelcomeLoadingPicture")
-        
+    
+        // Clear data first so theres no duplicate downloading from Firebase
+        CoreDataHelper.clearAllData()
+    
         var ref: DatabaseReference!
         ref = Database.database().reference()
         let userID = Auth.auth().currentUser!.uid
@@ -29,7 +32,6 @@ class LoadingWelcomeViewController: UIViewController {
         ref.child("users").child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as! NSDictionary
-            //print(value)
             self.usersNameLabel.text = value["Name"] as? String
             
             // Check if has deck names
@@ -86,6 +88,7 @@ class LoadingWelcomeViewController: UIViewController {
             }else{
                 // does not exist
             }
+ 
         }) { (error) in
             print(error.localizedDescription)
         }
