@@ -27,11 +27,20 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         secondPicker.dataSource = self
         secondPicker.delegate = self
         // Do any additional setup after loading the view.
+        setTimerToDefault()
     }
     
     // For both minute and second, they only have one component, always return 1
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
+    }
+    
+    func setTimerToDefault() {
+        let defaultTimerLength = UserDefaults.standard.integer(forKey: "defaultTimerLength")
+        let defaultMinuteValue = defaultTimerLength / 60
+        let defaultSecondValue = defaultTimerLength % 60
+        minutePicker.selectRow(defaultMinuteValue, inComponent: 0, animated: true)
+        secondPicker.selectRow(defaultSecondValue, inComponent: 0, animated: true)
     }
     
     // Determine which picker is being used, then return the count of its data source
