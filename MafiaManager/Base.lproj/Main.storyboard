@@ -637,7 +637,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JXm-b7-mjf">
-                                <rect key="frame" x="0.0" y="174.5" width="414" height="638.5"/>
+                                <rect key="frame" x="0.0" y="110.5" width="414" height="702.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="06x-lH-tEh">
                                     <size key="itemSize" width="100" height="110"/>
@@ -682,25 +682,14 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Oem-a8-9F2">
-                                <rect key="frame" x="0.0" y="118.5" width="414" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="bAF-lQ-ccs"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="JXm-b7-mjf" firstAttribute="trailing" secondItem="lb8-Fa-gVD" secondAttribute="trailing" id="7Va-mV-NzN"/>
-                            <constraint firstItem="Oem-a8-9F2" firstAttribute="centerX" secondItem="LlK-mY-3QC" secondAttribute="centerX" id="Gep-N8-vFw"/>
+                            <constraint firstItem="JXm-b7-mjf" firstAttribute="top" secondItem="ZJC-Ls-Prc" secondAttribute="bottom" id="9er-Jg-mrs"/>
                             <constraint firstItem="lb8-Fa-gVD" firstAttribute="bottom" secondItem="JXm-b7-mjf" secondAttribute="bottom" id="Q7W-sA-klx"/>
                             <constraint firstItem="JXm-b7-mjf" firstAttribute="leading" secondItem="lb8-Fa-gVD" secondAttribute="leading" id="TcM-rP-56G"/>
                             <constraint firstItem="ZJC-Ls-Prc" firstAttribute="centerX" secondItem="LlK-mY-3QC" secondAttribute="centerX" id="b6l-OE-OBz"/>
-                            <constraint firstItem="Oem-a8-9F2" firstAttribute="leading" secondItem="lb8-Fa-gVD" secondAttribute="leading" id="bbI-Wa-S8Z"/>
-                            <constraint firstItem="Oem-a8-9F2" firstAttribute="top" secondItem="ZJC-Ls-Prc" secondAttribute="bottom" constant="8" id="ikk-Pt-nui"/>
-                            <constraint firstItem="JXm-b7-mjf" firstAttribute="top" secondItem="Oem-a8-9F2" secondAttribute="bottom" id="onw-73-xew"/>
-                            <constraint firstItem="Oem-a8-9F2" firstAttribute="trailing" secondItem="lb8-Fa-gVD" secondAttribute="trailing" id="p7y-in-mfi"/>
                             <constraint firstItem="ZJC-Ls-Prc" firstAttribute="top" secondItem="lb8-Fa-gVD" secondAttribute="top" constant="8" id="rvd-Kv-7l7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lb8-Fa-gVD"/>

@@ -9,11 +9,15 @@
 import UIKit
 import CoreData
 
-class DeckSelectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIPopoverPresentationControllerDelegate {
+class DeckSelectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchResultsUpdating,UIPopoverPresentationControllerDelegate {
     
-    var deckObjects: [Deck] = []
+    
+    var decks: [Deck] = []
     var deckToShowDetail: Deck?
     let deckSelectReuseIdentifier: String = "DeckSelectCell"
+    var deckSearchController = UISearchController(searchResultsController: nil)
+    var filteredDecks: [Deck] = []
+    var selectedDeck: Deck?
     @IBOutlet weak var decksCollectionView: UICollectionView!
     @IBOutlet weak var nextButton: UIBarButtonItem!
     
@@ -27,6 +31,12 @@ class DeckSelectionViewController: UIViewController, UICollectionViewDelegate, U
         longPressGR.delaysTouchesBegan = true
         self.decksCollectionView.addGestureRecognizer(longPressGR)
         loadDecks()
+        
+        deckSearchController.searchResultsUpdater = self
+        deckSearchController.obscuresBackgroundDuringPresentation = false
+        deckSearchController.searchBar.placeholder = "Search Decks"
+        navigationItem.searchController = deckSearchController
+        definesPresentationContext = true
     }
     
     override func viewDidAppear(_ animated: Bool){
@@ -35,18 +45,26 @@ class DeckSelectionViewController: UIViewController, UICollectionViewDelegate, U
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return deckObjects.count
+        if isFiltering() {
+            return filteredDecks.count
+        }
+        return decks.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: deckSelectReuseIdentifier, for: indexPath as IndexPath) as! DeckSelectionCollectionViewCell
-        let deck = deckObjects[indexPath.item]
+        var deck: Deck!
+        if isFiltering() {
+            deck = filteredDecks[indexPath.item]
+        } else {
+            deck = decks[indexPath.item]
+        }
         cell.deckLabel.text = deck.value(forKey: "deckName") as? String
         cell.deckImageView.image = UIImage(data: deck.value(forKey: "deckImage") as! Data)
         cell.deckImageView.layer.cornerRadius = 10
         cell.deckImageView.layer.masksToBounds = true
-        let selectedCells = decksCollectionView.indexPathsForSelectedItems
-        if selectedCells!.count > 0, selectedCells![0] == indexPath {
+    
+        if selectedDeck == deck {
             CoreGraphicsHelper.createSelectedImageBorder(imageView: cell.deckImageView)
         } else {
             CoreGraphicsHelper.removeSelectedImageBorder(imageView: cell.deckImageView)
@@ -55,31 +73,46 @@ class DeckSelectionViewController: UIViewController, UICollectionViewDelegate, U
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        decksCollectionView.deselectItem(at: indexPath, animated: true)
         nextButton.isEnabled = true
-        let selectedCell = decksCollectionView.cellForItem(at: indexPath) as! DeckSelectionCollectionViewCell
-        CoreGraphicsHelper.createSelectedImageBorder(imageView: selectedCell.deckImageView)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        let selectedCell = decksCollectionView.cellForItem(at: indexPath) as! DeckSelectionCollectionViewCell
-        let selectedArr = decksCollectionView.indexPathsForSelectedItems
-        if (selectedArr?.count)! > 0, indexPath == selectedArr![0] {
-            nextButton.isEnabled = false
-            CoreGraphicsHelper.removeSelectedImageBorder(imageView: selectedCell.deckImageView)
-            decksCollectionView.deselectItem(at: indexPath, animated: true)
-            return false
+        var selectedDeck: Deck!
+        if isFiltering() {
+            selectedDeck = filteredDecks[indexPath.item]
+        } else {
+            selectedDeck = decks[indexPath.item]
         }
-        return true
+        if self.selectedDeck == selectedDeck {
+            self.selectedDeck = nil
+        } else {
+            self.selectedDeck = selectedDeck
+        }
+        decksCollectionView.reloadData()
     }
     
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let selectedCell = decksCollectionView.cellForItem(at: indexPath) as! DeckSelectionCollectionViewCell
-        CoreGraphicsHelper.removeSelectedImageBorder(imageView: selectedCell.deckImageView)
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    func isFiltering() -> Bool {
+        return deckSearchController.isActive && !searchBarIsEmpty()
+    }
+    
+    func searchBarIsEmpty() -> Bool {
+        // Returns true if the text is empty or nil
+        return deckSearchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        filteredDecks = decks.filter({( deck : Deck) -> Bool in
+            return deck.deckName!.lowercased().contains(searchText.lowercased())
+        })
+        
+        decksCollectionView.reloadData()
     }
     
     // Retrieves the decks data from core data and reloads the Collection View's data with this
     func loadDecks() {
-        deckObjects = CoreDataHelper.retrieveDecks()
+        decks = CoreDataHelper.retrieveDecks()
         let selectedCell: IndexPath? = decksCollectionView.indexPathsForSelectedItems!.count > 0 ? decksCollectionView.indexPathsForSelectedItems![0] : nil
         decksCollectionView.reloadData()
         if selectedCell != nil {
@@ -95,7 +128,7 @@ class DeckSelectionViewController: UIViewController, UICollectionViewDelegate, U
         let point = longPressGR.location(in: self.decksCollectionView)
         let indexPath = self.decksCollectionView.indexPathForItem(at: point)
         if let indexPath = indexPath {
-            deckToShowDetail = deckObjects[indexPath.item]
+            deckToShowDetail = decks[indexPath.item]
             performSegue(withIdentifier: "fromDeckSelectToDeckDetail", sender: self)
         } else {
             print("Could not find indexPath")
@@ -117,8 +150,7 @@ class DeckSelectionViewController: UIViewController, UICollectionViewDelegate, U
             }
         } else if segue.identifier == "fromDeckSelectToRoleQuantity" {
             if let destinationVC = segue.destination as? RoleQuantityViewController {
-                let deck: Deck = deckObjects[decksCollectionView.indexPathsForSelectedItems![0].item]
-                destinationVC.deck = deck
+                destinationVC.deck = selectedDeck
             }
         }
     }
