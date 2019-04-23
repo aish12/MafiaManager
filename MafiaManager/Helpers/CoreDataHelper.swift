@@ -158,7 +158,6 @@ class CoreDataHelper: NSObject {
         
         do {
             try fetchedCards = context.fetch(requestCards) as! [NSManagedObject]
-            print(fetchedCards)
             
             if fetchedCards.count > 0 {
                 

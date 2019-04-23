@@ -49,6 +49,7 @@
 		BFFDFE5B223845170033F15B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFDFE59223845170033F15B /* LaunchScreen.storyboard */; };
 		F618EE8122488DE500E32DA5 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618EE8022488DE500E32DA5 /* TabBarViewController.swift */; };
 		F64DF7C3224B000000513FD7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F64DF7C2224B000000513FD7 /* GoogleService-Info.plist */; };
+		F691B66E226F985200115AB1 /* CoreFirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F691B66D226F985200115AB1 /* CoreFirebaseHelper.swift */; };
 		F6A22D4722571E2B000F694B /* EditDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A22D4622571E2B000F694B /* EditDeckViewController.swift */; };
 		F6B2E13C2257D2AA00EFB394 /* CardCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B2E13B2257D2AA00EFB394 /* CardCellCollectionViewCell.swift */; };
 		F6B2E13E2257D2B900EFB394 /* NewCardCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B2E13D2257D2B900EFB394 /* NewCardCellCollectionViewCell.swift */; };
@@ -107,6 +108,7 @@
 		F2AF33E2E3064D2FD43B2DBF /* Pods-MafiaManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MafiaManager.release.xcconfig"; path = "Target Support Files/Pods-MafiaManager/Pods-MafiaManager.release.xcconfig"; sourceTree = "<group>"; };
 		F618EE8022488DE500E32DA5 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		F64DF7C2224B000000513FD7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F691B66D226F985200115AB1 /* CoreFirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreFirebaseHelper.swift; sourceTree = "<group>"; };
 		F6A22D4622571E2B000F694B /* EditDeckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDeckViewController.swift; sourceTree = "<group>"; };
 		F6B2E13B2257D2AA00EFB394 /* CardCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		F6B2E13D2257D2B900EFB394 /* NewCardCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCardCellCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				7B32DF3B225A262600F0072B /* CoreGraphicsHelper.swift */,
 				7BEA9F57225A79F2005FBDE7 /* MPCManager.swift */,
 				7BE3D3D0226E562800851E22 /* UITextViewPlaceholder.swift */,
+				F691B66D226F985200115AB1 /* CoreFirebaseHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				7B32DF42225A5A0100F0072B /* WaitForPlayersViewController.swift in Sources */,
 				F6A22D4722571E2B000F694B /* EditDeckViewController.swift in Sources */,
 				F6F54C732244644700F6DFDF /* LoginViewController.swift in Sources */,
+				F691B66E226F985200115AB1 /* CoreFirebaseHelper.swift in Sources */,
 				7B32DF40225A3E7900F0072B /* RoleQuantityTableViewCell.swift in Sources */,
 				7B3121902265498300316E17 /* PlayerSession.swift in Sources */,
 				7B146518224AD68500241B00 /* CreateCardViewController.swift in Sources */,
