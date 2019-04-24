@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 class RoleQuantityViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UpdateQuantityDelegate {
 
@@ -102,6 +103,18 @@ class RoleQuantityViewController: UIViewController, UITableViewDelegate, UITable
             let destinationVC = segue.destination as? WaitForPlayersViewController{
             destinationVC.cardQuantities = self.cardQuantities
             destinationVC.numPlayers = self.numPlayersRequired
+            
+            // Establish this game into Firebase
+            var ref: DatabaseReference!
+            ref = Database.database().reference()
+            
+            let currentDateTime = Date()
+            let formatter = DateFormatter()
+            formatter.timeStyle = .medium
+            formatter.dateStyle = .medium
+            let formattedDateTime = formatter.string(from: currentDateTime)
+            // This person is a narrator, so set role to narrator
+            ref.child("users").child(Auth.auth().currentUser!.uid).child("games").child("\(deck!.deckName ?? ""):\(formattedDateTime)").setValue(["role": "narrator"])
         }
     }
 

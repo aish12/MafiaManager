@@ -109,8 +109,9 @@ class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITab
         self.performSegue(withIdentifier: "fromWaitForPlayersToDashboard", sender: self)
     }
     
-    func setPlayerRole(peerID: MCPeerID, card: Card){
-        let playerCard: [String: Any] = ["assignCard": ["playerName": peerID.displayName, "cardName": card.cardName!, "cardDescription": card.cardDescription!, "cardImage": card.cardImage!]]
+    func setPlayerRole(peerID: MCPeerID, card: Card) {
+        print(card.deckForCard!.deckName!)
+        let playerCard: [String: Any] = ["assignCard": [ "deckName": card.deckForCard!.deckName!, "playerName": peerID.displayName, "cardName": card.cardName!, "cardDescription": card.cardDescription!, "cardImage": card.cardImage!]]
         mpcManager.sendObject(objData: playerCard, peers: [peerID])
     }
     

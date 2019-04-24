@@ -22,6 +22,7 @@ class PlayerViewController: UIViewController {
     var cardName: String?
     var cardDescription: String?
     var cardImage: UIImage?
+    var deckName: String?
     var statusLabelText: String?
     var mpcManager: MPCManager!
     

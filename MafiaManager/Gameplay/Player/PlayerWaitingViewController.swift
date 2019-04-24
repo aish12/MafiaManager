@@ -14,6 +14,7 @@ class PlayerWaitingViewController: UIViewController {
     var cardName: String?
     var cardDescription: String?
     var cardImage: UIImage?
+    var deckName: String?
     var statusText: String?
     
     override func viewDidLoad() {
@@ -30,6 +31,7 @@ class PlayerWaitingViewController: UIViewController {
             self.cardName = cardInfo["cardName"] as? String
             self.cardDescription = cardInfo["cardDescription"] as? String
             self.cardImage = UIImage(data: cardInfo["cardImage"] as! Data)
+            self.deckName = cardInfo["deckName"] as? String
             self.performSegue(withIdentifier: "fromWaitingToPlayer", sender: self)
         }
     }
@@ -44,6 +46,7 @@ class PlayerWaitingViewController: UIViewController {
             destinationVC.cardName = cardName
             destinationVC.cardDescription = cardDescription
             destinationVC.cardImage = cardImage
+            destinationVC.deckName = deckName
             destinationVC.statusLabelText = "Alive"
         }
     }

@@ -99,13 +99,13 @@ class MPCManager: NSObject, MCSessionDelegate {
     }
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-        print("RECEIVING DATA")
         var dataDict: [String: Any] = [:]
         do {
             dataDict = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as! [String: Any]
         } catch {
             abort()
         }
+        print("RECEIVING DATA")
         let objName: String = dataDict.keys[dataDict.keys.startIndex]
         if objName == "disconnect" {
             endGame()
