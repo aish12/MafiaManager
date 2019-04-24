@@ -60,10 +60,7 @@ class MPCManager: NSObject, MCSessionDelegate {
     }
     
     func endGame(){
-        if session != nil {
-            session.disconnect()
-            session = nil
-        }
+        
         if advertiser != nil {
             advertiseSelf(shouldAdvertise: false)
             advertiser = nil
@@ -71,6 +68,10 @@ class MPCManager: NSObject, MCSessionDelegate {
         if browser != nil {
             setupBrowser(shouldBrowse: false)
             browser = nil
+        }
+        if session != nil {
+            session.disconnect()
+            session = nil
         }
         narratorID = nil
         peerID = nil

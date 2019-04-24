@@ -35,6 +35,7 @@ class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITab
         mpcManager = appDelegate.mpcManager!
         mpcManager.setupPeerAndSession()
         if connectedDevices.count < numPlayers {
+            print("In End view did load")
             mpcManager.advertiseSelf(shouldAdvertise: true)
         }
     
@@ -43,6 +44,9 @@ class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     @objc func peerDidChangeStateWithNotification(notification: Notification){
+        if self.mpcManager.session == nil {
+            return
+        }
         let peerID: MCPeerID = notification.userInfo!["peerID"] as! MCPeerID
         let state: MCSessionState = notification.userInfo!["state"] as! MCSessionState
         if state != MCSessionState.connecting {
@@ -70,6 +74,7 @@ class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITab
                 if deviceIndex != nil {
                     connectedDevices.remove(at: deviceIndex!)
                     if connectedDevices.count < numPlayers && mpcManager.advertiser == nil {
+                        print("removing devices")
                         mpcManager.advertiseSelf(shouldAdvertise: true)
                     }
                 }

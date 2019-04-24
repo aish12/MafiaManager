@@ -87,6 +87,7 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
         
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
             self.mpcManager.endGame()
+            print("!@#@#!@")
             self.performSegue(withIdentifier: "fromDashboardToRecordSegue", sender: nil)
         }))
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
