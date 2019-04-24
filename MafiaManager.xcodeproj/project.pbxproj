@@ -44,6 +44,8 @@
 		BF01BDD222487FCA00C883D8 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01BDD122487FCA00C883D8 /* HistoryViewController.swift */; };
 		BF32AF31224AAA1700D32277 /* DeckDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32AF30224AAA1700D32277 /* DeckDetailViewController.swift */; };
 		BF6097CC226FD494002AA0D8 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6097CB226FD494002AA0D8 /* HistoryTableViewCell.swift */; };
+		BF6097CE226FE285002AA0D8 /* HistoryGameDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6097CD226FE285002AA0D8 /* HistoryGameDetailViewController.swift */; };
+		BF6097D0226FE385002AA0D8 /* HistorySingleGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6097CF226FE385002AA0D8 /* HistorySingleGameTableViewCell.swift */; };
 		BF750EA0225DAE6200A92D4A /* RecordWinnerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF750E9F225DAE6200A92D4A /* RecordWinnerTableViewCell.swift */; };
 		BFFDFE56223844C00033F15B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFDFE54223844C00033F15B /* Main.storyboard */; };
 		BFFDFE58223845160033F15B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFFDFE57223845160033F15B /* Assets.xcassets */; };
@@ -101,6 +103,8 @@
 		BF01BDD122487FCA00C883D8 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		BF32AF30224AAA1700D32277 /* DeckDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckDetailViewController.swift; sourceTree = "<group>"; };
 		BF6097CB226FD494002AA0D8 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		BF6097CD226FE285002AA0D8 /* HistoryGameDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryGameDetailViewController.swift; sourceTree = "<group>"; };
+		BF6097CF226FE385002AA0D8 /* HistorySingleGameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySingleGameTableViewCell.swift; sourceTree = "<group>"; };
 		BF750E9F225DAE6200A92D4A /* RecordWinnerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordWinnerTableViewCell.swift; sourceTree = "<group>"; };
 		BFFDFE4B223844C00033F15B /* MafiaManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MafiaManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFFDFE55223844C00033F15B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -195,6 +199,8 @@
 			children = (
 				BF01BDD122487FCA00C883D8 /* HistoryViewController.swift */,
 				BF6097CB226FD494002AA0D8 /* HistoryTableViewCell.swift */,
+				BF6097CD226FE285002AA0D8 /* HistoryGameDetailViewController.swift */,
+				BF6097CF226FE385002AA0D8 /* HistorySingleGameTableViewCell.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -457,6 +463,7 @@
 				7B32DF3C225A262600F0072B /* CoreGraphicsHelper.swift in Sources */,
 				7B4E7101224990D7001395F2 /* AddDeckCell.swift in Sources */,
 				F6B2E142225D2F1500EFB394 /* NarratorDashboardTableViewCell.swift in Sources */,
+				BF6097D0226FE385002AA0D8 /* HistorySingleGameTableViewCell.swift in Sources */,
 				F6B2E144225D40E100EFB394 /* NarratorDetailViewController.swift in Sources */,
 				7B8EF74E22540ABC00816B5F /* ImagePicker.swift in Sources */,
 				F6B2E13E2257D2B900EFB394 /* NewCardCellCollectionViewCell.swift in Sources */,
@@ -483,6 +490,7 @@
 				BD8A829E226952590075BA0A /* CoreDataHelper.swift in Sources */,
 				BF01BDD222487FCA00C883D8 /* HistoryViewController.swift in Sources */,
 				7B921AA622597ACF003A219D /* SelectDetailViewController.swift in Sources */,
+				BF6097CE226FE285002AA0D8 /* HistoryGameDetailViewController.swift in Sources */,
 				BF750EA0225DAE6200A92D4A /* RecordWinnerTableViewCell.swift in Sources */,
 				7BF7AF0D22666D3F0013D96B /* GlobalTimer.swift in Sources */,
 				7B14651A224ADAA200241B00 /* CopyCardViewController.swift in Sources */,

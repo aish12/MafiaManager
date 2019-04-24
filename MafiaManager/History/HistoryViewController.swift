@@ -54,4 +54,13 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "fromHistoryViewToHistoryDetail" {
+            let destinationVC = segue.destination as! HistoryGameDetailViewController
+            
+            let funcIndex = historyTableView.indexPathForSelectedRow?.row
+            destinationVC.winnerName = games[funcIndex!].winner
+        }
+    }
 }
