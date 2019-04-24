@@ -25,7 +25,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="h9b-9I-vwb">
-                                <rect key="frame" x="0.0" y="143" width="414" height="670"/>
+                                <rect key="frame" x="0.0" y="127" width="414" height="686"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pIj-Bd-ibK">
                                     <size key="itemSize" width="100" height="110"/>
@@ -104,7 +104,7 @@
                             <constraint firstItem="91N-OF-eIu" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="8" id="3WM-Sf-RXa"/>
                             <constraint firstItem="h9b-9I-vwb" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="T3n-ak-XxP"/>
                             <constraint firstItem="h9b-9I-vwb" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="UYG-vk-cU1"/>
-                            <constraint firstItem="h9b-9I-vwb" firstAttribute="top" secondItem="91N-OF-eIu" secondAttribute="bottom" constant="32" id="f93-Ly-waf"/>
+                            <constraint firstItem="h9b-9I-vwb" firstAttribute="top" secondItem="91N-OF-eIu" secondAttribute="bottom" constant="16" id="f93-Ly-waf"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="h9b-9I-vwb" secondAttribute="bottom" id="g88-bl-RjQ"/>
                             <constraint firstItem="91N-OF-eIu" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="ySO-0i-xnK"/>
                         </constraints>
@@ -479,7 +479,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="cRM-OF-s3b" kind="show" id="AaJ-1X-NVy"/>
+                                    <action selector="joinGameButtonPressed:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="wYK-6M-kAc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CcT-Gf-mW0">
@@ -518,6 +518,7 @@
                     <connections>
                         <outlet property="narratorButton" destination="CcT-Gf-mW0" id="NgJ-bb-Md6"/>
                         <outlet property="playerButton" destination="1t7-Yf-QLB" id="52K-bi-f3u"/>
+                        <segue destination="6fB-Kj-zlD" kind="show" identifier="fromPlayToWaitSegue" id="WIt-2a-Efb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -2447,6 +2448,7 @@
         <image name="helpIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pdz-yY-KAV"/>
+        <segue reference="l60-1W-HGq"/>
+        <segue reference="WIt-2a-Efb"/>
     </inferredMetricsTieBreakers>
 </document>
