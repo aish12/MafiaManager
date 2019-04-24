@@ -10,8 +10,8 @@ import UIKit
 
 class HistorySingleGameTableViewCell: UITableViewCell {
 
-    var playerName: String?
-    var status: String?
+//    var playerName: String?
+//    var status: String?
     
     @IBOutlet weak var playerNameLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!

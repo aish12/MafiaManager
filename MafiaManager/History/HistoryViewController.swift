@@ -14,7 +14,9 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         var deck : Deck?
         var narrator: String?
         var winner: String?
-        init(_deck: Deck, _narrator: String, _winner: String) {
+        var date:Date
+        init(_date: Date, _deck: Deck, _narrator: String, _winner: String) {
+            date = _date
             deck = _deck
             narrator = _narrator
             winner = _winner
@@ -27,10 +29,11 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         let decks = CoreDataHelper.retrieveDecks()
+        let dates = [Date(), Date(), Date(), Date(), Date()]
         let narratorNames = ["Robby", "Tesia", "Daniel", "Aish", "Bob"]
         let winnerNames = ["Robby", "Robby", "Tesia", "Tesia", "Tesia"]
         for i in 0...4 {
-            games.append(GameHistory(_deck: decks[i % decks.count], _narrator: narratorNames[i], _winner: winnerNames[i]))
+            games.append(GameHistory(_date: dates[i], _deck: decks[i % decks.count], _narrator: narratorNames[i], _winner: winnerNames[i]))
         }
         historyTableView.delegate = self
         historyTableView.dataSource = self
@@ -41,17 +44,23 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         return games.count
     }
     
+    func stringFromDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMM yyyy" //yyyy
+        return formatter.string(from: date)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = historyTableView.dequeueReusableCell(withIdentifier: "historyTableResultsCell", for: indexPath as IndexPath) as! HistoryTableViewCell
         let gameHistoryItem = games[indexPath.item]
-        cell.deck = gameHistoryItem.deck
-        
-        cell.narrator = gameHistoryItem.narrator
-        cell.winner = gameHistoryItem.winner
+        //cell.date = gameHistoryItem.date
+        cell.dateLabel.text = stringFromDate(gameHistoryItem.date )
+        //cell.deck = gameHistoryItem.deck
+        //cell.narrator = gameHistoryItem.narrator
+        //cell.winner = gameHistoryItem.winner
         cell.deckLabel.text = gameHistoryItem.deck?.deckName
         cell.narratorLabel.text = gameHistoryItem.narrator
         cell.winnerLabel.text = gameHistoryItem.winner
-
         return cell
     }
     
@@ -61,6 +70,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             let funcIndex = historyTableView.indexPathForSelectedRow?.row
             destinationVC.winnerName = games[funcIndex!].winner
+            destinationVC.deckName = games[funcIndex!].deck?.deckName
         }
     }
 }

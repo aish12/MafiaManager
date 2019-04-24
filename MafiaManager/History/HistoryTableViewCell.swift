@@ -10,10 +10,12 @@ import UIKit
 
 class HistoryTableViewCell: UITableViewCell {
 
-    var deck : Deck?
-    var narrator : String?
-    var winner : String?
-    
+//    var deck : Deck?
+//    var narrator : String?
+//    var winner : String?
+//    var date: Date?
+//    
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var deckLabel: UILabel!
     @IBOutlet weak var narratorLabel: UILabel!
     @IBOutlet weak var winnerLabel: UILabel!
