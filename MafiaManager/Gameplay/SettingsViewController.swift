@@ -70,20 +70,27 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     @IBAction func onSignOutPressed(_ sender: Any) {
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-            print("Signed out successfully")
-            //dismiss(animated: true, completion: nil)
+        let alert = UIAlertController(title: "Log out?", message: "Do you want to log out?", preferredStyle: .alert)
         
-            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                appDelegate.window?.rootViewController?.dismiss(animated: true, completion: nil)
-                (appDelegate.window?.rootViewController as? UINavigationController)?.popToRootViewController(animated: true)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+            let firebaseAuth = Auth.auth()
+            do {
+                try firebaseAuth.signOut()
+                print("Signed out successfully")
+                //dismiss(animated: true, completion: nil)
+                
+                if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                    appDelegate.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                    (appDelegate.window?.rootViewController as? UINavigationController)?.popToRootViewController(animated: true)
+                }
+                
+            } catch let signOutError as NSError {
+                print ("Error signing out: %@", signOutError)
             }
-            
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true)
     }
     
 
