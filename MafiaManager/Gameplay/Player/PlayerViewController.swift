@@ -58,8 +58,8 @@ class PlayerViewController: UIViewController {
             var ref: DatabaseReference!
             ref = Database.database().reference()
             // This person is a narrator, so set role to narrator
-            ref.child("users").child(Auth.auth().currentUser!.uid).child("games").child("\(self.deckName ?? ""):\(self.gameTime!)").setValue(["role": "\(self.cardName!)"])
-            ref.child("users").child(Auth.auth().currentUser!.uid).child("games").child("\(self.deckName ?? ""):\(self.gameTime!)").updateChildValues(["status": "\(self.statusLabelText!)"])
+            ref.child("users").child(Auth.auth().currentUser!.uid).child("games").child("\(self.deckName ?? "") = \(self.gameTime!)").setValue(["role": "\(self.cardName!)"])
+            ref.child("users").child(Auth.auth().currentUser!.uid).child("games").child("\(self.deckName ?? "") = \(self.gameTime!)").updateChildValues(["status": "\(self.statusLabelText!)"])
             
         }
     }
@@ -80,8 +80,8 @@ class PlayerViewController: UIViewController {
         var ref: DatabaseReference!
         ref = Database.database().reference()
         
-        ref.child("users").child(Auth.auth().currentUser!.uid).child("games").child("\(self.deckName ?? ""):\(self.gameTime!)").setValue(["role": "\(self.cardName!)"])
-        ref.child("users").child(Auth.auth().currentUser!.uid).child("games").child("\(self.deckName ?? ""):\(self.gameTime!)").updateChildValues(["status": "\(self.statusLabelText!)"])
+        ref.child("users").child(Auth.auth().currentUser!.uid).child("games").child("\(self.deckName ?? "") = \(self.gameTime!)").setValue(["role": "\(self.cardName!)"])
+        ref.child("users").child(Auth.auth().currentUser!.uid).child("games").child("\(self.deckName ?? "") = \(self.gameTime!)").updateChildValues(["status": "\(self.statusLabelText!)"])
     }
     
     @objc func updateStatus(notification: Notification) {
