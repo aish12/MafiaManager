@@ -25,7 +25,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="h9b-9I-vwb">
-                                <rect key="frame" x="0.0" y="143" width="414" height="670"/>
+                                <rect key="frame" x="0.0" y="127" width="414" height="686"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pIj-Bd-ibK">
                                     <size key="itemSize" width="100" height="110"/>
@@ -104,7 +104,7 @@
                             <constraint firstItem="91N-OF-eIu" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="8" id="3WM-Sf-RXa"/>
                             <constraint firstItem="h9b-9I-vwb" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="T3n-ak-XxP"/>
                             <constraint firstItem="h9b-9I-vwb" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="UYG-vk-cU1"/>
-                            <constraint firstItem="h9b-9I-vwb" firstAttribute="top" secondItem="91N-OF-eIu" secondAttribute="bottom" constant="32" id="f93-Ly-waf"/>
+                            <constraint firstItem="h9b-9I-vwb" firstAttribute="top" secondItem="91N-OF-eIu" secondAttribute="bottom" constant="16" id="f93-Ly-waf"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="h9b-9I-vwb" secondAttribute="bottom" id="g88-bl-RjQ"/>
                             <constraint firstItem="91N-OF-eIu" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="ySO-0i-xnK"/>
                         </constraints>
@@ -483,7 +483,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="cRM-OF-s3b" kind="show" id="AaJ-1X-NVy"/>
+                                    <action selector="joinGameButtonPressed:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="wYK-6M-kAc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CcT-Gf-mW0">
@@ -522,6 +522,7 @@
                     <connections>
                         <outlet property="narratorButton" destination="CcT-Gf-mW0" id="NgJ-bb-Md6"/>
                         <outlet property="playerButton" destination="1t7-Yf-QLB" id="52K-bi-f3u"/>
+                        <segue destination="6fB-Kj-zlD" kind="show" identifier="fromPlayToWaitSegue" id="WIt-2a-Efb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -2296,10 +2297,10 @@
                             <constraint firstItem="Fre-1b-ckx" firstAttribute="trailing" secondItem="aMO-TA-KpS" secondAttribute="trailing" constant="32" id="Wmh-nm-5ou"/>
                             <constraint firstItem="DQ4-Ga-7CI" firstAttribute="top" secondItem="Fre-1b-ckx" secondAttribute="top" constant="32" id="cCn-SH-EFJ"/>
                             <constraint firstItem="aMO-TA-KpS" firstAttribute="top" secondItem="DQ4-Ga-7CI" secondAttribute="bottom" constant="32" id="fgt-Vi-tJO"/>
-                            <constraint firstItem="3Lt-iD-T9a" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="c1E-qa-NoC" secondAttribute="trailing" constant="8" symbolic="YES" id="i5b-bH-HhW"/>
                             <constraint firstItem="c1E-qa-NoC" firstAttribute="centerY" secondItem="aMO-TA-KpS" secondAttribute="centerY" id="j8Q-WJ-ok8"/>
                             <constraint firstItem="Ynj-jL-Yca" firstAttribute="centerY" secondItem="DQ4-Ga-7CI" secondAttribute="centerY" id="kgw-1v-yPJ"/>
                             <constraint firstItem="DQ4-Ga-7CI" firstAttribute="centerX" secondItem="sJI-DU-vz8" secondAttribute="centerX" id="nxT-Bv-YPP"/>
+                            <constraint firstItem="3Lt-iD-T9a" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="c1E-qa-NoC" secondAttribute="trailing" constant="8" symbolic="YES" id="sCl-K0-5X3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Fre-1b-ckx"/>
                     </view>
@@ -2452,6 +2453,7 @@
         <image name="helpIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="b7z-LG-cRN"/>
+        <segue reference="l60-1W-HGq"/>
+        <segue reference="WIt-2a-Efb"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -10,12 +10,12 @@ import MultipeerConnectivity
 
 class JoinGameViewController: UIViewController, MCBrowserViewControllerDelegate {
     
+
+    @IBOutlet weak var availableNarratorsTableView: UITableView!
+    @IBOutlet weak var joinButton: UIButton!
     private var mpcManager: MPCManager!
     private var appDelegate: AppDelegate!
     private var narratorPeerID: MCPeerID?
-    @IBOutlet weak var availableNarratorsTableView: UITableView!
-    @IBOutlet weak var joinButton: UIButton!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +44,8 @@ class JoinGameViewController: UIViewController, MCBrowserViewControllerDelegate 
             }
         }
     }
+    
+    
     
     func browseForDevices(){
         mpcManager.setupBrowser(shouldBrowse: true)

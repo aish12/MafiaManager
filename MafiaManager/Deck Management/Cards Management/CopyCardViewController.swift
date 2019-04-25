@@ -106,9 +106,9 @@ class CopyCardViewController: UIViewController, UICollectionViewDelegate, UISear
                 var ref: DatabaseReference!
                 ref = Database.database().reference()
                 
-                ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(deckName)").child("cards").child("cardName:\(newName)").setValue(["cardDescription":newDescription])
+                ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(deckName!)").child("cards").child("cardName:\(newName)").setValue(["cardDescription":newDescription])
                 let strBase64 = newImage.base64EncodedString(options: .lineLength64Characters)
-                ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(deckName)").child("cards").child("cardName:\(newName)").updateChildValues(["cardImage":strBase64])
+                ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(deckName!)").child("cards").child("cardName:\(newName)").updateChildValues(["cardImage":strBase64])
                 
                 // Core Data
                 let newCard = CoreDataHelper.addCard(deck: deck, newName: newName, newDescription: newDescription, newImage: newImage)
