@@ -27,6 +27,27 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var navbar: UINavigationItem!
     @IBOutlet weak var deckDetailTextView: UITextView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(longPressGR:)))
+        longPressGR.minimumPressDuration = 0.5
+        longPressGR.delaysTouchesBegan = true
+        self.cardsCollectionView.addGestureRecognizer(longPressGR)
+        navbar.title = deckObject.value(forKey: "deckName") as? String
+        deckDetailTextView.text = deckObject.value(forKey: "deckDescription") as? String
+        cardsCollectionView.dataSource = self
+        cardsCollectionView.delegate = self
+        loadCards()
+        
+        cardSearchController.searchResultsUpdater = self
+        cardSearchController.obscuresBackgroundDuringPresentation = false
+        cardSearchController.searchBar.placeholder = "Search Cards"
+        navbar.searchController = cardSearchController
+        navigationItem.searchController = cardSearchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if isFiltering() {
             return filteredCards.count + 1
@@ -89,46 +110,29 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
         cardsCollectionView.deselectItem(at: indexPath, animated: true)
     }
     
+    // Updates results for search table
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!)
     }
     
+    // Returns true if the search controller is in use and the search bar is not empty
     func isFiltering() -> Bool {
         return cardSearchController.isActive && !searchBarIsEmpty()
     }
     
+    // If the text is empty return true
     func searchBarIsEmpty() -> Bool {
         // Returns true if the text is empty or nil
         return cardSearchController.searchBar.text?.isEmpty ?? true
     }
     
+    // Returns cards whose names contain the given string
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
         filteredCards = cards.filter({( card : Card) -> Bool in
             return card.cardName!.lowercased().contains(searchText.lowercased())
         })
         
         cardsCollectionView.reloadData()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(longPressGR:)))
-        longPressGR.minimumPressDuration = 0.5
-        longPressGR.delaysTouchesBegan = true
-        self.cardsCollectionView.addGestureRecognizer(longPressGR)
-        navbar.title = deckObject.value(forKey: "deckName") as? String
-        deckDetailTextView.text = deckObject.value(forKey: "deckDescription") as? String
-        cardsCollectionView.dataSource = self
-        cardsCollectionView.delegate = self
-        loadCards()
-        
-        cardSearchController.searchResultsUpdater = self
-        cardSearchController.obscuresBackgroundDuringPresentation = false
-        cardSearchController.searchBar.placeholder = "Search Cards"
-        navbar.searchController = cardSearchController
-        navigationItem.searchController = cardSearchController
-        navigationItem.hidesSearchBarWhenScrolling = false
-        definesPresentationContext = true
     }
     
     // Retrieves the cards data from core data and reloads the Collection View's data with this
@@ -197,39 +201,6 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
         present(alert, animated: true, completion: nil)
     }
     
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "fromDeckDetailToEditDeck",
-            let destinationVC = segue.destination as? EditDeckViewController {
-            destinationVC.updateDetail = self
-            destinationVC.editDeckObject = self.deckObject
-        } else if segue.identifier == "fromDetailToNewCardSegue",
-            let destinationVC = segue.destination as? CreateCardViewController {
-                    
-                destinationVC.cardsViewControllerDelegate = self
-                destinationVC.deck = deckObject
-                
-        
-        } else if segue.identifier == "fromCardsToCardDetail",
-            // Determines the iPath of the selected item to send the selected item
-            // to the detail VC
-            let destinationVC = segue.destination as? CardViewController,
-            let iPaths = self.cardsCollectionView.indexPathsForSelectedItems {
-            let firstPath: NSIndexPath = iPaths[0] as NSIndexPath
-            if (firstPath.row > 0){
-                // TODO: actual set the information of the card object
-                destinationVC.cardsCollectionView = cardsCollectionView
-                destinationVC.cardIPath = firstPath
-                destinationVC.cardObject = cards[firstPath.row - 1]
-                destinationVC.deckName = (deckObject.value(forKey: "deckName") as! String)
-            }
-        } else if segue.identifier == "fromDetailToCopyCardSegue",
-            let destinationVC = segue.destination as? CopyCardViewController {
-            destinationVC.cardsViewControllerDelegate = self
-            destinationVC.deck = deckObject
-        }
-    }
-    
     func updateDeckDetail(name: String, desc: String) {
         navbar.title = name
         deckDetailTextView.text = desc
@@ -255,6 +226,21 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
+    // Brings cells to edit mode, where they wobble and have an X icon that when pressed deletes the deck
+    func startEditState() {
+        inEditMode = true
+        for section in 0..<self.cardsCollectionView.numberOfSections {
+            for item in 0..<self.cardsCollectionView.numberOfItems(inSection: section){
+                if section == 0 && item == 0 {
+                    continue
+                } else {
+                    let currCell = self.cardsCollectionView.cellForItem(at: IndexPath(item: item, section: section)) as! CardCellCollectionViewCell
+                    currCell.enterEditMode()
+                }
+            }
+        }
+    }
+    
     // Returns cells to normal state where a tap takes you to detail and you can add new decks
     @objc func endEditState() {
         inEditMode = false
@@ -272,21 +258,6 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
         
     }
     
-    // Brings cells to edit mode, where they wobble and have an X icon that when pressed deletes the deck
-    func startEditState() {
-        inEditMode = true
-        for section in 0..<self.cardsCollectionView.numberOfSections {
-            for item in 0..<self.cardsCollectionView.numberOfItems(inSection: section){
-                if section == 0 && item == 0 {
-                    continue
-                } else {
-                    let currCell = self.cardsCollectionView.cellForItem(at: IndexPath(item: item, section: section)) as! CardCellCollectionViewCell
-                    currCell.enterEditMode()
-                }
-            }
-        }
-    }
-    
     // code to dismiss keyboard when user clicks on background
     func textFieldShouldReturn(textField:UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -295,5 +266,37 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "fromDeckDetailToEditDeck",
+            let destinationVC = segue.destination as? EditDeckViewController {
+            destinationVC.updateDetail = self
+            destinationVC.editDeckObject = self.deckObject
+        } else if segue.identifier == "fromDetailToNewCardSegue",
+            let destinationVC = segue.destination as? CreateCardViewController {
+            
+            destinationVC.cardsViewControllerDelegate = self
+            destinationVC.deck = deckObject
+            
+            
+        } else if segue.identifier == "fromCardsToCardDetail",
+            // Determines the iPath of the selected item to send the selected item
+            // to the detail VC
+            let destinationVC = segue.destination as? CardViewController,
+            let iPaths = self.cardsCollectionView.indexPathsForSelectedItems {
+            let firstPath: NSIndexPath = iPaths[0] as NSIndexPath
+            if (firstPath.row > 0){
+                // TODO: actual set the information of the card object
+                destinationVC.cardsCollectionView = cardsCollectionView
+                destinationVC.cardIPath = firstPath
+                destinationVC.cardObject = cards[firstPath.row - 1]
+                destinationVC.deckName = (deckObject.value(forKey: "deckName") as! String)
+            }
+        } else if segue.identifier == "fromDetailToCopyCardSegue",
+            let destinationVC = segue.destination as? CopyCardViewController {
+            destinationVC.cardsViewControllerDelegate = self
+            destinationVC.deck = deckObject
+        }
     }
 }

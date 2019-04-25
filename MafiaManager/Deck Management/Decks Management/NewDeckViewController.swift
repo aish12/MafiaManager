@@ -14,7 +14,9 @@ import Firebase
 protocol AddDeckDelegate: class {
     func addDeck(deckToAdd: Deck)
 }
+
 class NewDeckViewController: UIViewController, ImagePickerDelegate {
+    
     @IBOutlet weak var deckNameTextView: UITextView!
     @IBOutlet weak var deckDetailTextView: UITextView!
     @IBOutlet weak var deckImagePickerButton: UIButton!
