@@ -2211,7 +2211,7 @@
                                             <constraint firstAttribute="width" constant="92" id="v1c-it-nUU"/>
                                         </constraints>
                                     </pickerView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x0o-9A-08a">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x0o-9A-08a">
                                         <rect key="frame" x="102" y="0.0" width="29" height="224"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="224" id="KeO-vN-iOd"/>
@@ -2220,14 +2220,14 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7x3-jH-KwW">
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7x3-jH-KwW">
                                         <rect key="frame" x="141" y="0.0" width="92" height="224"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="224" id="m5s-gY-Hl9"/>
                                             <constraint firstAttribute="width" constant="92" id="tCr-Tw-B5q"/>
                                         </constraints>
                                     </pickerView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="sec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rK0-cO-bP8">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rK0-cO-bP8">
                                         <rect key="frame" x="243" y="0.0" width="27" height="224"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="224" id="9B7-WX-uwb"/>
@@ -2246,7 +2246,7 @@
                                 <rect key="frame" x="32" y="376" width="128" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="8dO-I0-eid"/>
-                                    <constraint firstAttribute="width" constant="128" id="9ty-oB-Exj"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="128" id="9ty-oB-Exj"/>
                                 </constraints>
                                 <state key="normal" title="Pause"/>
                                 <connections>
@@ -2272,7 +2272,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Lt-iD-T9a">
                                 <rect key="frame" x="254" y="376" width="128" height="48"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="128" id="UHw-9t-QpG"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="128" id="UHw-9t-QpG"/>
                                     <constraint firstAttribute="height" constant="48" id="oOZ-jJ-b9h"/>
                                 </constraints>
                                 <state key="normal" title="Stop"/>
@@ -2292,6 +2292,7 @@
                             <constraint firstItem="Fre-1b-ckx" firstAttribute="trailing" secondItem="aMO-TA-KpS" secondAttribute="trailing" constant="32" id="Wmh-nm-5ou"/>
                             <constraint firstItem="DQ4-Ga-7CI" firstAttribute="top" secondItem="Fre-1b-ckx" secondAttribute="top" constant="32" id="cCn-SH-EFJ"/>
                             <constraint firstItem="aMO-TA-KpS" firstAttribute="top" secondItem="DQ4-Ga-7CI" secondAttribute="bottom" constant="32" id="fgt-Vi-tJO"/>
+                            <constraint firstItem="3Lt-iD-T9a" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="c1E-qa-NoC" secondAttribute="trailing" constant="8" symbolic="YES" id="i5b-bH-HhW"/>
                             <constraint firstItem="c1E-qa-NoC" firstAttribute="centerY" secondItem="aMO-TA-KpS" secondAttribute="centerY" id="j8Q-WJ-ok8"/>
                             <constraint firstItem="Ynj-jL-Yca" firstAttribute="centerY" secondItem="DQ4-Ga-7CI" secondAttribute="centerY" id="kgw-1v-yPJ"/>
                             <constraint firstItem="DQ4-Ga-7CI" firstAttribute="centerX" secondItem="sJI-DU-vz8" secondAttribute="centerX" id="nxT-Bv-YPP"/>
