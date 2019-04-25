@@ -26,13 +26,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../../Users/rstig/Desktop/MafiaManager/MafiaManager/Gameplay/SettingsViewController.swift"
-            timestampString = "577837321.955375"
+            timestampString = "577831390.3383729"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "19"
             endingLineNumber = "19"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "SettingsViewController"
+            landmarkType = "3">
             <Locations>
                <Location
                   shouldBeEnabled = "No"

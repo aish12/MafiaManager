@@ -28,12 +28,12 @@ class LoadingWelcomeViewController: UIViewController {
         var ref: DatabaseReference!
         ref = Database.database().reference()
         let userID = Auth.auth().currentUser!.uid
-        
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
         ref.child("users").child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as! NSDictionary
             self.usersNameLabel.text = value["Name"] as? String
-            
+            appDelegate?.username = (value["Name"] as? String) ?? "User"
             // Check if has deck names
             if (snapshot.hasChild("decks")) {
                 // it exists! So do core data logic by setting up the decks child in Firebase

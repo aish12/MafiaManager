@@ -44,10 +44,12 @@ class MPCManager: NSObject, MCSessionDelegate {
     }
     
     func advertiseSelf(shouldAdvertise: Bool){
-        if shouldAdvertise {
+        if shouldAdvertise && self.session != nil{
+            print("Advertising")
             advertiser = MCAdvertiserAssistant.init(serviceType: "mafiamanager-mp", discoveryInfo: nil, session: self.session)
             advertiser.start()
         } else {
+            print("Stop Advertising")
             if (advertiser != nil){
                 advertiser.stop()
             }
@@ -60,7 +62,10 @@ class MPCManager: NSObject, MCSessionDelegate {
     }
     
     func endGame(){
-        
+        if session != nil {
+            session.disconnect()
+            session = nil
+        }
         if advertiser != nil {
             advertiseSelf(shouldAdvertise: false)
             advertiser = nil
@@ -68,10 +73,6 @@ class MPCManager: NSObject, MCSessionDelegate {
         if browser != nil {
             setupBrowser(shouldBrowse: false)
             browser = nil
-        }
-        if session != nil {
-            session.disconnect()
-            session = nil
         }
         narratorID = nil
         peerID = nil
