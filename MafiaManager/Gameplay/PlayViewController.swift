@@ -27,10 +27,6 @@ class PlayViewController: UIViewController, MCBrowserViewControllerDelegate {
         mpcManager!.endGame()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        let mpcManager = (UIApplication.shared.delegate as? AppDelegate)!.mpcManager
-    }
-    
     @objc func peerDidChangeStateWithNotification(notification: Notification){
         let peerID: MCPeerID = notification.userInfo!["peerID"] as! MCPeerID
         let state: MCSessionState = notification.userInfo!["state"] as! MCSessionState
@@ -71,10 +67,12 @@ class PlayViewController: UIViewController, MCBrowserViewControllerDelegate {
     
     // MCBrowserViewDelegate methods
     func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
+        NotificationCenter.default.removeObserver(self)
         dismiss(animated: true, completion: goToGame)
     }
     
     func browserViewControllerWasCancelled(_ browserViewController: MCBrowserViewController) {
+        NotificationCenter.default.removeObserver(self)
         self.mpcManager.setupBrowser(shouldBrowse: false)
     }
 }
