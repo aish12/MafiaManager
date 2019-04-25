@@ -57,7 +57,6 @@ class CopyCardViewController: UIViewController, UICollectionViewDelegate, UISear
         } else {
             card = cards[indexPath.item]
         }
-        print(card)
         cell.cardLabel.text = card.value(forKey: "cardName") as? String
         cell.cardDescription = card.value(forKey: "cardDescription") as? String
         cell.cardImageView.image = UIImage(data: card.value(forKey: "cardImage") as! Data)
