@@ -5,11 +5,12 @@
 //  Created by Tesia Wu on 4/5/19.
 //  Copyright © 2019 Aishwarya Shashidhar. All rights reserved.
 //
-
+//  View Controller where users can edit an existing deck
 import UIKit
 import CoreData
 import Firebase
 
+// Delegate to update a deck's details
 protocol updateDeckDetailDelegate:class {
     func updateDeckDetail(name: String, desc: String)
 }
@@ -49,6 +50,18 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
         
     }
     
+    // If the image picker button is pressed, present the image picker
+    @IBAction func editImagePickerButtonPressed(_ sender: UIButton) {
+        self.editImagePicker.present(from: sender)
+
+    }
+    
+    // When a new image is selected change the image for the deck image button
+    func didSelect(image: UIImage?) {
+        self.editDeckImagePickerButton.setImage(image, for: .normal)
+    }
+    
+    // Extracts the new name, description, and image from the edit view and inserts them into core data and firebase
     @objc func finishedEditing() {
         
         var editedName = editDeckNameTextView.text!
@@ -67,7 +80,7 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
             editedDesc = oldDesc
         }
         
-        // Firebase
+        // Adds deck changes to Firebase
         var ref: DatabaseReference!
         ref = Database.database().reference()
         ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(oldName)").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -86,28 +99,17 @@ class EditDeckViewController: UIViewController, ImagePickerDelegate, UITextViewD
             let strBase64 = editImageData!.base64EncodedString(options: .lineLength64Characters)
             ref.child("users").child(Auth.auth().currentUser!.uid).child("decks").child("deckName:\(editedName)").updateChildValues(["deckImage":strBase64])
             
-            //(UIApplication.shared.delegate as! AppDelegate).username = (value["name"] as? String) ?? "user"
         }) { (error) in
             print(error.localizedDescription)
         }
         
         
-        // Core Data
-        CoreDataHelper.editDeck(deck: editDeckObject as! Deck, newName: editedName, newDescription: editedDesc, newImage: (editedImage?.pngData())!)
+        // Adds deck changes to CoreData
+        CoreDataHelper.editDeck(deck: editDeckObject!, newName: editedName, newDescription: editedDesc, newImage: (editedImage?.pngData())!)
         
         // Go back to the Deck detail with new edits in store
-        // TODO: update with image param
         updateDetail?.updateDeckDetail(name: editDeckNameTextView.text, desc: editDeckDescriptionTextView.text)
         navigationController?.popViewController(animated: true)
-    }
-    
-    @IBAction func editImagePickerButtonPressed(_ sender: UIButton) {
-        self.editImagePicker.present(from: sender)
-
-    }
-    
-    func didSelect(image: UIImage?) {
-        self.editDeckImagePickerButton.setImage(image, for: .normal)
     }
     
     // code to dismiss keyboard when user clicks on background

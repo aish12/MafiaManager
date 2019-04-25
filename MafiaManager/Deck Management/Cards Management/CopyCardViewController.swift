@@ -22,6 +22,24 @@ class CopyCardViewController: UIViewController, UICollectionViewDelegate, UISear
     var selectedCards: [Card] = []
     var deck: Deck!
     weak var cardsViewControllerDelegate: AddCardDelegate?
+    
+    // On load create collection of all cards and allow multiple to be selected. Setup search controller
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        cards = CoreDataHelper.retrieveCards(deck: nil)
+        cardCollectionView.delegate = self
+        cardCollectionView.dataSource = self
+        cardCollectionView.allowsMultipleSelection = true
+        
+        cardSearchController.searchResultsUpdater = self
+        cardSearchController.obscuresBackgroundDuringPresentation = false
+        cardSearchController.searchBar.placeholder = "Search Cards"
+        navigationItem.searchController = cardSearchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
+    }
+    
+    // If the collection is filtered return the number of filtered cards, else all cards
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if isFiltering() {
             return filteredCards.count
@@ -29,6 +47,7 @@ class CopyCardViewController: UIViewController, UICollectionViewDelegate, UISear
         return cards.count
     }
     
+    // If the collection is filtered return the card based on index in filteredCards, else from cards
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: copyCardReuseIdentifier, for: indexPath as IndexPath) as! CopyCardCollectionViewCell
         
@@ -38,7 +57,6 @@ class CopyCardViewController: UIViewController, UICollectionViewDelegate, UISear
         } else {
             card = cards[indexPath.item]
         }
-        print(card)
         cell.cardLabel.text = card.value(forKey: "cardName") as? String
         cell.cardDescription = card.value(forKey: "cardDescription") as? String
         cell.cardImageView.image = UIImage(data: card.value(forKey: "cardImage") as! Data)
@@ -52,21 +70,6 @@ class CopyCardViewController: UIViewController, UICollectionViewDelegate, UISear
             CoreGraphicsHelper.removeSelectedImageBorder(imageView: cell.cardImageView)
         }
         return cell
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        cards = CoreDataHelper.retrieveCards(deck: nil)
-        cardCollectionView.delegate = self
-        cardCollectionView.dataSource = self
-        cardCollectionView.allowsMultipleSelection = true
-
-        cardSearchController.searchResultsUpdater = self
-        cardSearchController.obscuresBackgroundDuringPresentation = false
-        cardSearchController.searchBar.placeholder = "Search Cards"
-        navigationItem.searchController = cardSearchController
-        navigationItem.hidesSearchBarWhenScrolling = false
-        definesPresentationContext = true
     }
     
     func updateSearchResults(for searchController: UISearchController) {

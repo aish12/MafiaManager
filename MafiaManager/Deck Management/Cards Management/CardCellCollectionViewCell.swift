@@ -5,12 +5,14 @@
 //  Created by Tesia Wu on 4/5/19.
 //  Copyright © 2019 Aishwarya Shashidhar. All rights reserved.
 //
+//  Handles cards in the collection view
 
 import UIKit
 
 protocol DeleteCardDelegate: class {
     func deleteCard(cardCell: CardCellCollectionViewCell)
 }
+
 class CardCellCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var cardCellImageView: UIImageView!
     @IBOutlet weak var cardNameLabel: UILabel!

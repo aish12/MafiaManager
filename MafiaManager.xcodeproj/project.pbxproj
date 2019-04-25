@@ -16,8 +16,6 @@
 		7B32DF3E225A39CC00F0072B /* RoleQuantityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B32DF3D225A39CC00F0072B /* RoleQuantityViewController.swift */; };
 		7B32DF40225A3E7900F0072B /* RoleQuantityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B32DF3F225A3E7900F0072B /* RoleQuantityTableViewCell.swift */; };
 		7B32DF42225A5A0100F0072B /* WaitForPlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B32DF41225A5A0100F0072B /* WaitForPlayersViewController.swift */; };
-		7B4E70FF224990C0001395F2 /* ViewDeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4E70FE224990C0001395F2 /* ViewDeckCell.swift */; };
-		7B4E7101224990D7001395F2 /* AddDeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4E7100224990D7001395F2 /* AddDeckCell.swift */; };
 		7B4F1AD0224B26E60038225D /* RecordWinnersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F1ACF224B26E60038225D /* RecordWinnersViewController.swift */; };
 		7B874965225C4EA9003EC5EE /* PlayerWaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B874964225C4EA9003EC5EE /* PlayerWaitingViewController.swift */; };
 		7B8B9A622255644D002260E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B9A612255644D002260E9 /* AppDelegate.swift */; };
@@ -76,8 +74,6 @@
 		7B32DF3D225A39CC00F0072B /* RoleQuantityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleQuantityViewController.swift; sourceTree = "<group>"; };
 		7B32DF3F225A3E7900F0072B /* RoleQuantityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleQuantityTableViewCell.swift; sourceTree = "<group>"; };
 		7B32DF41225A5A0100F0072B /* WaitForPlayersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitForPlayersViewController.swift; sourceTree = "<group>"; };
-		7B4E70FE224990C0001395F2 /* ViewDeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDeckCell.swift; sourceTree = "<group>"; };
-		7B4E7100224990D7001395F2 /* AddDeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeckCell.swift; sourceTree = "<group>"; };
 		7B4F1ACF224B26E60038225D /* RecordWinnersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordWinnersViewController.swift; sourceTree = "<group>"; };
 		7B874964225C4EA9003EC5EE /* PlayerWaitingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerWaitingViewController.swift; sourceTree = "<group>"; };
 		7B8B9A612255644D002260E9 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -212,8 +208,6 @@
 				F6A22D4622571E2B000F694B /* EditDeckViewController.swift */,
 				7B146515224ACFEF00241B00 /* NewDeckViewController.swift */,
 				BF32AF30224AAA1700D32277 /* DeckDetailViewController.swift */,
-				7B4E70FE224990C0001395F2 /* ViewDeckCell.swift */,
-				7B4E7100224990D7001395F2 /* AddDeckCell.swift */,
 				BF01BDCD22487FA200C883D8 /* DecksViewController.swift */,
 				7B8EF7522254260600816B5F /* DeckCellCollectionViewCell.swift */,
 			);
@@ -461,7 +455,6 @@
 				7B146516224ACFEF00241B00 /* NewDeckViewController.swift in Sources */,
 				BF01BDD022487FB800C883D8 /* PlayerViewController.swift in Sources */,
 				7B32DF3C225A262600F0072B /* CoreGraphicsHelper.swift in Sources */,
-				7B4E7101224990D7001395F2 /* AddDeckCell.swift in Sources */,
 				F6B2E142225D2F1500EFB394 /* NarratorDashboardTableViewCell.swift in Sources */,
 				BF6097D0226FE385002AA0D8 /* HistorySingleGameTableViewCell.swift in Sources */,
 				F6B2E144225D40E100EFB394 /* NarratorDetailViewController.swift in Sources */,
@@ -498,7 +491,6 @@
 				7B8EF7532254260600816B5F /* DeckCellCollectionViewCell.swift in Sources */,
 				F6F54C77224482FC00F6DFDF /* LoadingWelcomeViewController.swift in Sources */,
 				BF6097CC226FD494002AA0D8 /* HistoryTableViewCell.swift in Sources */,
-				7B4E70FF224990C0001395F2 /* ViewDeckCell.swift in Sources */,
 				F6F54C7522446B7D00F6DFDF /* SignUpViewController.swift in Sources */,
 				BF32AF31224AAA1700D32277 /* DeckDetailViewController.swift in Sources */,
 				7BE7DAAC224C137C00E267CA /* SettingsViewController.swift in Sources */,
