@@ -69,7 +69,6 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
 
         cell.playerID = player.playerID
         cell.roleLabel.text = player.card?.cardName
-        // TODO: change to a variable for now
         cell.playerStatusLabel.text = player.isAlive ? "Alive" : "Dead"
         cell.playerStatusLabel.textColor = player.isAlive ? UIColor.green : UIColor.red
 
@@ -87,7 +86,6 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
         
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
             self.mpcManager.endGame()
-            print("!@#@#!@")
             self.performSegue(withIdentifier: "fromDashboardToRecordSegue", sender: nil)
         }))
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))

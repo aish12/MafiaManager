@@ -41,13 +41,6 @@ class RecordWinnersViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = recordResultsTableView.dequeueReusableCell(withIdentifier: "recordResultsTableCell", for: indexPath as IndexPath) as! RecordWinnerTableViewCell
-//
-//        let player = players[indexPath.item]
-//        cell.playerNameLabel.text = player.playerID.displayName
-//        cell.roleLabel.text = player.card.cardName
-//        cell.playerStatusLabel.text = player.isAlive ? "Alive" : "Dead"
-//        return cell
         let cell = recordResultsTableView.dequeueReusableCell(withIdentifier: "recordResultsTableCell", for: indexPath as IndexPath)
         let player = players[indexPath.item]
         cell.textLabel!.text = player.playerID.displayName
@@ -62,7 +55,6 @@ class RecordWinnersViewController: UIViewController, UITableViewDelegate, UITabl
         } else {
             cell.accessoryType = .none
         }
-        
         return cell
     }
     

@@ -8,6 +8,7 @@
 //  Responsible for handling the game player view controller
 import UIKit
 import MultipeerConnectivity
+import Firebase
 
 class PlayerViewController: UIViewController {
 
@@ -24,6 +25,7 @@ class PlayerViewController: UIViewController {
     var cardImage: UIImage?
     var deckName: String?
     var statusLabelText: String?
+    var gameTime: String?
     var mpcManager: MPCManager!
     
     override func viewDidLoad() {
@@ -52,6 +54,13 @@ class PlayerViewController: UIViewController {
                 self.navigationController?.popToRootViewController(animated: true)
             }))
             self.present(alert, animated: true)
+            // Establish this game into Firebase
+            var ref: DatabaseReference!
+            ref = Database.database().reference()
+            // This person is a narrator, so set role to narrator
+            ref.child("users").child(Auth.auth().currentUser!.uid).child("games").child("\(self.deckName ?? ""):\(self.gameTime!)").setValue(["role": "\(self.cardName!)"])
+            ref.child("users").child(Auth.auth().currentUser!.uid).child("games").child("\(self.deckName ?? ""):\(self.gameTime!)").updateChildValues(["status": "\(self.statusLabelText!)"])
+            
         }
     }
     
@@ -67,6 +76,12 @@ class PlayerViewController: UIViewController {
             self.navigationController?.popToRootViewController(animated: true)
         }))
         self.present(alert, animated: true)
+        // Establish this game into Firebase
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        
+        ref.child("users").child(Auth.auth().currentUser!.uid).child("games").child("\(self.deckName ?? ""):\(self.gameTime!)").setValue(["role": "\(self.cardName!)"])
+        ref.child("users").child(Auth.auth().currentUser!.uid).child("games").child("\(self.deckName ?? ""):\(self.gameTime!)").updateChildValues(["status": "\(self.statusLabelText!)"])
     }
     
     @objc func updateStatus(notification: Notification) {

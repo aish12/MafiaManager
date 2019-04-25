@@ -15,6 +15,7 @@ class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITab
     var numPlayers: Int = 0
     var playerAndCard: [(player: MCPeerID, card: Card)] = []
     var connectedPlayers: [PlayerSession] = []
+    var gameTime: String?
     @IBOutlet weak var joinedPlayersTableView: UITableView!
     
     private var mpcManager: MPCManager!
@@ -111,7 +112,7 @@ class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITab
     
     func setPlayerRole(peerID: MCPeerID, card: Card) {
         print(card.deckForCard!.deckName!)
-        let playerCard: [String: Any] = ["assignCard": [ "deckName": card.deckForCard!.deckName!, "playerName": peerID.displayName, "cardName": card.cardName!, "cardDescription": card.cardDescription!, "cardImage": card.cardImage!]]
+        let playerCard: [String: Any] = ["assignCard": [ "deckName": card.deckForCard!.deckName!, "playerName": peerID.displayName, "cardName": card.cardName!, "cardDescription": card.cardDescription!, "cardImage": card.cardImage!, "gameTime": self.gameTime!]]
         mpcManager.sendObject(objData: playerCard, peers: [peerID])
     }
     
