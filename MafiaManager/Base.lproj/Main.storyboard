@@ -246,12 +246,16 @@
                             <constraint firstItem="rK3-Yn-2II" firstAttribute="centerX" secondItem="mbJ-yH-cJz" secondAttribute="centerX" id="n3H-4B-ddO"/>
                             <constraint firstItem="o2m-cl-zun" firstAttribute="top" secondItem="sBp-eM-kkR" secondAttribute="bottom" constant="64" id="rrf-fA-C6D"/>
                             <constraint firstItem="cF2-BE-xyq" firstAttribute="top" secondItem="o2m-cl-zun" secondAttribute="bottom" constant="16" id="v9y-lx-bjl"/>
+                            <constraint firstItem="Gv5-Me-nzC" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="rK3-Yn-2II" secondAttribute="bottom" constant="16" id="zdH-uz-yR7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Gv5-Me-nzC"/>
                     </view>
                     <connections>
                         <outlet property="emailTextfield" destination="o2m-cl-zun" id="1AH-Gx-WbJ"/>
+                        <outlet property="imageHeightConstraint" destination="3hp-2W-rls" id="ozk-Mr-ccE"/>
+                        <outlet property="keyboardHeightLayoutConstraint" destination="zdH-uz-yR7" id="6t0-p3-4uQ"/>
                         <outlet property="loginButton" destination="cHC-yG-dUI" id="3H8-ca-onf"/>
+                        <outlet property="loginSignupStackView" destination="rK3-Yn-2II" id="51b-uU-f9S"/>
                         <outlet property="mafiaImage" destination="sBp-eM-kkR" id="fZN-Ve-qzX"/>
                         <outlet property="passwordTextfield" destination="cF2-BE-xyq" id="YVO-v9-a1K"/>
                         <outlet property="signUpButton" destination="Se9-XX-xgx" id="nx0-Si-3kQ"/>
