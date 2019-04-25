@@ -28,6 +28,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         secondPicker.delegate = self
         // Do any additional setup after loading the view.
         setTimerToDefault()
+        mutedSwitch.isOn = UserDefaults.standard.bool(forKey: "muted")
     }
     
     // For both minute and second, they only have one component, always return 1
@@ -66,7 +67,8 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     @IBAction func mutedSwitchPressed(_ sender: Any) {
-        UserDefaults.standard.set(mutedSwitch.isOn, forKey: "muted")
+        let curSetting = UserDefaults.standard.bool(forKey: "muted")
+        UserDefaults.standard.set(!curSetting, forKey: "muted") // invert current setting
     }
     
     @IBAction func onSignOutPressed(_ sender: Any) {

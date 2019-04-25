@@ -9,6 +9,7 @@
 
 import UIKit
 import MultipeerConnectivity
+import AVFoundation
 
 class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChangePlayerStatusProtocol {
     
@@ -17,6 +18,8 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
     var mpcManager: MPCManager!
     var connectedPlayers: [PlayerSession]!
     var timer = GlobalTimer.sharedTimer
+    
+    var player: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +60,14 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
                 Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: {(timer: Timer) in
                     self.timerBarButtonItem.tintColor = self.view.tintColor
                     self.timerBarButtonItem.title = "Timer"
-                })            }
+                })
+                let muted: Bool = UserDefaults.standard.bool(forKey: "muted")
+                // does not play if muted pref is enabled
+                // NOTE/TODO: stop button does trigger this also
+                if !muted {
+                    AudioServicesPlayAlertSound(1005) // alert sound
+                }
+            }
         }
     }
     
@@ -112,6 +122,29 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
             print(self.connectedPlayers)
             let destinationVC = segue.destination as! RecordWinnersViewController
             destinationVC.players = self.connectedPlayers
+        }
+    }
+    
+    // Plays a custom sound with the given filename and extension (unused)
+    func playCustomSound(forResource: String, withExtension: String) {
+        guard let url = Bundle.main.url(forResource: forResource, withExtension: withExtension) else { return }
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+            
+            /* iOS 10 and earlier require the following line:
+             player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+            
+            guard let player = player else { return }
+            
+            player.play()
+            
+        } catch let error {
+            print(error.localizedDescription)
         }
     }
 }
