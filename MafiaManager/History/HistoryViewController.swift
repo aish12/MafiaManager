@@ -7,17 +7,18 @@
 //
 //  Dummy for now, responsible for handling the history tab view controller (stretch goal)
 import UIKit
+import Firebase
 
 class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     class GameHistory {
-        var deck : Deck?
+        var deckName : String?
         var narrator: String?
         var winner: String?
-        var date:Date
-        init(_date: Date, _deck: Deck, _narrator: String, _winner: String) {
+        var date:String?
+        init(_date: String, _deck: String, _narrator: String, _winner: String) {
             date = _date
-            deck = _deck
+            deckName = _deck
             narrator = _narrator
             winner = _winner
         }
@@ -28,37 +29,45 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let decks = CoreDataHelper.retrieveDecks()
-        let dates = [Date(), Date(), Date(), Date(), Date()]
-        let narratorNames = ["Robby", "Tesia", "Daniel", "Aish", "Bob"]
-        let winnerNames = ["Robby", "Robby", "Tesia", "Tesia", "Tesia"]
-        for i in 0...4 {
-            games.append(GameHistory(_date: dates[i], _deck: decks[i % decks.count], _narrator: narratorNames[i], _winner: winnerNames[i]))
-        }
         historyTableView.delegate = self
         historyTableView.dataSource = self
-        // Do any additional setup after loading the view.
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return games.count
+        
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        let userID = Auth.auth().currentUser!.uid
+        ref.child("users").child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as! NSDictionary
+            // Check if has deck names
+            if (snapshot.hasChild("games")) {
+                ref.child("users").child(userID).child("games").observeSingleEvent(of: .value, with: { (snapshot1) in
+                    let enumerator = snapshot1.children
+                    while let rest = enumerator.nextObject() as? DataSnapshot {
+                        print(rest)
+                        var infoGameArr = rest.key.split(separator: "=")
+                        let deckName = String(infoGameArr[0])
+                        let dateTime = String(infoGameArr[1])
+                        
+                        let convertedFormat =  HelperFunctions.convertToString(dateString: dateTime, formatIn: "MMM dd, yyyy 'at' hh:mm:ss a", formatOut: "MM/dd/yy")
+                        
+                        self.games.append(GameHistory(_date: convertedFormat, _deck: deckName, _narrator: "Dummy", _winner: "Dummy"))
+                        self.historyTableView.reloadData()
+                    }
+                })
+            }
+        })
     }
     
-    func stringFromDate(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd MMM yyyy" //yyyy
-        return formatter.string(from: date)
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(games.count)
+        return games.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = historyTableView.dequeueReusableCell(withIdentifier: "historyTableResultsCell", for: indexPath as IndexPath) as! HistoryTableViewCell
         let gameHistoryItem = games[indexPath.item]
-        //cell.date = gameHistoryItem.date
-        cell.dateLabel.text = stringFromDate(gameHistoryItem.date )
-        //cell.deck = gameHistoryItem.deck
-        //cell.narrator = gameHistoryItem.narrator
-        //cell.winner = gameHistoryItem.winner
-        cell.deckLabel.text = gameHistoryItem.deck?.deckName
+        cell.dateLabel.text = gameHistoryItem.date
+        cell.deckLabel.text = gameHistoryItem.deckName
         cell.narratorLabel.text = gameHistoryItem.narrator
         cell.winnerLabel.text = gameHistoryItem.winner
         return cell
@@ -70,7 +79,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             let funcIndex = historyTableView.indexPathForSelectedRow?.row
             destinationVC.winnerName = games[funcIndex!].winner
-            destinationVC.deckName = games[funcIndex!].deck?.deckName
+            destinationVC.deckName = games[funcIndex!].deckName
         }
     }
 }

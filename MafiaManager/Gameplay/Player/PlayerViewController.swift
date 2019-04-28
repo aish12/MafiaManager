@@ -52,14 +52,19 @@ class PlayerViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
                 self.mpcManager.endGame()
                 self.navigationController?.popToRootViewController(animated: true)
+                
             }))
             self.present(alert, animated: true)
             // Establish this game into Firebase
+            
             var ref: DatabaseReference!
             ref = Database.database().reference()
             // This person is a narrator, so set role to narrator
             ref.child("users").child(Auth.auth().currentUser!.uid).child("games").child("\(self.deckName ?? "") = \(self.gameTime!)").setValue(["role": "\(self.cardName!)"])
             ref.child("users").child(Auth.auth().currentUser!.uid).child("games").child("\(self.deckName ?? "") = \(self.gameTime!)").updateChildValues(["status": "\(self.statusLabelText!)"])
+            
+            
+            
             
         }
     }
@@ -79,7 +84,7 @@ class PlayerViewController: UIViewController {
         // Establish this game into Firebase
         var ref: DatabaseReference!
         ref = Database.database().reference()
-        
+        // For the players
         ref.child("users").child(Auth.auth().currentUser!.uid).child("games").child("\(self.deckName ?? "") = \(self.gameTime!)").setValue(["role": "\(self.cardName!)"])
         ref.child("users").child(Auth.auth().currentUser!.uid).child("games").child("\(self.deckName ?? "") = \(self.gameTime!)").updateChildValues(["status": "\(self.statusLabelText!)"])
     }

@@ -32,7 +32,8 @@ class LoadingWelcomeViewController: UIViewController {
         ref.child("users").child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as! NSDictionary
-            self.usersNameLabel.text = value["Name"] as? String
+            print(value)
+            self.usersNameLabel.text = (value["Name"] as? String) ?? "User"
             appDelegate?.username = (value["Name"] as? String) ?? "User"
             // Check if has deck names
             if (snapshot.hasChild("decks")) {

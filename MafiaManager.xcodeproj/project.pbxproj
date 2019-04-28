@@ -57,6 +57,7 @@
 		F6B2E1402257D82000EFB394 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B2E13F2257D82000EFB394 /* CardViewController.swift */; };
 		F6B2E142225D2F1500EFB394 /* NarratorDashboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B2E141225D2F1500EFB394 /* NarratorDashboardTableViewCell.swift */; };
 		F6B2E144225D40E100EFB394 /* NarratorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B2E143225D40E100EFB394 /* NarratorDetailViewController.swift */; };
+		F6D2FD2F22725C0D005DF223 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D2FD2E22725C0D005DF223 /* HelperFunctions.swift */; };
 		F6F54C732244644700F6DFDF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F54C722244644700F6DFDF /* LoginViewController.swift */; };
 		F6F54C7522446B7D00F6DFDF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F54C7422446B7D00F6DFDF /* SignUpViewController.swift */; };
 		F6F54C77224482FC00F6DFDF /* LoadingWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F54C76224482FC00F6DFDF /* LoadingWelcomeViewController.swift */; };
@@ -117,6 +118,7 @@
 		F6B2E13F2257D82000EFB394 /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		F6B2E141225D2F1500EFB394 /* NarratorDashboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NarratorDashboardTableViewCell.swift; sourceTree = "<group>"; };
 		F6B2E143225D40E100EFB394 /* NarratorDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NarratorDetailViewController.swift; sourceTree = "<group>"; };
+		F6D2FD2E22725C0D005DF223 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		F6F54C722244644700F6DFDF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F6F54C7422446B7D00F6DFDF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		F6F54C76224482FC00F6DFDF /* LoadingWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingWelcomeViewController.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				7BEA9F57225A79F2005FBDE7 /* MPCManager.swift */,
 				7BE3D3D0226E562800851E22 /* UITextViewPlaceholder.swift */,
 				F691B66D226F985200115AB1 /* CoreFirebaseHelper.swift */,
+				F6D2FD2E22725C0D005DF223 /* HelperFunctions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				F618EE8122488DE500E32DA5 /* TabBarViewController.swift in Sources */,
 				7B146516224ACFEF00241B00 /* NewDeckViewController.swift in Sources */,
 				BF01BDD022487FB800C883D8 /* PlayerViewController.swift in Sources */,
+				F6D2FD2F22725C0D005DF223 /* HelperFunctions.swift in Sources */,
 				7B32DF3C225A262600F0072B /* CoreGraphicsHelper.swift in Sources */,
 				F6B2E142225D2F1500EFB394 /* NarratorDashboardTableViewCell.swift in Sources */,
 				BF6097D0226FE385002AA0D8 /* HistorySingleGameTableViewCell.swift in Sources */,

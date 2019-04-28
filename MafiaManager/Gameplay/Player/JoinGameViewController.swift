@@ -44,9 +44,7 @@ class JoinGameViewController: UIViewController, MCBrowserViewControllerDelegate 
             }
         }
     }
-    
-    
-    
+
     func browseForDevices(){
         mpcManager.setupBrowser(shouldBrowse: true)
         mpcManager.browser.delegate = self
