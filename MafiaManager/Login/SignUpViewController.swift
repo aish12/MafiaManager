@@ -22,6 +22,9 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordTextfield: UITextField!
     @IBOutlet weak var confirmPasswordTextfield: UITextField!
     
+    @IBOutlet weak var signUpkeyboardHeightLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet weak var signUpimageHeightConstraint: NSLayoutConstraint!
+    
     @IBAction func onRegisterButtonPressed(_ sender: Any) {
         // Check if input is valid
         guard
@@ -103,6 +106,11 @@ class SignUpViewController: UIViewController {
                 self.confirmPasswordTextfield.text = nil
             }
         }
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardNotification(notification:)),
+                                               name: UIResponder.keyboardWillChangeFrameNotification,
+                                               object: nil)
     }
     
     // code to dismiss keyboard when user clicks on background
@@ -113,6 +121,42 @@ class SignUpViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    @objc func keyboardNotification(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            let endFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+            let endFrameY = endFrame!.origin.y
+            let duration:TimeInterval = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+            let animationCurveRawNSN = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber
+            let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIView.AnimationOptions.curveEaseInOut.rawValue
+            let animationCurve:UIView.AnimationOptions = UIView.AnimationOptions(rawValue: animationCurveRaw)
+            let keyboardShow: Bool!
+            if endFrameY >= UIScreen.main.bounds.size.height {
+                print("signup keyboard hide")
+                keyboardShow = false
+                self.signUpkeyboardHeightLayoutConstraint?.constant = 0.0
+            } else {
+                print("signup keyboard show")
+                keyboardShow = true
+                self.signUpkeyboardHeightLayoutConstraint?.constant = endFrame?.size.height ?? 0.0
+            }
+            print("size:", mafiaImage.frame.size)
+            
+            UIView.animate(withDuration: duration,
+                           delay: TimeInterval(0),
+                           options: animationCurve,
+                           animations: {
+                            if keyboardShow {
+                                self.mafiaImage?.isHidden = true
+                                self.signUpimageHeightConstraint?.constant = 0.0
+                            } else {
+                                self.mafiaImage?.isHidden = false
+                                self.signUpimageHeightConstraint?.constant = 172.0
+                            }
+                            self.view.layoutIfNeeded() },
+                           completion: nil)
+        }
     }
     
     /*

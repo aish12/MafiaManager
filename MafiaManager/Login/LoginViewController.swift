@@ -51,7 +51,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                                selector: #selector(self.keyboardNotification(notification:)),
                                                name: UIResponder.keyboardWillChangeFrameNotification,
                                                object: nil)
-        mafiaImage.frame.size = CGSize(width: 0, height: 0)
     }
     
     deinit {
