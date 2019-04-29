@@ -30,9 +30,9 @@ class PlayViewController: UIViewController, MCBrowserViewControllerDelegate {
     @objc func peerDidChangeStateWithNotification(notification: Notification){
         let peerID: MCPeerID = notification.userInfo!["peerID"] as! MCPeerID
         let state: MCSessionState = notification.userInfo!["state"] as! MCSessionState
-        print("peerDidChangeStateW/Not called for \(self.mpcManager.peerID.displayName)")
-        print("Narrator ID in player browser: \(self.mpcManager.narratorID)")
-        print("PeerID: \(peerID)")
+        //print("peerDidChangeStateW/Not called for \(self.mpcManager.peerID.displayName)")
+        //print("Narrator ID in player browser: \(self.mpcManager.narratorID)")
+        //print("PeerID: \(peerID)")
         if state == MCSessionState.connected {
             DispatchQueue.main.async {
                 if state == MCSessionState.connected && self.mpcManager.narratorID == nil {
