@@ -43,6 +43,10 @@ class PlayerViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(updateStatus), name: NSNotification.Name("assignStatus"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(narratorDisconnected), name: NSNotification.Name("narratorDisconnected"), object: nil)
 
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        ref.child("users").child(Auth.auth().currentUser!.uid).child("games").child("\(self.deckName ?? "") = \(self.gameTime!)").setValue(["narrator": "\(self.mpcManager.narratorID.displayName)"])
+        
     }
     
     @objc func narratorDisconnected(notification: Notification){
@@ -60,12 +64,8 @@ class PlayerViewController: UIViewController {
             var ref: DatabaseReference!
             ref = Database.database().reference()
             // This person is a narrator, so set role to narrator
-            ref.child("users").child(Auth.auth().currentUser!.uid).child("games").child("\(self.deckName ?? "") = \(self.gameTime!)").setValue(["role": "\(self.cardName!)"])
+            ref.child("users").child(Auth.auth().currentUser!.uid).child("games").child("\(self.deckName ?? "") = \(self.gameTime!)").updateChildValues(["role": "\(self.cardName!)"])
             ref.child("users").child(Auth.auth().currentUser!.uid).child("games").child("\(self.deckName ?? "") = \(self.gameTime!)").updateChildValues(["status": "\(self.statusLabelText!)"])
-            
-            
-            
-            
         }
     }
     
@@ -85,7 +85,7 @@ class PlayerViewController: UIViewController {
         var ref: DatabaseReference!
         ref = Database.database().reference()
         // For the players
-        ref.child("users").child(Auth.auth().currentUser!.uid).child("games").child("\(self.deckName ?? "") = \(self.gameTime!)").setValue(["role": "\(self.cardName!)"])
+        ref.child("users").child(Auth.auth().currentUser!.uid).child("games").child("\(self.deckName ?? "") = \(self.gameTime!)").updateChildValues(["role": "\(self.cardName!)"])
         ref.child("users").child(Auth.auth().currentUser!.uid).child("games").child("\(self.deckName ?? "") = \(self.gameTime!)").updateChildValues(["status": "\(self.statusLabelText!)"])
     }
     
