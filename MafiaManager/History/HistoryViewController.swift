@@ -49,10 +49,13 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
                         let convertedFormat =  HelperFunctions.convertToString(dateString: dateTime, formatIn: "MMM dd, yyyy 'at' hh:mm:ss a", formatOut: "MM/dd/yy")
                         
                         let playerVals = rest.value as! NSDictionary
-                        //print(playerVals["role"]!)
+                        // This is a player, not a narrator
+                        if playerVals["narrator"] as! String != HelperFunctions.userName {
+                            print("player")
+                        }
                         
                         
-                        self.games.append(GameHistory(_date: convertedFormat, _deck: deckName, _narrator: "Narrator"))
+                        self.games.append(GameHistory(_date: convertedFormat, _deck: deckName, _narrator: "\(playerVals["narrator"] ?? "Narrator")"))
                         self.historyTableView.reloadData()
                     }
                 })
