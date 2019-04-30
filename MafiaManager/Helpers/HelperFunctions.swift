@@ -11,6 +11,8 @@ import Foundation
 
 class HelperFunctions: NSObject {
 
+    static var userName: String?
+    
     static func convertToString (dateString: String, formatIn : String, formatOut : String) -> String {
         let dateFormater = DateFormatter()
         dateFormater.timeZone = NSTimeZone(abbreviation: "UTC") as TimeZone!

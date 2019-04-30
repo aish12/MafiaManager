@@ -108,14 +108,14 @@ class RoleQuantityViewController: UIViewController, UITableViewDelegate, UITable
             var ref: DatabaseReference!
             ref = Database.database().reference()
             
+            // Set the game time, deck name, and narrator name
             let currentDateTime = Date()
             let formatter = DateFormatter()
             formatter.timeStyle = .medium
             formatter.dateStyle = .medium
             let formattedDateTime = formatter.string(from: currentDateTime)
             // This person is a narrator, so set role to narrator
-            ref.child("users").child(Auth.auth().currentUser!.uid).child("games").child("\(deck!.deckName ?? "") = \(formattedDateTime)").setValue(["role": "narrator"])
-            
+            ref.child("users").child(Auth.auth().currentUser!.uid).child("games").child("\(deck!.deckName ?? "") = \(formattedDateTime)").setValue(["narrator":HelperFunctions.userName!])
             destinationVC.gameTime = formattedDateTime
         }
     }
