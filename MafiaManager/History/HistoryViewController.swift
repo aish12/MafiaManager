@@ -14,13 +14,11 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     class GameHistory {
         var deckName : String?
         var narrator: String?
-        var winner: String?
         var date:String?
-        init(_date: String, _deck: String, _narrator: String, _winner: String) {
+        init(_date: String, _deck: String, _narrator: String) {
             date = _date
             deckName = _deck
             narrator = _narrator
-            winner = _winner
         }
     }
 
@@ -50,7 +48,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
                         
                         let convertedFormat =  HelperFunctions.convertToString(dateString: dateTime, formatIn: "MMM dd, yyyy 'at' hh:mm:ss a", formatOut: "MM/dd/yy")
                         
-                        self.games.append(GameHistory(_date: convertedFormat, _deck: deckName, _narrator: "Narrator", _winner: "Narrator"))
+                        self.games.append(GameHistory(_date: convertedFormat, _deck: deckName, _narrator: "Narrator"))
                         self.historyTableView.reloadData()
                     }
                 })
@@ -69,7 +67,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.dateLabel.text = gameHistoryItem.date
         cell.deckLabel.text = gameHistoryItem.deckName
         cell.narratorLabel.text = gameHistoryItem.narrator
-        cell.winnerLabel.text = gameHistoryItem.winner
         return cell
     }
     
@@ -78,7 +75,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             let destinationVC = segue.destination as! HistoryGameDetailViewController
             
             let funcIndex = historyTableView.indexPathForSelectedRow?.row
-            destinationVC.winnerName = games[funcIndex!].winner
             destinationVC.deckName = games[funcIndex!].deckName
         }
     }
