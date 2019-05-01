@@ -107,6 +107,7 @@ class MPCManager: NSObject, MCSessionDelegate {
             abort()
         }
         print("RECEIVING DATA")
+        print(dataDict)
         let objName: String = dataDict.keys[dataDict.keys.startIndex]
         if objName == "disconnect" {
             endGame()

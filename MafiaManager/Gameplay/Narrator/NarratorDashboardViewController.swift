@@ -33,7 +33,7 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
             timerBarButtonItem.tintColor = self.view.tintColor
         }
         NotificationCenter.default.addObserver(self, selector: #selector(timerTick), name: NSNotification.Name("timerTick"), object: nil)
-        
+        print(connectedPlayers)
         narratorTableView.delegate = self
         narratorTableView.dataSource = self
         narratorTableView.reloadData()

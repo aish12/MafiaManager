@@ -7,6 +7,7 @@
 //
 import UIKit
 import MultipeerConnectivity
+import Firebase
 
 class JoinGameViewController: UIViewController, MCBrowserViewControllerDelegate {
     
@@ -39,7 +40,10 @@ class JoinGameViewController: UIViewController, MCBrowserViewControllerDelegate 
                 if state == MCSessionState.connected && self.mpcManager.narratorID == nil {
                     self.mpcManager.narratorID = peerID
                     self.mpcManager.setupBrowser(shouldBrowse: false)
-                    self.performSegue(withIdentifier: "fromJoinToWaitSegue", sender: self)
+                    //SEND MESSAGE TO NARRATOR WITH USER ID
+                    print("sending narrator message")
+                    self.mpcManager.sendObject(objData: ["PeerGaveID": ["peerID": self.mpcManager.peerID, "uid": Auth.auth().currentUser!.uid]], peers: [peerID])
+//                    self.performSegue(withIdentifier: "fromJoinToWaitSegue", sender: self)
                 }
             }
         }
@@ -52,7 +56,7 @@ class JoinGameViewController: UIViewController, MCBrowserViewControllerDelegate 
     }
     
     func goToGame() {
-        performSegue(withIdentifier: "fromJoinToWaitSegue", sender: self)
+//        performSegue(withIdentifier: "fromJoinToWaitSegue", sender: self)
     }
     
     func returnToPlayView() {

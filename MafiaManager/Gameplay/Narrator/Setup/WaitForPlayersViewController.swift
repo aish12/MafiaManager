@@ -7,6 +7,7 @@
 //
 import UIKit
 import MultipeerConnectivity
+import Firebase
 
 class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -42,7 +43,18 @@ class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITab
         }
     
         NotificationCenter.default.addObserver(self, selector: #selector(peerDidChangeStateWithNotification), name: NSNotification.Name("MCDidChangeStateNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(peerGaveID), name: NSNotification.Name("PeerGaveID"), object: nil)
         
+    }
+    
+    @objc func peerGaveID(notification: Notification){
+        print("running handler")
+        let desiredPeerID = (notification.userInfo!["PeerGaveID"] as! [String: Any])["peerID"] as! MCPeerID
+        print("Desired Peer ID: \(desiredPeerID)")
+        let playerIndex = connectedPlayers.firstIndex(where: {(session: PlayerSession) in
+            session.playerID == desiredPeerID
+        })
+        connectedPlayers[playerIndex!].uid = (notification.userInfo!["PeerGaveID"] as! [String: Any])["uid"] as! String
     }
     
     @objc func peerDidChangeStateWithNotification(notification: Notification){

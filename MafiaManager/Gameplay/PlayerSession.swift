@@ -11,6 +11,7 @@ import MultipeerConnectivity
 
 struct PlayerSession {
     var playerID: MCPeerID
+    var uid: String!
     var card: Card!
     var isAlive: Bool!
     var isWinner: Bool!
@@ -20,6 +21,7 @@ struct PlayerSession {
         self.card = card
         self.isAlive = isAlive
         self.isWinner = false
+        self.uid = ""
     }
     
     init(playerID: MCPeerID, card: Card){
@@ -27,6 +29,7 @@ struct PlayerSession {
         self.card = card
         self.isAlive = true
         self.isWinner = false
+        self.uid = ""
     }
     
     init(playerID: MCPeerID){
@@ -34,5 +37,6 @@ struct PlayerSession {
         self.card = nil
         self.isAlive = true
         self.isWinner = false
+        self.uid = ""
     }
 }

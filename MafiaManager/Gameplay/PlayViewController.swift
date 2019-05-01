@@ -8,6 +8,7 @@
 //  Responsible for handling the play tab's view controller
 import UIKit
 import MultipeerConnectivity
+import Firebase
 
 class PlayViewController: UIViewController, MCBrowserViewControllerDelegate {
 
@@ -25,6 +26,7 @@ class PlayViewController: UIViewController, MCBrowserViewControllerDelegate {
         CoreGraphicsHelper.colorButtons(button: narratorButton, color: CoreGraphicsHelper.navyBlueColor)
         CoreGraphicsHelper.colorButtons(button: playerButton, color: CoreGraphicsHelper.navyBlueColor)
         mpcManager!.endGame()
+        
     }
     
     @objc func peerDidChangeStateWithNotification(notification: Notification){
@@ -38,6 +40,7 @@ class PlayViewController: UIViewController, MCBrowserViewControllerDelegate {
                 if state == MCSessionState.connected && self.mpcManager.narratorID == nil {
                     self.mpcManager.narratorID = peerID
                     self.mpcManager.setupBrowser(shouldBrowse: false)
+                    self.mpcManager.sendObject(objData: ["PeerGaveID": ["peerID": self.mpcManager.peerID, "uid": Auth.auth().currentUser!.uid]], peers: [peerID])
                     self.performSegue(withIdentifier: "fromPlayToWaitSegue", sender: self)
                 }
             }
