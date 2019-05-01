@@ -22,8 +22,6 @@ class HistoryGameDetailViewController: UIViewController, UITableViewDelegate, UI
         historyGameTableView.dataSource = self
         // Do any additional setup after loading the view.
         self.navigationItem.title = deckName
-        print("Detail")
-        print(otherPlayers)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

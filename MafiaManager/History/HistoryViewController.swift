@@ -28,11 +28,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var historyTableView: UITableView!
     var games: [GameHistory] = []
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        historyTableView.reloadData()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         historyTableView.delegate = self
@@ -61,6 +56,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
                         if playerVals["players"] != nil {
                             let allPlayers = playerVals["players"] as! NSDictionary
                             self.playersOfGames.append(allPlayers)
+                            print(self.playersOfGames)
                         } else {
                             // No game/players
                             self.playersOfGames.append(["No players":"N/A"])
@@ -89,7 +85,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "fromHistoryViewToHistoryDetail" {
             let destinationVC = segue.destination as! HistoryGameDetailViewController
-            
             let funcIndex = historyTableView.indexPathForSelectedRow?.row
             destinationVC.deckName = games[funcIndex!].deckName
             destinationVC.otherPlayers = playersOfGames[funcIndex!]

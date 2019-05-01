@@ -147,7 +147,7 @@ class RecordWinnersViewController: UIViewController, UITableViewDelegate, UITabl
         recordResultsTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.fade)
     }
     
-    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -161,5 +161,5 @@ class RecordWinnersViewController: UIViewController, UITableViewDelegate, UITabl
         }
         
     }
-
+    */
 }
