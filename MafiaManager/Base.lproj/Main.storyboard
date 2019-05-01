@@ -2048,6 +2048,7 @@
                                 <state key="normal" title="Record Results"/>
                                 <connections>
                                     <action selector="recordResultsButtonPressed:" destination="lou-Ij-zi1" eventType="touchUpInside" id="HKP-BT-9ab"/>
+                                    <segue destination="cnj-nN-aBx" kind="show" identifier="recordToHistory" id="UJN-nx-Uxg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ylj-S2-VzA">
@@ -2082,7 +2083,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Efj-Mb-XK5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5963.768115942029" y="358.92857142857139"/>
+            <point key="canvasLocation" x="6155" y="359"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="oz2-aG-w5K">
@@ -2462,5 +2463,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="pdz-yY-KAV"/>
         <segue reference="WIt-2a-Efb"/>
+        <segue reference="UJN-nx-Uxg"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -16,6 +16,7 @@ class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITab
     var playerAndCard: [(player: MCPeerID, card: Card)] = []
     var connectedPlayers: [PlayerSession] = []
     var gameTime: String?
+    var deckName: String?
     @IBOutlet weak var joinedPlayersTableView: UITableView!
     
     private var mpcManager: MPCManager!
@@ -137,6 +138,8 @@ class WaitForPlayersViewController: UIViewController, UITableViewDelegate, UITab
         if segue.identifier == "fromWaitForPlayersToDashboard" {
             let destinationVC = segue.destination as! NarratorDashboardViewController
             destinationVC.connectedPlayers = self.connectedPlayers
+            destinationVC.gameTime = self.gameTime
+            destinationVC.deckName = self.deckName
         }
     }
     

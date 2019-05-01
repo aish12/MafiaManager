@@ -117,6 +117,7 @@ class RoleQuantityViewController: UIViewController, UITableViewDelegate, UITable
             // This person is a narrator, so set role to narrator
             ref.child("users").child(Auth.auth().currentUser!.uid).child("games").child("\(deck!.deckName ?? "") = \(formattedDateTime)").setValue(["narrator":HelperFunctions.userName!])
             destinationVC.gameTime = formattedDateTime
+            destinationVC.deckName = self.deck?.deckName
         }
     }
 

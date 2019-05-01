@@ -18,12 +18,12 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
     var mpcManager: MPCManager!
     var connectedPlayers: [PlayerSession]!
     var timer = GlobalTimer.sharedTimer
-    
+    var gameTime: String?
+    var deckName: String?
     var player: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if timer.isRunning(){
             if timer.timeLeft! > 30 {
                 timerBarButtonItem.tintColor = self.view.tintColor
@@ -122,6 +122,8 @@ class NarratorDashboardViewController: UIViewController, UITableViewDelegate, UI
             print(self.connectedPlayers)
             let destinationVC = segue.destination as! RecordWinnersViewController
             destinationVC.players = self.connectedPlayers
+            destinationVC.gameTime = self.gameTime
+            destinationVC.deckName = self.deckName
         }
     }
     

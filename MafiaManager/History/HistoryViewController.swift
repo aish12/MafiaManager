@@ -8,8 +8,11 @@
 //  Dummy for now, responsible for handling the history tab view controller (stretch goal)
 import UIKit
 import Firebase
+import MultipeerConnectivity
 
 class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    var players: [PlayerSession]!
     
     class GameHistory {
         var deckName : String?
@@ -53,7 +56,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
                         if playerVals["narrator"] as! String != HelperFunctions.userName {
                             print("player")
                         }
-                        
                         
                         self.games.append(GameHistory(_date: convertedFormat, _deck: deckName, _narrator: "\(playerVals["narrator"] ?? "Narrator")"))
                         self.historyTableView.reloadData()

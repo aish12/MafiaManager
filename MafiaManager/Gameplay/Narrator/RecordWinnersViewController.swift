@@ -9,11 +9,13 @@
 
 import UIKit
 import MultipeerConnectivity
+import Firebase
 
 class RecordWinnersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var recordResultsTableView: UITableView!
-    
+    var gameTime: String?
+    var deckName: String?
     var players: [PlayerSession]!
 
     override func viewDidLoad() {
@@ -30,7 +32,18 @@ class RecordWinnersViewController: UIViewController, UITableViewDelegate, UITabl
     
     // If they have recorded winners, return back to play tab screen
     @IBAction func recordResultsButtonPressed(_ sender: Any) {
-        self.navigationController?.popToRootViewController(animated: true)
+        //self.navigationController?.popToRootViewController(animated: true)
+        
+        // Save in firebase the status of each player
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        let userID = Auth.auth().currentUser!.uid
+        
+        for player in players {
+            let name = player.playerID.displayName
+            let winnerOrNot = player.isWinner == false ? "Dead" : "Winner"
+            ref.child("users").child(userID).child("games").child("\(self.deckName!) = \(self.gameTime!)").child("players").updateChildValues([name : winnerOrNot])
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -70,14 +83,20 @@ class RecordWinnersViewController: UIViewController, UITableViewDelegate, UITabl
         recordResultsTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.fade)
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "recordToHistory" {
+            if let destinationVC = segue.destination as? HistoryViewController {
+                destinationVC.players = players
+            }
+        }
+        
     }
-    */
 
 }

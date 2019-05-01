@@ -7,44 +7,41 @@
 //
 
 import UIKit
+import MultipeerConnectivity
 
 class HistoryGameDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
     @IBOutlet weak var historyGameTableView: UITableView!
-    var winnerName: String?
-    var otherPlayers: [String] = ["Bob", "Jim", "Alice"];
+    var otherPlayers: [PlayerSession]!
     var deckName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         historyGameTableView.delegate = self
         historyGameTableView.dataSource = self
         // Do any additional setup after loading the view.
-        self.navigationItem.title = deckName 
+        self.navigationItem.title = deckName
+        
+        // From Firebase get the information
+        
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return otherPlayers.count + 1
+        return otherPlayers.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = historyGameTableView.dequeueReusableCell(withIdentifier: "historySingleGameTableResultsCell", for: indexPath as IndexPath) as! HistorySingleGameTableViewCell
-        if (indexPath.row == 0) {
-//            cell.playerName = winnerName
-//            cell.status = "Winner"
-            cell.playerNameLabel.text = winnerName
-            cell.statusLabel.text = "Winner"
-            cell.statusLabel.textColor = UIColor.green
-        } else {
-//            cell.playerName = otherPlayers[indexPath.row - 1]
-//            cell.status = "Dead"
-            cell.playerNameLabel.text = otherPlayers[indexPath.row - 1]
+       
+        
+        
+        
+        
+            cell.playerNameLabel.text = "Player"
             cell.statusLabel.text = "Dead"
             cell.statusLabel.textColor = UIColor.red
-        }
-        
-        
+    
         return cell
     }
 
