@@ -28,11 +28,16 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var historyTableView: UITableView!
     var games: [GameHistory] = []
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        historyTableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         historyTableView.delegate = self
         historyTableView.dataSource = self
-        
+        historyTableView.reloadData()
         var ref: DatabaseReference!
         ref = Database.database().reference()
         let userID = Auth.auth().currentUser!.uid
@@ -52,11 +57,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
                         let convertedFormat =  HelperFunctions.convertToString(dateString: dateTime, formatIn: "MMM dd, yyyy 'at' hh:mm:ss a", formatOut: "MM/dd/yy")
                         
                         let playerVals = rest.value as! NSDictionary
-                        // This is a player, not a narrator
-                        if playerVals["narrator"] as! String != HelperFunctions.userName {
-                            print("player")
-                        }
-                        
+                       
                         if playerVals["players"] != nil {
                             let allPlayers = playerVals["players"] as! NSDictionary
                             self.playersOfGames.append(allPlayers)
@@ -64,7 +65,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
                             // No game/players
                             self.playersOfGames.append(["No players":"N/A"])
                         }
-                        
                         self.games.append(GameHistory(_date: convertedFormat, _deck: deckName, _narrator: "\(playerVals["narrator"] ?? "Narrator")"))
                         self.historyTableView.reloadData()
                     }
