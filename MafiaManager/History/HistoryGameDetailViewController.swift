@@ -8,11 +8,12 @@
 
 import UIKit
 import MultipeerConnectivity
+import Firebase
 
 class HistoryGameDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
     @IBOutlet weak var historyGameTableView: UITableView!
-    var otherPlayers: [PlayerSession]!
+    var otherPlayers: NSDictionary!
     var deckName: String?
     
     override func viewDidLoad() {
@@ -21,10 +22,8 @@ class HistoryGameDetailViewController: UIViewController, UITableViewDelegate, UI
         historyGameTableView.dataSource = self
         // Do any additional setup after loading the view.
         self.navigationItem.title = deckName
-        
-        // From Firebase get the information
-        
-        
+        print("Detail")
+        print(otherPlayers)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -34,14 +33,16 @@ class HistoryGameDetailViewController: UIViewController, UITableViewDelegate, UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = historyGameTableView.dequeueReusableCell(withIdentifier: "historySingleGameTableResultsCell", for: indexPath as IndexPath) as! HistorySingleGameTableViewCell
        
-        
-        
-        
-        
-            cell.playerNameLabel.text = "Player"
-            cell.statusLabel.text = "Dead"
+        let playerName = otherPlayers.allKeys[indexPath.row] as? String
+        let playerStatus = otherPlayers[playerName!] as? String
+        cell.playerNameLabel.text = playerName
+        cell.statusLabel.text = playerStatus
+        if playerStatus == "Dead" {
             cell.statusLabel.textColor = UIColor.red
-    
+        } else {
+            cell.statusLabel.textColor = UIColor.green
+        }
+        
         return cell
     }
 

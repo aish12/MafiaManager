@@ -28,6 +28,17 @@ class RecordWinnersViewController: UIViewController, UITableViewDelegate, UITabl
     // If they do not want to record winners, return back to play tab screen
     @IBAction func skipButtonPressed(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
+        
+        // Save in firebase the status of each player
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        let userID = Auth.auth().currentUser!.uid
+        
+        for player in players {
+            let name = player.playerID.displayName
+            let winnerOrNot = player.isWinner == false ? "Dead" : "Winner"
+            ref.child("users").child(userID).child("games").child("\(self.deckName!) = \(self.gameTime!)").child("players").updateChildValues([name : winnerOrNot])
+        }
     }
     
     // If they have recorded winners, return back to play tab screen
@@ -93,7 +104,6 @@ class RecordWinnersViewController: UIViewController, UITableViewDelegate, UITabl
         
         if segue.identifier == "recordToHistory" {
             if let destinationVC = segue.destination as? HistoryViewController {
-                destinationVC.players = players
             }
         }
         

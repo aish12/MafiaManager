@@ -12,7 +12,7 @@ import MultipeerConnectivity
 
 class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var players: [PlayerSession]!
+    var playersOfGames: [NSDictionary] = []
     
     class GameHistory {
         var deckName : String?
@@ -57,6 +57,9 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
                             print("player")
                         }
                         
+                        let allPlayers = playerVals["players"] as! NSDictionary
+                        self.playersOfGames.append(allPlayers)
+                        
                         self.games.append(GameHistory(_date: convertedFormat, _deck: deckName, _narrator: "\(playerVals["narrator"] ?? "Narrator")"))
                         self.historyTableView.reloadData()
                     }
@@ -66,7 +69,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(games.count)
         return games.count
     }
     
@@ -85,6 +87,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             let funcIndex = historyTableView.indexPathForSelectedRow?.row
             destinationVC.deckName = games[funcIndex!].deckName
+            destinationVC.otherPlayers = playersOfGames[funcIndex!]
         }
     }
 }
