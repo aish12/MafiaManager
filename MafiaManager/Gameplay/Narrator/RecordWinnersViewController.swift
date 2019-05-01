@@ -23,6 +23,11 @@ class RecordWinnersViewController: UIViewController, UITableViewDelegate, UITabl
         recordResultsTableView.delegate = self
         recordResultsTableView.dataSource = self
         recordResultsTableView.reloadData()
+        
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        let userID = Auth.auth().currentUser!.uid
+        ref.child("users").child(userID).child("games").child("\(self.deckName!) = \(self.gameTime!)").child("players")
     }
     
     // If they do not want to record winners, return back to play tab screen
@@ -36,8 +41,15 @@ class RecordWinnersViewController: UIViewController, UITableViewDelegate, UITabl
         
         for player in players {
             let name = player.playerID.displayName
-            let winnerOrNot = player.isWinner == false ? "Dead" : "Winner"
-            ref.child("users").child(userID).child("games").child("\(self.deckName!) = \(self.gameTime!)").child("players").updateChildValues([name : winnerOrNot])
+            let winnerOrNot: String?
+            if player.isWinner {
+                winnerOrNot = "Winner"
+            } else if player.isAlive {
+                winnerOrNot = "Alive"
+            } else {
+                winnerOrNot = "Dead"
+            }
+            ref.child("users").child(userID).child("games").child("\(self.deckName!) = \(self.gameTime!)").child("players").updateChildValues([name : winnerOrNot!])
         }
     }
     
@@ -52,8 +64,15 @@ class RecordWinnersViewController: UIViewController, UITableViewDelegate, UITabl
         
         for player in players {
             let name = player.playerID.displayName
-            let winnerOrNot = player.isWinner == false ? "Dead" : "Winner"
-            ref.child("users").child(userID).child("games").child("\(self.deckName!) = \(self.gameTime!)").child("players").updateChildValues([name : winnerOrNot])
+            let winnerOrNot: String?
+            if player.isWinner {
+                winnerOrNot = "Winner"
+            } else if player.isAlive {
+                winnerOrNot = "Alive"
+            } else {
+                winnerOrNot = "Dead"
+            }
+            ref.child("users").child(userID).child("games").child("\(self.deckName!) = \(self.gameTime!)").child("players").updateChildValues([name : winnerOrNot!])
         }
     }
     

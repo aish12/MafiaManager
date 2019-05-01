@@ -57,8 +57,13 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
                             print("player")
                         }
                         
-                        let allPlayers = playerVals["players"] as! NSDictionary
-                        self.playersOfGames.append(allPlayers)
+                        if playerVals["players"] != nil {
+                            let allPlayers = playerVals["players"] as! NSDictionary
+                            self.playersOfGames.append(allPlayers)
+                        } else {
+                            // No game/players
+                            self.playersOfGames.append(["No players":"N/A"])
+                        }
                         
                         self.games.append(GameHistory(_date: convertedFormat, _deck: deckName, _narrator: "\(playerVals["narrator"] ?? "Narrator")"))
                         self.historyTableView.reloadData()

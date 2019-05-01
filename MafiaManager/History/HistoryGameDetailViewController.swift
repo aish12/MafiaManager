@@ -39,6 +39,8 @@ class HistoryGameDetailViewController: UIViewController, UITableViewDelegate, UI
         cell.statusLabel.text = playerStatus
         if playerStatus == "Dead" {
             cell.statusLabel.textColor = UIColor.red
+        } else if playerStatus == "N/A" {
+            cell.statusLabel.textColor = UIColor.gray
         } else {
             cell.statusLabel.textColor = UIColor.green
         }
