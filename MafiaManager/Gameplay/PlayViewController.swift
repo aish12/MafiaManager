@@ -23,8 +23,8 @@ class PlayViewController: UIViewController, MCBrowserViewControllerDelegate {
         super.viewDidLoad()
         appDelegate = UIApplication.shared.delegate as? AppDelegate
         mpcManager = appDelegate.mpcManager!
-        CoreGraphicsHelper.colorButtons(button: narratorButton, color: CoreGraphicsHelper.navyBlueColor)
-        CoreGraphicsHelper.colorButtons(button: playerButton, color: CoreGraphicsHelper.navyBlueColor)
+        CoreGraphicsHelper.colorButtons(button: narratorButton, color: CoreGraphicsHelper.darkRedColor)
+        CoreGraphicsHelper.colorButtons(button: playerButton, color: CoreGraphicsHelper.darkRedColor)
         mpcManager!.endGame()
         
     }

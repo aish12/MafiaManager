@@ -91,7 +91,7 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         // Mafia icon should appear
-        CoreGraphicsHelper.colorButtons(button: registerButton, color: CoreGraphicsHelper.navyBlueColor)
+        CoreGraphicsHelper.colorButtons(button: registerButton, color: CoreGraphicsHelper.darkRedColor)
         mafiaImage.image = UIImage(named: "MafiaIcon")
         passwordTextfield.isSecureTextEntry = true
         confirmPasswordTextfield.isSecureTextEntry = true

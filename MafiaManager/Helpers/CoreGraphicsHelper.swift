@@ -10,7 +10,7 @@ import UIKit
 
 class CoreGraphicsHelper: NSObject {
 
-    static let navyBlueColor = UIColor(red: 0, green: 0.1137, blue: 0.4588, alpha: 1.0)
+    static let darkRedColor = UIColor(red: 0.6667, green: 0, blue: 0.0078, alpha: 1.0)
     static let greenColor = UIColor(red: 0.302, green: 0.757, blue: 0.431, alpha: 1.0)
     static let redColor = UIColor(red: 0.576, green: 0.188, blue: 0.008, alpha: 1.0)
     static let orangeColor = UIColor(red: 0.827, green: 0.725, blue: 0.204, alpha: 1.0)
@@ -63,7 +63,7 @@ class CoreGraphicsHelper: NSObject {
     static func styleButton(button: UIButton, buttonClass: Class) {
         switch buttonClass {
         case Class.System:
-            button.backgroundColor = navyBlueColor
+            button.backgroundColor = darkRedColor
         case Class.Confirm:
             button.backgroundColor = greenColor
             button.setTitleColor(whiteColor, for: .normal)

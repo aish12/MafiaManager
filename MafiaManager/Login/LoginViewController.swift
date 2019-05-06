@@ -36,8 +36,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         emailTextfield.delegate = self
         passwordTextfield.delegate = self
         
-        CoreGraphicsHelper.colorButtons(button: loginButton, color: CoreGraphicsHelper.navyBlueColor)
-        CoreGraphicsHelper.colorButtons(button: signUpButton, color: CoreGraphicsHelper.navyBlueColor)
+        CoreGraphicsHelper.colorButtons(button: loginButton, color: CoreGraphicsHelper.darkRedColor)
+        CoreGraphicsHelper.colorButtons(button: signUpButton, color: CoreGraphicsHelper.darkRedColor)
         
         // After signing in
         Auth.auth().addStateDidChangeListener() { auth, user in
