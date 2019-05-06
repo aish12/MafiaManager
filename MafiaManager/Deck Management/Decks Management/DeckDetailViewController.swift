@@ -29,6 +29,10 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Add background image of wood to collection view
+        self.cardsCollectionView.backgroundView = UIImageView(image: UIImage(named: "wood1"))
+        
         let longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(longPressGR:)))
         longPressGR.minimumPressDuration = 0.5
         longPressGR.delaysTouchesBegan = true
