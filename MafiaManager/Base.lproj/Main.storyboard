@@ -2049,7 +2049,6 @@
                                 <state key="normal" title="Record Results"/>
                                 <connections>
                                     <action selector="recordResultsButtonPressed:" destination="lou-Ij-zi1" eventType="touchUpInside" id="HKP-BT-9ab"/>
-                                    <segue destination="cnj-nN-aBx" kind="show" identifier="recordToHistory" id="UJN-nx-Uxg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ylj-S2-VzA">
@@ -2454,17 +2453,16 @@
     </scenes>
     <resources>
         <image name="Decks" width="35" height="41"/>
-        <image name="GearIcon" width="1.239598274230957" height="1.239598274230957"/>
+        <image name="GearIcon" width="24" height="24"/>
         <image name="MafiaIcon" width="250" height="250"/>
         <image name="Play" width="35" height="37"/>
-        <image name="WelcomeLoadingPicture" width="500" height="500"/>
+        <image name="WelcomeLoadingPicture" width="1000" height="1000"/>
         <image name="deckOfCards" width="200" height="200"/>
         <image name="helpIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="l60-1W-HGq"/>
         <segue reference="WIt-2a-Efb"/>
-        <segue reference="UJN-nx-Uxg"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.60895842313766479" green="0.11912303417921066" blue="0.082291819155216217" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>

@@ -108,6 +108,7 @@ class RecordWinnersViewController: UIViewController, UITableViewDelegate, UITabl
                 ref.child("users").child(player.uid!).child("games").child("\(self.deckName!) = \(self.gameTime!)").child("players").updateChildValues([playerName : playerWinner!])
             }
         }
+        self.navigationController?.popToRootViewController(animated: true   )
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
