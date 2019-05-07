@@ -12,28 +12,6 @@ Special Instructions:
 Final Release:
 
 
-- Tesia: 31%
-  - Pair programmed with Aish for the UI design
-  - Pair programmed with Aish to debug network issues with Firebase in the History tab
-  - Firebase functionality in the History Tab
-  - Wrote the slides
-
-- Aish: 16%
-  - Pair programmed with Tesia for the UI design
-  - History Tab inital design and implementation with dummy data
-  - Pair programmed with Tesia to debug network issues with Firebase in the History tab
-  - Pair programmed with Robby to debug networking issues in gameplay
-
-- Robby: 42%
-  - General bug Fixes
-  - Finalizing Networking Issues
-
-- Daniel: 11%
-  - General bug fixes
-  - Maintaining / touching up UI design across changes
-  - Pair programmed with Robby to debug networking issues in gameplay
-
-
 | Feature                                    | Description                                                                                                   | Release Planned | Release Actual | Deviations (if any) | Who/Percentage Worked on                        |
 |--------------------------------------------|---------------------------------------------------------------------------------------------------------------|-----------------|----------------|---------------------|-------------------------------------------------|
 | Login                                      | Sign up, log in, and load welcome page                                                                        | Alpha Release   | Alpha Release  | None                | Tesia (100%)                                    |
@@ -48,6 +26,30 @@ Final Release:
 | Timer                                      | Timer to play the game                                                                                        | Beta Release    | Beta Release   | None                | Tesia (30%) Robby (30%) Daniel (20%) Aish (20%) |
 | History Tab                                | Stretch goal to record the winners of a game, and presenting the stored results in the history tab            | Stretch Goal    | Final Release  | None                | Tesia (50%) Aish  (40%) Robby (10%)             |
 | Bugs                                       | Fixing bugs that arose throughout the project                                                                 | Final Release   | Final Release  | None                | Robby (55%) Daniel (25%) Tesia (10%) Aish (10%) |
+
+
+- Tesia: (Release 35%, Overall 32%)
+  - Pair programmed with Aish for the UI design
+  - Pair programmed with Aish to debug network issues with Firebase in the History tab
+  - Firebase functionality in the History Tab
+  - Wrote the slides
+
+- Aish: (Release 15%, Overall 17%)
+  - Pair programmed with Tesia for the UI design
+  - History Tab inital design and implementation with dummy data
+  - Pair programmed with Tesia to debug network issues with Firebase in the History tab
+  - Pair programmed with Robby to debug networking issues in gameplay
+
+- Robby: (Release 35%, Overall 33%)
+  - General bug Fixes
+  - Finalizing Networking Issues
+
+- Daniel: (Release 15%, Overall 18%)
+  - General bug fixes
+  - Maintaining / touching up UI design across changes
+  - Pair programmed with Robby to debug networking issues in gameplay
+
+---------------------------------------------------------------------------------------------------------------------------------------
 
 Beta Release:
   - This release has most of the functionality of our project. There are a few things that don't yet have functionality, 
