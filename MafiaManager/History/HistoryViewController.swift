@@ -13,7 +13,8 @@ import MultipeerConnectivity
 class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var playersOfGames: [NSDictionary] = []
-    
+    private let refreshControl = UIRefreshControl()
+
     class GameHistory {
         var deckName : String?
         var narrator: String?
@@ -33,6 +34,19 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         historyTableView.delegate = self
         historyTableView.dataSource = self
         historyTableView.reloadData()
+        if #available(iOS 10.0, *) {
+            historyTableView.refreshControl = refreshControl
+        } else {
+            historyTableView.addSubview(refreshControl)
+        }
+        refreshControl.addTarget(self, action: #selector(retrieveGameHistory), for: .valueChanged)
+        retrieveGameHistory()
+    }
+    
+    
+    @objc func retrieveGameHistory(){
+        var newGames: [GameHistory] = []
+        var newPlayers:  [NSDictionary] = []
         var ref: DatabaseReference!
         ref = Database.database().reference()
         let userID = Auth.auth().currentUser!.uid
@@ -52,17 +66,20 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
                         let convertedFormat =  HelperFunctions.convertToString(dateString: dateTime, formatIn: "MMM dd, yyyy 'at' hh:mm:ss a", formatOut: "MM/dd/yy")
                         
                         let playerVals = rest.value as! NSDictionary
-                       
+                        
                         if playerVals["players"] != nil {
                             let allPlayers = playerVals["players"] as! NSDictionary
-                            self.playersOfGames.append(allPlayers)
-                            print(self.playersOfGames)
+                            newPlayers.append(allPlayers)
+                            print(newPlayers)
                         } else {
                             // No game/players
-                            self.playersOfGames.append(["No players":"N/A"])
+                            newPlayers.append(["No players":"N/A"])
                         }
-                        self.games.append(GameHistory(_date: convertedFormat, _deck: deckName, _narrator: "\(playerVals["narrator"] ?? "Narrator")"))
+                        newGames.append(GameHistory(_date: convertedFormat, _deck: deckName, _narrator: "\(playerVals["narrator"] ?? "Narrator")"))
+                        self.games = newGames
+                        self.playersOfGames = newPlayers
                         self.historyTableView.reloadData()
+                        self.refreshControl.endRefreshing()
                     }
                 })
             }
