@@ -1,4 +1,44 @@
-Group 10 - Mafia Manager
+Group number: 10
+Team Members: Aishwarya Shashidhar, Robby Stigler, Tesia Wu, Daniel Zheng
+Name of project: Mafia Manager
+Dependencies: Xcode 10.1, Swift 4, Firebase, Multipeer Connectivity
+Special Instructions:
+- You have to open the file MafiaManager.xcworkspace (as opposed to the file MafiaManager.xcodeprog).
+- Use an iPhone XR Simulator
+- Before running the app, run "pod install" inside the MafiaManager folder where the podfile is located
+- To test the connection between two players, you need to run another simulator. Use iPhone X.
+
+
+Final Release:
+
+- Tesia: 35%
+  - Pair programmed with Aish for the UI design
+  - Pair programmed with Aish to debug network issues with Firebase in the History tab
+  - Firebase functionality in the History Tab
+  - Wrote the slides
+
+- Aish: 20%
+  - Pair programmed with Tesia for the UI design
+  - History Tab inital design and implementation with dummy data
+  - Pair programmed with Tesia to debug network issues with Firebase in the History tab
+
+- Robby: 35%
+
+- Daniel: 10%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Beta Release:
