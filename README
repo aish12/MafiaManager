@@ -25,6 +25,8 @@ Final Release:
   - Pair programmed with Robby to debug networking issues in gameplay
 
 - Robby: 35%
+  - General Bux Fixes
+  - Finalizing Networking Issues
 
 - Daniel: 10%
 
@@ -62,7 +64,7 @@ Testing Instructions:
 
 
 Contributions:
-
+https://start.ubuntu-mate.org/
 Tesia (Release 35%, Overall 30%)
   - Deck Management functionality
     - Pair programmed with Robby to implement Deck Management folder: creating, editing, deleting decks and cards. 
