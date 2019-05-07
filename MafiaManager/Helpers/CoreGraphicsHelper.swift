@@ -15,7 +15,7 @@ class CoreGraphicsHelper: NSObject {
     static let redColor = UIColor(red: 0.576, green: 0.188, blue: 0.008, alpha: 1.0)
     static let orangeColor = UIColor(red: 0.827, green: 0.725, blue: 0.204, alpha: 1.0)
     static let whiteColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-    static let selectedBorderColor: CGColor = UIColor(red: 0, green: 0.651, blue: 0.9294, alpha: 1.0).cgColor
+    static let selectedBorderColor: CGColor = UIColor(red: 0.6667, green: 0, blue: 0.0078, alpha: 1.0).cgColor
     static let selectedBorderWidth: CGFloat = 5
     
     static let unselectedBorderColor: CGColor = UIColor.clear.cgColor
