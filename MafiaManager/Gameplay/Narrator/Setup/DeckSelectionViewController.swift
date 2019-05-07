@@ -23,6 +23,10 @@ class DeckSelectionViewController: UIViewController, UICollectionViewDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Add background image of wood to collection view
+        self.decksCollectionView.backgroundView = UIImageView(image: UIImage(named: "wood1"))
+        
         nextButton.isEnabled = false
         decksCollectionView.dataSource = self
         decksCollectionView.delegate = self

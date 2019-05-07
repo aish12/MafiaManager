@@ -21,6 +21,7 @@ class PlayViewController: UIViewController, MCBrowserViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         appDelegate = UIApplication.shared.delegate as? AppDelegate
         mpcManager = appDelegate.mpcManager!
         CoreGraphicsHelper.colorButtons(button: narratorButton, color: CoreGraphicsHelper.darkRedColor)

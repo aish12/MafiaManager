@@ -33,6 +33,8 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
         // Add background image of wood to collection view
         self.cardsCollectionView.backgroundView = UIImageView(image: UIImage(named: "wood1"))
         
+        self.adjustUITextViewHeight(arg: deckDetailTextView)
+        
         let longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(longPressGR:)))
         longPressGR.minimumPressDuration = 0.5
         longPressGR.delaysTouchesBegan = true
@@ -260,6 +262,13 @@ class DeckDetailViewController: UIViewController, UICollectionViewDataSource, UI
         }
         navigationItem.rightBarButtonItem = editNavBarItem
         
+    }
+    
+    func adjustUITextViewHeight(arg : UITextView)
+    {
+        arg.translatesAutoresizingMaskIntoConstraints = true
+        arg.sizeToFit()
+        arg.isScrollEnabled = false
     }
     
     // code to dismiss keyboard when user clicks on background

@@ -20,6 +20,9 @@ class SelectDetailViewController: UIViewController, UICollectionViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Add background image of wood to collection view
+        self.cardCollectionView.backgroundView = UIImageView(image: UIImage(named: "wood1"))
+        
         deckImageView.image = UIImage(data: (deck?.deckImage)!)
         deckDetailView.text = deck?.deckDescription
         navBar.topItem!.title = deck?.deckName

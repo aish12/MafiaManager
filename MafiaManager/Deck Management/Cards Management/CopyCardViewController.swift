@@ -26,6 +26,10 @@ class CopyCardViewController: UIViewController, UICollectionViewDelegate, UISear
     // On load create collection of all cards and allow multiple to be selected. Setup search controller
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Add background image of wood to collection view
+        self.cardCollectionView.backgroundView = UIImageView(image: UIImage(named: "wood1"))
+        
         cards = CoreDataHelper.retrieveCards(deck: nil)
         cardCollectionView.delegate = self
         cardCollectionView.dataSource = self
