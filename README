@@ -25,26 +25,29 @@ Final Release:
   - Pair programmed with Robby to debug networking issues in gameplay
 
 - Robby: 35%
-  - General Bux Fixes
+  - General bug Fixes
   - Finalizing Networking Issues
 
 - Daniel: 10%
+  - General bug fixes
+  - Maintaining / touching up UI design across changes
+  - Pair programmed with Robby to debug networking issues in gameplay
 
 
-| Feature                                   | Description                                                                                                   | Release Planned | Release Actual | Deviations (if any) | Who/Percentage Worked on                        |
-|-------------------------------------------|---------------------------------------------------------------------------------------------------------------|-----------------|----------------|---------------------|-------------------------------------------------|
-| Login                                     | Sign up, log in, and load welcome page                                                                        | Alpha Release   | Alpha Release  | None                | Tesia (100%)                                    |
-| UI                                        | main colors, design, preventing blank white space                                                             | Final Release   | Final Release  | None                | Tesia (50%) Aish (50%)                          |
-| Deck/Card Management- Basic UI            | Creating the views for deck/card detail, deck/card creation, editing                                          | Alpha Release   | Alpha Release  | None                | Robby (50%) Aish (40%) Daniel (10%)             |
-| Deck/Card Management- Full Implementation | Implementing functionality for editing decks/cards, creating decks/cards, deleting decks/cards, copying cards | Beta Release    | Beta Release   | None                | Robby (45%) Tesia (45%) Daniel (10%)            |
-| Gameplay- Basic UI                        | Narrator view, player view for gameplay                                                                       | Alpha Release   | Alpha Release  | None                | Robby (90%) Aish (10%)                          |
-| Gameplay- Full Implementation             | Networking logic, getting player information to sync across devices                                           | Beta Release    | Beta Release   | None                | Robby (55%) Tesia (35%) Daniel (10%)            |
-| Settings- UI                              | instructions                                                                                                  | Alpha Release   | Alpha Release  | None                | Robby (33%) Tesia (33%) Aish (33%)              |
-| Settings- Full Implementation             | Muted, default timer, logout                                                                                  | Beta Release    | Beta Release   | None                | Robby (55%) Tesia (30%) Daniel (15%)            |
-| Search Functionality                      | Searching functionality for decks and cards throughout the app                                                | Final Release   | Final Release  | None                | Robby (100%)                                    |
-| Timer                                     | Timer to play the game                                                                                        | Beta Release    | Beta Release   | None                | Tesia (30%) Robby (30%) Daniel (20%) Aish (20%) |
-| History Tab                               | Stretch goal to record the winners of a game, and presenting the stored results in the history tab            | Stretch Goal    | Final Release  | None                | Tesia (50%) Aish (40%) Robby (10%)              |
-| Bugs                                      | Fixing bugs that arose throughout the project                                                                 | Final Release   | Final Release  | None                | Robby (70%) Tesia (10%) Daniel (10%) Aish (10%) |
+| Feature                                    | Description                                                                                                   | Release Planned | Release Actual | Deviations (if any) | Who/Percentage Worked on                        |
+|--------------------------------------------|---------------------------------------------------------------------------------------------------------------|-----------------|----------------|---------------------|-------------------------------------------------|
+| Login                                      | Sign up, log in, and load welcome page                                                                        | Alpha Release   | Alpha Release  | None                | Tesia (100%)                                    |
+| UI                                         | main colors, design, preventing blank white space, constraints/formatting                                     | Final Release   | Final Release  | None                | Tesia (40%) Aish  (40%) Daniel (20%)            |
+| Deck/Card Management - Basic UI            | Creating the views for deck/card detail, deck/card creation, editing                                          | Alpha Release   | Alpha Release  | None                | Robby (50%) Aish  (40%) Daniel (10%)            |
+| Deck/Card Management - Full Implementation | Implementing functionality for editing decks/cards, creating decks/cards, deleting decks/cards, copying cards | Beta Release    | Beta Release   | None                | Robby (45%) Tesia (45%) Daniel (10%)            |
+| Gameplay - Basic UI                        | Narrator view, player view for gameplay                                                                       | Alpha Release   | Alpha Release  | None                | Robby (80%) Aish  (10%) Daniel (10%)            |
+| Gameplay - Full Implementation             | Networking logic, getting player information to sync across devices                                           | Beta Release    | Beta Release   | None                | Robby (55%) Tesia (35%) Daniel (10%)            |
+| Settings - UI                              | instructions                                                                                                  | Alpha Release   | Alpha Release  | None                | Robby (33%) Tesia (33%) Aish (33%)              |
+| Settings - Full Implementation             | Muted, default timer, logout                                                                                  | Beta Release    | Beta Release   | None                | Robby (50%) Tesia (30%) Daniel (20%)            |
+| Search Functionality                       | Searching functionality for decks and cards throughout the app                                                | Final Release   | Final Release  | None                | Robby (100%)                                    |
+| Timer                                      | Timer to play the game                                                                                        | Beta Release    | Beta Release   | None                | Tesia (30%) Robby (30%) Daniel (20%) Aish (20%) |
+| History Tab                                | Stretch goal to record the winners of a game, and presenting the stored results in the history tab            | Stretch Goal    | Final Release  | None                | Tesia (50%) Aish  (40%) Robby (10%)             |
+| Bugs                                       | Fixing bugs that arose throughout the project                                                                 | Final Release   | Final Release  | None                | Robby (55%) Daniel (25%) Tesia (10%) Aish (10%) |
 
 Beta Release:
   - This release has most of the functionality of our project. There are a few things that don't yet have functionality, 
@@ -60,7 +63,7 @@ Testing Instructions:
    for the players to connect. The player can then connect and a popup should show the devices that are available. The player 
    should then select the narrator and the narrator can then press the "Start" button to begin the game. 
    If a player leaves, the narrator will not be notified and the table will not change. 
-   If the narrator leave, the players will be notified.
+   If the narrator leaves, the players will be notified.
 
 
 Contributions:
